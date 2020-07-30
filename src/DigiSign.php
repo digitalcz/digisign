@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign;
 
 use DigitalCz\DigiSign\Api\AccountApi;
+use DigitalCz\DigiSign\Api\FileApi;
 use DigitalCz\DigiSign\Auth\AuthTokenProvider;
 use DigitalCz\DigiSign\Http\Client;
 use DigitalCz\DigiSign\ValueObject\Credentials;
@@ -54,5 +55,10 @@ class DigiSign
     public function getAccountApi(): AccountApi
     {
         return new AccountApi($this->client, $this->httpRequestFactory, $this->httpStreamFactory);
+    }
+
+    public function getFileApi(): FileApi
+    {
+        return new FileApi($this->client, $this->httpRequestFactory, $this->httpStreamFactory);
     }
 }
