@@ -7,7 +7,7 @@ namespace DigitalCz\DigiSign\Response;
 use DigitalCz\DigiSign\ValueObject\AuthToken;
 use Psr\Http\Message\ResponseInterface;
 
-class AuthTokenPostResponse extends BaseHttpResponse implements HttpResponseInterface
+class AuthTokenPostResponse extends BaseHttpResponse
 {
 
     /**
@@ -20,18 +20,8 @@ class AuthTokenPostResponse extends BaseHttpResponse implements HttpResponseInte
         $this->response = $response;
     }
 
-    public function getContents(): string
+    public function __invoke(): AuthToken
     {
-        return $this->response->getBody()->getContents();
-    }
-
-    public function getContentsToArray(): array
-    {
-        return $this->parseBody($this->response);
-    }
-
-    public function getContentsToObject(): AuthToken
-    {
-        return AuthToken::fromArray($this->getContentsToArray());
+        return AuthToken::fromArray($this->parseBody($this->response));
     }
 }

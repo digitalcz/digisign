@@ -27,11 +27,18 @@ class Account
         $this->status = $status;
     }
 
+    /**
+     * @param array<mixed> $data
+     * @return Account
+     */
     public static function fromArray(array $data): Account
     {
         return new Account($data['id'], $data['email'], $data['status']);
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function toArray(): array
     {
         return [

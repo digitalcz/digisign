@@ -32,6 +32,9 @@ class Credentials
         return $this->secretKey;
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function toArray()
     {
         return [

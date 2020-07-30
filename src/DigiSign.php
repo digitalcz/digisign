@@ -7,10 +7,6 @@ namespace DigitalCz\DigiSign;
 use DigitalCz\DigiSign\Api\AccountApi;
 use DigitalCz\DigiSign\Auth\AuthTokenProvider;
 use DigitalCz\DigiSign\Http\Client;
-use DigitalCz\DigiSign\Http\RequestFactory;
-use DigitalCz\DigiSign\Request\Account\AccountGetRequest;
-use DigitalCz\DigiSign\Response\Account\AccountGetResponse;
-use DigitalCz\DigiSign\ValueObject\Account;
 use DigitalCz\DigiSign\ValueObject\Credentials;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
@@ -26,9 +22,13 @@ class DigiSign
      */
     private $client;
     /**
-     * @var RequestFactory
+     * @var RequestFactoryInterface
      */
-    private $requestFactory;
+    private $httpRequestFactory;
+    /**
+     * @var StreamFactoryInterface
+     */
+    private $httpStreamFactory;
 
     public function __construct(
         string $clientId,
@@ -39,21 +39,20 @@ class DigiSign
         StreamFactoryInterface $httpStreamFactory = null
     ) {
         $httpClient = $httpClient ?? Psr18ClientDiscovery::find();
-        $httpRequestFactory = $httpRequestFactory ?? Psr17FactoryDiscovery::findRequestFactory();
-        $httpStreamFactory = $httpStreamFactory ?? Psr17FactoryDiscovery::findStreamFactory();
-
-        $this->requestFactory = new RequestFactory($httpRequestFactory, $httpStreamFactory);
+        $this->httpRequestFactory = $httpRequestFactory ?? Psr17FactoryDiscovery::findRequestFactory();
+        $this->httpStreamFactory = $httpStreamFactory ?? Psr17FactoryDiscovery::findStreamFactory();
 
         $this->client = new Client(
             new Credentials($clientId, $clientSecret),
             $httpClient,
-            $authTokenProvider,
-            $this->requestFactory
+            $this->httpRequestFactory,
+            $this->httpStreamFactory,
+            $authTokenProvider
         );
     }
 
     public function getAccountApi(): AccountApi
     {
-        return new AccountApi($this->client, $this->requestFactory);
+        return new AccountApi($this->client, $this->httpRequestFactory, $this->httpStreamFactory);
     }
 }

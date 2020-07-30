@@ -10,44 +10,55 @@ use DigitalCz\DigiSign\Request\AuthTokenPostRequest;
 use DigitalCz\DigiSign\Response\AuthTokenPostResponse;
 use DigitalCz\DigiSign\ValueObject\Credentials;
 use Psr\Http\Client\ClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 
 final class Client
 {
 
+    /**
+     * @var array<int>|int[]
+     */
     protected $successHttpCodes = [200, 201, 202, 203, 204, 205];
 
     /**
      * @var Credentials
      */
-    protected $clientCredentials;
+    protected $credentials;
 
     /**
      * @var ClientInterface
      */
-    protected $client;
+    protected $httpClient;
+
+    /**
+     * @var RequestFactoryInterface
+     */
+    private $httpRequestFactory;
+    /**
+     * @var StreamFactoryInterface
+     */
+    private $httpStreamFactory;
 
     /**
      * @var AuthTokenProviderInterface
      */
     protected $tokenProvider;
 
-    /**
-     * @var RequestFactory
-     */
-    protected $requestFactory;
-
     public function __construct(
-        Credentials $clientCredentials,
-        ClientInterface $client,
-        AuthTokenProviderInterface $tokenProvider,
-        RequestFactory $requestFactory
+        Credentials $credentials,
+        ClientInterface $httpClient,
+        RequestFactoryInterface $httpRequestFactory,
+        StreamFactoryInterface $httpStreamFactory,
+        AuthTokenProviderInterface $tokenProvider
     ) {
-        $this->clientCredentials = $clientCredentials;
-        $this->client = $client;
+        $this->credentials = $credentials;
+        $this->httpClient = $httpClient;
+        $this->httpRequestFactory = $httpRequestFactory;
+        $this->httpStreamFactory = $httpStreamFactory;
         $this->tokenProvider = $tokenProvider;
-        $this->requestFactory = $requestFactory;
     }
 
     public function request(RequestInterface $request): ResponseInterface
@@ -61,22 +72,25 @@ final class Client
 
     private function doRequest(RequestInterface $request): ResponseInterface
     {
-        $accessToken = $this->tokenProvider->getAccessToken($this->clientCredentials);
+        $authToken = $this->tokenProvider->getAccessToken($this->credentials);
 
-        if ($accessToken === null) {
-            $httpRequestToken = new AuthTokenPostRequest($this->clientCredentials);
-            $requestToken = $this->requestFactory->createRequest($httpRequestToken);
-            $responseToken = $this->client->sendRequest($requestToken);
-            $httpResponseToken = new AuthTokenPostResponse($responseToken);
+        if ($authToken === null) {
+            $httpRequestToken = (new AuthTokenPostRequest(
+                $this->httpRequestFactory,
+                $this->httpStreamFactory,
+                $this->credentials
+            ))();
 
-            $accessToken = $httpResponseToken->getContentsToObject();
+            $httpResponseToken = $this->httpClient->sendRequest($httpRequestToken);
 
-            $this->tokenProvider->setAccessToken($this->clientCredentials, $accessToken);
+            $authToken = (new AuthTokenPostResponse($httpResponseToken))();
+
+            $this->tokenProvider->setAccessToken($this->credentials, $authToken);
         }
 
-        $request = $request->withHeader('Authorization', 'Bearer ' . $accessToken->getToken());
+        $request = $request->withHeader('Authorization', 'Bearer ' . $authToken->getToken());
 
-        return $this->client->sendRequest($request);
+        return $this->httpClient->sendRequest($request);
     }
 
     protected function checkResponse(ResponseInterface $response): void

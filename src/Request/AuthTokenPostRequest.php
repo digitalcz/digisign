@@ -5,36 +5,40 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Request;
 
 use DigitalCz\DigiSign\ValueObject\Credentials;
+use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 
-class AuthTokenPostRequest implements HttpRequestInterface
+class AuthTokenPostRequest extends BaseHttpRequest
 {
+
+    /**
+     * @var RequestFactoryInterface
+     */
+    private $requestFactory;
+    /**
+     * @var StreamFactoryInterface
+     */
+    private $streamFactory;
     /**
      * @var Credentials
      */
     private $credentials;
 
-    public function __construct(Credentials $credentials)
-    {
+    public function __construct(
+        RequestFactoryInterface $requestFactory,
+        StreamFactoryInterface $streamFactory,
+        Credentials $credentials
+    ) {
+        $this->requestFactory = $requestFactory;
+        $this->streamFactory = $streamFactory;
         $this->credentials = $credentials;
     }
 
-    public function getMethod(): string
+    public function __invoke(): RequestInterface
     {
-        return 'POST';
-    }
-
-    public function getUri(): string
-    {
-        return 'https://digisign.digital.cz/api/auth-token';
-    }
-
-    public function getBody(array $data = []): array
-    {
-        return $this->credentials->toArray();
-    }
-
-    public function getContentType(): string
-    {
-        return 'application/json';
+        return $this->requestFactory->createRequest('POST', 'https://digisign.digital.cz/api/auth-token')
+            ->withBody($this->streamFactory->createStream($this->encodeJsonBody($this->credentials->toArray())))
+            ->withHeader('Content-Type', 'application/json');
     }
 }

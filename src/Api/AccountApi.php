@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Api;
 
 use DigitalCz\DigiSign\Http\Client;
-use DigitalCz\DigiSign\Http\RequestFactory;
 use DigitalCz\DigiSign\Request\Account\AccountGetRequest;
 use DigitalCz\DigiSign\Response\Account\AccountGetResponse;
 use DigitalCz\DigiSign\ValueObject\Account;
+use Psr\Http\Message\RequestFactoryInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 
 class AccountApi
 {
@@ -18,23 +19,29 @@ class AccountApi
      */
     private $client;
     /**
-     * @var RequestFactory
+     * @var RequestFactoryInterface
      */
-    private $requestFactory;
+    private $httpRequestFactory;
+    /**
+     * @var StreamFactoryInterface
+     */
+    private $httpStreamFactory;
 
-    public function __construct(Client $client, RequestFactory $requestFactory)
-    {
+    public function __construct(
+        Client $client,
+        RequestFactoryInterface $httpRequestFactory,
+        StreamFactoryInterface $httpStreamFactory
+    ) {
         $this->client = $client;
-        $this->requestFactory = $requestFactory;
+        $this->httpRequestFactory = $httpRequestFactory;
+        $this->httpStreamFactory = $httpStreamFactory;
     }
 
     public function getAccount(): Account
     {
-        $httpRequest = new AccountGetRequest();
+        $httpRequest = (new AccountGetRequest($this->httpRequestFactory, $this->httpStreamFactory))();
+        $httpResponse = $this->client->request($httpRequest);
 
-        $request = $this->requestFactory->createRequest($httpRequest);
-        $response = $this->client->request($request);
-
-        return (new AccountGetResponse($response))();
+        return (new AccountGetResponse($httpResponse))();
     }
 }
