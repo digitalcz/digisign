@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="gosms">
-    <description>The coding standard of gosms</description>
+<ruleset name="digisign">
+    <description>The coding standard of digisign</description>
 
     <file>src</file>
     <file>tests</file>
