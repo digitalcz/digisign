@@ -1,7 +1,7 @@
 # digisign
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
-[![Software License][ico-license]](LICENSE.md)
+[![Software License][ico-license]](LICENSE)
 [![CI](https://github.com/digitalcz/digisign/workflows/CI/badge.svg)]()
 [![codecov](https://codecov.io/gh/digitalcz/digisign/branch/master/graph/badge.svg)](https://codecov.io/gh/digitalcz/digisign)
 [![Total Downloads][ico-downloads]][link-downloads]
