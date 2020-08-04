@@ -30,7 +30,7 @@ class Envelope
      */
     private $validTo;
     /**
-     * @var string
+     * @var string|null
      */
     private $metadata;
 
@@ -40,7 +40,7 @@ class Envelope
         ?string $senderName,
         ?string $senderEmail,
         ?DateTimeImmutable $validTo,
-        string $metadata
+        ?string $metadata
     ) {
         $this->emailSubject = $emailSubject;
         $this->emailBody = $emailBody;
@@ -105,7 +105,7 @@ class Envelope
         return $this->validTo;
     }
 
-    public function getMetadata(): string
+    public function getMetadata(): ?string
     {
         return $this->metadata;
     }
