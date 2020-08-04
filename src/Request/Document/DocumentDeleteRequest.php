@@ -2,16 +2,15 @@
 
 declare(strict_types=1);
 
-namespace DigitalCz\DigiSign\Request;
+namespace DigitalCz\DigiSign\Request\Document;
 
-use DigitalCz\DigiSign\ValueObject\Request\Credentials;
+use DigitalCz\DigiSign\Request\BaseHttpRequest;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
-class AuthTokenPostRequest extends BaseHttpRequest
+class DocumentDeleteRequest extends BaseHttpRequest
 {
-
     /**
      * @var RequestFactoryInterface
      */
@@ -21,24 +20,25 @@ class AuthTokenPostRequest extends BaseHttpRequest
      */
     private $streamFactory;
     /**
-     * @var Credentials
+     * @var string
      */
-    private $credentials;
+    private $documentId;
 
     public function __construct(
         RequestFactoryInterface $requestFactory,
         StreamFactoryInterface $streamFactory,
-        Credentials $credentials
+        string $documentId
     ) {
         $this->requestFactory = $requestFactory;
         $this->streamFactory = $streamFactory;
-        $this->credentials = $credentials;
+        $this->documentId = $documentId;
     }
 
     public function __invoke(): RequestInterface
     {
-        return $this->requestFactory->createRequest('POST', 'https://digisign.digital.cz/api/auth-token')
-            ->withBody($this->streamFactory->createStream($this->encodeJsonBody($this->credentials->toArray())))
+        $uri = 'https://digisign.digital.cz/api/documents/%s';
+
+        return $this->requestFactory->createRequest('DELETE', sprintf($uri, $this->documentId))
             ->withHeader('Content-Type', 'application/json');
     }
 }

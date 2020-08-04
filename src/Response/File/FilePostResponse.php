@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Response\File;
 
 use DigitalCz\DigiSign\Response\BaseHttpResponse;
-use DigitalCz\DigiSign\ValueObject\File;
+use DigitalCz\DigiSign\ValueObject\Response\File;
 use Psr\Http\Message\ResponseInterface;
 
 class FilePostResponse extends BaseHttpResponse

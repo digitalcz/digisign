@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DigitalCz\DigiSign\ValueObject;
+namespace DigitalCz\DigiSign\ValueObject\Request;
 
 use PHPUnit\Framework\TestCase;
 

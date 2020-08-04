@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Auth;
 
 use DigitalCz\DigiSign\Dummy\Auth\InMemoryCache;
-use DigitalCz\DigiSign\ValueObject\AuthToken;
-use DigitalCz\DigiSign\ValueObject\Credentials;
+use DigitalCz\DigiSign\ValueObject\Request\Credentials;
+use DigitalCz\DigiSign\ValueObject\Response\AuthToken;
 use PHPUnit\Framework\TestCase;
 
 class AuthTokenProviderTest extends TestCase

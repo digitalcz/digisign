@@ -6,7 +6,7 @@ namespace DigitalCz\DigiSign\Api;
 
 use DigitalCz\DigiSign\Request\Account\AccountGetRequest;
 use DigitalCz\DigiSign\Response\Account\AccountGetResponse;
-use DigitalCz\DigiSign\ValueObject\Account;
+use DigitalCz\DigiSign\ValueObject\Response\Account;
 
 class AccountApi extends BaseApi
 {

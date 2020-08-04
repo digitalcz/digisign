@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign;
 
 use DigitalCz\DigiSign\Api\AccountApi;
+use DigitalCz\DigiSign\Api\DocumentApi;
+use DigitalCz\DigiSign\Api\EnvelopeApi;
 use DigitalCz\DigiSign\Api\FileApi;
+use DigitalCz\DigiSign\Api\RecipientApi;
 use DigitalCz\DigiSign\Auth\AuthTokenProvider;
 use DigitalCz\DigiSign\Http\Client;
-use DigitalCz\DigiSign\ValueObject\Credentials;
+use DigitalCz\DigiSign\ValueObject\Request\Credentials;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Psr\Http\Client\ClientInterface;
@@ -60,5 +63,20 @@ class DigiSign
     public function getFileApi(): FileApi
     {
         return new FileApi($this->client, $this->httpRequestFactory, $this->httpStreamFactory);
+    }
+
+    public function getDocumentApi(): DocumentApi
+    {
+        return new DocumentApi($this->client, $this->httpRequestFactory, $this->httpStreamFactory);
+    }
+
+    public function getRecipientApi(): RecipientApi
+    {
+        return new RecipientApi($this->client, $this->httpRequestFactory, $this->httpStreamFactory);
+    }
+
+    public function getEnvelopeApi(): EnvelopeApi
+    {
+        return new EnvelopeApi($this->client, $this->httpRequestFactory, $this->httpStreamFactory);
     }
 }

@@ -6,7 +6,7 @@ namespace DigitalCz\DigiSign\Api;
 
 use DigitalCz\DigiSign\Request\File\FilePostRequest;
 use DigitalCz\DigiSign\Response\File\FilePostResponse;
-use DigitalCz\DigiSign\ValueObject\File;
+use DigitalCz\DigiSign\ValueObject\Response\File;
 use DigitalCz\DigiSign\ValueObject\Stream;
 
 class FileApi extends BaseApi

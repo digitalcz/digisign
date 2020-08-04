@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace DigitalCz\DigiSign\Request;
+namespace DigitalCz\DigiSign\Request\Envelope;
 
-use DigitalCz\DigiSign\ValueObject\Request\Credentials;
+use DigitalCz\DigiSign\Request\BaseHttpRequest;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 
-class AuthTokenPostRequest extends BaseHttpRequest
+class EnvelopeGetRequest extends BaseHttpRequest
 {
 
     /**
@@ -21,24 +21,25 @@ class AuthTokenPostRequest extends BaseHttpRequest
      */
     private $streamFactory;
     /**
-     * @var Credentials
+     * @var string
      */
-    private $credentials;
+    private $envelopeId;
 
     public function __construct(
         RequestFactoryInterface $requestFactory,
         StreamFactoryInterface $streamFactory,
-        Credentials $credentials
+        string $envelopeId
     ) {
         $this->requestFactory = $requestFactory;
         $this->streamFactory = $streamFactory;
-        $this->credentials = $credentials;
+        $this->envelopeId = $envelopeId;
     }
 
     public function __invoke(): RequestInterface
     {
-        return $this->requestFactory->createRequest('POST', 'https://digisign.digital.cz/api/auth-token')
-            ->withBody($this->streamFactory->createStream($this->encodeJsonBody($this->credentials->toArray())))
+        $uri = 'https://digisign.digital.cz/api/envelopes/%s';
+
+        return $this->requestFactory->createRequest('GET', sprintf($uri, $this->envelopeId))
             ->withHeader('Content-Type', 'application/json');
     }
 }

@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace DigitalCz\DigiSign\Response\Account;
+namespace DigitalCz\DigiSign\Response\Envelope;
 
 use DigitalCz\DigiSign\Response\BaseHttpResponse;
-use DigitalCz\DigiSign\ValueObject\Response\Account;
 use Psr\Http\Message\ResponseInterface;
 
-class AccountGetResponse extends BaseHttpResponse
+class EnvelopeSendPostResponse extends BaseHttpResponse
 {
 
     /**
@@ -21,8 +20,8 @@ class AccountGetResponse extends BaseHttpResponse
         $this->response = $response;
     }
 
-    public function __invoke(): Account
+    public function __invoke(): int
     {
-        return Account::fromArray($this->parseBody($this->response));
+        return $this->response->getStatusCode();
     }
 }

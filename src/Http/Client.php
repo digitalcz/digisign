@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Http;
 
 use DigitalCz\DigiSign\Auth\AuthTokenProviderInterface;
-use DigitalCz\DigiSign\Exception\ClientResponseNotSuccess;
+use DigitalCz\DigiSign\Exception\ClientErrorResponseException;
+use DigitalCz\DigiSign\Exception\OtherErrorResponseException;
+use DigitalCz\DigiSign\Exception\ServerErrorResponseException;
 use DigitalCz\DigiSign\Request\AuthTokenPostRequest;
 use DigitalCz\DigiSign\Response\AuthTokenPostResponse;
-use DigitalCz\DigiSign\ValueObject\Credentials;
+use DigitalCz\DigiSign\ValueObject\Request\Credentials;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
@@ -19,20 +21,13 @@ final class Client
 {
 
     /**
-     * @var array<int>|int[]
-     */
-    protected $successHttpCodes = [200, 201, 202, 203, 204, 205];
-
-    /**
      * @var Credentials
      */
     protected $credentials;
-
     /**
      * @var ClientInterface
      */
     protected $httpClient;
-
     /**
      * @var RequestFactoryInterface
      */
@@ -41,7 +36,6 @@ final class Client
      * @var StreamFactoryInterface
      */
     private $httpStreamFactory;
-
     /**
      * @var AuthTokenProviderInterface
      */
@@ -75,11 +69,8 @@ final class Client
         $authToken = $this->tokenProvider->getAccessToken($this->credentials);
 
         if ($authToken === null) {
-            $httpRequestToken = (new AuthTokenPostRequest(
-                $this->httpRequestFactory,
-                $this->httpStreamFactory,
-                $this->credentials
-            ))();
+            $httpRequestToken = (
+                new AuthTokenPostRequest($this->httpRequestFactory, $this->httpStreamFactory, $this->credentials))();
 
             $httpResponseToken = $this->httpClient->sendRequest($httpRequestToken);
 
@@ -95,8 +86,20 @@ final class Client
 
     protected function checkResponse(ResponseInterface $response): void
     {
-        if (!in_array($response->getStatusCode(), $this->successHttpCodes)) {
-            throw new ClientResponseNotSuccess((string)$response->getBody(), $response->getStatusCode());
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode >= 200 && $statusCode <= 226) {
+            return;
+        }
+
+        if ($statusCode >= 400 && $statusCode <= 451) {
+            throw new ClientErrorResponseException((string)$response->getBody(), $response->getStatusCode());
+        }
+
+        if ($statusCode >= 500 && $statusCode <= 511) {
+            throw new ServerErrorResponseException((string)$response->getBody(), $response->getStatusCode());
+        } else {
+            throw new OtherErrorResponseException((string)$response->getBody(), $response->getStatusCode());
         }
     }
 }
