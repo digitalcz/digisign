@@ -47,7 +47,6 @@ class RecipientApi extends BaseApi
         return (new RecipientsGetResponse($httpResponse))();
     }
 
-
     public function getRecipient(string $recipientId): ResponseRecipient
     {
         $httpRequest = (new RecipientGetRequest($this->httpRequestFactory, $this->httpStreamFactory, $recipientId))();
