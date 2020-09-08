@@ -94,4 +94,9 @@ class DigiSign
     {
         return new EnvelopeApi($this->httpClient, $this->requestBuilder);
     }
+
+    public function getTagApi(): TagApi
+    {
+        return new TagApi($this->client, $this->httpRequestFactory, $this->httpStreamFactory);
+    }
 }
