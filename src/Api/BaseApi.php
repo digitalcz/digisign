@@ -4,33 +4,25 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Api;
 
-use DigitalCz\DigiSign\Http\Client;
-use Psr\Http\Message\RequestFactoryInterface;
-use Psr\Http\Message\StreamFactoryInterface;
+use DigitalCz\DigiSign\Http\RequestBuilder;
+use Psr\Http\Client\ClientInterface;
 
 abstract class BaseApi
 {
 
     /**
-     * @var Client
+     * @var ClientInterface
      */
     protected $client;
-    /**
-     * @var RequestFactoryInterface
-     */
-    protected $httpRequestFactory;
-    /**
-     * @var StreamFactoryInterface
-     */
-    protected $httpStreamFactory;
 
-    public function __construct(
-        Client $client,
-        RequestFactoryInterface $httpRequestFactory,
-        StreamFactoryInterface $httpStreamFactory
-    ) {
+    /**
+     * @var RequestBuilder
+     */
+    protected $requestBuilder;
+
+    public function __construct(ClientInterface $client, RequestBuilder $requestBuilder)
+    {
         $this->client = $client;
-        $this->httpRequestFactory = $httpRequestFactory;
-        $this->httpStreamFactory = $httpStreamFactory;
+        $this->requestBuilder = $requestBuilder;
     }
 }
