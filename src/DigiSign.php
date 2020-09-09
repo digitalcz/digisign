@@ -10,6 +10,7 @@ use DigitalCz\DigiSign\Api\Envelope\EnvelopeApi;
 use DigitalCz\DigiSign\Api\Envelope\EnvelopeDocumentApi;
 use DigitalCz\DigiSign\Api\Envelope\EnvelopeRecipientApi;
 use DigitalCz\DigiSign\Api\FileApi;
+use DigitalCz\DigiSign\Api\TagApi;
 use DigitalCz\DigiSign\Auth\AuthTokenProvider;
 use DigitalCz\DigiSign\Http\RequestBuilder;
 use DigitalCz\DigiSign\Http\TokenResolver;
@@ -97,6 +98,6 @@ class DigiSign
 
     public function getTagApi(): TagApi
     {
-        return new TagApi($this->client, $this->httpRequestFactory, $this->httpStreamFactory);
+        return new TagApi($this->httpClient, $this->requestBuilder);
     }
 }

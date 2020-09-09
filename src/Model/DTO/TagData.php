@@ -2,21 +2,24 @@
 
 declare(strict_types=1);
 
-namespace DigitalCz\DigiSign\ValueObject\Response;
+namespace DigitalCz\DigiSign\Model\DTO;
 
-use DateTimeImmutable;
-
-class Tag
+class TagData
 {
     /**
      * @var string
      */
-    private $id;
+    private $type;
 
     /**
      * @var string
      */
-    private $type;
+    private $recipient;
+
+    /**
+     * @var string
+     */
+    private $document;
 
     /**
      * @var int|null
@@ -33,32 +36,20 @@ class Tag
      */
     private $yPosition;
 
-    /**
-     * @var DateTimeImmutable
-     */
-    private $createdAt;
-
-    /**
-     * @var DateTimeImmutable
-     */
-    private $updatedAt;
-
     public function __construct(
-        string $id,
         string $type,
+        string $recipient,
+        string $document,
         ?int $page,
         ?int $xPosition,
-        ?int $yPosition,
-        DateTimeImmutable $createdAt,
-        DateTimeImmutable $updatedAt
+        ?int $yPosition
     ) {
-        $this->id = $id;
         $this->type = $type;
+        $this->recipient = $recipient;
+        $this->document = $document;
         $this->page = $page;
         $this->xPosition = $xPosition;
         $this->yPosition = $yPosition;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
     }
 
     /**
@@ -67,13 +58,12 @@ class Tag
     public static function fromArray(array $data): self
     {
         return new self(
-            $data['id'],
             $data['type'],
+            $data['recipient'],
+            $data['document'],
             $data['page'] ? (int)$data['page'] : null,
             $data['xPosition'] ? (int)$data['xPosition'] : null,
-            $data['yPosition'] ? (int)$data['yPosition'] : null,
-            $data['createdAt'] ? new DateTimeImmutable($data['createdAt']) : null,
-            $data['updatedAt'] ? new DateTimeImmutable($data['updatedAt']) : null
+            $data['yPosition'] ? (int)$data['yPosition'] : null
         );
     }
 
@@ -83,24 +73,28 @@ class Tag
     public function toArray(): array
     {
         return [
-            'id' => $this->id,
             'type' => $this->type,
             'page' => $this->page,
             'xPosition' => $this->xPosition,
             'yPosition' => $this->yPosition,
-            'createdAt' => $this->createdAt ? $this->createdAt->format('c') : null,
-            'updatedAt' => $this->updatedAt ? $this->updatedAt->format('c') : null,
+            'recipient' => $this->recipient,
+            'document' => $this->document,
         ];
-    }
-
-    public function getId(): string
-    {
-        return $this->id;
     }
 
     public function getType(): string
     {
         return $this->type;
+    }
+
+    public function getRecipient(): string
+    {
+        return $this->recipient;
+    }
+
+    public function getDocument(): string
+    {
+        return $this->document;
     }
 
     public function getPage(): ?int
@@ -116,15 +110,5 @@ class Tag
     public function getYPosition(): ?int
     {
         return $this->yPosition;
-    }
-
-    public function getCreatedAt(): DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function getUpdatedAt(): DateTimeImmutable
-    {
-        return $this->updatedAt;
     }
 }
