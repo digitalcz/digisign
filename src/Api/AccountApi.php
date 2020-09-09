@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Api;
 
-use DigitalCz\DigiSign\Request\Account\AccountGetRequest;
-use DigitalCz\DigiSign\Response\Account\AccountGetResponse;
-use DigitalCz\DigiSign\ValueObject\Response\Account;
+use DigitalCz\DigiSign\Http\Request\Account\AccountGetRequest;
+use DigitalCz\DigiSign\Http\Response\Account\AccountGetResponse;
+use DigitalCz\DigiSign\Model\ValueObject\Account;
 
 class AccountApi extends BaseApi
 {
 
     public function getAccount(): Account
     {
-        $httpRequest = (new AccountGetRequest($this->httpRequestFactory, $this->httpStreamFactory))();
-        $httpResponse = $this->client->request($httpRequest);
+        $httpRequest = (new AccountGetRequest($this->requestBuilder))();
+        $httpResponse = $this->client->sendRequest($httpRequest);
 
-        return (new AccountGetResponse($httpResponse))();
+        return (new AccountGetResponse())($httpResponse);
     }
 }

@@ -5,13 +5,16 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign;
 
 use DigitalCz\DigiSign\Api\AccountApi;
-use DigitalCz\DigiSign\Api\DocumentApi;
-use DigitalCz\DigiSign\Api\EnvelopeApi;
+use DigitalCz\DigiSign\Api\AuthApi;
+use DigitalCz\DigiSign\Api\Envelope\EnvelopeApi;
+use DigitalCz\DigiSign\Api\Envelope\EnvelopeDocumentApi;
+use DigitalCz\DigiSign\Api\Envelope\EnvelopeRecipientApi;
 use DigitalCz\DigiSign\Api\FileApi;
-use DigitalCz\DigiSign\Api\RecipientApi;
 use DigitalCz\DigiSign\Auth\AuthTokenProvider;
-use DigitalCz\DigiSign\Http\Client;
-use DigitalCz\DigiSign\ValueObject\Request\Credentials;
+use DigitalCz\DigiSign\Http\RequestBuilder;
+use DigitalCz\DigiSign\Http\TokenResolver;
+use DigitalCz\DigiSign\Http\UriResolver;
+use DigitalCz\DigiSign\Model\Credentials;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Psr\Http\Client\ClientInterface;
@@ -22,9 +25,9 @@ class DigiSign
 {
 
     /**
-     * @var Client
+     * @var ClientInterface
      */
-    private $client;
+    private $httpClient;
     /**
      * @var RequestFactoryInterface
      */
@@ -33,6 +36,10 @@ class DigiSign
      * @var StreamFactoryInterface
      */
     private $httpStreamFactory;
+    /**
+     * @var RequestBuilder
+     */
+    private $requestBuilder;
 
     public function __construct(
         string $clientId,
@@ -40,43 +47,51 @@ class DigiSign
         AuthTokenProvider $authTokenProvider,
         ClientInterface $httpClient = null,
         RequestFactoryInterface $httpRequestFactory = null,
-        StreamFactoryInterface $httpStreamFactory = null
+        StreamFactoryInterface $httpStreamFactory = null,
+        bool $sandbox = false
     ) {
-        $httpClient = $httpClient ?? Psr18ClientDiscovery::find();
+        $this->httpClient = $httpClient ?? Psr18ClientDiscovery::find();
         $this->httpRequestFactory = $httpRequestFactory ?? Psr17FactoryDiscovery::findRequestFactory();
         $this->httpStreamFactory = $httpStreamFactory ?? Psr17FactoryDiscovery::findStreamFactory();
 
-        $this->client = new Client(
+        $uriResolver = new UriResolver($sandbox);
+
+        $tokenResolver = new TokenResolver(
+            new AuthApi($this->httpClient, $this->httpRequestFactory, $this->httpStreamFactory, $uriResolver),
             new Credentials($clientId, $clientSecret),
-            $httpClient,
+            $authTokenProvider
+        );
+
+        $this->requestBuilder = new RequestBuilder(
             $this->httpRequestFactory,
             $this->httpStreamFactory,
-            $authTokenProvider
+            $tokenResolver,
+            $uriResolver
         );
     }
 
     public function getAccountApi(): AccountApi
     {
-        return new AccountApi($this->client, $this->httpRequestFactory, $this->httpStreamFactory);
+        return new AccountApi($this->httpClient, $this->requestBuilder);
     }
 
     public function getFileApi(): FileApi
     {
-        return new FileApi($this->client, $this->httpRequestFactory, $this->httpStreamFactory);
+        return new FileApi($this->httpClient, $this->requestBuilder);
     }
 
-    public function getDocumentApi(): DocumentApi
+    public function getEnvelopeDocumentApi(): EnvelopeDocumentApi
     {
-        return new DocumentApi($this->client, $this->httpRequestFactory, $this->httpStreamFactory);
+        return new EnvelopeDocumentApi($this->httpClient, $this->requestBuilder);
     }
 
-    public function getRecipientApi(): RecipientApi
+    public function getEnvelopeRecipientApi(): EnvelopeRecipientApi
     {
-        return new RecipientApi($this->client, $this->httpRequestFactory, $this->httpStreamFactory);
+        return new EnvelopeRecipientApi($this->httpClient, $this->requestBuilder);
     }
 
     public function getEnvelopeApi(): EnvelopeApi
     {
-        return new EnvelopeApi($this->client, $this->httpRequestFactory, $this->httpStreamFactory);
+        return new EnvelopeApi($this->httpClient, $this->requestBuilder);
     }
 }
