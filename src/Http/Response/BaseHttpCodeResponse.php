@@ -11,6 +11,8 @@ abstract class BaseHttpCodeResponse extends BaseHttpResponse
 
     public function __invoke(ResponseInterface $response): int
     {
+        $this->handleResponseCode($response);
+
         return $response->getStatusCode();
     }
 }

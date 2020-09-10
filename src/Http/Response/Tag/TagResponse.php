@@ -13,6 +13,8 @@ class TagResponse extends BaseHttpResponse
 
     public function __invoke(ResponseInterface $response): Tag
     {
+        $this->handleResponseCode($response);
+
         return Tag::fromArray($this->parseResponseBody($response));
     }
 }
