@@ -72,8 +72,8 @@ class Tag
             $data['page'] ? (int)$data['page'] : null,
             $data['xPosition'] ? (int)$data['xPosition'] : null,
             $data['yPosition'] ? (int)$data['yPosition'] : null,
-            $data['createdAt'] ? new DateTimeImmutable($data['createdAt']) : null,
-            $data['updatedAt'] ? new DateTimeImmutable($data['updatedAt']) : null
+            new DateTimeImmutable($data['createdAt']),
+            new DateTimeImmutable($data['updatedAt'])
         );
     }
 
@@ -88,8 +88,8 @@ class Tag
             'page' => $this->page,
             'xPosition' => $this->xPosition,
             'yPosition' => $this->yPosition,
-            'createdAt' => $this->createdAt ? $this->createdAt->format('c') : null,
-            'updatedAt' => $this->updatedAt ? $this->updatedAt->format('c') : null,
+            'createdAt' => $this->createdAt->format('c'),
+            'updatedAt' => $this->updatedAt->format('c'),
         ];
     }
 
