@@ -6,17 +6,20 @@ namespace DigitalCz\DigiSign\Api\Envelope;
 
 use DigitalCz\DigiSign\Api\BaseApi;
 use DigitalCz\DigiSign\Http\Request\Envelope\EnvelopeCancelPostRequest;
+use DigitalCz\DigiSign\Http\Request\Envelope\EnvelopeDonwloadGetRequest;
 use DigitalCz\DigiSign\Http\Request\Envelope\EnvelopeGetRequest;
 use DigitalCz\DigiSign\Http\Request\Envelope\EnvelopePostRequest;
 use DigitalCz\DigiSign\Http\Request\Envelope\EnvelopePutRequest;
 use DigitalCz\DigiSign\Http\Request\Envelope\EnvelopeSendPostRequest;
 use DigitalCz\DigiSign\Http\Request\Envelope\EnvelopesGetRequest;
 use DigitalCz\DigiSign\Http\Response\Envelope\EnvelopeCancelPostResponse;
+use DigitalCz\DigiSign\Http\Response\Envelope\EnvelopeDownloadGetResponse;
 use DigitalCz\DigiSign\Http\Response\Envelope\EnvelopeResponse;
 use DigitalCz\DigiSign\Http\Response\Envelope\EnvelopeSendPostResponse;
 use DigitalCz\DigiSign\Http\Response\Envelope\EnvelopesGetResponse;
 use DigitalCz\DigiSign\Model\DTO\EnvelopeData;
 use DigitalCz\DigiSign\Model\ValueObject\Envelope;
+use DigitalCz\DigiSign\Model\ValueObject\Envelope\EnvelopeFile;
 use DigitalCz\DigiSign\Model\ValueObject\Envelope\EnvelopeList;
 
 class EnvelopeApi extends BaseApi
@@ -68,5 +71,13 @@ class EnvelopeApi extends BaseApi
         $httpResponse = $this->client->sendRequest($httpRequest);
 
         return (new EnvelopeCancelPostResponse())($httpResponse);
+    }
+
+    public function downloadEnvelope(string $envelopeId, ?string $output = null, ?bool $includeLog = null): EnvelopeFile
+    {
+        $httpRequest = (new EnvelopeDonwloadGetRequest($this->requestBuilder))($envelopeId, $output, $includeLog);
+        $httpResponse = $this->client->sendRequest($httpRequest);
+
+        return (new EnvelopeDownloadGetResponse())($httpResponse);
     }
 }
