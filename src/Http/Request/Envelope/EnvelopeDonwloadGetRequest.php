@@ -31,15 +31,15 @@ class EnvelopeDonwloadGetRequest extends BaseHttpRequest
     ): string {
         $uriData = [];
 
-        if ($output) {
+        if ($output !== null) {
             $uriData['output'] = $output;
         }
 
-        if ($includeLog) {
+        if ($includeLog !== null) {
             $uriData['include_log'] = $includeLog;
         }
 
-        if ($documentNameId) {
+        if ($documentNameId !== null) {
             $uriData['document_name_id'] = $documentNameId;
         }
 
