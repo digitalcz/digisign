@@ -76,9 +76,14 @@ class EnvelopeApi extends BaseApi
         return (new EnvelopeCancelPostResponse())($httpResponse);
     }
 
-    public function downloadEnvelope(string $envelopeId, ?string $output = null, ?bool $includeLog = null): EnvelopeFile
-    {
-        $httpRequest = (new EnvelopeDonwloadGetRequest($this->requestBuilder))($envelopeId, $output, $includeLog);
+    public function downloadEnvelope(
+        string $envelopeId,
+        ?string $output = null,
+        ?bool $includeLog = null,
+        ?bool $documentNameId = null
+    ): EnvelopeFile {
+        $httpRequest =
+            (new EnvelopeDonwloadGetRequest($this->requestBuilder))($envelopeId, $output, $includeLog, $documentNameId);
         $httpResponse = $this->client->sendRequest($httpRequest);
 
         return (new EnvelopeDownloadGetResponse())($httpResponse);
