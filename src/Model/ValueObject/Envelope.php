@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Model\ValueObject;
 
 use DateTimeImmutable;
-use DigitalCz\DigiSign\Model\ValueObject\Envelope\EnvelopeRecipient;
-use DigitalCz\DigiSign\Model\ValueObject\Envelope\EnvelopeDocument;
 
 class Envelope
 {
