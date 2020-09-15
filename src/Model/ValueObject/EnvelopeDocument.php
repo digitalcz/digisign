@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Model\ValueObject;
 
-use DigitalCz\DigiSign\Model\ValueObject\EnvelopeDocument\EnvelopeDocumentFile;
-
 class EnvelopeDocument
 {
     /**
@@ -21,14 +19,14 @@ class EnvelopeDocument
      */
     private $metadata;
     /**
-     * @var EnvelopeDocumentFile
+     * @var File
      */
     private $file;
 
     public function __construct(
         string $id,
         string $name,
-        EnvelopeDocumentFile $file,
+        File $file,
         ?string $metadata = null
     ) {
         $this->id = $id;
@@ -45,7 +43,7 @@ class EnvelopeDocument
         return new self(
             $data['id'],
             $data['name'],
-            EnvelopeDocumentFile::fromArray($data['file']),
+            File::fromArray($data['file']),
             $data['metadata']
         );
     }
@@ -78,7 +76,7 @@ class EnvelopeDocument
         return $this->metadata;
     }
 
-    public function getFile(): EnvelopeDocumentFile
+    public function getFile(): File
     {
         return $this->file;
     }

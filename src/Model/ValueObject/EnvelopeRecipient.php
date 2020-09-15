@@ -34,7 +34,7 @@ class EnvelopeRecipient
      */
     private $role;
     /**
-     * @var EnvelopeRecipientEnvelope
+     * @var EnvelopeRecipientEnvelope|null
      */
     private $envelope;
     /**
@@ -69,7 +69,7 @@ class EnvelopeRecipient
         string $mobile,
         string $status,
         string $role,
-        EnvelopeRecipientEnvelope $envelope,
+        ?EnvelopeRecipientEnvelope $envelope,
         ?DateTimeImmutable $sentAt = null,
         ?DateTimeImmutable $deliveredAt = null,
         ?DateTimeImmutable $signedAt = null,
@@ -104,7 +104,7 @@ class EnvelopeRecipient
             $data['mobile'],
             $data['status'],
             $data['role'],
-            EnvelopeRecipientEnvelope::fromArray($data['envelope']),
+            $data['envelope'] ? EnvelopeRecipientEnvelope::fromArray($data['envelope']) : null,
             $data['sentAt'] ? new DateTimeImmutable($data['sentAt']) : null,
             $data['deliveredAt'] ? new DateTimeImmutable($data['deliveredAt']) : null,
             $data['signedAt'] ? new DateTimeImmutable($data['signedAt']) : null,
@@ -126,7 +126,7 @@ class EnvelopeRecipient
             'mobile' => $this->mobile,
             'status' => $this->status,
             'role' => $this->role,
-            'envelope' => $this->envelope->toArray(),
+            'envelope' => $this->envelope ? $this->envelope->toArray() : null,
             'sentAt' => $this->sentAt ? $this->sentAt->format('c') : null,
             'deliveredAt' => $this->declinedAt ? $this->declinedAt->format('c') : null,
             'signedAt' => $this->signedAt ? $this->signedAt->format('c') : null,
