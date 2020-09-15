@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Model\ValueObject;
 
 use DateTimeImmutable;
-use DigitalCz\DigiSign\Model\ValueObject\EnvelopeRecipient\EnvelopeRecipientEnvelope;
 
 class EnvelopeRecipient
 {
@@ -33,10 +32,6 @@ class EnvelopeRecipient
      * @var string
      */
     private $role;
-    /**
-     * @var EnvelopeRecipientEnvelope|null
-     */
-    private $envelope;
     /**
      * @var DateTimeImmutable|null
      */
@@ -69,7 +64,6 @@ class EnvelopeRecipient
         string $mobile,
         string $status,
         string $role,
-        ?EnvelopeRecipientEnvelope $envelope,
         ?DateTimeImmutable $sentAt = null,
         ?DateTimeImmutable $deliveredAt = null,
         ?DateTimeImmutable $signedAt = null,
@@ -83,7 +77,6 @@ class EnvelopeRecipient
         $this->mobile = $mobile;
         $this->status = $status;
         $this->role = $role;
-        $this->envelope = $envelope;
         $this->sentAt = $sentAt;
         $this->deliveredAt = $deliveredAt;
         $this->signedAt = $signedAt;
@@ -104,7 +97,6 @@ class EnvelopeRecipient
             $data['mobile'],
             $data['status'],
             $data['role'],
-            $data['envelope'] ? EnvelopeRecipientEnvelope::fromArray($data['envelope']) : null,
             $data['sentAt'] ? new DateTimeImmutable($data['sentAt']) : null,
             $data['deliveredAt'] ? new DateTimeImmutable($data['deliveredAt']) : null,
             $data['signedAt'] ? new DateTimeImmutable($data['signedAt']) : null,
@@ -126,7 +118,6 @@ class EnvelopeRecipient
             'mobile' => $this->mobile,
             'status' => $this->status,
             'role' => $this->role,
-            'envelope' => $this->envelope ? $this->envelope->toArray() : null,
             'sentAt' => $this->sentAt ? $this->sentAt->format('c') : null,
             'deliveredAt' => $this->declinedAt ? $this->declinedAt->format('c') : null,
             'signedAt' => $this->signedAt ? $this->signedAt->format('c') : null,
@@ -159,11 +150,6 @@ class EnvelopeRecipient
     public function getStatus(): string
     {
         return $this->status;
-    }
-
-    public function getEnvelope(): EnvelopeRecipientEnvelope
-    {
-        return $this->envelope;
     }
 
     public function getSentAt(): ?DateTimeImmutable
