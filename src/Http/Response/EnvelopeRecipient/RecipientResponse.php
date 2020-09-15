@@ -13,6 +13,8 @@ class RecipientResponse extends BaseHttpResponse
 
     public function __invoke(ResponseInterface $response): EnvelopeRecipient
     {
+        $this->handleResponseCode($response);
+
         return EnvelopeRecipient::fromArray($this->parseResponseBody($response));
     }
 }
