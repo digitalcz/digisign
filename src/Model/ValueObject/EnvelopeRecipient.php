@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Model\ValueObject;
 
 use DateTimeImmutable;
-use DigitalCz\DigiSign\Model\ValueObject\EnvelopeRecipient\EnvelopeRecipientEnvelope;
 
 class EnvelopeRecipient
 {
@@ -151,11 +150,6 @@ class EnvelopeRecipient
     public function getStatus(): string
     {
         return $this->status;
-    }
-
-    public function getEnvelope(): EnvelopeRecipientEnvelope
-    {
-        return $this->envelope;
     }
 
     public function getSentAt(): ?DateTimeImmutable
