@@ -6,7 +6,7 @@ namespace DigitalCz\DigiSign\Model\ValueObject;
 
 use DateTimeImmutable;
 
-class Tag
+class EnvelopeTag
 {
     /**
      * @var string

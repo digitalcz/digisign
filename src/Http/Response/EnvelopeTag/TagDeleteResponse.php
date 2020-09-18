@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DigitalCz\DigiSign\Http\Response\Tag;
+namespace DigitalCz\DigiSign\Http\Response\EnvelopeTag;
 
 use DigitalCz\DigiSign\Http\Response\BaseHttpCodeResponse;
 

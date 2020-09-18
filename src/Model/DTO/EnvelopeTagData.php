@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Model\DTO;
 
-class TagData
+class EnvelopeTagData
 {
     /**
      * @var string
