@@ -1,0 +1,109 @@
+{
+  "recipient": {
+    "status": "draft",
+    "metadata": "superTajneId",
+    "role": "signer",
+    "name": "Fido",
+    "email": "filip.kloucek@gmail.com",
+    "mobile": "+420733188808",
+    "emailBody": "Sign! Now!",
+    "sentAt": null,
+    "deliveredAt": null,
+    "nonDeliveredAt": null,
+    "signedAt": null,
+    "declinedAt": null,
+    "cancelledAt": null,
+    "id": "0b635f61-245a-4e67-a3c0-af73e63d81dc",
+    "createdAt": "2020-08-03T16:49:13+02:00",
+    "updatedAt": "2020-08-03T16:49:13+02:00",
+    "_actions": {
+      "update": {
+        "method": "PUT",
+        "uri": "/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/recipients/0b635f61-245a-4e67-a3c0-af73e63d81dc"
+      },
+      "delete": {
+        "method": "DELETE",
+        "uri": "/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/recipients/0b635f61-245a-4e67-a3c0-af73e63d81dc"
+      },
+      "resend": {
+        "violations": [
+          {
+            "title": "EnvelopeRecipient status must be one of \"sent\", \"delivered\", \"nonDelivered\", \"signed\"",
+            "parameters": {
+              "{{ statuses }}": "\"sent\", \"delivered\", \"nonDelivered\", \"signed\""
+            },
+            "type": "urn:uuid:ee099d8f-77de-428c-986c-2b6cb025f4ad"
+          },
+          {
+            "title": "Envelope status must be one of \"sent\", \"completed\"",
+            "parameters": {
+              "{{ statuses }}": "\"sent\", \"completed\""
+            },
+            "type": "urn:uuid:d6bcd7cf-b8f0-4b5c-9422-1a108ba23635"
+          }
+        ],
+        "method": "POST",
+        "uri": "/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/recipients/0b635f61-245a-4e67-a3c0-af73e63d81dc/resend"
+      }
+    },
+    "_links": {
+      "self": "/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/recipients/0b635f61-245a-4e67-a3c0-af73e63d81dc"
+    }
+  },
+  "document": {
+    "name": "API 1",
+    "metadata": "superTajneId",
+    "file": {
+      "id": "b6fc9f51-9f12-40ce-8ba2-91df893694ab",
+      "createdAt": "2020-07-30T20:03:21+02:00",
+      "updatedAt": "2020-07-30T20:03:21+02:00",
+      "name": "dummy-5f230b6908b4f284444605.pdf",
+      "originalName": "dummy.pdf",
+      "mimeType": "application/pdf",
+      "size": 10035,
+      "sha1Checksum": "6490304685c1cab33072adc5a4a6ad471029150d",
+      "_actions": [],
+      "_links": {
+        "content": "/api/files/b6fc9f51-9f12-40ce-8ba2-91df893694ab/content"
+      }
+    },
+    "id": "71b06fec-60e5-4f4c-9ead-09aa8992da4b",
+    "createdAt": "2020-08-03T16:49:13+02:00",
+    "updatedAt": "2020-08-03T16:49:13+02:00",
+    "_actions": {
+      "update": {
+        "method": "PUT",
+        "uri": "/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/documents/71b06fec-60e5-4f4c-9ead-09aa8992da4b"
+      },
+      "delete": {
+        "method": "DELETE",
+        "uri": "/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/documents/71b06fec-60e5-4f4c-9ead-09aa8992da4b"
+      }
+    },
+    "_links": {
+      "download": "/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/documents/71b06fec-60e5-4f4c-9ead-09aa8992da4b/download",
+      "tags": "/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/documents/71b06fec-60e5-4f4c-9ead-09aa8992da4b/tags",
+      "self": "/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/documents/71b06fec-60e5-4f4c-9ead-09aa8992da4b"
+    }
+  },
+  "type": "signature",
+  "page": 1,
+  "xPosition": 1,
+  "yPosition": 1,
+  "id": "1dae4051-8ea7-4267-b12d-566a3e767d2a",
+  "createdAt": "2020-09-18T12:33:36+02:00",
+  "updatedAt": "2020-09-18T12:33:36+02:00",
+  "_actions": {
+    "update": {
+      "method": "PUT",
+      "uri": "/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/tags/1dae4051-8ea7-4267-b12d-566a3e767d2a"
+    },
+    "delete": {
+      "method": "DELETE",
+      "uri": "/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/tags/1dae4051-8ea7-4267-b12d-566a3e767d2a"
+    }
+  },
+  "_links": {
+    "self": "/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/tags/1dae4051-8ea7-4267-b12d-566a3e767d2a"
+  }
+}
