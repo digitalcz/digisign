@@ -4,6 +4,8 @@ All notable changes to `gosms` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [Unreleased]
+
 ## [0.2.1] - 2020-06-16
 
 ### Added
