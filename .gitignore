@@ -3,4 +3,8 @@
 
 # Composer
 /vendor
+/build
+
+# Build
 /composer.lock
+.phpunit.result.cache
