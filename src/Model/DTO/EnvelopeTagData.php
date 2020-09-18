@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Model\DTO;
 
+use DigitalCz\DigiSign\Model\Iri\EnvelopeDocumentIri;
+use DigitalCz\DigiSign\Model\Iri\EnvelopeRecipientIri;
+use InvalidArgumentException;
+
 class EnvelopeTagData
 {
     /**
@@ -12,12 +16,12 @@ class EnvelopeTagData
     private $type;
 
     /**
-     * @var string
+     * @var EnvelopeRecipientIri
      */
     private $recipient;
 
     /**
-     * @var string
+     * @var EnvelopeDocumentIri
      */
     private $document;
 
@@ -36,14 +40,30 @@ class EnvelopeTagData
      */
     private $yPosition;
 
+    /**
+     * @param string|EnvelopeRecipientIri $recipient
+     * @param string|EnvelopeDocumentIri $document
+     */
     public function __construct(
         string $type,
-        string $recipient,
-        string $document,
+        $recipient,
+        $document,
         ?int $page,
         ?int $xPosition,
         ?int $yPosition
     ) {
+        if (is_string($recipient)) {
+            $recipient = EnvelopeRecipientIri::parse($recipient);
+        } elseif (!$recipient instanceof EnvelopeRecipientIri) {
+            throw new InvalidArgumentException('Invalid argument recipient, string or EnvelopeRecipientIri expected.');
+        }
+
+        if (is_string($document)) {
+            $document = EnvelopeDocumentIri::parse($document);
+        } elseif (!$document instanceof EnvelopeDocumentIri) {
+            throw new InvalidArgumentException('Invalid argument recipient, string or EnvelopeDocumentIri expected.');
+        }
+
         $this->type = $type;
         $this->recipient = $recipient;
         $this->document = $document;
@@ -77,8 +97,8 @@ class EnvelopeTagData
             'page' => $this->page,
             'xPosition' => $this->xPosition,
             'yPosition' => $this->yPosition,
-            'recipient' => $this->recipient,
-            'document' => $this->document,
+            'recipient' => $this->recipient->toString(),
+            'document' => $this->document->toString(),
         ];
     }
 
@@ -89,12 +109,12 @@ class EnvelopeTagData
 
     public function getRecipient(): string
     {
-        return $this->recipient;
+        return $this->recipient->toString();
     }
 
     public function getDocument(): string
     {
-        return $this->document;
+        return $this->document->toString();
     }
 
     public function getPage(): ?int
