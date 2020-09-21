@@ -14,17 +14,6 @@ class EnvelopeTagApiTest extends BaseApiTestCase
     {
         $httpClient = $this->httpClient;
 
-//        //auth token get response
-//        $httpResponse = $this->createMock(ResponseInterface::class);
-//        $httpResponse
-//            ->method('getStatusCode')
-//            ->willReturn(200);
-//        $httpResponse
-//            ->method('getBody')
-//            ->willReturn(file_get_contents(__DIR__ . '/../../Dummy/Responses/auth_token.json'));
-//
-//        $httpClient->addResponse($httpResponse);
-
         $httpResponse = $this->createMock(ResponseInterface::class);
         $httpResponse
             ->method('getStatusCode')

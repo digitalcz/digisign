@@ -51,7 +51,6 @@ class EnvelopeApi extends BaseApi
         return (new EnvelopeResponse())($httpResponse);
     }
 
-
     public function getEnvelopes(int $page = 1, int $itemsPerPage = 30): EnvelopeList
     {
         $httpRequest = (new EnvelopesGetRequest($this->requestBuilder))($page, $itemsPerPage);

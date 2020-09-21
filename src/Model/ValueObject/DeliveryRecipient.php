@@ -6,7 +6,7 @@ namespace DigitalCz\DigiSign\Model\ValueObject;
 
 use DateTimeImmutable;
 
-class EnvelopeRecipient
+class DeliveryRecipient
 {
     /**
      * @var string
@@ -29,10 +29,6 @@ class EnvelopeRecipient
      */
     private $status;
     /**
-     * @var string
-     */
-    private $role;
-    /**
      * @var DateTimeImmutable|null
      */
     private $sentAt;
@@ -47,11 +43,7 @@ class EnvelopeRecipient
     /**
      * @var DateTimeImmutable|null
      */
-    private $signedAt;
-    /**
-     * @var DateTimeImmutable|null
-     */
-    private $declinedAt;
+    private $cancelledAt;
     /**
      * @var string|null
      */
@@ -67,12 +59,10 @@ class EnvelopeRecipient
         string $email,
         string $mobile,
         string $status,
-        string $role,
         ?DateTimeImmutable $sentAt = null,
         ?DateTimeImmutable $deliveredAt = null,
         ?DateTimeImmutable $nonDeliveredAt = null,
-        ?DateTimeImmutable $signedAt = null,
-        ?DateTimeImmutable $declinedAt = null,
+        ?DateTimeImmutable $cancelledAt = null,
         ?string $emailBody = null,
         ?string $metadata = null
     ) {
@@ -81,12 +71,10 @@ class EnvelopeRecipient
         $this->email = $email;
         $this->mobile = $mobile;
         $this->status = $status;
-        $this->role = $role;
         $this->sentAt = $sentAt;
         $this->deliveredAt = $deliveredAt;
         $this->nonDeliveredAt = $nonDeliveredAt;
-        $this->signedAt = $signedAt;
-        $this->declinedAt = $declinedAt;
+        $this->cancelledAt = $cancelledAt;
         $this->emailBody = $emailBody;
         $this->metadata = $metadata;
     }
@@ -102,12 +90,10 @@ class EnvelopeRecipient
             $data['email'],
             $data['mobile'],
             $data['status'],
-            $data['role'],
             $data['sentAt'] ? new DateTimeImmutable($data['sentAt']) : null,
             $data['deliveredAt'] ? new DateTimeImmutable($data['deliveredAt']) : null,
             $data['nonDeliveredAt'] ? new DateTimeImmutable($data['nonDeliveredAt']) : null,
-            $data['signedAt'] ? new DateTimeImmutable($data['signedAt']) : null,
-            $data['declinedAt'] ? new DateTimeImmutable($data['declinedAt']) : null,
+            $data['cancelledAt'] ? new DateTimeImmutable($data['cancelledAt']) : null,
             $data['emailBody'],
             $data['metadata']
         );
@@ -124,12 +110,10 @@ class EnvelopeRecipient
             'email' => $this->email,
             'mobile' => $this->mobile,
             'status' => $this->status,
-            'role' => $this->role,
             'sentAt' => $this->sentAt ? $this->sentAt->format('c') : null,
             'deliveredAt' => $this->deliveredAt ? $this->deliveredAt->format('c') : null,
-            'nonDeliveredAt' => $this->nonDeliveredAt ? $this->nonDeliveredAt->format('c') : null,
-            'signedAt' => $this->signedAt ? $this->signedAt->format('c') : null,
-            'declinedAt' => $this->declinedAt ? $this->declinedAt->format('c') : null,
+            'signedAt' => $this->nonDeliveredAt ? $this->nonDeliveredAt->format('c') : null,
+            'declinedAt' => $this->cancelledAt ? $this->cancelledAt->format('c') : null,
             'emailBody' => $this->emailBody,
             'metadata' => $this->metadata,
         ];
@@ -138,11 +122,6 @@ class EnvelopeRecipient
     public function getId(): string
     {
         return $this->id;
-    }
-
-    public function getRole(): string
-    {
-        return $this->role;
     }
 
     public function getName(): string
@@ -180,14 +159,9 @@ class EnvelopeRecipient
         return $this->nonDeliveredAt;
     }
 
-    public function getSignedAt(): ?DateTimeImmutable
+    public function getCancelledAt(): ?DateTimeImmutable
     {
-        return $this->signedAt;
-    }
-
-    public function getDeclinedAt(): ?DateTimeImmutable
-    {
-        return $this->declinedAt;
+        return $this->cancelledAt;
     }
 
     public function getEmailBody(): ?string
