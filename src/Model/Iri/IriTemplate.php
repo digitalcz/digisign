@@ -17,7 +17,7 @@ class IriTemplate
     private $template;
 
     /**
-     * @var string Regex of IRI template eg: "~^/api/envelopes/(?<envelope>\w+)/tags/(?<tag>\w+)$~"
+     * @var string Regex of IRI template eg: "~^/api/envelopes/(?<envelope>...)/tags/(?<tag>...)$~"
      */
     private $templateRegex;
 
@@ -31,7 +31,7 @@ class IriTemplate
      */
     public function __construct(string $template)
     {
-        preg_match_all('~{([a-z0-9-]+)}~', $template, $matches);
+        preg_match_all('~{(\w+)}~', $template, $matches);
         $placeholders = array_combine($matches[1] ?? [], $matches[0] ?? []);
 
         if ($placeholders === false) {
@@ -53,7 +53,7 @@ class IriTemplate
     {
         $replaces = array_map(
             static function (string $param) {
-                return "(?<{$param}>[a-z0-9-]+)";
+                return "(?<{$param}>[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12})";
             },
             array_keys($this->placeholders)
         );

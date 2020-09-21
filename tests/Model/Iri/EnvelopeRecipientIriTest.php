@@ -10,17 +10,46 @@ class EnvelopeRecipientIriTest extends TestCase
 {
     public function testCreate(): void
     {
-        $iri = new EnvelopeRecipientIri('123', '456');
-        self::assertEquals('/api/envelopes/123/recipients/456', $iri->toString());
-        self::assertEquals('/api/envelopes/123/recipients/456', (string)$iri);
-        self::assertEquals(['envelope' => '123', 'recipient' => '456'], $iri->getParams());
+        $iri = EnvelopeRecipientIri::create(
+            '94e04ccb-167e-4630-9952-db1e72fc30b4',
+            'd9ea7867-df01-425d-9138-93f14709c2df'
+        );
+        self::assertEquals(
+            '/api/envelopes/94e04ccb-167e-4630-9952-db1e72fc30b4/recipients/d9ea7867-df01-425d-9138-93f14709c2df',
+            $iri->toString()
+        );
+        self::assertEquals(
+            '/api/envelopes/94e04ccb-167e-4630-9952-db1e72fc30b4/recipients/d9ea7867-df01-425d-9138-93f14709c2df',
+            (string)$iri
+        );
+        self::assertEquals(
+            [
+                'envelope' => '94e04ccb-167e-4630-9952-db1e72fc30b4',
+                'recipient' => 'd9ea7867-df01-425d-9138-93f14709c2df'
+            ],
+            $iri->getParams()
+        );
     }
 
     public function testParse(): void
     {
-        $iri = EnvelopeRecipientIri::parse('/api/envelopes/123/recipients/456');
-        self::assertEquals('/api/envelopes/123/recipients/456', $iri->toString());
-        self::assertEquals('/api/envelopes/123/recipients/456', (string)$iri);
-        self::assertEquals(['envelope' => '123', 'recipient' => '456'], $iri->getParams());
+        $iri = EnvelopeRecipientIri::parse(
+            '/api/envelopes/94e04ccb-167e-4630-9952-db1e72fc30b4/recipients/d9ea7867-df01-425d-9138-93f14709c2df'
+        );
+        self::assertEquals(
+            '/api/envelopes/94e04ccb-167e-4630-9952-db1e72fc30b4/recipients/d9ea7867-df01-425d-9138-93f14709c2df',
+            $iri->toString()
+        );
+        self::assertEquals(
+            '/api/envelopes/94e04ccb-167e-4630-9952-db1e72fc30b4/recipients/d9ea7867-df01-425d-9138-93f14709c2df',
+            (string)$iri
+        );
+        self::assertEquals(
+            [
+                'envelope' => '94e04ccb-167e-4630-9952-db1e72fc30b4',
+                'recipient' => 'd9ea7867-df01-425d-9138-93f14709c2df'
+            ],
+            $iri->getParams()
+        );
     }
 }

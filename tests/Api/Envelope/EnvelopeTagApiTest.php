@@ -55,8 +55,8 @@ class EnvelopeTagApiTest extends BaseApiTestCase
 
         $tag = $api->createTag('0211f410-268a-4ac3-ac40-b41ee7647092', new EnvelopeTagData(
             'signature',
-            '/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/recipients/0b635f61-245a-4e67-a3c0-af73e63d81dc',
-            '/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/documents/71b06fec-60e5-4f4c-9ead-09aa8992da4b',
+            '/api/envelopes/85c412fc-ee02-4220-ac79-8b0a721ceb88/recipients/78bd8c9b-6e36-44f7-a103-41c963cf3f03',
+            '/api/envelopes/819c8aa2-3871-4a0d-950f-2b45d2c6f8fc/documents/3fbf6b5d-ea56-49fd-bf6b-0107d32bf4d7',
             1,
             1,
             1

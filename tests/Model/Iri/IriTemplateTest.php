@@ -26,12 +26,16 @@ class IriTemplateTest extends TestCase
      */
     public function provideForTestExpand(): iterable
     {
-        yield ['/api/envelopes/{envelope}', ['envelope' => '123'], '/api/envelopes/123'];
-        yield ['/api/envelopes', ['envelope' => '123'], '/api/envelopes'];
+        yield [
+            '/api/envelopes/{envelope}',
+            ['envelope' => '3ab797be-5bc4-4210-8d1d-9be967f6350f'],
+            '/api/envelopes/3ab797be-5bc4-4210-8d1d-9be967f6350f'
+        ];
+        yield ['/api/envelopes', ['envelope' => '3ab797be-5bc4-4210-8d1d-9be967f6350f'], '/api/envelopes'];
         yield [
             '/api/envelopes/{envelope}/tags/{tag}',
-            ['envelope' => '123', 'tag' => '456'],
-            '/api/envelopes/123/tags/456'
+            ['envelope' => '3ab797be-5bc4-4210-8d1d-9be967f6350f', 'tag' => '59311a2f-17d9-4485-867c-971e7c2bf5a7'],
+            '/api/envelopes/3ab797be-5bc4-4210-8d1d-9be967f6350f/tags/59311a2f-17d9-4485-867c-971e7c2bf5a7'
         ];
     }
 
@@ -49,20 +53,40 @@ class IriTemplateTest extends TestCase
      */
     public function provideForTestMatch(): iterable
     {
-        yield ['/api/envelopes/{envelope}', '/api/envelopes/123', true];
-        yield ['/api/envelopes/{envelope}', '/api/envelopes/123/foo', false];
+        yield ['/api/envelopes/{envelope}', '/api/envelopes/3ab797be-5bc4-4210-8d1d-9be967f6350f', true];
+        yield ['/api/envelopes/{envelope}', '/api/envelopes/3ab797be-5bc4-4210-8d1d-9be967f6350f/foo', false];
         yield ['/api/envelopes/{envelope}', '/api/envelopes', false];
         yield ['/api/envelopes/{envelope}', '/api/envelopes/', false];
         yield ['/api/envelopes/{envelope}', '/api', false];
         yield ['/api/envelopes', '/api/envelopes', true];
         yield ['/api/envelopes', '/api/envelopes/foo', false];
         yield ['/api/envelopes', '/api', false];
-        yield ['/api/envelopes/{envelope}/tags/{tag}', '/api/envelopes/123/tags/456', true];
-        yield ['/api/envelopes/{envelope}/tags/{tag}', '/api/envelopes/123/tags/456/foo', false];
-        yield ['/api/envelopes/{envelope}/tags/{tag}', '/api/envelopes/123/tags/456/', false];
-        yield ['/api/envelopes/{envelope}/tags/{tag}', '/api/envelopes/123/tags', false];
-        yield ['/api/envelopes/{envelope}/tags/{tag}', '/api/envelopes/123/tags/', false];
-        yield ['/api/envelopes/{envelope}/tags/{tag}', '/api/envelopes/123', false];
+        yield [
+            '/api/envelopes/{envelope}/tags/{tag}',
+            '/api/envelopes/3ab797be-5bc4-4210-8d1d-9be967f6350f/tags/59311a2f-17d9-4485-867c-971e7c2bf5a7',
+            true
+        ];
+        yield [
+            '/api/envelopes/{envelope}/tags/{tag}',
+            '/api/envelopes/3ab797be-5bc4-4210-8d1d-9be967f6350f/tags/59311a2f-17d9-4485-867c-971e7c2bf5a7/foo',
+            false
+        ];
+        yield [
+            '/api/envelopes/{envelope}/tags/{tag}',
+            '/api/envelopes/3ab797be-5bc4-4210-8d1d-9be967f6350f/tags/59311a2f-17d9-4485-867c-971e7c2bf5a7/',
+            false
+        ];
+        yield [
+            '/api/envelopes/{envelope}/tags/{tag}',
+            '/api/envelopes/3ab797be-5bc4-4210-8d1d-9be967f6350f/tags',
+            false
+        ];
+        yield [
+            '/api/envelopes/{envelope}/tags/{tag}',
+            '/api/envelopes/3ab797be-5bc4-4210-8d1d-9be967f6350f/tags/',
+            false
+        ];
+        yield ['/api/envelopes/{envelope}/tags/{tag}', '/api/envelopes/3ab797be-5bc4-4210-8d1d-9be967f6350f', false];
         yield ['/api/envelopes/{envelope}/tags/{tag}', '/api/envelopes', false];
     }
 
@@ -84,11 +108,15 @@ class IriTemplateTest extends TestCase
     public function provideForTestExtract(): iterable
     {
         yield ['/api/envelopes', '/api/envelopes', []];
-        yield ['/api/envelopes/{envelope}', '/api/envelopes/123', ['envelope' => '123']];
+        yield [
+            '/api/envelopes/{envelope}',
+            '/api/envelopes/3ab797be-5bc4-4210-8d1d-9be967f6350f',
+            ['envelope' => '3ab797be-5bc4-4210-8d1d-9be967f6350f']
+        ];
         yield [
             '/api/envelopes/{envelope}/tags/{tag}',
-            '/api/envelopes/123/tags/456',
-            ['envelope' => '123', 'tag' => '456']
+            '/api/envelopes/3ab797be-5bc4-4210-8d1d-9be967f6350f/tags/59311a2f-17d9-4485-867c-971e7c2bf5a7',
+            ['envelope' => '3ab797be-5bc4-4210-8d1d-9be967f6350f', 'tag' => '59311a2f-17d9-4485-867c-971e7c2bf5a7']
         ];
     }
 
@@ -98,6 +126,8 @@ class IriTemplateTest extends TestCase
         $this->expectExceptionMessage('IRI does not match template');
 
         $template = new IriTemplate('/api/envelopes/{envelope}/tags/{tag}');
-        $template->extract('/api/envelopes/123/recipients/456');
+        $template->extract(
+            '/api/envelopes/3ab797be-5bc4-4210-8d1d-9be967f6350f/recipients/59311a2f-17d9-4485-867c-971e7c2bf5a7'
+        );
     }
 }

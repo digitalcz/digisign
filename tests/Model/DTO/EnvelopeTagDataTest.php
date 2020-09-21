@@ -16,8 +16,10 @@ class EnvelopeTagDataTest extends TestCase
             'page' => 1,
             'xPosition' => 10,
             'yPosition' => 100,
-            'recipient' => '/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/recipients/xxx',
-            'document' => '/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/documents/xxx',
+            'recipient' =>
+                '/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/recipients/71526e98-0552-4968-9bea-b3d31841bf72',
+            'document' =>
+                '/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/documents/71526e98-0552-4968-9bea-b3d31841bf72',
         ];
 
         $envelopeTagData = EnvelopeTagData::fromArray($data);
@@ -38,8 +40,10 @@ class EnvelopeTagDataTest extends TestCase
             'page' => 1,
             'xPosition' => 10,
             'yPosition' => 100,
-            'recipient' => '/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/recipients/xxx',
-            'document' => '/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/documents/xxx',
+            'recipient' =>
+                '/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/recipients/71526e98-0552-4968-9bea-b3d31841bf72',
+            'document' =>
+                '/api/envelopes/0211f410-268a-4ac3-ac40-b41ee7647092/documents/71526e98-0552-4968-9bea-b3d31841bf72',
         ];
 
         $envelopeTagData = EnvelopeTagData::fromArray($data);

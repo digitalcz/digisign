@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Model\DTO;
 
+use DigitalCz\DigiSign\Model\Iri\FileIri;
+use InvalidArgumentException;
+
 class EnvelopeDocumentData
 {
     /**
@@ -11,7 +14,7 @@ class EnvelopeDocumentData
      */
     private $name;
     /**
-     * @var string
+     * @var FileIri
      */
     private $file;
     /**
@@ -19,8 +22,19 @@ class EnvelopeDocumentData
      */
     private $metadata;
 
-    public function __construct(string $name, string $file, ?string $metadata = null)
+    /**
+     * @param string $name
+     * @param string|FileIri $file
+     * @param string|null $metadata
+     */
+    public function __construct(string $name, $file, ?string $metadata = null)
     {
+        if (is_string($file)) {
+            $file = FileIri::parse($file);
+        } elseif (!$file instanceof FileIri) {
+            throw new InvalidArgumentException('Invalid argument file, string or FileIri expected.');
+        }
+
         $this->name = $name;
         $this->file = $file;
         $this->metadata = $metadata;
@@ -62,12 +76,12 @@ class EnvelopeDocumentData
 
     public function getFile(): string
     {
-        return $this->file;
+        return $this->file->toString();
     }
 
     public function setFile(string $file): void
     {
-        $this->file = $file;
+        $this->file = FileIri::parse($file);
     }
 
     public function getMetadata(): ?string
