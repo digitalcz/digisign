@@ -14,7 +14,7 @@ use DigitalCz\DigiSign\Http\Request\Delivery\DeliverySendPostRequest;
 use DigitalCz\DigiSign\Http\Response\Delivery\DeliveriesGetResponse;
 use DigitalCz\DigiSign\Http\Response\Delivery\DeliveryResponse;
 use DigitalCz\DigiSign\Http\Response\Delivery\DeliverySendPostResponse;
-use DigitalCz\DigiSign\Http\Response\DeliveryCancelPostResponse;
+use DigitalCz\DigiSign\Http\Response\Delivery\DeliveryCancelPostResponse;
 use DigitalCz\DigiSign\Model\DTO\DeliveryData;
 use DigitalCz\DigiSign\Model\ValueObject\Delivery;
 
