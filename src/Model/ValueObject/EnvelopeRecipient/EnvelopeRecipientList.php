@@ -7,6 +7,10 @@ namespace DigitalCz\DigiSign\Model\ValueObject\EnvelopeRecipient;
 use DigitalCz\DigiSign\Model\ValueObject\EnvelopeRecipient;
 use DigitalCz\DigiSign\Model\ValueObject\ListObject;
 
+/**
+ * @property array<mixed>|EnvelopeRecipient[] $items
+ * @method EnvelopeRecipient[]|array[] getItems()
+ */
 class EnvelopeRecipientList extends ListObject
 {
 
