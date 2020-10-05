@@ -6,18 +6,18 @@ namespace DigitalCz\DigiSign\Model\DTO;
 
 use PHPUnit\Framework\TestCase;
 
-class DeliveryDocumentDataTest extends TestCase
+class EnvelopeDocumentDataTest extends TestCase
 {
     public function testFromArray(): void
     {
         $data = [
-            'name' => 'Special for delivery',
+            'name' => 'Special for sign',
             'file' => '/api/files/0211f410-268a-4ac3-ac40-b41ee7647092',
             'metadata' => 'unique',
             'position' => 10,
         ];
 
-        $document = DeliveryDocumentData::fromArray($data);
+        $document = EnvelopeDocumentData::fromArray($data);
 
         self::assertSame($data['name'], $document->getName());
         self::assertSame($data['file'], $document->getFile());
@@ -28,13 +28,13 @@ class DeliveryDocumentDataTest extends TestCase
     public function testToArray(): void
     {
         $data = [
-            'name' => 'Special for delivery',
+            'name' => 'Special for sign',
             'file' => '/api/files/0211f410-268a-4ac3-ac40-b41ee7647092',
             'metadata' => 'unique',
             'position' => 10,
         ];
 
-        $document = DeliveryDocumentData::fromArray($data);
+        $document = EnvelopeDocumentData::fromArray($data);
 
         self::assertSame($data, $document->toArray());
     }
@@ -48,7 +48,7 @@ class DeliveryDocumentDataTest extends TestCase
             'position' => 10,
         ];
 
-        $document = DeliveryDocumentData::fromArray($data);
+        $document = EnvelopeDocumentData::fromArray($data);
 
         $document->setName('bar');
         $document->setFile('/api/files/0211f410-268a-4ac3-ac40-b41ee7647099');

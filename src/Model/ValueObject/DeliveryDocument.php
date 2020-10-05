@@ -22,17 +22,23 @@ class DeliveryDocument
      * @var File
      */
     private $file;
+    /**
+     * @var int|null
+     */
+    private $position;
 
     public function __construct(
         string $id,
         string $name,
         File $file,
-        ?string $metadata = null
+        ?string $metadata = null,
+        ?int $position = 0
     ) {
         $this->id = $id;
         $this->name = $name;
         $this->file = $file;
         $this->metadata = $metadata;
+        $this->position = $position;
     }
 
     /**
@@ -44,7 +50,8 @@ class DeliveryDocument
             $data['id'],
             $data['name'],
             File::fromArray($data['file']),
-            $data['metadata']
+            $data['metadata'],
+            $data['position']
         );
     }
 
@@ -58,6 +65,7 @@ class DeliveryDocument
             'name' => $this->name,
             'file' => $this->file->toArray(),
             'metadata' => $this->metadata,
+            'position' => $this->position,
         ];
     }
 
@@ -79,5 +87,10 @@ class DeliveryDocument
     public function getFile(): File
     {
         return $this->file;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
     }
 }
