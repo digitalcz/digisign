@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Model\DTO;
 
+use DigitalCz\DigiSign\Model\Iri\FileIri;
+use InvalidArgumentException;
+
 class DeliveryDocumentData
 {
     /**
@@ -11,7 +14,7 @@ class DeliveryDocumentData
      */
     private $name;
     /**
-     * @var string
+     * @var FileIri
      */
     private $file;
     /**
@@ -19,11 +22,29 @@ class DeliveryDocumentData
      */
     private $metadata;
 
-    public function __construct(string $name, string $file, ?string $metadata = null)
+    /**
+     * @var int|null
+     */
+    private $position;
+
+    /**
+     * @param string $name
+     * @param string|FileIri $file
+     * @param string|null $metadata
+     * @param int|null $position
+     */
+    public function __construct(string $name, $file, ?string $metadata = null, ?int $position = 0)
     {
+        if (is_string($file)) {
+            $file = FileIri::parse($file);
+        } elseif (!$file instanceof FileIri) {
+            throw new InvalidArgumentException('Invalid argument file, string or FileIri expected.');
+        }
+
         $this->name = $name;
         $this->file = $file;
         $this->metadata = $metadata;
+        $this->position = $position;
     }
 
     /**
@@ -34,7 +55,8 @@ class DeliveryDocumentData
         return new self(
             $data['name'],
             $data['file'],
-            $data['metadata']
+            $data['metadata'],
+            $data['position']
         );
     }
 
@@ -45,8 +67,9 @@ class DeliveryDocumentData
     {
         return [
             'name' => $this->name,
-            'file' => $this->file,
+            'file' => $this->file->toString(),
             'metadata' => $this->metadata,
+            'position' => $this->position,
         ];
     }
 
@@ -62,12 +85,12 @@ class DeliveryDocumentData
 
     public function getFile(): string
     {
-        return $this->file;
+        return $this->file->toString();
     }
 
     public function setFile(string $file): void
     {
-        $this->file = $file;
+        $this->file = FileIri::parse($file);
     }
 
     public function getMetadata(): ?string
@@ -78,5 +101,15 @@ class DeliveryDocumentData
     public function setMetadata(?string $metadata): void
     {
         $this->metadata = $metadata;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?int $position): void
+    {
+        $this->position = $position;
     }
 }

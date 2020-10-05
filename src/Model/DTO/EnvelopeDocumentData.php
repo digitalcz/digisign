@@ -23,11 +23,17 @@ class EnvelopeDocumentData
     private $metadata;
 
     /**
+     * @var int|null
+     */
+    private $position;
+
+    /**
      * @param string $name
      * @param string|FileIri $file
      * @param string|null $metadata
+     * @param int|null $position
      */
-    public function __construct(string $name, $file, ?string $metadata = null)
+    public function __construct(string $name, $file, ?string $metadata = null, ?int $position = 0)
     {
         if (is_string($file)) {
             $file = FileIri::parse($file);
@@ -38,6 +44,7 @@ class EnvelopeDocumentData
         $this->name = $name;
         $this->file = $file;
         $this->metadata = $metadata;
+        $this->position = $position;
     }
 
     /**
@@ -48,7 +55,8 @@ class EnvelopeDocumentData
         return new self(
             $data['name'],
             $data['file'],
-            $data['metadata']
+            $data['metadata'],
+            $data['position']
         );
     }
 
@@ -59,8 +67,9 @@ class EnvelopeDocumentData
     {
         return [
             'name' => $this->name,
-            'file' => $this->file,
+            'file' => $this->file->toString(),
             'metadata' => $this->metadata,
+            'position' => $this->position,
         ];
     }
 
@@ -92,5 +101,15 @@ class EnvelopeDocumentData
     public function setMetadata(?string $metadata): void
     {
         $this->metadata = $metadata;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(?int $position): void
+    {
+        $this->position = $position;
     }
 }
