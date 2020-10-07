@@ -9,10 +9,25 @@ use Throwable;
 
 class RuntimeException extends BaseRuntimeException
 {
-    protected string $type;
-    protected string $title;
-    protected string $detail;
-    protected array $violations = [];
+    /**
+     * @var string
+     */
+    protected $type;
+
+    /**
+     * @var string
+     */
+    protected $title;
+
+    /**
+     * @var string
+     */
+    protected $detail;
+
+    /**
+     * @var string
+     */
+    protected $violations = [];
 
     public function __construct($message = "", $code = 0, Throwable $previous = null)
     {
