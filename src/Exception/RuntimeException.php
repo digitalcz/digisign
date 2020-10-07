@@ -25,11 +25,11 @@ class RuntimeException extends BaseRuntimeException
     protected $detail;
 
     /**
-     * @var string
+     * @var array
      */
     protected $violations = [];
 
-    public function __construct($message = "", $code = 0, Throwable $previous = null)
+    public function __construct(string $message = "", int $code = 0, Throwable $previous = null)
     {
         $decodedMessage = json_decode($message, true);
         $this->type = $decodedMessage['type'];
