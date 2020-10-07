@@ -25,7 +25,7 @@ class RuntimeException extends BaseRuntimeException
     protected $detail;
 
     /**
-     * @var array
+     * @var array<mixed>
      */
     protected $violations = [];
 
@@ -58,6 +58,9 @@ class RuntimeException extends BaseRuntimeException
         return $this->detail;
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getViolations(): array
     {
         return $this->violations;
