@@ -14,7 +14,8 @@ class RuntimeException extends BaseRuntimeException
     protected string $detail;
     protected array $violations = [];
 
-    public function __construct($message = "", $code = 0, Throwable $previous = null) {
+    public function __construct($message = "", $code = 0, Throwable $previous = null)
+    {
         $decodedMessage = json_decode($message, true);
         $this->type = $decodedMessage['type'];
         $this->title = $decodedMessage['title'];
@@ -27,19 +28,23 @@ class RuntimeException extends BaseRuntimeException
         parent::__construct($message, $code, $previous);
     }
 
-    public function getType(): string {
+    public function getType(): string
+    {
         return $this->type;
     }
 
-    public function getTitle(): string {
+    public function getTitle(): string
+    {
         return $this->title;
     }
 
-    public function getDetail(): string {
+    public function getDetail(): string
+    {
         return $this->detail;
     }
 
-    public function getViolations(): array {
+    public function getViolations(): array
+    {
         return $this->violations;
     }
 }
