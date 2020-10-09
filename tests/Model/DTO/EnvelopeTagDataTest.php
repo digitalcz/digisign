@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Model\DTO;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class EnvelopeTagDataTest extends TestCase
@@ -49,5 +50,23 @@ class EnvelopeTagDataTest extends TestCase
         $envelopeTagData = EnvelopeTagData::fromArray($data);
 
         self::assertSame($data, $envelopeTagData->toArray());
+    }
+
+    public function testInvalidArgumentException(): void
+    {
+        $data = [
+            'type' => 'signature',
+            'page' => 1,
+            'xPosition' => 10,
+            'yPosition' => 100,
+            'recipient' =>
+                123,
+            'document' =>
+                122,
+        ];
+
+        self::expectException(InvalidArgumentException::class);
+
+        EnvelopeTagData::fromArray($data);
     }
 }

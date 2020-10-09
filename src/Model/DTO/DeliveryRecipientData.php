@@ -15,7 +15,7 @@ class DeliveryRecipientData
      */
     private $email;
     /**
-     * @var string
+     * @var string|null
      */
     private $mobile;
     /**
@@ -30,7 +30,7 @@ class DeliveryRecipientData
     public function __construct(
         string $name,
         string $email,
-        string $mobile,
+        ?string $mobile = null,
         ?string $metadata = null,
         ?string $emailBody = null
     ) {
@@ -89,12 +89,12 @@ class DeliveryRecipientData
         $this->email = $email;
     }
 
-    public function getMobile(): string
+    public function getMobile(): ?string
     {
         return $this->mobile;
     }
 
-    public function setMobile(string $mobile): void
+    public function setMobile(?string $mobile): void
     {
         $this->mobile = $mobile;
     }

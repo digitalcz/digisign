@@ -21,7 +21,7 @@ class EnvelopeRecipient
      */
     private $email;
     /**
-     * @var string
+     * @var string|null
      */
     private $mobile;
     /**
@@ -65,7 +65,7 @@ class EnvelopeRecipient
         string $id,
         string $name,
         string $email,
-        string $mobile,
+        ?string $mobile,
         string $status,
         string $role,
         ?DateTimeImmutable $sentAt = null,
@@ -155,7 +155,7 @@ class EnvelopeRecipient
         return $this->email;
     }
 
-    public function getMobile(): string
+    public function getMobile(): ?string
     {
         return $this->mobile;
     }
