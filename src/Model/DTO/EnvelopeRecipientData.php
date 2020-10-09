@@ -19,7 +19,7 @@ class EnvelopeRecipientData
      */
     private $email;
     /**
-     * @var string
+     * @var string|null
      */
     private $mobile;
     /**
@@ -35,7 +35,7 @@ class EnvelopeRecipientData
         string $name,
         string $role,
         string $email,
-        string $mobile,
+        ?string $mobile = null,
         ?string $metadata = null,
         ?string $emailBody = null
     ) {
@@ -107,12 +107,12 @@ class EnvelopeRecipientData
         $this->email = $email;
     }
 
-    public function getMobile(): string
+    public function getMobile(): ?string
     {
         return $this->mobile;
     }
 
-    public function setMobile(string $mobile): void
+    public function setMobile(?string $mobile): void
     {
         $this->mobile = $mobile;
     }

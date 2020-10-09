@@ -21,7 +21,7 @@ class DeliveryRecipient
      */
     private $email;
     /**
-     * @var string
+     * @var string|null
      */
     private $mobile;
     /**
@@ -57,7 +57,7 @@ class DeliveryRecipient
         string $id,
         string $name,
         string $email,
-        string $mobile,
+        ?string $mobile,
         string $status,
         ?DateTimeImmutable $sentAt = null,
         ?DateTimeImmutable $deliveredAt = null,
@@ -134,7 +134,7 @@ class DeliveryRecipient
         return $this->email;
     }
 
-    public function getMobile(): string
+    public function getMobile(): ?string
     {
         return $this->mobile;
     }

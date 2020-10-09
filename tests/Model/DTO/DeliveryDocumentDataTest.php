@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Model\DTO;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class DeliveryDocumentDataTest extends TestCase
@@ -37,6 +38,20 @@ class DeliveryDocumentDataTest extends TestCase
         $document = DeliveryDocumentData::fromArray($data);
 
         self::assertSame($data, $document->toArray());
+    }
+
+    public function testInvalidArgumentException(): void
+    {
+        $data = [
+            'name' => 'Special for delivery',
+            'file' => 123,
+            'metadata' => 'unique',
+            'position' => 10,
+        ];
+
+        self::expectException(InvalidArgumentException::class);
+
+        DeliveryDocumentData::fromArray($data);
     }
 
     public function testMethods(): void
