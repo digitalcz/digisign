@@ -19,6 +19,7 @@ class EnvelopeListTest extends TestCase
                     'emailBody' => 'Hi, please sign!',
                     'status' => 'sent',
                     'recipients' => [],
+                    'documents' => [],
                     'senderName' => null,
                     'senderEmail' => null,
                     'validTo' => null,
