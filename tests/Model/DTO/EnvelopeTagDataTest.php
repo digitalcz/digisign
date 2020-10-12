@@ -52,7 +52,7 @@ class EnvelopeTagDataTest extends TestCase
         self::assertSame($data, $envelopeTagData->toArray());
     }
 
-    public function testInvalidArgumentException(): void
+    public function testInvalidArgument1Exception(): void
     {
         $data = [
             'type' => 'signature',
@@ -62,9 +62,26 @@ class EnvelopeTagDataTest extends TestCase
             'recipient' =>
                 123,
             'document' =>
-                122,
+                '/api/envelopes/3f4f8e5e-8936-46d4-a97e-6fbebf23d153/documents/0b635f61-245a-4e67-a3c0-af73e63d81dc',
         ];
 
+        self::expectException(InvalidArgumentException::class);
+
+        EnvelopeTagData::fromArray($data);
+    }
+
+    public function testInvalidArgument2Exception(): void
+    {
+        $data = [
+            'type' => 'signature',
+            'page' => 1,
+            'xPosition' => 10,
+            'yPosition' => 100,
+            'recipient' =>
+                '/api/envelopes/3f4f8e5e-8936-46d4-a97e-6fbebf23d153/recipients/0b635f61-245a-4e67-a3c0-af73e63d81dc',
+            'document' =>
+                123,
+        ];
         self::expectException(InvalidArgumentException::class);
 
         EnvelopeTagData::fromArray($data);
