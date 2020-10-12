@@ -33,11 +33,7 @@ class Iri
 
     public function __toString(): string
     {
-        try {
-            return $this->toString();
-        } catch (InvalidArgumentException $e) {
-            return '';
-        }
+        return $this->toString();
     }
 
     /**
@@ -47,7 +43,11 @@ class Iri
      */
     public function toString(): string
     {
-        return $this->template->expand($this->params);
+        try {
+            return $this->template->expand($this->params);
+        } catch (InvalidArgumentException $e) {
+            return '';
+        }
     }
 
     /**
