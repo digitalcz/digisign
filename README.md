@@ -6,7 +6,7 @@
 [![codecov](https://codecov.io/gh/digitalcz/digisign/branch/master/graph/badge.svg)](https://codecov.io/gh/digitalcz/digisign)
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Provides communication with digisign.org (see https://digisign.org/api) in PHP via PSR-18 http client. 
+Provides communication with digisign.cz (see https://api.digisign.org/api/docs) in PHP OOP via PSR-18 http client. 
 Implemented standards PSR18 http client, PSR17 Discovery and PSR16 cache.
 
 ## Install
