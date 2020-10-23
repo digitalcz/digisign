@@ -7,7 +7,7 @@ namespace DigitalCz\DigiSign\Http;
 final class UriResolver
 {
 
-    public const URI = 'https://api.digisign.cz';
+    public const URI = 'https://api.digisign.org';
     public const URI_SANDBOX = 'https://api.digisign.digital.cz';
 
     /**
