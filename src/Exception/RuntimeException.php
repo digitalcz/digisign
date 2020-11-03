@@ -12,17 +12,17 @@ class RuntimeException extends BaseRuntimeException
     /**
      * @var string
      */
-    protected $type;
+    protected $type = '';
 
     /**
      * @var string
      */
-    protected $title;
+    protected $title = '';
 
     /**
      * @var string
      */
-    protected $detail;
+    protected $detail = '';
 
     /**
      * @var array<mixed>
@@ -31,13 +31,13 @@ class RuntimeException extends BaseRuntimeException
 
     public function __construct(string $message = "", int $code = 0, Throwable $previous = null)
     {
-        $decodedMessage = json_decode($message, true);
-        $this->type = $decodedMessage['type'];
-        $this->title = $decodedMessage['title'];
-        $this->detail = $decodedMessage['detail'];
+        $jsonBody = json_decode($message, true);
 
-        if ($decodedMessage['violations']) {
-            $this->violations = $decodedMessage['violations'];
+        if (is_array($jsonBody)) {
+            $this->type = $jsonBody['type'] ?? '';
+            $this->title = $jsonBody['title'] ?? '';
+            $this->detail = $jsonBody['detail'] ?? '';
+            $this->violations = $jsonBody['violations'] ?? [];
         }
 
         parent::__construct($message, $code, $previous);
