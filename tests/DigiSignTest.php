@@ -10,6 +10,7 @@ use DigitalCz\DigiSign\Api\Delivery\DeliveryDocumentApi;
 use DigitalCz\DigiSign\Api\Delivery\DeliveryRecipientApi;
 use DigitalCz\DigiSign\Api\Envelope\EnvelopeApi;
 use DigitalCz\DigiSign\Api\Envelope\EnvelopeDocumentApi;
+use DigitalCz\DigiSign\Api\Envelope\EnvelopeNotificationApi;
 use DigitalCz\DigiSign\Api\Envelope\EnvelopeRecipientApi;
 use DigitalCz\DigiSign\Api\Envelope\EnvelopeTagApi;
 use DigitalCz\DigiSign\Api\FileApi;
@@ -36,5 +37,6 @@ class DigiSignTest extends TestCase
         self::assertInstanceOf(EnvelopeDocumentApi::class, $object->getEnvelopeDocumentApi());
         self::assertInstanceOf(EnvelopeRecipientApi::class, $object->getEnvelopeRecipientApi());
         self::assertInstanceOf(EnvelopeTagApi::class, $object->getEnvelopeTagApi());
+        self::assertInstanceOf(EnvelopeNotificationApi::class, $object->getEnvelopeNotificationApi());
     }
 }

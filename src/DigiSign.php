@@ -11,6 +11,7 @@ use DigitalCz\DigiSign\Api\Delivery\DeliveryDocumentApi;
 use DigitalCz\DigiSign\Api\Delivery\DeliveryRecipientApi;
 use DigitalCz\DigiSign\Api\Envelope\EnvelopeApi;
 use DigitalCz\DigiSign\Api\Envelope\EnvelopeDocumentApi;
+use DigitalCz\DigiSign\Api\Envelope\EnvelopeNotificationApi;
 use DigitalCz\DigiSign\Api\Envelope\EnvelopeRecipientApi;
 use DigitalCz\DigiSign\Api\Envelope\EnvelopeTagApi;
 use DigitalCz\DigiSign\Api\FileApi;
@@ -102,6 +103,11 @@ class DigiSign
     public function getEnvelopeTagApi(): EnvelopeTagApi
     {
         return new EnvelopeTagApi($this->httpClient, $this->requestBuilder);
+    }
+
+    public function getEnvelopeNotificationApi(): EnvelopeNotificationApi
+    {
+        return new EnvelopeNotificationApi($this->httpClient, $this->requestBuilder);
     }
 
     public function getDeliveryApi(): DeliveryApi
