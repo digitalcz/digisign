@@ -34,7 +34,7 @@ class IriTemplate
         preg_match_all('~{(\w+)}~', $template, $matches);
         $placeholders = array_combine($matches[1] ?? [], $matches[0] ?? []);
 
-        if ($placeholders === false) {
+        if ($placeholders === false) { // @phpstan-ignore-line
             throw new InvalidArgumentException(sprintf("Unable to parse IRI template '%s'", $template));
         }
 

@@ -40,7 +40,7 @@ abstract class ResourceIri extends Iri
 
         $params = array_combine(array_keys($placeholders), $args);
 
-        if ($params === false) {
+        if ($params === false) { // @phpstan-ignore-line
             throw new InvalidArgumentException('Failed to combine arguments');
         }
 
