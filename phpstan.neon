@@ -1,5 +1,8 @@
 parameters:
-        level: max
-        paths:
+    level: max
+    paths:
         - src
         - tests
+
+    # some ignored errors are unmatched in PHP 8
+    reportUnmatchedIgnoredErrors: false
