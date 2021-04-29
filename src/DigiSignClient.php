@@ -144,6 +144,10 @@ final class DigiSignClient
             throw new InvalidArgumentException('Invalid value for "headers" option');
         }
 
+        if (isset($options['bearer'])) {
+            $headers['Authorization'] = 'Bearer ' . $options['bearer'];
+        }
+
         if (isset($options['multipart'])) {
             if (!is_array($options['multipart'])) {
                 throw new InvalidArgumentException('Invalid value for "multipart" option');
@@ -168,6 +172,7 @@ final class DigiSignClient
         }
 
         if (isset($options['json'])) {
+            $headers['Content-Type'] = 'application/json';
             $options['body'] = self::jsonEncode($options['json']);
         }
 

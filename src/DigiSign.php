@@ -109,18 +109,16 @@ final class DigiSign implements EndpointInterface
     /** @inheritDoc */
     public function request(string $method, string $path = '', array $options = []): ResponseInterface
     {
-        $headers = [
+        // default headers
+        $options['headers'] = [
             'Accept' => 'application/json',
-            'Content-Type' => 'application/json',
             'User-Agent' => $this->createUserAgent(),
         ];
 
         // disable authorization header if options[no_auth]=true
         if (($options['no_auth'] ?? false) !== true) {
-            $headers['Authorization'] = $this->createAuthorization();
+            $options['bearer'] = $this->getAuthToken()->getToken();
         }
-
-        $options['headers'] = array_merge($options['headers'] ?? [], $headers);
 
         return $this->client->request($method, $this->apiBase . $path, $options);
     }
