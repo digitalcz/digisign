@@ -32,7 +32,7 @@
     }
   ],
   "require": {
-    "php": "^7.3 || ^8.0",
+    "php": "^7.4 || ^8.0",
     "ext-json": "*",
     "php-http/discovery": "^1.13",
     "php-http/multipart-stream-builder": "^1.1",

@@ -4,124 +4,187 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign;
 
-use DigitalCz\DigiSign\Api\AccountApi;
-use DigitalCz\DigiSign\Api\AuthApi;
-use DigitalCz\DigiSign\Api\Delivery\DeliveryApi;
-use DigitalCz\DigiSign\Api\Delivery\DeliveryDocumentApi;
-use DigitalCz\DigiSign\Api\Delivery\DeliveryRecipientApi;
-use DigitalCz\DigiSign\Api\Envelope\EnvelopeApi;
-use DigitalCz\DigiSign\Api\Envelope\EnvelopeDocumentApi;
-use DigitalCz\DigiSign\Api\Envelope\EnvelopeNotificationApi;
-use DigitalCz\DigiSign\Api\Envelope\EnvelopeRecipientApi;
-use DigitalCz\DigiSign\Api\Envelope\EnvelopeTagApi;
-use DigitalCz\DigiSign\Api\FileApi;
-use DigitalCz\DigiSign\Auth\AuthTokenProvider;
-use DigitalCz\DigiSign\Http\RequestBuilder;
-use DigitalCz\DigiSign\Http\TokenResolver;
-use DigitalCz\DigiSign\Http\UriResolver;
-use DigitalCz\DigiSign\Model\Credentials;
-use Http\Discovery\Psr17FactoryDiscovery;
-use Http\Discovery\Psr18ClientDiscovery;
-use Psr\Http\Client\ClientInterface;
-use Psr\Http\Message\RequestFactoryInterface;
-use Psr\Http\Message\StreamFactoryInterface;
+use DigitalCz\DigiSign\Auth\ApiKeyCredentials;
+use DigitalCz\DigiSign\Auth\ApiKeyTokenProvider;
+use DigitalCz\DigiSign\Auth\CachingTokenProvider;
+use DigitalCz\DigiSign\Auth\Credentials;
+use DigitalCz\DigiSign\Auth\Token;
+use DigitalCz\DigiSign\Auth\TokenProvider;
+use DigitalCz\DigiSign\Endpoint\AccountEndpoint;
+use DigitalCz\DigiSign\Endpoint\AuthEndpoint;
+use DigitalCz\DigiSign\Endpoint\DeliveriesEndpoint;
+use DigitalCz\DigiSign\Endpoint\EndpointInterface;
+use DigitalCz\DigiSign\Endpoint\EnvelopesEndpoint;
+use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
+use DigitalCz\DigiSign\Endpoint\ImagesEndpoint;
+use DigitalCz\DigiSign\Endpoint\WebhooksEndpoint;
+use DigitalCz\DigiSign\Exception\RuntimeException;
+use Psr\Http\Message\ResponseInterface;
 
-class DigiSign
+final class DigiSign implements EndpointInterface
 {
+    public const VERSION = '1.0.0';
+    public const API_BASE = 'https://api.digisign.org';
+    public const API_BASE_TESTING = 'https://api.digisign.digital.cz';
+
+    /** The base URL for requests */
+    private string $apiBase = self::API_BASE;
+
+    /** The credentials used to authenticate to API */
+    private Credentials $credentials;
+
+    /** The  */
+    private TokenProvider $tokenProvider;
+
+    /** The client used to send requests */
+    private DigiSignClient $client;
+
+    /** @var array<string, string> */
+    private array $versions = [];
 
     /**
-     * @var ClientInterface
+     * Available options:
+     *  access_key      - string; ApiKey access key
+     *  secret_key      - string; ApiKey secret key
+     *  client          - DigitalCz\DigiSign\DigiSignClient instance with your custom PSR17/18 objects
+     *  token_provider  - DigitalCz\DigiSign\Auth\TokenProvider instance for your custom auth logic
+     *  cache           - Psr\SimpleCache\CacheInterface for caching Auth tokens
+     *  testing         - bool; whether to use testing or production API
+     *
+     * @param mixed[] $options
      */
-    private $httpClient;
-    /**
-     * @var RequestFactoryInterface
-     */
-    private $httpRequestFactory;
-    /**
-     * @var StreamFactoryInterface
-     */
-    private $httpStreamFactory;
-    /**
-     * @var RequestBuilder
-     */
-    private $requestBuilder;
+    public function __construct(array $options = [])
+    {
+        if (isset($options['access_key'], $options['secret_key'])) {
+            $this->setCredentials(new ApiKeyCredentials($options['access_key'], $options['secret_key']));
+        }
 
-    public function __construct(
-        string $clientId,
-        string $clientSecret,
-        AuthTokenProvider $authTokenProvider,
-        ClientInterface $httpClient = null,
-        RequestFactoryInterface $httpRequestFactory = null,
-        StreamFactoryInterface $httpStreamFactory = null,
-        bool $sandbox = false
-    ) {
-        $this->httpClient = $httpClient ?? Psr18ClientDiscovery::find();
-        $this->httpRequestFactory = $httpRequestFactory ?? Psr17FactoryDiscovery::findRequestFactory();
-        $this->httpStreamFactory = $httpStreamFactory ?? Psr17FactoryDiscovery::findStreamFactory();
+        $this->setClient($options['client'] ?? new DigiSignClient());
+        $this->setTokenProvider($options['token_provider'] ?? new ApiKeyTokenProvider($this));
 
-        $uriResolver = new UriResolver($sandbox);
+        // if cache is provided, wrap tokenProvider with cache decorator
+        if (isset($options['cache'])) {
+            $this->setTokenProvider(new CachingTokenProvider($this->tokenProvider, $options['cache']));
+        }
 
-        $tokenResolver = new TokenResolver(
-            new AuthApi($this->httpClient, $this->httpRequestFactory, $this->httpStreamFactory, $uriResolver),
-            new Credentials($clientId, $clientSecret),
-            $authTokenProvider
-        );
-
-        $this->requestBuilder = new RequestBuilder(
-            $this->httpRequestFactory,
-            $this->httpStreamFactory,
-            $tokenResolver,
-            $uriResolver
-        );
+        $this->useTesting($options['testing'] ?? false);
+        $this->addVersion('digitalcz/digisign', self::VERSION);
+        $this->addVersion('PHP', PHP_VERSION);
     }
 
-    public function getAccountApi(): AccountApi
+    public function setCredentials(Credentials $credentials): void
     {
-        return new AccountApi($this->httpClient, $this->requestBuilder);
+        $this->credentials = $credentials;
     }
 
-    public function getFileApi(): FileApi
+    public function setClient(DigiSignClient $client): void
     {
-        return new FileApi($this->httpClient, $this->requestBuilder);
+        $this->client = $client;
     }
 
-    public function getEnvelopeDocumentApi(): EnvelopeDocumentApi
+    public function setTokenProvider(TokenProvider $tokenProvider): void
     {
-        return new EnvelopeDocumentApi($this->httpClient, $this->requestBuilder);
+        $this->tokenProvider = $tokenProvider;
     }
 
-    public function getEnvelopeRecipientApi(): EnvelopeRecipientApi
+    public function useTesting(bool $bool = true): void
     {
-        return new EnvelopeRecipientApi($this->httpClient, $this->requestBuilder);
+        if ($bool) {
+            $this->setApiBase(self::API_BASE_TESTING);
+        } else {
+            $this->setApiBase(self::API_BASE);
+        }
     }
 
-    public function getEnvelopeApi(): EnvelopeApi
+    public function setApiBase(string $apiBase): void
     {
-        return new EnvelopeApi($this->httpClient, $this->requestBuilder);
+        $this->apiBase = rtrim(trim($apiBase), '/');
     }
 
-    public function getEnvelopeTagApi(): EnvelopeTagApi
+    public function addVersion(string $tool, string $version = ''): void
     {
-        return new EnvelopeTagApi($this->httpClient, $this->requestBuilder);
+        $this->versions[$tool] = $version;
     }
 
-    public function getEnvelopeNotificationApi(): EnvelopeNotificationApi
+    /** @inheritDoc */
+    public function request(string $method, string $path = '', array $options = []): ResponseInterface
     {
-        return new EnvelopeNotificationApi($this->httpClient, $this->requestBuilder);
+        $headers = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+            'User-Agent' => $this->createUserAgent(),
+        ];
+
+        // disable authorization header if options[no_auth]=true
+        if (($options['no_auth'] ?? false) !== true) {
+            $headers['Authorization'] = $this->createAuthorization();
+        }
+
+        $options['headers'] = array_merge($options['headers'] ?? [], $headers);
+
+        return $this->client->request($method, $this->apiBase . $path, $options);
     }
 
-    public function getDeliveryApi(): DeliveryApi
+    public function auth(): AuthEndpoint
     {
-        return new DeliveryApi($this->httpClient, $this->requestBuilder);
+        return new AuthEndpoint($this);
     }
 
-    public function getDeliveryDocumentApi(): DeliveryDocumentApi
+    public function account(): AccountEndpoint
     {
-        return new DeliveryDocumentApi($this->httpClient, $this->requestBuilder);
+        return new AccountEndpoint($this);
     }
 
-    public function getDeliveryRecipientApi(): DeliveryRecipientApi
+    public function envelopes(): EnvelopesEndpoint
     {
-        return new DeliveryRecipientApi($this->httpClient, $this->requestBuilder);
+        return new EnvelopesEndpoint($this);
+    }
+
+    public function deliveries(): DeliveriesEndpoint
+    {
+        return new DeliveriesEndpoint($this);
+    }
+
+    public function files(): FilesEndpoint
+    {
+        return new FilesEndpoint($this);
+    }
+
+    public function images(): ImagesEndpoint
+    {
+        return new ImagesEndpoint($this);
+    }
+
+    public function webhooks(): WebhooksEndpoint
+    {
+        return new WebhooksEndpoint($this);
+    }
+
+    private function createUserAgent(): string
+    {
+        $userAgent = '';
+
+        foreach ($this->versions as $tool => $version) {
+            $userAgent .= sprintf("%s:%s ", $tool, $version);
+        }
+
+        return $userAgent;
+    }
+
+    private function createAuthorization(): string
+    {
+        return 'Bearer ' . $this->getAuthToken()->getToken();
+    }
+
+    private function getAuthToken(): Token
+    {
+        if (!isset($this->credentials)) {
+            throw new RuntimeException(
+                'No credentials were set, Please use setCredentials() ' .
+                'or provide constructor options access_key/secret_key',
+            );
+        }
+
+        return $this->tokenProvider->provide($this->credentials);
     }
 }
