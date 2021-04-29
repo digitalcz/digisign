@@ -114,6 +114,16 @@ class DigiSignClientTest extends TestCase
         $client->request('GET', 'https://example.com/api', ['headers' => 'fooo']);
     }
 
+    public function testRequestWithUserAgent(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $client->request('GET', 'https://example.com/api', ['user-agent' => 'foobar']);
+
+        self::assertSame('foobar', $httpClient->getLastRequest()->getHeaderLine('User-Agent'));
+    }
+
     public function testRequestWithBearer(): void
     {
         $httpClient = new Client();

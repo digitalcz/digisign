@@ -144,6 +144,13 @@ final class DigiSignClient
             throw new InvalidArgumentException('Invalid value for "headers" option');
         }
 
+        // default headers
+        $headers['Accept'] ??= 'application/json';
+
+        if (isset($options['user-agent'])) {
+            $headers['User-Agent'] = (string)$options['user-agent'];
+        }
+
         if (isset($options['bearer'])) {
             $headers['Authorization'] = 'Bearer ' . $options['bearer'];
         }

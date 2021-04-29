@@ -5,11 +5,8 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign;
 
 use DigitalCz\DigiSign\Auth\ApiKeyCredentials;
-use DigitalCz\DigiSign\Auth\ApiKeyTokenProvider;
-use DigitalCz\DigiSign\Auth\CachingTokenProvider;
+use DigitalCz\DigiSign\Auth\CachedCredentials;
 use DigitalCz\DigiSign\Auth\Credentials;
-use DigitalCz\DigiSign\Auth\Token;
-use DigitalCz\DigiSign\Auth\TokenProvider;
 use DigitalCz\DigiSign\Endpoint\AccountEndpoint;
 use DigitalCz\DigiSign\Endpoint\AuthEndpoint;
 use DigitalCz\DigiSign\Endpoint\DeliveriesEndpoint;
@@ -18,8 +15,10 @@ use DigitalCz\DigiSign\Endpoint\EnvelopesEndpoint;
 use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
 use DigitalCz\DigiSign\Endpoint\ImagesEndpoint;
 use DigitalCz\DigiSign\Endpoint\WebhooksEndpoint;
-use DigitalCz\DigiSign\Exception\RuntimeException;
+use InvalidArgumentException;
+use LogicException;
 use Psr\Http\Message\ResponseInterface;
+use Psr\SimpleCache\CacheInterface;
 
 final class DigiSign implements EndpointInterface
 {
@@ -33,9 +32,6 @@ final class DigiSign implements EndpointInterface
     /** The credentials used to authenticate to API */
     private Credentials $credentials;
 
-    /** The  */
-    private TokenProvider $tokenProvider;
-
     /** The client used to send requests */
     private DigiSignClient $client;
 
@@ -46,30 +42,64 @@ final class DigiSign implements EndpointInterface
      * Available options:
      *  access_key      - string; ApiKey access key
      *  secret_key      - string; ApiKey secret key
+     *  credentials     - DigitalCz\DigiSign\Auth\Credentials instance
      *  client          - DigitalCz\DigiSign\DigiSignClient instance with your custom PSR17/18 objects
-     *  token_provider  - DigitalCz\DigiSign\Auth\TokenProvider instance for your custom auth logic
-     *  cache           - Psr\SimpleCache\CacheInterface for caching Auth tokens
+     *  cache           - Psr\SimpleCache\CacheInterface for caching Credentials auth Tokens
      *  testing         - bool; whether to use testing or production API
      *
      * @param mixed[] $options
      */
     public function __construct(array $options = [])
     {
+        $this->setClient($options['client'] ?? new DigiSignClient());
+        $this->useTesting($options['testing'] ?? false);
+        $this->addVersion('digitalcz/digisign', self::VERSION);
+        $this->addVersion('PHP', PHP_VERSION);
+
         if (isset($options['access_key'], $options['secret_key'])) {
             $this->setCredentials(new ApiKeyCredentials($options['access_key'], $options['secret_key']));
         }
 
-        $this->setClient($options['client'] ?? new DigiSignClient());
-        $this->setTokenProvider($options['token_provider'] ?? new ApiKeyTokenProvider($this));
+        if (isset($options['credentials'])) {
+            if (!$options['credentials'] instanceof Credentials) {
+                throw new InvalidArgumentException('Invalid value for "credentials" option');
+            }
 
-        // if cache is provided, wrap tokenProvider with cache decorator
-        if (isset($options['cache'])) {
-            $this->setTokenProvider(new CachingTokenProvider($this->tokenProvider, $options['cache']));
+            $this->setCredentials($options['credentials']);
         }
 
-        $this->useTesting($options['testing'] ?? false);
-        $this->addVersion('digitalcz/digisign', self::VERSION);
-        $this->addVersion('PHP', PHP_VERSION);
+        // if cache is provided, wrap Credentials with cache decorator
+        if (isset($options['cache'])) {
+            if (!$options['cache'] instanceof CacheInterface) {
+                throw new InvalidArgumentException('Invalid value for "cache" option');
+            }
+
+            $this->setCache($options['cache']);
+        }
+    }
+
+    public function setCache(CacheInterface $cache): void
+    {
+        $credentials = $this->getCredentials();
+
+        // if credentials are already decorated, do not double wrap, but get inner
+        if ($credentials instanceof CachedCredentials) {
+            $credentials = $credentials->getInner();
+        }
+
+        $this->setCredentials(new CachedCredentials($credentials, $cache));
+    }
+
+    public function getCredentials(): Credentials
+    {
+        if (!isset($this->credentials)) {
+            throw new LogicException(
+                'No credentials were provided, Please use setCredentials() ' .
+                'or constructor options to set them.',
+            );
+        }
+
+        return $this->credentials;
     }
 
     public function setCredentials(Credentials $credentials): void
@@ -80,11 +110,6 @@ final class DigiSign implements EndpointInterface
     public function setClient(DigiSignClient $client): void
     {
         $this->client = $client;
-    }
-
-    public function setTokenProvider(TokenProvider $tokenProvider): void
-    {
-        $this->tokenProvider = $tokenProvider;
     }
 
     public function useTesting(bool $bool = true): void
@@ -109,15 +134,11 @@ final class DigiSign implements EndpointInterface
     /** @inheritDoc */
     public function request(string $method, string $path = '', array $options = []): ResponseInterface
     {
-        // default headers
-        $options['headers'] = [
-            'Accept' => 'application/json',
-            'User-Agent' => $this->createUserAgent(),
-        ];
+        $options['user-agent'] = $this->createUserAgent();
 
         // disable authorization header if options[no_auth]=true
         if (($options['no_auth'] ?? false) !== true) {
-            $options['bearer'] = $this->getAuthToken()->getToken();
+            $options['bearer'] = $this->createBearer();
         }
 
         return $this->client->request($method, $this->apiBase . $path, $options);
@@ -169,20 +190,8 @@ final class DigiSign implements EndpointInterface
         return $userAgent;
     }
 
-    private function createAuthorization(): string
+    private function createBearer(): string
     {
-        return 'Bearer ' . $this->getAuthToken()->getToken();
-    }
-
-    private function getAuthToken(): Token
-    {
-        if (!isset($this->credentials)) {
-            throw new RuntimeException(
-                'No credentials were set, Please use setCredentials() ' .
-                'or provide constructor options access_key/secret_key',
-            );
-        }
-
-        return $this->tokenProvider->provide($this->credentials);
+        return $this->getCredentials()->provide($this)->getToken();
     }
 }

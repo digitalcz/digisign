@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Auth;
 
+use DigitalCz\DigiSign\DigiSign;
+
+/**
+ * Credentials that are fetched with accessKey/secretKey
+ */
 final class ApiKeyCredentials implements Credentials
 {
     private string $accessKey;
@@ -30,11 +35,11 @@ final class ApiKeyCredentials implements Credentials
         return md5($this->accessKey . $this->secretKey);
     }
 
-    /**
-     * @return array{accessKey: string, secretKey: string}
-     */
-    public function toArray(): array
+    public function provide(DigiSign $digiSign): Token
     {
-        return ['accessKey' => $this->accessKey, 'secretKey' => $this->secretKey];
+        $body = ['accessKey' => $this->getAccessKey(), 'secretKey' => $this->getSecretKey()];
+        $token = $digiSign->auth()->authorize($body);
+
+        return new Token($token->token, $token->exp);
     }
 }
