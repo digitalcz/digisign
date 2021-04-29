@@ -9,7 +9,7 @@ use DigitalCz\DigiSign\DigiSign;
 /**
  * Use this if you already have the auth Token
  */
-class TokenCredentials implements Credentials
+final class TokenCredentials implements Credentials
 {
     private Token $token;
 
