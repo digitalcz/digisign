@@ -6,6 +6,9 @@ namespace DigitalCz\DigiSign\Exception;
 
 use Throwable;
 
+/**
+ * @codeCoverageIgnore
+ */
 class EmptyResultException extends RuntimeException
 {
     public function __construct(?Throwable $previous = null)

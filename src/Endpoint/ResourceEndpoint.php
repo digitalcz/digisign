@@ -6,6 +6,8 @@ namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\DigiSignClient;
 use DigitalCz\DigiSign\Exception\EmptyResultException;
+use DigitalCz\DigiSign\Exception\ResponseException;
+use DigitalCz\DigiSign\Exception\RuntimeException;
 use DigitalCz\DigiSign\Resource\BaseResource;
 use DigitalCz\DigiSign\Resource\ListResource;
 use DigitalCz\DigiSign\Resource\ResourceInterface;
@@ -165,7 +167,11 @@ abstract class ResourceEndpoint implements EndpointInterface
      */
     protected function parseResponse(ResponseInterface $response): array
     {
-        $result = DigiSignClient::parseResponse($response);
+        try {
+            $result = DigiSignClient::parseResponse($response);
+        } catch (RuntimeException $e) {
+            throw new ResponseException($response, $e->getMessage(), null, $e);
+        }
 
         if ($result === null) {
             throw new EmptyResultException();

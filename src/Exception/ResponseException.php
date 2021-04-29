@@ -18,26 +18,25 @@ class ResponseException extends RuntimeException
         ?int $code = null,
         ?Throwable $previous = null
     ) {
+        $this->response = $response;
         $code ??= $response->getStatusCode();
-        $message ??= sprintf("%s (%s)", $response->getReasonPhrase(), $response->getStatusCode());
+        $message ??= sprintf("%s %s", $response->getStatusCode(), $response->getReasonPhrase());
 
         try {
             $result = $this->parseResult();
 
             if (isset($result['title'])) {
-                $message .= ' ' . $result['title'];
+                $message .= ': ' . $result['title'];
             }
 
             if (isset($result['detail'])) {
-                $message .= ' ' . $result['detail'];
+                $message .= ': ' . $result['detail'];
             }
-        } catch (Throwable $e) {
-            $message .= ' ' . $e->getMessage();
+        } catch (RuntimeException $e) {
+            $message .= ': ' . $e->getMessage();
         }
 
         parent::__construct($message, $code, $previous);
-
-        $this->response = $response;
     }
 
     /**

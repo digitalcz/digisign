@@ -7,7 +7,7 @@ namespace DigitalCz\DigiSign;
 use DigitalCz\DigiSign\Exception\BadRequestException;
 use DigitalCz\DigiSign\Exception\ClientException;
 use DigitalCz\DigiSign\Exception\NotFoundException;
-use DigitalCz\DigiSign\Exception\ResponseException;
+use DigitalCz\DigiSign\Exception\RuntimeException;
 use DigitalCz\DigiSign\Exception\ServerException;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
@@ -22,7 +22,6 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
-use RuntimeException;
 
 use const JSON_THROW_ON_ERROR;
 
@@ -62,13 +61,13 @@ final class DigiSignClient
                 return null;
             }
 
-            throw new ResponseException($response, 'Empty response body');
+            throw new RuntimeException('Empty response body');
         }
 
         try {
             return json_decode($body, true, 512, JSON_THROW_ON_ERROR);
         } catch (JsonException $e) {
-            throw new ResponseException($response, 'Unable to parse response', null, $e);
+            throw new RuntimeException('Unable to parse response', 0, $e);
         }
     }
 

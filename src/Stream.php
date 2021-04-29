@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign;
 
+use DigitalCz\DigiSign\Exception\RuntimeException;
 use InvalidArgumentException;
-use RuntimeException;
 
 final class Stream
 {

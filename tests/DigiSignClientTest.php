@@ -7,13 +7,12 @@ namespace DigitalCz\DigiSign;
 use DigitalCz\DigiSign\Exception\BadRequestException;
 use DigitalCz\DigiSign\Exception\ClientException;
 use DigitalCz\DigiSign\Exception\NotFoundException;
-use DigitalCz\DigiSign\Exception\ResponseException;
+use DigitalCz\DigiSign\Exception\RuntimeException;
 use DigitalCz\DigiSign\Exception\ServerException;
 use Http\Mock\Client;
 use InvalidArgumentException;
 use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
-use RuntimeException;
 use stdClass;
 
 /**
@@ -41,7 +40,7 @@ class DigiSignClientTest extends TestCase
     {
         $response = new Response(200, [], null);
 
-        $this->expectException(ResponseException::class);
+        $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Empty response body');
         DigiSignClient::parseResponse($response);
     }
@@ -50,7 +49,7 @@ class DigiSignClientTest extends TestCase
     {
         $response = new Response(200, [], '{"a');
 
-        $this->expectException(ResponseException::class);
+        $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Unable to parse response');
         DigiSignClient::parseResponse($response);
     }
@@ -236,7 +235,7 @@ class DigiSignClientTest extends TestCase
         $client = new DigiSignClient($httpClient);
 
         $this->expectException(ServerException::class);
-        $this->expectExceptionMessage('Internal Server Error (500)');
+        $this->expectExceptionMessage('500 Internal Server Error');
 
         $client->request('GET', 'https://example.com/api');
     }
@@ -251,7 +250,7 @@ class DigiSignClientTest extends TestCase
         $client = new DigiSignClient($httpClient);
 
         $this->expectException(BadRequestException::class);
-        $this->expectExceptionMessage('Bad Request (400)');
+        $this->expectExceptionMessage('400 Bad Request');
 
         $client->request('GET', 'https://example.com/api');
     }
@@ -266,7 +265,7 @@ class DigiSignClientTest extends TestCase
         $client = new DigiSignClient($httpClient);
 
         $this->expectException(NotFoundException::class);
-        $this->expectExceptionMessage('Not Found (404)');
+        $this->expectExceptionMessage('404 Not Found');
 
         $client->request('GET', 'https://example.com/api');
     }
@@ -281,7 +280,7 @@ class DigiSignClientTest extends TestCase
         $client = new DigiSignClient($httpClient);
 
         $this->expectException(ClientException::class);
-        $this->expectExceptionMessage('Unauthorized (401)');
+        $this->expectExceptionMessage('401 Unauthorized');
 
         $client->request('GET', 'https://example.com/api');
     }
