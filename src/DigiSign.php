@@ -138,7 +138,7 @@ final class DigiSign implements EndpointInterface
 
         // disable authorization header if options[no_auth]=true
         if (($options['no_auth'] ?? false) !== true) {
-            $options['bearer'] = $this->createBearer();
+            $options['auth_bearer'] = $this->createBearer();
         }
 
         return $this->client->request($method, $this->apiBase . $path, $options);

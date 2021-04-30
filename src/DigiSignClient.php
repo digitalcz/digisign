@@ -150,8 +150,24 @@ final class DigiSignClient
             $headers['User-Agent'] = (string)$options['user-agent'];
         }
 
-        if (isset($options['bearer'])) {
-            $headers['Authorization'] = 'Bearer ' . $options['bearer'];
+        if (isset($options['auth_basic'])) {
+            if (is_array($options['auth_basic'])) {
+                $options['auth_basic'] = implode(':', $options['auth_basic']);
+            }
+
+            if (!is_string($options['auth_basic'])) {
+                throw new InvalidArgumentException('Invalid value for "auth_basic" option');
+            }
+
+            $headers['Authorization'] = 'Basic ' . base64_encode($options['auth_basic']);
+        }
+
+        if (isset($options['auth_bearer'])) {
+            if (!is_string($options['auth_bearer'])) {
+                throw new InvalidArgumentException('Invalid value for "auth_bearer" option');
+            }
+
+            $headers['Authorization'] = 'Bearer ' . $options['auth_bearer'];
         }
 
         if (isset($options['multipart'])) {

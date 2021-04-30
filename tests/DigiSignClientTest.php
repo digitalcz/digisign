@@ -123,14 +123,24 @@ class DigiSignClientTest extends TestCase
         self::assertSame('foobar', $httpClient->getLastRequest()->getHeaderLine('User-Agent'));
     }
 
-    public function testRequestWithBearer(): void
+    public function testRequestWithBearerAuth(): void
     {
         $httpClient = new Client();
         $client = new DigiSignClient($httpClient);
 
-        $client->request('GET', 'https://example.com/api', ['bearer' => 'foobar']);
+        $client->request('GET', 'https://example.com/api', ['auth_bearer' => 'foobar']);
 
         self::assertSame('Bearer foobar', $httpClient->getLastRequest()->getHeaderLine('Authorization'));
+    }
+
+    public function testRequestWithBasicAuth(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $client->request('GET', 'https://example.com/api', ['auth_basic' => ['user', 'pass']]);
+
+        self::assertSame('Basic dXNlcjpwYXNz', $httpClient->getLastRequest()->getHeaderLine('Authorization'));
     }
 
     public function testRequestWithInvalidMultipart(): void
