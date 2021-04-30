@@ -6,10 +6,14 @@ namespace DigitalCz\DigiSign\Endpoint\Traits;
 
 use DigitalCz\DigiSign\Resource\ListResource;
 
+/**
+ * @template T
+ */
 trait ListEndpointTrait
 {
     /**
      * @param mixed[] $query
+     * @return ListResource<T>
      */
     public function list(array $query = []): ListResource
     {

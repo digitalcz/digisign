@@ -14,8 +14,9 @@ use DigitalCz\DigiSign\Resource\AccountRequest;
  */
 final class AccountRequestsEndpoint extends ResourceEndpoint
 {
-    use GetEndpointTrait;
+    /** @use ListEndpointTrait<AccountRequest> */
     use ListEndpointTrait;
+    use GetEndpointTrait;
 
     public function __construct(AccountEndpoint $parent)
     {

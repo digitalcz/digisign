@@ -20,8 +20,9 @@ use DigitalCz\DigiSign\Resource\ListResource;
  */
 final class AccountApiKeysEndpoint extends ResourceEndpoint
 {
-    use GetEndpointTrait;
+    /** @use ListEndpointTrait<ApiKey> */
     use ListEndpointTrait;
+    use GetEndpointTrait;
     use CreateEndpointTrait;
     use UpdateEndpointTrait;
 

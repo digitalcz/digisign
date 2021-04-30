@@ -17,8 +17,9 @@ use DigitalCz\DigiSign\StreamResponse;
  */
 class ImagesEndpoint extends ResourceEndpoint
 {
-    use GetEndpointTrait;
+    /** @use ListEndpointTrait<Image> */
     use ListEndpointTrait;
+    use GetEndpointTrait;
 
     public function __construct(DigiSign $parent)
     {

@@ -17,6 +17,7 @@ use DigitalCz\DigiSign\Resource\Delivery;
  */
 class DeliveriesEndpoint extends ResourceEndpoint
 {
+    /** @use CRUDEndpointTrait<Delivery> */
     use CRUDEndpointTrait;
 
     public function __construct(DigiSign $parent)

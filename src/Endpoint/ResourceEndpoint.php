@@ -116,6 +116,7 @@ abstract class ResourceEndpoint implements EndpointInterface
 
     /**
      * @param mixed[] $query
+     * @return ListResource<T>
      */
     protected function makeListRequest(array $query = []): ListResource
     {
@@ -192,6 +193,11 @@ abstract class ResourceEndpoint implements EndpointInterface
         return new $resourceClass($this->parseResponse($response));
     }
 
+    /**
+     * @param class-string<C> $resourceClass
+     * @return ListResource<C>
+     * @template C
+     */
     protected function createListResource(
         ResponseInterface $response,
         string $resourceClass = BaseResource::class

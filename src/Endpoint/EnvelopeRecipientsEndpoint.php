@@ -20,6 +20,7 @@ use DigitalCz\DigiSign\Resource\VerifiedClaims;
  */
 final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
 {
+    /** @use CRUDEndpointTrait<EnvelopeRecipient> */
     use CRUDEndpointTrait;
 
     public function __construct(EnvelopesEndpoint $parent, string $envelope)
@@ -57,6 +58,7 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
 
     /**
      * @param mixed[] $query
+     * @return ListResource<EnvelopeTag>
      */
     public function tags(string $id, array $query = []): ListResource
     {

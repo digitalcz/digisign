@@ -18,8 +18,9 @@ use DigitalCz\DigiSign\Resource\Webhook;
  */
 class WebhooksEndpoint extends ResourceEndpoint
 {
-    use CreateEndpointTrait;
+    /** @use ListEndpointTrait<Webhook> */
     use ListEndpointTrait;
+    use CreateEndpointTrait;
     use GetEndpointTrait;
     use DeleteEndpointTrait;
 

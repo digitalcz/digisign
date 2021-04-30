@@ -58,6 +58,7 @@ final class AccountEndpoint extends ResourceEndpoint
 
     /**
      * @param mixed[] $query
+     * @return ListResource<AccountSmsLog>
      */
     public function smsLog(array $query = []): ListResource
     {

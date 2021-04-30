@@ -16,8 +16,9 @@ use DigitalCz\DigiSign\Resource\User;
  */
 final class AccountUsersEndpoint extends ResourceEndpoint
 {
-    use GetEndpointTrait;
+    /** @use ListEndpointTrait<User> */
     use ListEndpointTrait;
+    use GetEndpointTrait;
     use UpdateEndpointTrait;
 
     public function __construct(AccountEndpoint $parent)

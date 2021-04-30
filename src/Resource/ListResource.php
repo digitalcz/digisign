@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Resource;
 
+/**
+ * @template T
+ */
 class ListResource extends BaseResource
 {
-    /** @var ResourceInterface[] */
+    /** @var array<T> */
     public array $items;
     public int $count;
     public int $page;
@@ -15,24 +18,18 @@ class ListResource extends BaseResource
     public ?int $prevPage;
     public int $lastPage;
 
+    /** @var class-string<T> */
     protected string $resourceClass;
 
     /**
      * @param mixed[] $result
+     * @param class-string<T> $resourceClass
      */
     public function __construct(array $result, string $resourceClass)
     {
         $this->resourceClass = $resourceClass;
 
         parent::__construct($result);
-    }
-
-    /**
-     * @return ResourceInterface[]
-     */
-    public function getItems(): array
-    {
-        return $this->items;
     }
 
     /** @inheritDoc */

@@ -15,6 +15,7 @@ use DigitalCz\DigiSign\Resource\EnvelopeNotification;
  */
 class EnvelopeNotificationsEndpoint extends ResourceEndpoint
 {
+    /** @use CRUDEndpointTrait<EnvelopeNotification> */
     use CRUDEndpointTrait;
 
     public function __construct(EnvelopesEndpoint $parent, string $envelope)

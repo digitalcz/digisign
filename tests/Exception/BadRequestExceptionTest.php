@@ -11,7 +11,6 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers \DigitalCz\DigiSign\Exception\BadRequestException
  */
-
 class BadRequestExceptionTest extends TestCase
 {
     public function testGetViolations(): void

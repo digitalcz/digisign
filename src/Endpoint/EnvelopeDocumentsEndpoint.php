@@ -18,6 +18,7 @@ use DigitalCz\DigiSign\StreamResponse;
  */
 final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
 {
+    /** @use CRUDEndpointTrait<EnvelopeDocument> */
     use CRUDEndpointTrait;
 
     public function __construct(EnvelopesEndpoint $parent, string $envelope)
@@ -43,6 +44,7 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
 
     /**
      * @param mixed[] $query
+     * @return ListResource<EnvelopeTag>
      */
     public function tags(string $id, array $query = []): ListResource
     {

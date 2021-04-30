@@ -15,6 +15,7 @@ use DigitalCz\DigiSign\Resource\EnvelopeTag;
  */
 final class EnvelopeTagsEndpoint extends ResourceEndpoint
 {
+    /** @use CRUDEndpointTrait<EnvelopeTag> */
     use CRUDEndpointTrait;
 
     public function __construct(EnvelopesEndpoint $parent, string $envelope)

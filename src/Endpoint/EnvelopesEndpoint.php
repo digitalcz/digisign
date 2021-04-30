@@ -18,6 +18,7 @@ use DigitalCz\DigiSign\StreamResponse;
  */
 final class EnvelopesEndpoint extends ResourceEndpoint
 {
+    /** @use CRUDEndpointTrait<Envelope> */
     use CRUDEndpointTrait;
 
     public function __construct(DigiSign $parent)

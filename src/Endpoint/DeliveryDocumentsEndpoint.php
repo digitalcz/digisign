@@ -16,6 +16,7 @@ use DigitalCz\DigiSign\StreamResponse;
  */
 class DeliveryDocumentsEndpoint extends ResourceEndpoint
 {
+    /** @use CRUDEndpointTrait<DeliveryDocument> */
     use CRUDEndpointTrait;
 
     public function __construct(DeliveriesEndpoint $parent, string $delivery)
