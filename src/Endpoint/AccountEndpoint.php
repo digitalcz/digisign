@@ -62,7 +62,7 @@ final class AccountEndpoint extends ResourceEndpoint
      */
     public function smsLog(array $query = []): ListResource
     {
-        return $this->createListResource($this->getRequest('sms-log', ['query' => $query]), AccountSmsLog::class);
+        return $this->createListResource($this->getRequest('/sms-log', ['query' => $query]), AccountSmsLog::class);
     }
 
     /**
@@ -71,13 +71,13 @@ final class AccountEndpoint extends ResourceEndpoint
     public function statistics(array $query = []): AccountStatistics
     {
         return $this->createResource(
-            $this->getRequest('statistics', ['query' => $query]),
+            $this->getRequest('/statistics', ['query' => $query]),
             AccountStatistics::class,
         );
     }
 
     public function billing(): AccountBilling
     {
-        return $this->createResource($this->getRequest('billing'), AccountBilling::class);
+        return $this->createResource($this->getRequest('/billing'), AccountBilling::class);
     }
 }

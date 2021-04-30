@@ -11,7 +11,7 @@ class User extends BaseResource
 {
     use EntityResourceTrait;
 
-    public ?Account $account = null;
+    public ?Account $account;
     public string $status;
     public string $role;
     public string $email;
