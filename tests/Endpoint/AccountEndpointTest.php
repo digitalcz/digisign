@@ -11,38 +11,40 @@ class AccountEndpointTest extends EndpointTestCase
 {
     public function testChildren(): void
     {
-        self::assertDefaultEndpointPath(self::$digiSign->account()->me(), '/api/account/me');
-        self::assertDefaultEndpointPath(self::$digiSign->account()->settings(), '/api/account/settings');
-        self::assertDefaultEndpointPath(self::$digiSign->account()->requests(), '/api/account/requests');
-        self::assertDefaultEndpointPath(
-            self::$digiSign->account()->envelopeTemplate(),
-            '/api/account/envelope-template',
-        );
-        self::assertDefaultEndpointPath(self::$digiSign->account()->apiKeys(), '/api/account/api-keys');
-        self::assertDefaultEndpointPath(self::$digiSign->account()->users(), '/api/account/users');
+        self::assertDefaultEndpointPath(self::endpoint()->me(), '/api/account/me');
+        self::assertDefaultEndpointPath(self::endpoint()->settings(), '/api/account/settings');
+        self::assertDefaultEndpointPath(self::endpoint()->requests(), '/api/account/requests');
+        self::assertDefaultEndpointPath(self::endpoint()->envelopeTemplate(), '/api/account/envelope-template');
+        self::assertDefaultEndpointPath(self::endpoint()->apiKeys(), '/api/account/api-keys');
+        self::assertDefaultEndpointPath(self::endpoint()->users(), '/api/account/users');
     }
 
     public function testGet(): void
     {
-        self::$digiSign->account()->get();
+        self::endpoint()->get();
         self::assertLastRequest('GET', '/api/account');
     }
 
     public function testSmsLog(): void
     {
-        self::$digiSign->account()->smsLog(['foo' => 'bar']);
+        self::endpoint()->smsLog(['foo' => 'bar']);
         self::assertLastRequest('GET', '/api/account/sms-log?foo=bar');
     }
 
     public function testStatistics(): void
     {
-        self::$digiSign->account()->statistics(['foo' => 'bar']);
+        self::endpoint()->statistics(['foo' => 'bar']);
         self::assertLastRequest('GET', '/api/account/statistics?foo=bar');
     }
 
     public function testBilling(): void
     {
-        self::$digiSign->account()->billing();
+        self::endpoint()->billing();
         self::assertLastRequest('GET', '/api/account/billing');
+    }
+
+    protected static function endpoint(): AccountEndpoint
+    {
+        return self::digiSign()->account();
     }
 }

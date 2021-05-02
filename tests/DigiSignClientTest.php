@@ -133,6 +133,16 @@ class DigiSignClientTest extends TestCase
         self::assertSame('Bearer foobar', $httpClient->getLastRequest()->getHeaderLine('Authorization'));
     }
 
+    public function testRequestWithInvalidBearerAuth(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid value for "auth_bearer" option');
+        $client->request('GET', 'https://example.com/api', ['auth_bearer' => new stdClass()]);
+    }
+
     public function testRequestWithBasicAuth(): void
     {
         $httpClient = new Client();
@@ -141,6 +151,16 @@ class DigiSignClientTest extends TestCase
         $client->request('GET', 'https://example.com/api', ['auth_basic' => ['user', 'pass']]);
 
         self::assertSame('Basic dXNlcjpwYXNz', $httpClient->getLastRequest()->getHeaderLine('Authorization'));
+    }
+
+    public function testRequestWithInvalidBasicAuth(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid value for "auth_basic" option');
+        $client->request('GET', 'https://example.com/api', ['auth_basic' => new stdClass()]);
     }
 
     public function testRequestWithInvalidMultipart(): void

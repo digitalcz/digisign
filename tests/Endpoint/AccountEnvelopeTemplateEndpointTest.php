@@ -11,13 +11,18 @@ class AccountEnvelopeTemplateEndpointTest extends EndpointTestCase
 {
     public function testGet(): void
     {
-        self::$digiSign->account()->envelopeTemplate()->get();
+        self::endpoint()->get();
         self::assertLastRequest('GET', '/api/account/envelope-template');
     }
 
     public function testSmsLog(): void
     {
-        self::$digiSign->account()->envelopeTemplate()->update(['foo' => 'bar']);
+        self::endpoint()->update(['foo' => 'bar']);
         self::assertLastRequest('PUT', '/api/account/envelope-template', ['foo' => 'bar']);
+    }
+
+    protected static function endpoint(): AccountEnvelopeTemplateEndpoint
+    {
+        return self::digiSign()->account()->envelopeTemplate();
     }
 }

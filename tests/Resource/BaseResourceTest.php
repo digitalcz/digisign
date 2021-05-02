@@ -10,31 +10,11 @@ use PHPUnit\Framework\TestCase;
 /**
  * @covers \DigitalCz\DigiSign\Resource\BaseResource
  */
-
 class BaseResourceTest extends TestCase
 {
-    /** @var mixed[] */
-    private static array $result = [
-        'bool' => true,
-        'string' => 'foo',
-        'nullable' => null,
-        'integer' => 123,
-        'float' => 1.55,
-        'resource' => [
-            'string' => 'bar',
-        ],
-        'dateTime' => '2021-01-01T01:01:01+00:00',
-        'collection' => [
-            ['string' => 'moo'],
-            ['string' => 'baz'],
-        ],
-        'unmapped' => 'goo',
-        '_links' => ['self' => '#foobar'],
-    ];
-
     public function testHydration(): void
     {
-        $resource = new DummyResource(self::$result);
+        $resource = new DummyResource(DummyResource::EXAMPLE);
         self::assertTrue($resource->bool);
         self::assertSame('foo', $resource->string);
         self::assertNull($resource->nullable);
@@ -54,7 +34,7 @@ class BaseResourceTest extends TestCase
 
     public function testNormalization(): void
     {
-        $resource = new DummyResource(self::$result);
+        $resource = new DummyResource(DummyResource::EXAMPLE);
         self::assertEquals(
             [
                 'bool' => true,
@@ -64,12 +44,11 @@ class BaseResourceTest extends TestCase
                 'float' => 1.55,
                 'resource' => [
                     'string' => 'bar',
-                    'nullable' => null,
                 ],
                 'dateTime' => '2021-01-01T01:01:01+00:00',
                 'collection' => [
-                    ['string' => 'moo', 'nullable' => null],
-                    ['string' => 'baz', 'nullable' => null],
+                    ['string' => 'moo'],
+                    ['string' => 'baz'],
                 ],
                 'unmapped' => 'goo',
             ],
@@ -79,7 +58,7 @@ class BaseResourceTest extends TestCase
 
     public function testGetResult(): void
     {
-        $resource = new DummyResource(self::$result);
-        self::assertEquals(self::$result, $resource->getResult());
+        $resource = new DummyResource(DummyResource::EXAMPLE);
+        self::assertEquals(DummyResource::EXAMPLE, $resource->getResult());
     }
 }

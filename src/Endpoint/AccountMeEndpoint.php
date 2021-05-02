@@ -36,7 +36,7 @@ final class AccountMeEndpoint extends ResourceEndpoint
      */
     public function changePassword(array $body): void
     {
-        $this->postRequest('change-password', ['json' => $body]);
+        $this->postRequest('/change-password', ['json' => $body]);
     }
 
     /**
@@ -44,6 +44,6 @@ final class AccountMeEndpoint extends ResourceEndpoint
      */
     public function verifyPassword(array $body): void
     {
-        $this->postRequest('verify-password', ['json' => $body]);
+        $this->postRequest('/verify-password', ['json' => $body]);
     }
 }

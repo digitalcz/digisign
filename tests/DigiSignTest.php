@@ -112,4 +112,42 @@ class DigiSignTest extends TestCase
 
         self::assertSame('https://api.digisign.digital.cz/foo', (string)$mockClient->getLastRequest()->getUri());
     }
+
+    public function testChildren(): void
+    {
+        $mockClient = new Client();
+        $digiSign = new DigiSign([
+            'credentials' => new TokenCredentials(new Token('foo', time())),
+            'client' => new DigiSignClient($mockClient),
+        ]);
+
+        $digiSign->auth()->request('GET');
+        self::assertSame('/api/auth-token', $mockClient->getLastRequest()->getUri()->getPath());
+        $digiSign->account()->request('GET');
+        self::assertSame('/api/account', $mockClient->getLastRequest()->getUri()->getPath());
+        $digiSign->envelopes()->request('GET');
+        self::assertSame('/api/envelopes', $mockClient->getLastRequest()->getUri()->getPath());
+        $digiSign->deliveries()->request('GET');
+        self::assertSame('/api/deliveries', $mockClient->getLastRequest()->getUri()->getPath());
+        $digiSign->files()->request('GET');
+        self::assertSame('/api/files', $mockClient->getLastRequest()->getUri()->getPath());
+        $digiSign->images()->request('GET');
+        self::assertSame('/api/images', $mockClient->getLastRequest()->getUri()->getPath());
+        $digiSign->webhooks()->request('GET');
+        self::assertSame('/api/webhooks', $mockClient->getLastRequest()->getUri()->getPath());
+    }
+
+    public function testUserAgent(): void
+    {
+        $mockClient = new Client();
+        $digiSign = new DigiSign([
+            'credentials' => new TokenCredentials(new Token('foo', time())),
+            'client' => new DigiSignClient($mockClient),
+        ]);
+        $digiSign->request('GET');
+        self::assertSame(
+            'digitalcz/digisign:1.0.0 PHP:' . PHP_VERSION,
+            $mockClient->getLastRequest()->getHeaderLine('User-Agent'),
+        );
+    }
 }

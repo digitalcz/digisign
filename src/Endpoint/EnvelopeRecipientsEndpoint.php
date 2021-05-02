@@ -52,7 +52,6 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
     {
         return $this->createResource(
             $this->postRequest('/{id}/embed', ['id' => $id, 'json' => $body]),
-            BaseResource::class,
         );
     }
 
