@@ -109,7 +109,7 @@ class DigiSignTest extends TestCase
         $digiSign = new DigiSign(
             [
                 'credentials' => new TokenCredentials(new Token('foo', time())),
-                'client' => new DigiSignClient($mockClient),
+                'http_client' => $mockClient,
                 'testing' => true,
             ],
         );

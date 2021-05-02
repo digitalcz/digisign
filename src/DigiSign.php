@@ -44,6 +44,7 @@ final class DigiSign implements EndpointInterface
      *  secret_key      - string; ApiKey secret key
      *  credentials     - DigitalCz\DigiSign\Auth\Credentials instance
      *  client          - DigitalCz\DigiSign\DigiSignClient instance with your custom PSR17/18 objects
+     *  http_client     - Psr\Http\Client\ClientInterface instance of your custom PSR18 client
      *  cache           - Psr\SimpleCache\CacheInterface for caching Credentials auth Tokens
      *  testing         - bool; whether to use testing or production API
      *  api_base        - string; override the base API url
@@ -52,7 +53,8 @@ final class DigiSign implements EndpointInterface
      */
     public function __construct(array $options = [])
     {
-        $this->setClient($options['client'] ?? new DigiSignClient());
+        $httpClient = $options['http_client'] ?? null;
+        $this->setClient($options['client'] ?? new DigiSignClient($httpClient));
         $this->useTesting($options['testing'] ?? false);
         $this->addVersion('digitalcz/digisign', self::VERSION);
         $this->addVersion('PHP', PHP_VERSION);
