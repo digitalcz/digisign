@@ -9,6 +9,7 @@ use DigitalCz\DigiSign\Exception\ClientException;
 use DigitalCz\DigiSign\Exception\NotFoundException;
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use DigitalCz\DigiSign\Exception\ServerException;
+use DigitalCz\DigiSign\Stream\FileStream;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use Http\Message\MultipartStream\MultipartStreamBuilder;
@@ -179,7 +180,7 @@ final class DigiSignClient
             foreach ($options['multipart'] as $name => $resource) {
                 $resourceOptions = [];
 
-                if ($resource instanceof Stream) {
+                if ($resource instanceof FileStream) {
                     $resourceOptions['filename'] = $resource->getFilename();
                     $resource = $resource->getHandle();
                 }

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace DigitalCz\DigiSign;
+namespace DigitalCz\DigiSign\Stream;
 
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use InvalidArgumentException;
 
-final class Stream
+final class FileStream
 {
     /**
      * @var resource
@@ -30,7 +30,7 @@ final class Stream
         $this->filename = $filename;
     }
 
-    public static function fromFile(string $path): self
+    public static function open(string $path): self
     {
         $handle = @fopen($path, 'rb+');
 
@@ -45,6 +45,21 @@ final class Stream
         }
 
         return new self($handle, $size, basename($path));
+    }
+
+    public function save(string $path): void
+    {
+        $handle = fopen($path, 'wb+');
+
+        if ($handle === false) {
+            throw new RuntimeException('Failed to open/create file ' . $path);
+        }
+
+        $bytes = stream_copy_to_stream($this->getHandle(), $handle);
+
+        if ($bytes === false) {
+            throw new RuntimeException('Failed to write into ' . $path);
+        }
     }
 
     /**

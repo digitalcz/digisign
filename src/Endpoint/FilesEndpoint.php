@@ -8,8 +8,8 @@ use DigitalCz\DigiSign\DigiSign;
 use DigitalCz\DigiSign\Endpoint\Traits\GetEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\ListEndpointTrait;
 use DigitalCz\DigiSign\Resource\File;
-use DigitalCz\DigiSign\Stream;
-use DigitalCz\DigiSign\StreamResponse;
+use DigitalCz\DigiSign\Stream\FileResponse;
+use DigitalCz\DigiSign\Stream\FileStream;
 
 /**
  * @extends ResourceEndpoint<File>
@@ -26,7 +26,7 @@ final class FilesEndpoint extends ResourceEndpoint
         parent::__construct($parent, '/api/files', File::class);
     }
 
-    public function upload(Stream $file): File
+    public function upload(FileStream $file): File
     {
         return $this->createResource(
             $this->postRequest('', ['multipart' => ['file' => $file]]),
@@ -34,7 +34,7 @@ final class FilesEndpoint extends ResourceEndpoint
         );
     }
 
-    public function content(string $id): StreamResponse
+    public function content(string $id): FileResponse
     {
         return $this->stream(self::METHOD_GET, '/{id}/content', ['id' => $id]);
     }

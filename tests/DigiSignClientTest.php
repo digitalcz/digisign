@@ -9,6 +9,7 @@ use DigitalCz\DigiSign\Exception\ClientException;
 use DigitalCz\DigiSign\Exception\NotFoundException;
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use DigitalCz\DigiSign\Exception\ServerException;
+use DigitalCz\DigiSign\Stream\FileStream;
 use Http\Mock\Client;
 use InvalidArgumentException;
 use Nyholm\Psr7\Response;
@@ -198,7 +199,7 @@ class DigiSignClientTest extends TestCase
         $client->request(
             'GET',
             'https://example.com/api',
-            ['multipart' => ['file' => Stream::fromFile(__DIR__ . '/dummy.pdf')]],
+            ['multipart' => ['file' => FileStream::open(__DIR__ . '/dummy.pdf')]],
         );
 
         $lastRequest = $httpClient->getLastRequest();

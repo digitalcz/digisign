@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
-use DigitalCz\DigiSign\Stream;
+use DigitalCz\DigiSign\Stream\FileStream;
 
 /**
  * @covers \DigitalCz\DigiSign\Endpoint\FilesEndpoint
@@ -25,7 +25,7 @@ class FilesEndpointTest extends EndpointTestCase
 
     public function testUpload(): void
     {
-        $file = Stream::fromFile(TESTS_DIR . '/dummy.pdf');
+        $file = FileStream::open(TESTS_DIR . '/dummy.pdf');
         self::endpoint()->upload($file);
         self::assertLastRequest('POST', '/api/files');
         $lastRequest = self::getLastRequest();

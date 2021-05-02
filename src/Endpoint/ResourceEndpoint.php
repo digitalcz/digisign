@@ -11,7 +11,7 @@ use DigitalCz\DigiSign\Exception\RuntimeException;
 use DigitalCz\DigiSign\Resource\BaseResource;
 use DigitalCz\DigiSign\Resource\ListResource;
 use DigitalCz\DigiSign\Resource\ResourceInterface;
-use DigitalCz\DigiSign\StreamResponse;
+use DigitalCz\DigiSign\Stream\FileResponse;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -58,9 +58,9 @@ abstract class ResourceEndpoint implements EndpointInterface
     /**
      * @param mixed[] $options
      */
-    public function stream(string $method, string $path = '', array $options = []): StreamResponse
+    public function stream(string $method, string $path = '', array $options = []): FileResponse
     {
-        return new StreamResponse($this->request($method, $path, $options));
+        return new FileResponse($this->request($method, $path, $options));
     }
 
     /**

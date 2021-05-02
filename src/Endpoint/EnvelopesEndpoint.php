@@ -8,7 +8,7 @@ use DigitalCz\DigiSign\DigiSign;
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
 use DigitalCz\DigiSign\Resource\BaseResource;
 use DigitalCz\DigiSign\Resource\Envelope;
-use DigitalCz\DigiSign\StreamResponse;
+use DigitalCz\DigiSign\Stream\FileResponse;
 
 /**
  * @extends ResourceEndpoint<Envelope>
@@ -59,7 +59,7 @@ final class EnvelopesEndpoint extends ResourceEndpoint
     /**
      * @param mixed[] $query
      */
-    public function download(string $id, array $query = []): StreamResponse
+    public function download(string $id, array $query = []): FileResponse
     {
         return $this->stream(self::METHOD_GET, '/{id}/download', ['id' => $id, 'query' => $query]);
     }
