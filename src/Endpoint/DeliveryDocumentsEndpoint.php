@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
+use DigitalCz\DigiSign\Resource\Delivery;
 use DigitalCz\DigiSign\Resource\DeliveryDocument;
 use DigitalCz\DigiSign\Stream\FileResponse;
 
@@ -19,7 +20,10 @@ class DeliveryDocumentsEndpoint extends ResourceEndpoint
     /** @use CRUDEndpointTrait<DeliveryDocument> */
     use CRUDEndpointTrait;
 
-    public function __construct(DeliveriesEndpoint $parent, string $delivery)
+    /**
+     * @param Delivery|string $delivery
+     */
+    public function __construct(DeliveriesEndpoint $parent, $delivery)
     {
         parent::__construct($parent, '/{delivery}/documents', DeliveryDocument::class, ['delivery' => $delivery]);
     }

@@ -73,6 +73,11 @@ class BaseResource implements ResourceInterface
         return $this->result['_links']['self'] ?? null;
     }
 
+    public function id(): ?string
+    {
+        return $this->result['id'] ?? null;
+    }
+
     /**
      * @return mixed[]
      */

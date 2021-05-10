@@ -26,4 +26,9 @@ interface ResourceInterface extends JsonSerializable
      * Returns IRI for Resource, null if Resource has no IRI
      */
     public function self(): ?string;
+
+    /**
+     * Returns ID for Resource, null if Resource has no ID
+     */
+    public function id(): ?string;
 }

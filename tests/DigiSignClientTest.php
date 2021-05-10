@@ -340,8 +340,8 @@ class DigiSignClientTest extends TestCase
                 'nested' => [
                     'foo' => 'bar',
                     'resource' => new BaseResource(['_links' => ['self' => 'moo-baz']]),
-                ]
-            ]
+                ],
+            ],
         ]);
 
         $lastRequest = $httpClient->getLastRequest();

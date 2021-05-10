@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
+use DigitalCz\DigiSign\Resource\Delivery;
 use DigitalCz\DigiSign\Resource\DeliveryRecipient;
 use DigitalCz\DigiSign\Resource\ResourceInterface;
 
@@ -19,14 +20,20 @@ class DeliveryRecipientsEndpoint extends ResourceEndpoint
     /** @use CRUDEndpointTrait<DeliveryRecipient> */
     use CRUDEndpointTrait;
 
-    public function __construct(DeliveriesEndpoint $parent, string $delivery)
+    /**
+     * @param Delivery|string $delivery
+     */
+    public function __construct(DeliveriesEndpoint $parent, $delivery)
     {
         parent::__construct($parent, '/{delivery}/recipients', DeliveryRecipient::class, ['delivery' => $delivery]);
     }
 
-    public function block(string $id): RecipientBlockEndpoint
+    /**
+     * @param DeliveryRecipient|string $recipient
+     */
+    public function block($recipient): RecipientBlockEndpoint
     {
-        return new RecipientBlockEndpoint($this, $id);
+        return new RecipientBlockEndpoint($this, $recipient);
     }
 
     public function resend(string $id): ResourceInterface

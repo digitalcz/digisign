@@ -26,34 +26,46 @@ final class EnvelopesEndpoint extends ResourceEndpoint
         parent::__construct($parent, '/api/envelopes', Envelope::class);
     }
 
-    public function documents(string $id): EnvelopeDocumentsEndpoint
+    /**
+     * @param Envelope|string $envelope
+     */
+    public function documents($envelope): EnvelopeDocumentsEndpoint
     {
-        return new EnvelopeDocumentsEndpoint($this, $id);
+        return new EnvelopeDocumentsEndpoint($this, $envelope);
     }
 
-    public function recipients(string $id): EnvelopeRecipientsEndpoint
+    /**
+     * @param Envelope|string $envelope
+     */
+    public function recipients($envelope): EnvelopeRecipientsEndpoint
     {
-        return new EnvelopeRecipientsEndpoint($this, $id);
+        return new EnvelopeRecipientsEndpoint($this, $envelope);
     }
 
-    public function tags(string $id): EnvelopeTagsEndpoint
+    /**
+     * @param Envelope|string $envelope
+     */
+    public function tags($envelope): EnvelopeTagsEndpoint
     {
-        return new EnvelopeTagsEndpoint($this, $id);
+        return new EnvelopeTagsEndpoint($this, $envelope);
     }
 
-    public function notifications(string $id): EnvelopeNotificationsEndpoint
+    /**
+     * @param Envelope|string $envelope
+     */
+    public function notifications($envelope): EnvelopeNotificationsEndpoint
     {
-        return new EnvelopeNotificationsEndpoint($this, $id);
+        return new EnvelopeNotificationsEndpoint($this, $envelope);
     }
 
     public function cancel(string $id): BaseResource
     {
-        return $this->createResource($this->postRequest('/{id}/cancel', ['id' => $id]), BaseResource::class);
+        return $this->createResource($this->postRequest('/{id}/cancel', ['id' => $id]));
     }
 
     public function count(): BaseResource
     {
-        return $this->createResource($this->getRequest('/count'), BaseResource::class);
+        return $this->createResource($this->getRequest('/count'));
     }
 
     /**
@@ -66,7 +78,7 @@ final class EnvelopesEndpoint extends ResourceEndpoint
 
     public function embedEdit(string $id): BaseResource
     {
-        return $this->createResource($this->postRequest('/{id}/embed/edit', ['id' => $id]), BaseResource::class);
+        return $this->createResource($this->postRequest('/{id}/embed/edit', ['id' => $id]));
     }
 
     /**
@@ -82,6 +94,6 @@ final class EnvelopesEndpoint extends ResourceEndpoint
 
     public function send(string $id): BaseResource
     {
-        return $this->createResource($this->postRequest('/{id}/send', ['id' => $id]), BaseResource::class);
+        return $this->createResource($this->postRequest('/{id}/send', ['id' => $id]));
     }
 }

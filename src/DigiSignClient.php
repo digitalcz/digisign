@@ -10,6 +10,7 @@ use DigitalCz\DigiSign\Exception\ClientException;
 use DigitalCz\DigiSign\Exception\NotFoundException;
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use DigitalCz\DigiSign\Exception\ServerException;
+use DigitalCz\DigiSign\Resource\BaseResource;
 use DigitalCz\DigiSign\Resource\ResourceInterface;
 use DigitalCz\DigiSign\Stream\FileStream;
 use Http\Discovery\Psr17FactoryDiscovery;
@@ -117,7 +118,13 @@ final class DigiSignClient
                 throw new RuntimeException(sprintf('Cannot resolve uri parameter %s', $search));
             }
 
-            $replaces[] = (string)$options[$search];
+            $param = $options[$search];
+
+            if ($param instanceof BaseResource) {
+                $param = $param->id() ?? '';
+            }
+
+            $replaces[] = (string)$param;
         }
 
         $searches = array_map(static fn (string $search) => sprintf("{%s}", $search), $searches);

@@ -25,14 +25,20 @@ class DeliveriesEndpoint extends ResourceEndpoint
         parent::__construct($parent, '/api/deliveries', Delivery::class);
     }
 
-    public function documents(string $id): DeliveryDocumentsEndpoint
+    /**
+     * @param Delivery|string $delivery
+     */
+    public function documents($delivery): DeliveryDocumentsEndpoint
     {
-        return new DeliveryDocumentsEndpoint($this, $id);
+        return new DeliveryDocumentsEndpoint($this, $delivery);
     }
 
-    public function recipients(string $id): DeliveryRecipientsEndpoint
+    /**
+     * @param Delivery|string $delivery
+     */
+    public function recipients($delivery): DeliveryRecipientsEndpoint
     {
-        return new DeliveryRecipientsEndpoint($this, $id);
+        return new DeliveryRecipientsEndpoint($this, $delivery);
     }
 
     public function cancel(string $id): BaseResource

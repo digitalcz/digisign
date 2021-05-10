@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
+use DigitalCz\DigiSign\Resource\Envelope;
 use DigitalCz\DigiSign\Resource\EnvelopeDocument;
 use DigitalCz\DigiSign\Resource\EnvelopeTag;
 use DigitalCz\DigiSign\Resource\ListResource;
@@ -21,7 +22,10 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
     /** @use CRUDEndpointTrait<EnvelopeDocument> */
     use CRUDEndpointTrait;
 
-    public function __construct(EnvelopesEndpoint $parent, string $envelope)
+    /**
+     * @param Envelope|string $envelope
+     */
+    public function __construct(EnvelopesEndpoint $parent, $envelope)
     {
         parent::__construct($parent, '/{envelope}/documents', EnvelopeDocument::class, ['envelope' => $envelope]);
     }

@@ -6,6 +6,7 @@ namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
 use DigitalCz\DigiSign\Resource\BaseResource;
+use DigitalCz\DigiSign\Resource\Envelope;
 use DigitalCz\DigiSign\Resource\EnvelopeRecipient;
 use DigitalCz\DigiSign\Resource\EnvelopeTag;
 use DigitalCz\DigiSign\Resource\ListResource;
@@ -23,14 +24,20 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
     /** @use CRUDEndpointTrait<EnvelopeRecipient> */
     use CRUDEndpointTrait;
 
-    public function __construct(EnvelopesEndpoint $parent, string $envelope)
+    /**
+     * @param Envelope|string $envelope
+     */
+    public function __construct(EnvelopesEndpoint $parent, $envelope)
     {
         parent::__construct($parent, '/{envelope}/recipients', EnvelopeRecipient::class, ['envelope' => $envelope]);
     }
 
-    public function block(string $id): RecipientBlockEndpoint
+    /**
+     * @param EnvelopeRecipient|string $recipient
+     */
+    public function block($recipient): RecipientBlockEndpoint
     {
-        return new RecipientBlockEndpoint($this, $id);
+        return new RecipientBlockEndpoint($this, $recipient);
     }
 
     /**
