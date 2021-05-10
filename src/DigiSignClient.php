@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign;
 
+use DateTimeInterface;
 use DigitalCz\DigiSign\Exception\BadRequestException;
 use DigitalCz\DigiSign\Exception\ClientException;
 use DigitalCz\DigiSign\Exception\NotFoundException;
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use DigitalCz\DigiSign\Exception\ServerException;
+use DigitalCz\DigiSign\Resource\ResourceInterface;
 use DigitalCz\DigiSign\Stream\FileStream;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
@@ -87,14 +89,14 @@ final class DigiSignClient
     }
 
     /**
-     * @param mixed $value
+     * @param mixed[] $array
      *
      * @throws InvalidArgumentException When the value cannot be json-encoded
      */
-    private static function jsonEncode($value): string
+    private static function jsonEncode(array $array): string
     {
         try {
-            return json_encode($value, JSON_THROW_ON_ERROR);
+            return json_encode($array, JSON_THROW_ON_ERROR);
         } catch (JsonException $e) {
             throw new InvalidArgumentException('Invalid value for "json" option: ' . $e->getMessage());
         }
@@ -195,8 +197,13 @@ final class DigiSignClient
         }
 
         if (isset($options['json'])) {
+            if (!is_array($options['json'])) {
+                throw new InvalidArgumentException('Invalid value for "json" option');
+            }
+
             $headers['Content-Type'] = 'application/json';
-            $options['body'] = self::jsonEncode($options['json']);
+            $json = self::normalizeJson($options['json']);
+            $options['body'] = self::jsonEncode($json);
         }
 
         if (isset($options['body'])) {
@@ -239,5 +246,30 @@ final class DigiSignClient
 
             throw new ClientException($response);
         }
+    }
+
+    /**
+     * @param mixed[] $json
+     * @return mixed[]
+     */
+    protected static function normalizeJson(array $json): array
+    {
+        $normalize = static function ($value) {
+            if (is_array($value)) {
+                return self::normalizeJson($value);
+            }
+
+            if ($value instanceof DateTimeInterface) {
+                return $value->format(DateTimeInterface::ATOM);
+            }
+
+            if ($value instanceof ResourceInterface) {
+                return $value->self();
+            }
+
+            return $value;
+        };
+
+        return array_map($normalize, $json);
     }
 }

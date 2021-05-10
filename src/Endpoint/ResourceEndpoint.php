@@ -49,8 +49,8 @@ abstract class ResourceEndpoint implements EndpointInterface
      */
     public function request(string $method, string $path = '', array $options = []): ResponseInterface
     {
-        $path = $this->getResourcePath() . $path;
-        $options = array_merge($this->getResourceOptions(), $options);
+        $path = $this->preparePath($path);
+        $options = $this->prepareOptions($options);
 
         return $this->parent->request($method, $path, $options);
     }
@@ -203,5 +203,19 @@ abstract class ResourceEndpoint implements EndpointInterface
         string $resourceClass = BaseResource::class
     ): ListResource {
         return new ListResource($this->parseResponse($response), $resourceClass);
+    }
+
+    /**
+     * @param mixed[] $options
+     * @return mixed[]
+     */
+    protected function prepareOptions(array $options): array
+    {
+        return array_merge($this->getResourceOptions(), $options);
+    }
+
+    protected function preparePath(string $path): string
+    {
+        return $this->getResourcePath() . $path;
     }
 }

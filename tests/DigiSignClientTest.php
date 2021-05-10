@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign;
 
+use DateTime;
 use DigitalCz\DigiSign\Exception\BadRequestException;
 use DigitalCz\DigiSign\Exception\ClientException;
 use DigitalCz\DigiSign\Exception\NotFoundException;
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use DigitalCz\DigiSign\Exception\ServerException;
+use DigitalCz\DigiSign\Resource\BaseResource;
 use DigitalCz\DigiSign\Stream\FileStream;
 use Http\Mock\Client;
 use InvalidArgumentException;
@@ -231,6 +233,16 @@ class DigiSignClientTest extends TestCase
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid value for "json" option');
+        $client->request('GET', 'https://example.com/api', ['json' => false]);
+    }
+
+    public function testRequestWithInvalidJsonNotEncodable(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid value for "json" option');
         $client->request('GET', 'https://example.com/api', ['json' => ['foo' => INF]]);
     }
 
@@ -314,5 +326,27 @@ class DigiSignClientTest extends TestCase
         $this->expectExceptionMessage('401 Unauthorized');
 
         $client->request('GET', 'https://example.com/api');
+    }
+
+    public function testNormalizeJson(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $client->request('GET', 'https://example.com/api', [
+            'json' => [
+                'datetime' => new DateTime('2020-01-01 13:30+02:00'),
+                'resource' => new BaseResource(['_links' => ['self' => 'foo-bar']]),
+                'nested' => [
+                    'foo' => 'bar',
+                    'resource' => new BaseResource(['_links' => ['self' => 'moo-baz']]),
+                ]
+            ]
+        ]);
+
+        $lastRequest = $httpClient->getLastRequest();
+        self::assertSame('application/json', $lastRequest->getHeaderLine('Content-Type'));
+        $expectedJson = '{"datetime":"2020-01-01T13:30:00+02:00","resource":"foo-bar","nested":{"foo":"bar","resource":"moo-baz"}}';
+        self::assertSame($expectedJson, (string)$lastRequest->getBody());
     }
 }
