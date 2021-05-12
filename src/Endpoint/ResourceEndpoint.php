@@ -190,7 +190,10 @@ abstract class ResourceEndpoint implements EndpointInterface
         ResponseInterface $response,
         string $resourceClass = BaseResource::class
     ): ResourceInterface {
-        return new $resourceClass($this->parseResponse($response));
+        $resource = new $resourceClass($this->parseResponse($response));
+        $resource->setResponse($response);
+
+        return $resource;
     }
 
     /**
@@ -202,7 +205,10 @@ abstract class ResourceEndpoint implements EndpointInterface
         ResponseInterface $response,
         string $resourceClass = BaseResource::class
     ): ListResource {
-        return new ListResource($this->parseResponse($response), $resourceClass);
+        $resource = new ListResource($this->parseResponse($response), $resourceClass);
+        $resource->setResponse($response);
+
+        return $resource;
     }
 
     /**

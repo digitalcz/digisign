@@ -6,8 +6,10 @@ namespace DigitalCz\DigiSign\Resource;
 
 use DateTime;
 use DateTimeInterface;
+use DigitalCz\DigiSign\Exception\RuntimeException;
 use JsonSerializable;
 use LogicException;
+use Psr\Http\Message\ResponseInterface;
 use ReflectionException;
 use ReflectionNamedType;
 use ReflectionProperty;
@@ -19,6 +21,9 @@ class BaseResource implements ResourceInterface
 {
     /** @var array<string, string> Cache of resolved mapping types */
     protected static array $mapping = [];
+
+    /** @var ResponseInterface Original API response */
+    protected ResponseInterface $response;
 
     /** @var mixed[] Original values from API response */
     protected array $result;
@@ -84,6 +89,20 @@ class BaseResource implements ResourceInterface
     public function jsonSerialize(): array
     {
         return $this->toArray();
+    }
+
+    public function getResponse(): ResponseInterface
+    {
+        if (!isset($this->response)) {
+            throw new RuntimeException('Only resource returned from client has API response set');
+        }
+
+        return $this->response;
+    }
+
+    public function setResponse(ResponseInterface $response): void
+    {
+        $this->response = $response;
     }
 
     /**

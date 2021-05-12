@@ -4,10 +4,26 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Resource;
 
+use DigitalCz\DigiSign\Exception\RuntimeException;
 use JsonSerializable;
+use Psr\Http\Message\ResponseInterface;
 
 interface ResourceInterface extends JsonSerializable
 {
+    /**
+     * Returns original API response
+     *
+     * @return ResponseInterface The original response
+     *
+     * @throws RuntimeException If this resource has no Response set
+     */
+    public function getResponse(): ResponseInterface;
+
+    /**
+     * Set original API response
+     */
+    public function setResponse(ResponseInterface $response): void;
+
     /**
      * Returns original values from API response
      *
