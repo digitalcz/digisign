@@ -13,6 +13,7 @@ class DummyResource extends BaseResource
 {
     public const ID = '5248129d-7713-4d30-9518-71cb09adfd22';
     public const EXAMPLE = [
+        'id' => self::ID,
         'bool' => true,
         'string' => 'foo',
         'nullable' => null,
@@ -42,6 +43,7 @@ class DummyResource extends BaseResource
         'lastPage' => 1,
     ];
 
+    public string $id;
     public bool $bool;
     public string $string;
     public ?string $nullable;

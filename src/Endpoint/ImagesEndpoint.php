@@ -26,7 +26,7 @@ class ImagesEndpoint extends ResourceEndpoint
         parent::__construct($parent, '/api/images', Image::class);
     }
 
-    public function upload(FileStream $image, bool $public): Image
+    public function upload(FileStream $image, bool $public = false): Image
     {
         return $this->createResource(
             $this->postRequest('', ['multipart' => ['image' => $image, 'public' => ($public ? 'true' : 'false')]]),

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Resource;
 
 use DateTimeInterface;
+use DigitalCz\DigiSign\Exception\RuntimeException;
+use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -30,6 +32,7 @@ class BaseResourceTest extends TestCase
         self::assertObjectHasAttribute('unmapped', $resource);
         self::assertSame('goo', $resource->unmapped);
         self::assertSame('#foobar', $resource->self());
+        self::assertSame(DummyResource::ID, $resource->id());
     }
 
     public function testNormalization(): void
@@ -37,6 +40,7 @@ class BaseResourceTest extends TestCase
         $resource = new DummyResource(DummyResource::EXAMPLE);
         self::assertEquals(
             [
+                'id' => DummyResource::ID,
                 'bool' => true,
                 'string' => 'foo',
                 'nullable' => null,
@@ -60,5 +64,21 @@ class BaseResourceTest extends TestCase
     {
         $resource = new DummyResource(DummyResource::EXAMPLE);
         self::assertEquals(DummyResource::EXAMPLE, $resource->getResult());
+    }
+
+    public function testGetResponse(): void
+    {
+        $resource = new DummyResource(DummyResource::EXAMPLE);
+        $response = new Response();
+        $resource->setResponse($response);
+        self::assertSame($response, $resource->getResponse());
+    }
+
+    public function testGetResponseException(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Only resource returned from client has API response set');
+        $resource = new DummyResource(DummyResource::EXAMPLE);
+        $resource->getResponse();
     }
 }

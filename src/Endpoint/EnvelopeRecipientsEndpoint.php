@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
-use DigitalCz\DigiSign\Resource\BaseResource;
 use DigitalCz\DigiSign\Resource\Envelope;
 use DigitalCz\DigiSign\Resource\EnvelopeRecipient;
 use DigitalCz\DigiSign\Resource\EnvelopeTag;
@@ -76,11 +75,19 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
 
     public function resend(string $id): ResourceInterface
     {
-        return $this->createResource($this->postRequest('/{id}/resend', ['id' => $id]), BaseResource::class);
+        return $this->createResource($this->postRequest('/{id}/resend', ['id' => $id]));
     }
 
     public function verifiedClaims(string $id): ResourceInterface
     {
         return $this->createResource($this->getRequest('/{id}/verified-claims', ['id' => $id]), VerifiedClaims::class);
+    }
+
+    /**
+     * @param mixed[] $body
+     */
+    public function signingOrder(array $body): void
+    {
+        $this->putRequest('/signing-order', ['json' => $body]);
     }
 }

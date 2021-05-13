@@ -8,5 +8,5 @@ class Token extends BaseResource
 {
     public string $token;
     public int $exp;
-    public int $iot;
+    public int $iat;
 }
