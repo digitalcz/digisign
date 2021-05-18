@@ -142,6 +142,11 @@ final class DigiSign implements EndpointInterface
         $this->versions[$tool] = $version;
     }
 
+    public function removeVersion(string $tool): void
+    {
+        unset($this->versions[$tool]);
+    }
+
     /** @inheritDoc */
     public function request(string $method, string $path = '', array $options = []): ResponseInterface
     {
@@ -195,7 +200,9 @@ final class DigiSign implements EndpointInterface
         $userAgent = '';
 
         foreach ($this->versions as $tool => $version) {
-            $userAgent .= sprintf("%s:%s ", $tool, $version);
+            $userAgent .= $tool;
+            $userAgent .= $version !== '' ? ":$version" : '';
+            $userAgent .= ' ';
         }
 
         return $userAgent;
