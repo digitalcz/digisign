@@ -29,11 +29,6 @@ class ListResourceTest extends TestCase
         $resource = new ListResource(DummyResource::LIST_EXAMPLE, DummyResource::class);
         $array = $resource->toArray();
 
-        $expected = DummyResource::LIST_EXAMPLE;
-        unset($expected['items'][0]['_links']);
-        unset($expected['items'][1]['_links']);
-        unset($expected['items'][2]['_links']);
-
-        self::assertEquals($expected, $array);
+        self::assertEquals(DummyResource::LIST_EXAMPLE, $array);
     }
 }

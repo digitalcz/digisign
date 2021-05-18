@@ -55,6 +55,7 @@ class BaseResourceTest extends TestCase
                     ['string' => 'baz'],
                 ],
                 'unmapped' => 'goo',
+                '_links' => ['self' => '#foobar'],
             ],
             $resource->toArray(),
         );

@@ -20,27 +20,27 @@ use ReflectionProperty;
 class BaseResource implements ResourceInterface
 {
     /** @var array<string, string> Cache of resolved mapping types */
-    protected static array $mapping = [];
+    protected static array $_mapping = []; // phpcs:ignore
 
     /** @var ResponseInterface Original API response */
-    protected ResponseInterface $response;
+    protected ResponseInterface $_response; // phpcs:ignore
 
     /** @var mixed[] Original values from API response */
-    protected array $result;
+    protected array $_result; // phpcs:ignore
 
     /**
      * @param mixed[] $result
      */
     public function __construct(array $result)
     {
-        $this->result = $result;
+        $this->_result = $result;
         $this->hydrate($result);
     }
 
     /** @inheritDoc */
     public function getResult(): array
     {
-        return $this->result;
+        return $this->_result;
     }
 
     /** @inheritDoc */
@@ -50,8 +50,8 @@ class BaseResource implements ResourceInterface
 
         $result = [];
         foreach ($values as $property => $value) {
-            // skip original values and mapping
-            if ($property === 'result' || $property === 'mapping') {
+            // skip internal properties
+            if (in_array($property, ['_mapping', '_response', '_result'], true)) {
                 continue;
             }
 
@@ -75,12 +75,12 @@ class BaseResource implements ResourceInterface
 
     public function self(): ?string
     {
-        return $this->result['_links']['self'] ?? null;
+        return $this->_result['_links']['self'] ?? null;
     }
 
     public function id(): ?string
     {
-        return $this->result['id'] ?? null;
+        return $this->_result['id'] ?? null;
     }
 
     /**
@@ -93,16 +93,16 @@ class BaseResource implements ResourceInterface
 
     public function getResponse(): ResponseInterface
     {
-        if (!isset($this->response)) {
+        if (!isset($this->_response)) {
             throw new RuntimeException('Only resource returned from client has API response set');
         }
 
-        return $this->response;
+        return $this->_response;
     }
 
     public function setResponse(ResponseInterface $response): void
     {
-        $this->response = $response;
+        $this->_response = $response;
     }
 
     /**
@@ -111,11 +111,6 @@ class BaseResource implements ResourceInterface
     protected function hydrate(array $values): void
     {
         foreach ($values as $property => $value) {
-            // skip _links and _actions
-            if (strpos($property, '_') === 0) {
-                continue;
-            }
-
             $this->setProperty($property, $value);
         }
     }
@@ -152,8 +147,8 @@ class BaseResource implements ResourceInterface
 
     protected function resolveType(string $property): string
     {
-        if (isset(static::$mapping[$property])) {
-            return static::$mapping[$property];
+        if (isset(static::$_mapping[$property])) {
+            return static::$_mapping[$property];
         }
 
         try {
@@ -181,7 +176,7 @@ class BaseResource implements ResourceInterface
                 $type = "Collection<$resourceClass>";
             }
 
-            static::$mapping[$property] = $type;
+            static::$_mapping[$property] = $type;
 
             return $type;
         } catch (ReflectionException $e) {
