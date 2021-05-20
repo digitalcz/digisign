@@ -35,7 +35,7 @@ abstract class ResourceEndpoint implements EndpointInterface
     public function __construct(
         EndpointInterface $parent,
         string $resourcePath,
-        string $resourceClass,
+        string $resourceClass = BaseResource::class,
         array $resourceOptions = []
     ) {
         $this->parent = $parent;
