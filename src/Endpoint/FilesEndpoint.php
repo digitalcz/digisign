@@ -28,10 +28,7 @@ final class FilesEndpoint extends ResourceEndpoint
 
     public function upload(FileStream $file): File
     {
-        return $this->createResource(
-            $this->postRequest('', ['multipart' => ['file' => $file]]),
-            $this->getResourceClass(),
-        );
+        return $this->makeResource($this->postRequest('', ['multipart' => ['file' => $file]]));
     }
 
     public function content(string $id): FileResponse

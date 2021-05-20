@@ -18,7 +18,7 @@ final class AccountSettingsEndpoint extends ResourceEndpoint
 
     public function get(): AccountSettings
     {
-        return $this->createResource($this->getRequest(), $this->getResourceClass());
+        return $this->makeResource($this->getRequest());
     }
 
     /**
@@ -26,6 +26,6 @@ final class AccountSettingsEndpoint extends ResourceEndpoint
      */
     public function update(array $body): AccountSettings
     {
-        return $this->createResource($this->putRequest('', ['json' => $body]), $this->getResourceClass());
+        return $this->makeResource($this->putRequest('', ['json' => $body]));
     }
 }

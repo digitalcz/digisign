@@ -18,7 +18,7 @@ final class AccountEnvelopeTemplateEndpoint extends ResourceEndpoint
 
     public function get(): AccountEnvelopeTemplate
     {
-        return $this->createResource($this->getRequest(), $this->getResourceClass());
+        return $this->makeResource($this->getRequest());
     }
 
     /**
@@ -26,6 +26,6 @@ final class AccountEnvelopeTemplateEndpoint extends ResourceEndpoint
      */
     public function update(array $body): AccountEnvelopeTemplate
     {
-        return $this->createResource($this->putRequest('', ['json' => $body]), $this->getResourceClass());
+        return $this->makeResource($this->putRequest('', ['json' => $body]));
     }
 }

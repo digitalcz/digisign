@@ -90,7 +90,7 @@ abstract class ResourceEndpoint implements EndpointInterface
      */
     protected function makeCreateRequest(array $body): ResourceInterface
     {
-        return $this->createResource($this->postRequest('', ['json' => $body]), $this->getResourceClass());
+        return $this->makeResource($this->postRequest('', ['json' => $body]));
     }
 
     /**
@@ -98,10 +98,7 @@ abstract class ResourceEndpoint implements EndpointInterface
      */
     protected function makeUpdateRequest(string $id, array $body): ResourceInterface
     {
-        return $this->createResource(
-            $this->putRequest('/{id}', ['id' => $id, 'json' => $body]),
-            $this->getResourceClass(),
-        );
+        return $this->makeResource($this->putRequest('/{id}', ['id' => $id, 'json' => $body]));
     }
 
     protected function makeDeleteRequest(string $id): void
@@ -111,7 +108,7 @@ abstract class ResourceEndpoint implements EndpointInterface
 
     protected function makeGetRequest(string $id): ResourceInterface
     {
-        return $this->createResource($this->getRequest('/{id}', ['id' => $id]), $this->getResourceClass());
+        return $this->makeResource($this->getRequest('/{id}', ['id' => $id]));
     }
 
     /**
@@ -120,7 +117,7 @@ abstract class ResourceEndpoint implements EndpointInterface
      */
     protected function makeListRequest(array $query = []): ListResource
     {
-        return $this->createListResource($this->getRequest('', ['query' => $query]), $this->getResourceClass());
+        return $this->makeListResource($this->getRequest('', ['query' => $query]));
     }
 
     /**
@@ -182,6 +179,14 @@ abstract class ResourceEndpoint implements EndpointInterface
     }
 
     /**
+     * @return T
+     */
+    protected function makeResource(ResponseInterface $response): ResourceInterface
+    {
+        return $this->createResource($response, $this->getResourceClass());
+    }
+
+    /**
      * @param class-string<U> $resourceClass
      * @return U
      * @template U of ResourceInterface
@@ -197,9 +202,17 @@ abstract class ResourceEndpoint implements EndpointInterface
     }
 
     /**
-     * @param class-string<C> $resourceClass
-     * @return ListResource<C>
-     * @template C
+     * @return ListResource<T>
+     */
+    protected function makeListResource(ResponseInterface $response): ListResource
+    {
+        return $this->createListResource($response, $this->getResourceClass());
+    }
+
+    /**
+     * @param class-string<U> $resourceClass
+     * @return ListResource<U>
+     * @template U of ResourceInterface
      */
     protected function createListResource(
         ResponseInterface $response,

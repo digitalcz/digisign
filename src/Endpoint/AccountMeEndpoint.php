@@ -6,6 +6,7 @@ namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Resource\ApiKey;
 use DigitalCz\DigiSign\Resource\BaseResource;
+use DigitalCz\DigiSign\Resource\ResourceInterface;
 use DigitalCz\DigiSign\Resource\User;
 
 /**
@@ -21,7 +22,7 @@ final class AccountMeEndpoint extends ResourceEndpoint
     /**
      * @return User|ApiKey
      */
-    public function get(): BaseResource
+    public function get(): ResourceInterface
     {
         $result = $this->getRequest();
 

@@ -86,10 +86,7 @@ final class EnvelopesEndpoint extends ResourceEndpoint
      */
     public function extend(string $id, array $body): Envelope
     {
-        return $this->createResource(
-            $this->putRequest('/{id}/extend', ['id' => $id, 'json' => $body]),
-            $this->getResourceClass(),
-        );
+        return $this->makeResource($this->putRequest('/{id}/extend', ['id' => $id, 'json' => $body]));
     }
 
     public function send(string $id): BaseResource

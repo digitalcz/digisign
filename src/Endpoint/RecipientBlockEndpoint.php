@@ -24,7 +24,7 @@ final class RecipientBlockEndpoint extends ResourceEndpoint
 
     public function get(): RecipientBlock
     {
-        return $this->createResource($this->getRequest(), $this->getResourceClass());
+        return $this->makeResource($this->getRequest());
     }
 
     public function delete(): void

@@ -53,7 +53,7 @@ final class AccountEndpoint extends ResourceEndpoint
 
     public function get(): Account
     {
-        return $this->createResource($this->getRequest(), $this->getResourceClass());
+        return $this->makeResource($this->getRequest());
     }
 
     /**

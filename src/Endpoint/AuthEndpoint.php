@@ -22,6 +22,6 @@ final class AuthEndpoint extends ResourceEndpoint
      */
     public function authorize(array $body): Token
     {
-        return $this->createResource($this->postRequest('', ['json' => $body]), $this->getResourceClass());
+        return $this->makeResource($this->postRequest('', ['json' => $body]));
     }
 }

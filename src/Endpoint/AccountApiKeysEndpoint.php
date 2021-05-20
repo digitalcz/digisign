@@ -33,11 +33,11 @@ final class AccountApiKeysEndpoint extends ResourceEndpoint
 
     public function activate(string $id): ApiKey
     {
-        return $this->createResource($this->postRequest('/{id}/activate', ['id' => $id]), $this->getResourceClass());
+        return $this->makeResource($this->postRequest('/{id}/activate', ['id' => $id]));
     }
 
     public function deactivate(string $id): ApiKey
     {
-        return $this->createResource($this->postRequest('/{id}/deactivate', ['id' => $id]), $this->getResourceClass());
+        return $this->makeResource($this->postRequest('/{id}/deactivate', ['id' => $id]));
     }
 }

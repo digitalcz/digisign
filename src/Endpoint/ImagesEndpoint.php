@@ -28,10 +28,9 @@ class ImagesEndpoint extends ResourceEndpoint
 
     public function upload(FileStream $image, bool $public = false): Image
     {
-        return $this->createResource(
-            $this->postRequest('', ['multipart' => ['image' => $image, 'public' => ($public ? 'true' : 'false')]]),
-            $this->getResourceClass(),
-        );
+        $multipart = ['image' => $image, 'public' => ($public ? 'true' : 'false')];
+
+        return $this->makeResource($this->postRequest('', ['multipart' => $multipart]));
     }
 
     public function content(string $id): FileResponse
