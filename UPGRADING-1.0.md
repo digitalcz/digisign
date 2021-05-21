@@ -3,10 +3,10 @@ Upgrading From 0.x To 1.x
 
 **Version 1 is major rewrite of the library.**
 
-It aimed to ease configuration and usage and to improve forward compatibility with changes implemented on API.
+It aimed to ease configuration and usage and to improve forward compatibility with changes implemented on the DigiSign API.
 
 * ### Initialization of DigiSign object
-  The constructor of DigiSign object now accepts array of options 
+  The constructor of DigiSign object now accepts array of options
 
   Before:
     ```php
@@ -17,7 +17,11 @@ It aimed to ease configuration and usage and to improve forward compatibility wi
     $digiSign = new DigitalCz\DigiSign\DigiSign(
         'yourAccessKey',
         'yourSecretKey',
-        $tokenProvider
+        $tokenProvider,
+        new Symfony\Component\HttpClient\Psr18Client(),
+        null, // request factory
+        null, // stream factory
+        true, // sandbox
     );
     ```
 
@@ -26,15 +30,18 @@ It aimed to ease configuration and usage and to improve forward compatibility wi
     $psr6Cache = new Symfony\Component\Cache\Adapter\FilesystemAdapter();
     $psr16Cache = new Symfony\Component\Cache\Psr16Cache($psr6Cache);
   
-    $dgs = new \DigitalCz\DigiSign\DigiSign([
+    $dgs = new DigitalCz\DigiSign\DigiSign([
         'access_key' => '...',
         'secret_key' => '...',
         'cache' => $psr16Cache,
+        'http_client' => new Symfony\Component\HttpClient\Psr18Client(),
+        'testing' => true, // formerly sandbox
     ]);
     ```
 
 * ### Creating Envelope
-  
+  Request body is no longer DTO but just array, so that partial updates are possible
+
   Before:
     ```php 
     $envelope = new DigitalCz\DigiSign\Model\DTO\EnvelopeData(
@@ -62,7 +69,8 @@ It aimed to ease configuration and usage and to improve forward compatibility wi
     ```
 
 * ### Accessing data
-
+  ValueObjects were replaced with Resource objects that have public properties, and simple serialization logic. Resource objects also carry instance of the Response from API
+  
   Before:
     ```php 
     $envelope = $digiSign->getEnvelopeApi()->getEnvelope('9181d626-5c99-49d7-ba86-2410e98f6433');
@@ -75,9 +83,9 @@ It aimed to ease configuration and usage and to improve forward compatibility wi
     $envelope = $dgs->envelopes()->get('9181d626-5c99-49d7-ba86-2410e98f6433');
     $envelopeId = $envelope->id; // '9181d626-5c99-49d7-ba86-2410e98f6433'
     $status = $envelope->status; // 'draft'
+    $envelope->getResponse(); // access the Response
     ```
 * ### Working with files
-
   Before:
     ```php
     // uploading
