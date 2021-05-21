@@ -11,4 +11,12 @@ class Violations extends BaseResource
 
     /** @var Collection<Violation> */
     public Collection $violations;
+
+    /** @param mixed[] $result */
+    public function __construct(array $result)
+    {
+        parent::__construct($result);
+
+        $this->violations ??= new Collection();
+    }
 }

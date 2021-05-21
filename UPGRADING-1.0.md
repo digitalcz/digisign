@@ -85,12 +85,34 @@ It aimed to ease configuration and usage and to improve forward compatibility wi
     $status = $envelope->status; // 'draft'
     $envelope->getResponse(); // access the Response
     ```
+
 * ### Working with files
   Before:
     ```php
     // uploading
     $file = DigitalCz\DigiSign\Model\Stream::fromPath('path/to/file.pdf');
     $dgs->getFileApi()->createFile($file);
+  
+    // downloading
+    $file = $dgs->getEnvelopeApi()->downloadEnvelope('9181d626-5c99-49d7-ba86-2410e98f6433');
+    file_put_contents('path/to/file.pdf', $file->getStream()->getHandle());
+    ```
+  
+  After:
+    ```php
+    // uploading
+    $file = DigitalCz\DigiSign\Stream\FileStream::open('path/to/file.pdf');
+    $dgs->files()->upload($file);
+  
+    // downloading
+    $file = $dgs->envelopes()->download('9181d626-5c99-49d7-ba86-2410e98f6433');
+    $file->save('path/to/file.pdf');
+    ```
+
+* ### Validation response
+  Before:
+    ```php
+    $dgs->getEnvelopeApi->
   
     // downloading
     $file = $dgs->getEnvelopeApi()->downloadEnvelope('9181d626-5c99-49d7-ba86-2410e98f6433');
