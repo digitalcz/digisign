@@ -9,7 +9,7 @@ use Throwable;
 /**
  * @codeCoverageIgnore
  */
-class EmptyResultException extends RuntimeException
+final class EmptyResultException extends RuntimeException
 {
     public function __construct(?Throwable $previous = null)
     {

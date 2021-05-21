@@ -7,7 +7,7 @@ namespace DigitalCz\DigiSign\Exception;
 /**
  * Represents response with http status 500+
  */
-class ServerException extends ResponseException
+final class ServerException extends ResponseException
 {
 
 }

@@ -7,7 +7,7 @@ namespace DigitalCz\DigiSign\Exception;
 /**
  * Represents response with http status 404
  */
-class NotFoundException extends ClientException
+final class NotFoundException extends ClientException
 {
 
 }

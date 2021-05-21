@@ -9,7 +9,7 @@ use DigitalCz\DigiSign\Resource\Violations;
 /**
  * Represents response with http status 400
  */
-class BadRequestException extends ClientException
+final class BadRequestException extends ClientException
 {
     public function getViolations(): ?Violations
     {

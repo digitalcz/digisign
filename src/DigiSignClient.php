@@ -10,6 +10,7 @@ use DigitalCz\DigiSign\Exception\ClientException;
 use DigitalCz\DigiSign\Exception\NotFoundException;
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use DigitalCz\DigiSign\Exception\ServerException;
+use DigitalCz\DigiSign\Exception\UnauthorizedException;
 use DigitalCz\DigiSign\Resource\BaseResource;
 use DigitalCz\DigiSign\Resource\ResourceInterface;
 use DigitalCz\DigiSign\Stream\FileStream;
@@ -33,6 +34,7 @@ final class DigiSignClient
 {
     public const HTTP_NO_CONTENT = 204;
     public const HTTP_BAD_REQUEST = 400;
+    public const HTTP_UNAUTHORIZED = 401;
     public const HTTP_NOT_FOUND = 404;
     public const HTTP_INTERNAL_SERVER_ERROR = 500;
 
@@ -144,7 +146,7 @@ final class DigiSignClient
     /**
      * @param mixed[] $options
      */
-    private function createRequest(string $method, UriInterface $uri, array $options): RequestInterface
+    private function createRequest(string $method, UriInterface $uri, array $options): RequestInterface // phpcs:ignore
     {
         $request = $this->requestFactory->createRequest($method, $uri);
         $headers = $options['headers'] ?? [];
@@ -243,15 +245,16 @@ final class DigiSignClient
         }
 
         if ($code >= self::HTTP_BAD_REQUEST) {
-            if ($code === self::HTTP_BAD_REQUEST) {
-                throw new BadRequestException($response);
+            switch ($code) {
+                case self::HTTP_BAD_REQUEST:
+                    throw new BadRequestException($response);
+                case self::HTTP_UNAUTHORIZED:
+                    throw new UnauthorizedException($response);
+                case self::HTTP_NOT_FOUND:
+                    throw new NotFoundException($response);
+                default:
+                    throw new ClientException($response);
             }
-
-            if ($code === self::HTTP_NOT_FOUND) {
-                throw new NotFoundException($response);
-            }
-
-            throw new ClientException($response);
         }
     }
 
