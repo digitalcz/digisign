@@ -42,6 +42,17 @@ class FileTest extends TestCase
         unlink($savePath);
     }
 
+    public function testSaveToDir(): void
+    {
+        $file = FileStream::open(TESTS_DIR . '/dummy.pdf');
+        $savePath = sys_get_temp_dir();
+        $file->save($savePath);
+        $expectedPathname = $savePath . '/dummy.pdf';
+        self::assertFileExists($expectedPathname);
+        self::assertFileEquals(TESTS_DIR . '/dummy.pdf', $expectedPathname);
+        unlink($expectedPathname);
+    }
+
     public function testInvalidArgument(): void
     {
         $this->expectException(InvalidArgumentException::class);
