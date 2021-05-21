@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Stream;
 
 use DigitalCz\DigiSign\Exception\RuntimeException;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 use const TESTS_DIR;
@@ -43,8 +44,8 @@ class FileTest extends TestCase
 
     public function testInvalidArgument(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid $handle, resource is expected');
-        new FileStream('/tmp/foobar');
+        new FileStream('/tmp/foobar'); // @phpstan-ignore-line
     }
 }

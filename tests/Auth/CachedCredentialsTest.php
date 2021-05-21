@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Auth;
 
 use DigitalCz\DigiSign\DigiSign;
+use LogicException;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Component\Cache\Psr16Cache;
@@ -49,7 +50,7 @@ class CachedCredentialsTest extends TestCase
         $cache = new Psr16Cache(new ArrayAdapter());
         $cachedCredentials = new CachedCredentials($credentials, $cache);
 
-        $this->expectException(\LogicException::class);
+        $this->expectException(LogicException::class);
         new CachedCredentials($cachedCredentials, $cache);
     }
 }

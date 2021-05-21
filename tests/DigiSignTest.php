@@ -8,6 +8,13 @@ use DigitalCz\DigiSign\Auth\ApiKeyCredentials;
 use DigitalCz\DigiSign\Auth\CachedCredentials;
 use DigitalCz\DigiSign\Auth\Token;
 use DigitalCz\DigiSign\Auth\TokenCredentials;
+use DigitalCz\DigiSign\Endpoint\AccountEndpoint;
+use DigitalCz\DigiSign\Endpoint\AuthEndpoint;
+use DigitalCz\DigiSign\Endpoint\DeliveriesEndpoint;
+use DigitalCz\DigiSign\Endpoint\EnvelopesEndpoint;
+use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
+use DigitalCz\DigiSign\Endpoint\ImagesEndpoint;
+use DigitalCz\DigiSign\Endpoint\WebhooksEndpoint;
 use Http\Mock\Client;
 use InvalidArgumentException;
 use LogicException;
@@ -121,28 +128,15 @@ class DigiSignTest extends TestCase
 
     public function testChildren(): void
     {
-        $mockClient = new Client();
-        $digiSign = new DigiSign(
-            [
-                'credentials' => new TokenCredentials(new Token('foo', time())),
-                'client' => new DigiSignClient($mockClient),
-            ],
-        );
+        $dgs = new DigiSign();
 
-        $digiSign->auth()->request('GET');
-        self::assertSame('/api/auth-token', $mockClient->getLastRequest()->getUri()->getPath());
-        $digiSign->account()->request('GET');
-        self::assertSame('/api/account', $mockClient->getLastRequest()->getUri()->getPath());
-        $digiSign->envelopes()->request('GET');
-        self::assertSame('/api/envelopes', $mockClient->getLastRequest()->getUri()->getPath());
-        $digiSign->deliveries()->request('GET');
-        self::assertSame('/api/deliveries', $mockClient->getLastRequest()->getUri()->getPath());
-        $digiSign->files()->request('GET');
-        self::assertSame('/api/files', $mockClient->getLastRequest()->getUri()->getPath());
-        $digiSign->images()->request('GET');
-        self::assertSame('/api/images', $mockClient->getLastRequest()->getUri()->getPath());
-        $digiSign->webhooks()->request('GET');
-        self::assertSame('/api/webhooks', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertInstanceOf(AuthEndpoint::class, $dgs->auth());
+        self::assertInstanceOf(AccountEndpoint::class, $dgs->account());
+        self::assertInstanceOf(EnvelopesEndpoint::class, $dgs->envelopes());
+        self::assertInstanceOf(DeliveriesEndpoint::class, $dgs->deliveries());
+        self::assertInstanceOf(FilesEndpoint::class, $dgs->files());
+        self::assertInstanceOf(ImagesEndpoint::class, $dgs->images());
+        self::assertInstanceOf(WebhooksEndpoint::class, $dgs->webhooks());
     }
 
     public function testUserAgent(): void

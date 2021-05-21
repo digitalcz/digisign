@@ -136,7 +136,7 @@ class ResourceEndpointTest extends TestCase
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
-        $resource = $endpoint->patch(DummyResource::ID);
+        $resource = $endpoint->patch();
         self::assertSame(DummyResource::EXAMPLE, $resource->getResult());
     }
 

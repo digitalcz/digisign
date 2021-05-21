@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 class BadRequestExceptionTest extends TestCase
 {
-    public function testGetViolations(): void
+    public function testGetViolations(): void // phpcs:ignore
     {
         $result = [
             'title' => 'Validation Failed',

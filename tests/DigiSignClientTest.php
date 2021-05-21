@@ -80,13 +80,13 @@ class DigiSignClientTest extends TestCase
             'https://example.com/api/{foo}/{bar}',
             [
                 'foo' => 'baz', // URI param is string
-                'bar' => new DummyResource(DummyResource::EXAMPLE) // URI param is resource
-            ]
+                'bar' => new DummyResource(DummyResource::EXAMPLE), // URI param is resource
+            ],
         );
 
         self::assertSame(
             'https://example.com/api/baz/' . DummyResource::ID,
-            (string)$httpClient->getLastRequest()->getUri()
+            (string)$httpClient->getLastRequest()->getUri(),
         );
     }
 

@@ -124,23 +124,21 @@ abstract class EndpointTestCase extends TestCase
 
     protected static function assertCrudRequests(EndpointInterface $endpoint, string $path): void
     {
-        $params = ['foo' => 'bar'];
-
         self::assertTrue(method_exists($endpoint, 'list'));
-        $endpoint->list($params);
+        $endpoint->list(['foo' => 'bar']);
         self::assertLastRequest('GET', "$path?foo=bar");
 
         self::assertTrue(method_exists($endpoint, 'create'));
-        $endpoint->create($params);
-        self::assertLastRequest('POST', $path, $params);
+        $endpoint->create(['foo' => 'bar']);
+        self::assertLastRequest('POST', $path, ['foo' => 'bar']);
 
         self::assertTrue(method_exists($endpoint, 'get'));
         $endpoint->get('foo');
         self::assertLastRequest('GET', "$path/foo");
 
         self::assertTrue(method_exists($endpoint, 'update'));
-        $endpoint->update('foo', $params);
-        self::assertLastRequest('PUT', "$path/foo", $params);
+        $endpoint->update('foo', ['foo' => 'bar']);
+        self::assertLastRequest('PUT', "$path/foo", ['foo' => 'bar']);
 
         self::assertTrue(method_exists($endpoint, 'delete'));
         $endpoint->delete('foo');
