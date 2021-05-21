@@ -13,10 +13,11 @@ $dgs = new DigiSign([
 ]);
 
 $list = $dgs->envelopes()->list([
-    'status' => ['in' => ['draft', 'sent']],    // filter status "draft" or "sent"
-    'order' => ['createdAt' => 'DESC'],         // order by createdAt descending
-    'itemsPerPage' => 30,                       // limit items returned in request
-    'page' => 1,                                // the page
+    'status' => ['in' => ['draft', 'sent']],        // status is "draft" or "sent"
+    'emailSubject' => ['contains' => 'Documents'],  // subject contains "Documents"
+    'order' => ['createdAt' => 'DESC'],             // order by createdAt descending
+    'itemsPerPage' => 30,                           // limit items returned in request
+    'page' => 1,                                    // the page
 ]);
 
 // Print envelopes ID, subject and status

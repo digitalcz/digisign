@@ -6,9 +6,9 @@
 [![codecov](https://codecov.io/gh/digitalcz/digisign/branch/master/graph/badge.svg)](https://codecov.io/gh/digitalcz/digisign)
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Provides communication with www.digisign.cz in OOP PHP using PSR-18 HTTP Client, PSR-17 HTTP Factories and PSR-16 SimpleCache.
+[DigiSign](https://www.digisign.cz) PHP library - provides communication with https://api.digisign.org in PHP using PSR-18 HTTP Client, PSR-17 HTTP Factories and PSR-16 SimpleCache.
 
-Documentation of API is here https://api.digisign.org/api/docs
+API documentation is here https://api.digisign.org/api/docs
 
 ## Install
 
@@ -25,44 +25,66 @@ $ composer require digitalcz/digisign
 ```php
 use DigitalCz\DigiSign\Auth\ApiKeyCredentials;
 use DigitalCz\DigiSign\DigiSign;
-use DigitalCz\DigiSign\DigiSignClient;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-use Symfony\Component\Cache\Psr16Cache;
-use Symfony\Component\HttpClient\Psr18Client;
 
 // Via constructor options
 $dgs = new DigiSign([
-    'access_key' => '...',
-    'secret_key' => '...',
-
-    // other options
-    'cache' => new Psr16Cache(new FilesystemAdapter()), // or any other PSR16 implementation
-    'http_client' => new Psr18Client(),                 // or any other PSR18 implementation
-    'testing' => true                                   // use testing API base
+    'access_key' => '...', 
+    'secret_key' => '...'
 ]);
 
 // Or via methods
 $dgs = new DigiSign();
 $dgs->setCredentials(new ApiKeyCredentials('...', '...'));
-$dgs->setCache(new Psr16Cache(new FilesystemAdapter()));
+```
+
+#### Available constructor options
+*  `access_key`      - string; ApiKey access key
+*  `secret_key`      - string; ApiKey secret key
+*  `credentials`     - DigitalCz\DigiSign\Auth\Credentials instance
+*  `client`          - DigitalCz\DigiSign\DigiSignClient instance with your custom PSR17/18 objects
+*  `http_client`     - Psr\Http\Client\ClientInterface instance of your custom PSR18 client
+*  `cache`           - Psr\SimpleCache\CacheInterface for caching Credentials Tokens
+*  `testing`         - bool; whether to use testing or production API
+*  `api_base`        - string; override the base API url
+
+#### Available configuration methods
+
+```php
+use DigitalCz\DigiSign\Auth\Token;
+use DigitalCz\DigiSign\Auth\TokenCredentials;
+use DigitalCz\DigiSign\DigiSign;
+use DigitalCz\DigiSign\DigiSignClient;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Component\Cache\Psr16Cache;
+use Symfony\Component\HttpClient\Psr18Client;
+
+$dgs = new DigiSign();
+// To set your own PSR-18 HTTP Client, if not provided Psr18ClientDiscovery is used
 $dgs->setClient(new DigiSignClient(new Psr18Client()));
+// If you already have the auth-token, i can use TokenCredentials
+$dgs->setCredentials(new TokenCredentials(new Token('...', 123)));
+// Cache will be used to store auth-token, so it can be reused in later requests
+$dgs->setCache(new Psr16Cache(new FilesystemAdapter()));
+// Use testing API (https://api.digisign.digital.cz)
 $dgs->useTesting(true);
+// Overwrite API base
+$dgs->setApiBase('https://example.com/api');
 ```
 
 #### Example configuration in Symfony
 
 ```yaml
 services:
-    DigitalCz\DigiSign\DigiSign:
-        $options:
-            # minimal config
-            access_key: '%digisign.accessKey%'
-            secret_key: '%digisign.secretKey%'
-
-            # other options
-            cache: '@psr16.cache'
-            http_client: '@psr18.http_client'
-            testing: true # use testing API
+  DigitalCz\DigiSign\DigiSign:
+    $options:
+      # minimal config
+      access_key: '%digisign.accessKey%'
+      secret_key: '%digisign.secretKey%'
+      
+      # other options
+      cache: '@psr16.cache'
+      http_client: '@psr18.http_client'
+      testing: true # use testing API
 ```
 
 ## Usage
@@ -70,10 +92,7 @@ services:
 #### Create and send Envelope
 
 ```php
-use DigitalCz\DigiSign\DigiSign;
-use DigitalCz\DigiSign\Stream\FileStream;
-
-$dgs = new DigiSign(['access_key' => '...', 'secret_key' => '...']);
+$dgs = new DigitalCz\DigiSign\DigiSign(['access_key' => '...', 'secret_key' => '...']);
 
 $envelopes = $dgs->envelopes();
 
@@ -91,14 +110,15 @@ $recipient = $envelopes->recipients($envelope)->create([
     'mobile' => '+420775300500',
 ]);
 
-$file = $dgs->files()->upload(FileStream::open('document.pdf'));
+$stream = DigitalCz\DigiSign\Stream\FileStream::open('path/to/document.pdf');
+$file = $dgs->files()->upload($stream);
 
 $document = $envelopes->documents($envelope)->create([
     'name' => 'Contract',
     'file' => $file->self()
 ]);
 
-$envelopes->tags($envelope)->create([
+$tag = $envelopes->tags($envelope)->create([
     'type' => 'signature',
     'document' => $document,
     'recipient' => $recipient,
