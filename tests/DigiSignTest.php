@@ -8,13 +8,6 @@ use DigitalCz\DigiSign\Auth\ApiKeyCredentials;
 use DigitalCz\DigiSign\Auth\CachedCredentials;
 use DigitalCz\DigiSign\Auth\Token;
 use DigitalCz\DigiSign\Auth\TokenCredentials;
-use DigitalCz\DigiSign\Endpoint\AccountEndpoint;
-use DigitalCz\DigiSign\Endpoint\AuthEndpoint;
-use DigitalCz\DigiSign\Endpoint\DeliveriesEndpoint;
-use DigitalCz\DigiSign\Endpoint\EnvelopesEndpoint;
-use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
-use DigitalCz\DigiSign\Endpoint\ImagesEndpoint;
-use DigitalCz\DigiSign\Endpoint\WebhooksEndpoint;
 use Http\Mock\Client;
 use InvalidArgumentException;
 use LogicException;
@@ -124,19 +117,6 @@ class DigiSignTest extends TestCase
         $digiSign->request('GET', '/foo');
 
         self::assertSame('https://api.digisign.digital.cz/foo', (string)$mockClient->getLastRequest()->getUri());
-    }
-
-    public function testChildren(): void
-    {
-        $dgs = new DigiSign();
-
-        self::assertInstanceOf(AuthEndpoint::class, $dgs->auth());
-        self::assertInstanceOf(AccountEndpoint::class, $dgs->account());
-        self::assertInstanceOf(EnvelopesEndpoint::class, $dgs->envelopes());
-        self::assertInstanceOf(DeliveriesEndpoint::class, $dgs->deliveries());
-        self::assertInstanceOf(FilesEndpoint::class, $dgs->files());
-        self::assertInstanceOf(ImagesEndpoint::class, $dgs->images());
-        self::assertInstanceOf(WebhooksEndpoint::class, $dgs->webhooks());
     }
 
     public function testUserAgent(): void

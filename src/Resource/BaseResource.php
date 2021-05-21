@@ -150,7 +150,7 @@ class BaseResource implements ResourceInterface
             }
         }
 
-        $this->$property = $value;
+        $this->$property = $value; // @phpstan-ignore-line
     }
 
     protected function resolveType(string $property): string

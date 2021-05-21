@@ -20,7 +20,6 @@ class FileTest extends TestCase
         $file = FileStream::open(TESTS_DIR . '/dummy.pdf');
         self::assertSame('dummy.pdf', $file->getFilename());
         self::assertSame(13264, $file->getSize());
-        self::assertIsResource($file->getHandle());
         $file->setFilename('foo.pdf');
         self::assertSame('foo.pdf', $file->getFilename());
     }
