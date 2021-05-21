@@ -6,6 +6,7 @@ namespace DigitalCz\DigiSign\Resource;
 
 use DateTimeInterface;
 use DigitalCz\DigiSign\Exception\RuntimeException;
+use Nyholm\NSA;
 use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 
@@ -16,6 +17,9 @@ class BaseResourceTest extends TestCase
 {
     public function testHydration(): void
     {
+        // clear cached mapping
+        NSA::setProperty(DummyResource::class, '_mapping', []);
+
         $resource = new DummyResource(DummyResource::EXAMPLE);
         self::assertTrue($resource->bool);
         self::assertSame('foo', $resource->string);
@@ -81,5 +85,21 @@ class BaseResourceTest extends TestCase
         $this->expectExceptionMessage('Only resource returned from client has API response set');
         $resource = new DummyResource(DummyResource::EXAMPLE);
         $resource->getResponse();
+    }
+
+    public function testGetSelfWithoutMappedLinks(): void
+    {
+        $resource = new BaseResource(['id' => 'foo']);
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Resource has no self link');
+        $resource->self();
+    }
+
+    public function testGetIdWithoutMappedId(): void
+    {
+        $resource = new BaseResource([]);
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Resource has no ID');
+        $resource->id();
     }
 }
