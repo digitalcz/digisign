@@ -47,8 +47,15 @@ final class FileStream
         return new self($handle, $size, basename($path));
     }
 
+    /**
+     * @param string $path Path to directory or file
+     */
     public function save(string $path): void
     {
+        if (is_dir($path)) {
+            $path .= DIRECTORY_SEPARATOR . $this->getFilename();
+        }
+
         $handle = fopen($path, 'wb+');
 
         if ($handle === false) {

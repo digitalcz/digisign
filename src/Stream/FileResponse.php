@@ -41,6 +41,9 @@ final class FileResponse
         return $this->file;
     }
 
+    /**
+     * @param string $path Path to directory or file
+     */
     public function save(string $path): void
     {
         $this->getFile()->save($path);
