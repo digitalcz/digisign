@@ -19,4 +19,14 @@ class EnvelopeTag extends BaseResource
     public string $type;
     public EnvelopeDocument $document;
     public EnvelopeRecipient $recipient;
+
+    // InputTag
+    /** @var string|bool */
+    public $value; // phpcs:ignore
+    public string $label;
+    public bool $readonly;
+
+    // DocumentTag
+    public string $name;
+    public string $layout;
 }
