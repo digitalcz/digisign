@@ -22,7 +22,7 @@ final class FileStream
     public function __construct($handle, ?int $size = null, ?string $filename = null)
     {
         if (!is_resource($handle)) {
-            throw new InvalidArgumentException('$handle must be resource');
+            throw new InvalidArgumentException('Invalid $handle, resource is expected');
         }
 
         $this->handle = $handle;

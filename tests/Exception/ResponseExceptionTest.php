@@ -32,4 +32,11 @@ class ResponseExceptionTest extends TestCase
         $exception = new ResponseException($response, 'Foo bar');
         self::assertSame('Foo bar', $exception->getMessage());
     }
+
+    public function testEmptyResponse(): void
+    {
+        $response = new Response(204);
+        $exception = new ResponseException($response, 'Foo bar');
+        self::assertSame('Foo bar: Empty result', $exception->getMessage());
+    }
 }

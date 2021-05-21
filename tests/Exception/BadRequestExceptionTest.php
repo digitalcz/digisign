@@ -46,4 +46,11 @@ class BadRequestExceptionTest extends TestCase
         self::assertSame(['{{ value }}' => 'null'], $violation->parameters);
         self::assertSame('urn:uuid:c1051bb4-d103-4f74-8988-acbcafc7fdc3', $violation->type);
     }
+
+    public function testEmptyResponse(): void
+    {
+        $response = new Response(204);
+        $exception = new BadRequestException($response);
+        self::assertNull($exception->getViolations());
+    }
 }

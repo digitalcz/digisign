@@ -19,4 +19,9 @@ class DummyEndpoint extends ResourceEndpoint
     {
         parent::__construct($parent, '/dummy', DummyResource::class);
     }
+
+    public function patch(string $id)
+    {
+        return $this->createResource($this->patchRequest());
+    }
 }

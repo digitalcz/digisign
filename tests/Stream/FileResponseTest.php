@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Stream;
 
+use DigitalCz\DigiSign\Exception\RuntimeException;
 use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 
@@ -42,5 +43,23 @@ class FileResponseTest extends TestCase
         $response->save($savePath);
         self::assertFileEquals(TESTS_DIR . '/dummy.pdf', $savePath);
         unlink($savePath);
+    }
+
+    public function testUnableToGetBody(): void
+    {
+        $sourceFile = fopen(TESTS_DIR . '/dummy.pdf', 'rb+');
+        self::assertIsResource($sourceFile);
+        $headers = [
+            'Content-Disposition' => "attachment; filename=bar.pdf; filename*=utf-8''foo.pdf",
+            'Content-Length' => 13264,
+        ];
+        $httpResponse = new Response(200, $headers, $sourceFile);
+        $httpResponse->getBody()->detach(); // detach body
+
+        $response = new FileResponse($httpResponse);
+
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Unable to get body handle');
+        $response->getFile();
     }
 }

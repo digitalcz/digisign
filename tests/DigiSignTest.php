@@ -154,9 +154,17 @@ class DigiSignTest extends TestCase
                 'client' => new DigiSignClient($mockClient),
             ],
         );
+
         $digiSign->request('GET');
         self::assertSame(
             'digitalcz/digisign:1.0.0 PHP:' . PHP_VERSION,
+            $mockClient->getLastRequest()->getHeaderLine('User-Agent'),
+        );
+
+        $digiSign->removeVersion('PHP');
+        $digiSign->request('GET');
+        self::assertSame(
+            'digitalcz/digisign:1.0.0',
             $mockClient->getLastRequest()->getHeaderLine('User-Agent'),
         );
     }

@@ -40,4 +40,11 @@ class FileTest extends TestCase
         self::assertFileEquals(TESTS_DIR . '/dummy.pdf', $savePath);
         unlink($savePath);
     }
+
+    public function testInvalidArgument(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid $handle, resource is expected');
+        new FileStream('/tmp/foobar');
+    }
 }

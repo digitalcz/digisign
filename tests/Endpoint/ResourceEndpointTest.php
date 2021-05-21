@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
+use DigitalCz\DigiSign\Exception\EmptyResultException;
 use DigitalCz\DigiSign\Exception\ResponseException;
 use DigitalCz\DigiSign\Resource\DummyResource;
 use Nyholm\Psr7\Response;
@@ -120,6 +121,43 @@ class ResourceEndpointTest extends TestCase
         $endpoint = new DummyEndpoint($parent);
         $resource = $endpoint->get(DummyResource::ID);
         self::assertSame(DummyResource::EXAMPLE, $resource->getResult());
+    }
+
+    public function testPatchRequest(): void
+    {
+        $expectedResponse = new Response(200, [], json_encode(DummyResource::EXAMPLE, JSON_THROW_ON_ERROR));
+
+        $parent = $this->createMock(EndpointInterface::class);
+        $parent->expects(self::once())
+            ->method('request')
+            ->with(
+                self::equalTo('PATCH'),
+                self::equalTo('/dummy'),
+            )->willReturn($expectedResponse);
+
+        $endpoint = new DummyEndpoint($parent);
+        $resource = $endpoint->patch(DummyResource::ID);
+        self::assertSame(DummyResource::EXAMPLE, $resource->getResult());
+    }
+
+    public function testEmptyResultException(): void
+    {
+        // Response has no_content, but endpoint expects resource
+        $expectedResponse = new Response(204);
+
+        $parent = $this->createMock(EndpointInterface::class);
+        $parent->expects(self::once())
+            ->method('request')
+            ->with(
+                self::equalTo('GET'),
+                self::equalTo('/dummy/{id}'),
+                self::equalTo(['id' => DummyResource::ID]),
+            )->willReturn($expectedResponse);
+
+        $endpoint = new DummyEndpoint($parent);
+
+        $this->expectException(EmptyResultException::class);
+        $endpoint->get(DummyResource::ID);
     }
 
     public function testListRequest(): void

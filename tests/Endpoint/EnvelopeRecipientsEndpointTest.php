@@ -49,6 +49,12 @@ class EnvelopeRecipientsEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/envelopes/bar/recipients/foo/verified-claims');
     }
 
+    public function testSigningOrder(): void
+    {
+        self::endpoint()->signingOrder(['foo' => 'bar']);
+        self::assertLastRequest('PUT', '/api/envelopes/bar/recipients/signing-order');
+    }
+
     protected static function endpoint(): EnvelopeRecipientsEndpoint
     {
         return self::digiSign()->envelopes()->recipients('bar');

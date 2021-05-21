@@ -11,6 +11,7 @@ use DigitalCz\DigiSign\Exception\NotFoundException;
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use DigitalCz\DigiSign\Exception\ServerException;
 use DigitalCz\DigiSign\Resource\BaseResource;
+use DigitalCz\DigiSign\Resource\DummyResource;
 use DigitalCz\DigiSign\Stream\FileStream;
 use Http\Mock\Client;
 use InvalidArgumentException;
@@ -74,9 +75,19 @@ class DigiSignClientTest extends TestCase
         $httpClient = new Client();
         $client = new DigiSignClient($httpClient);
 
-        $client->request('GET', 'https://example.com/api/{foo}/{bar}', ['foo' => 'baz', 'bar' => 'moo']);
+        $client->request(
+            'GET',
+            'https://example.com/api/{foo}/{bar}',
+            [
+                'foo' => 'baz', // URI param is string
+                'bar' => new DummyResource(DummyResource::EXAMPLE) // URI param is resource
+            ]
+        );
 
-        self::assertSame('https://example.com/api/baz/moo', (string)$httpClient->getLastRequest()->getUri());
+        self::assertSame(
+            'https://example.com/api/baz/' . DummyResource::ID,
+            (string)$httpClient->getLastRequest()->getUri()
+        );
     }
 
     public function testRequestWithMissingUriParam(): void

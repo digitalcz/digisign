@@ -42,4 +42,14 @@ class CachedCredentialsTest extends TestCase
         $cachedCredentials->provide($digiSign);
         $cachedCredentials->provide($digiSign);
     }
+
+    public function testPreventDoubleDecoration(): void
+    {
+        $credentials = new TokenCredentials(new Token('token', 123));
+        $cache = new Psr16Cache(new ArrayAdapter());
+        $cachedCredentials = new CachedCredentials($credentials, $cache);
+
+        $this->expectException(\LogicException::class);
+        new CachedCredentials($cachedCredentials, $cache);
+    }
 }
