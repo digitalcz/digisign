@@ -26,10 +26,10 @@ class ApiKeyCredentialsTest extends TestCase
         $mockClient = new Client();
         $mockClient->addResponse(new Response(200, [], '{"token": "moo","exp":123}'));
 
-        $digiSign = new DigiSign(['client' => new DigiSignClient($mockClient)]);
+        $dgs = new DigiSign(['client' => new DigiSignClient($mockClient)]);
 
         $credentials = new ApiKeyCredentials('foo', 'bar');
-        $token = $credentials->provide($digiSign);
+        $token = $credentials->provide($dgs);
 
         self::assertEquals('{"accessKey":"foo","secretKey":"bar"}', (string)$mockClient->getLastRequest()->getBody());
         self::assertSame('moo', $token->getToken());

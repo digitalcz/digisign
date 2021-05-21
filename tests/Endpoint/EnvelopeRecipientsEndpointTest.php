@@ -57,6 +57,6 @@ class EnvelopeRecipientsEndpointTest extends EndpointTestCase
 
     protected static function endpoint(): EnvelopeRecipientsEndpoint
     {
-        return self::digiSign()->envelopes()->recipients('bar');
+        return self::dgs()->envelopes()->recipients('bar');
     }
 }

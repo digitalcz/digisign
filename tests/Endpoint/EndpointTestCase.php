@@ -17,18 +17,18 @@ use RuntimeException;
 abstract class EndpointTestCase extends TestCase
 {
     private static Client $httpClient;
-    private static DigiSign $digiSign;
+    private static DigiSign $dgs;
 
-    protected static function digiSign(): DigiSign
+    protected static function dgs(): DigiSign
     {
-        return self::$digiSign;
+        return self::$dgs;
     }
 
     protected function setUp(): void
     {
         self::$httpClient = new Client();
         self::$httpClient->setDefaultResponse(new Response(200, [], '{}'));
-        self::$digiSign = new DigiSign(
+        self::$dgs = new DigiSign(
             [
                 'credentials' => new TokenCredentials(new Token('token', time())),
                 'client' => new DigiSignClient(self::$httpClient),

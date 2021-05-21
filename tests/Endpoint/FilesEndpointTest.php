@@ -52,6 +52,6 @@ class FilesEndpointTest extends EndpointTestCase
 
     protected static function endpoint(): FilesEndpoint
     {
-        return self::digiSign()->files();
+        return self::dgs()->files();
     }
 }

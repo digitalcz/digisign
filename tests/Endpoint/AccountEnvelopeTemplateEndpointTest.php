@@ -23,6 +23,6 @@ class AccountEnvelopeTemplateEndpointTest extends EndpointTestCase
 
     protected static function endpoint(): AccountEnvelopeTemplateEndpoint
     {
-        return self::digiSign()->account()->envelopeTemplate();
+        return self::dgs()->account()->envelopeTemplate();
     }
 }

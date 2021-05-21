@@ -53,6 +53,6 @@ class AccountUsersEndpointTest extends EndpointTestCase
 
     protected static function endpoint(): AccountUsersEndpoint
     {
-        return self::digiSign()->account()->users();
+        return self::dgs()->account()->users();
     }
 }

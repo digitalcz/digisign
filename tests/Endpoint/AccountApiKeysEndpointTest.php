@@ -47,6 +47,6 @@ class AccountApiKeysEndpointTest extends EndpointTestCase
 
     protected static function endpoint(): AccountApiKeysEndpoint
     {
-        return self::digiSign()->account()->apiKeys();
+        return self::dgs()->account()->apiKeys();
     }
 }

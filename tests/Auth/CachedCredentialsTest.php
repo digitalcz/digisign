@@ -33,15 +33,15 @@ class CachedCredentialsTest extends TestCase
             ->method('provide')
             ->willReturn(new Token('token', time() + 300));
 
-        $digiSign = new DigiSign();
+        $dgs = new DigiSign();
 
         $cache = new Psr16Cache(new ArrayAdapter());
         $cachedCredentials = new CachedCredentials($credentials, $cache);
 
-        $cachedCredentials->provide($digiSign);
-        $cachedCredentials->provide($digiSign);
-        $cachedCredentials->provide($digiSign);
-        $cachedCredentials->provide($digiSign);
+        $cachedCredentials->provide($dgs);
+        $cachedCredentials->provide($dgs);
+        $cachedCredentials->provide($dgs);
+        $cachedCredentials->provide($dgs);
     }
 
     public function testPreventDoubleDecoration(): void

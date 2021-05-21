@@ -11,7 +11,7 @@ class AuthEndpointTest extends EndpointTestCase
 {
     public function testAuthorize(): void
     {
-        self::digiSign()->auth()->authorize(['foo' => 'bar']);
+        self::dgs()->auth()->authorize(['foo' => 'bar']);
         self::assertLastRequestMethodIsPost();
         self::assertLastRequestPath('/api/auth-token');
         self::assertLastRequestJsonBody(['foo' => 'bar']);

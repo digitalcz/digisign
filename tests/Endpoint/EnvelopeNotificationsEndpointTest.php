@@ -16,6 +16,6 @@ class EnvelopeNotificationsEndpointTest extends EndpointTestCase
 
     protected static function endpoint(): EnvelopeNotificationsEndpoint
     {
-        return self::digiSign()->envelopes()->notifications('bar');
+        return self::dgs()->envelopes()->notifications('bar');
     }
 }

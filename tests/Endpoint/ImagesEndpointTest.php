@@ -57,6 +57,6 @@ class ImagesEndpointTest extends EndpointTestCase
 
     protected static function endpoint(): ImagesEndpoint
     {
-        return self::digiSign()->images();
+        return self::dgs()->images();
     }
 }

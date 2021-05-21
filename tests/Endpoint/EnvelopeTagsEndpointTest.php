@@ -16,6 +16,6 @@ class EnvelopeTagsEndpointTest extends EndpointTestCase
 
     protected static function endpoint(): EnvelopeTagsEndpoint
     {
-        return self::digiSign()->envelopes()->tags('bar');
+        return self::dgs()->envelopes()->tags('bar');
     }
 }

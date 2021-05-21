@@ -23,9 +23,9 @@ class DigiSignTest extends TestCase
 {
     public function testCreateWithCredentials(): void
     {
-        $digiSign = new DigiSign(['access_key' => 'foo', 'secret_key' => 'bar']);
+        $dgs = new DigiSign(['access_key' => 'foo', 'secret_key' => 'bar']);
 
-        $credentials = $digiSign->getCredentials();
+        $credentials = $dgs->getCredentials();
         self::assertInstanceOf(ApiKeyCredentials::class, $credentials);
         self::assertSame('foo', $credentials->getAccessKey());
         self::assertSame('bar', $credentials->getSecretKey());
@@ -33,19 +33,19 @@ class DigiSignTest extends TestCase
 
     public function testPleaseProvideCredentialsException(): void
     {
-        $digiSign = new DigiSign();
+        $dgs = new DigiSign();
 
         $this->expectException(LogicException::class);
         $this->expectExceptionMessage(
             'No credentials were provided, Please use setCredentials() ' .
             'or constructor options to set them.',
         );
-        $digiSign->getCredentials();
+        $dgs->getCredentials();
     }
 
     public function testCreateWithCachedCredentials(): void
     {
-        $digiSign = new DigiSign(
+        $dgs = new DigiSign(
             [
                 'access_key' => 'foo',
                 'secret_key' => 'bar',
@@ -53,7 +53,7 @@ class DigiSignTest extends TestCase
             ],
         );
 
-        $credentials = $digiSign->getCredentials();
+        $credentials = $dgs->getCredentials();
         self::assertInstanceOf(CachedCredentials::class, $credentials);
         $credentials = $credentials->getInner();
         self::assertInstanceOf(ApiKeyCredentials::class, $credentials);
@@ -64,14 +64,14 @@ class DigiSignTest extends TestCase
     public function testCreateWithDoubleCachedCredentials(): void
     {
         $cache = new Psr16Cache(new FilesystemAdapter());
-        $digiSign = new DigiSign(
+        $dgs = new DigiSign(
             [
                 'credentials' => new CachedCredentials(new TokenCredentials(new Token('foo', time())), $cache),
                 'cache' => new Psr16Cache(new FilesystemAdapter()),
             ],
         );
 
-        $credentials = $digiSign->getCredentials();
+        $credentials = $dgs->getCredentials();
         self::assertInstanceOf(CachedCredentials::class, $credentials);
         $credentials = $credentials->getInner();
         self::assertInstanceOf(TokenCredentials::class, $credentials);
@@ -88,9 +88,9 @@ class DigiSignTest extends TestCase
     {
         $token = new Token('foo', time());
 
-        $digiSign = new DigiSign(['credentials' => new TokenCredentials($token)]);
+        $dgs = new DigiSign(['credentials' => new TokenCredentials($token)]);
 
-        $credentials = $digiSign->getCredentials();
+        $credentials = $dgs->getCredentials();
         self::assertInstanceOf(TokenCredentials::class, $credentials);
         self::assertSame($token, $credentials->getToken());
     }
@@ -106,7 +106,7 @@ class DigiSignTest extends TestCase
     public function testCreateAsTesting(): void
     {
         $mockClient = new Client();
-        $digiSign = new DigiSign(
+        $dgs = new DigiSign(
             [
                 'credentials' => new TokenCredentials(new Token('foo', time())),
                 'http_client' => $mockClient,
@@ -114,29 +114,55 @@ class DigiSignTest extends TestCase
             ],
         );
 
-        $digiSign->request('GET', '/foo');
+        $dgs->request('GET', '/foo');
 
         self::assertSame('https://api.digisign.digital.cz/foo', (string)$mockClient->getLastRequest()->getUri());
     }
 
-    public function testUserAgent(): void
+    public function testChildren(): void
     {
         $mockClient = new Client();
-        $digiSign = new DigiSign(
+        $dgs = new DigiSign(
             [
                 'credentials' => new TokenCredentials(new Token('foo', time())),
                 'client' => new DigiSignClient($mockClient),
             ],
         );
 
-        $digiSign->request('GET');
+        $dgs->auth()->request('GET');
+        self::assertSame('/api/auth-token', $mockClient->getLastRequest()->getUri()->getPath());
+        $dgs->account()->request('GET');
+        self::assertSame('/api/account', $mockClient->getLastRequest()->getUri()->getPath());
+        $dgs->envelopes()->request('GET');
+        self::assertSame('/api/envelopes', $mockClient->getLastRequest()->getUri()->getPath());
+        $dgs->deliveries()->request('GET');
+        self::assertSame('/api/deliveries', $mockClient->getLastRequest()->getUri()->getPath());
+        $dgs->files()->request('GET');
+        self::assertSame('/api/files', $mockClient->getLastRequest()->getUri()->getPath());
+        $dgs->images()->request('GET');
+        self::assertSame('/api/images', $mockClient->getLastRequest()->getUri()->getPath());
+        $dgs->webhooks()->request('GET');
+        self::assertSame('/api/webhooks', $mockClient->getLastRequest()->getUri()->getPath());
+    }
+
+    public function testUserAgent(): void
+    {
+        $mockClient = new Client();
+        $dgs = new DigiSign(
+            [
+                'credentials' => new TokenCredentials(new Token('foo', time())),
+                'client' => new DigiSignClient($mockClient),
+            ],
+        );
+
+        $dgs->request('GET');
         self::assertSame(
             'digitalcz/digisign:1.0.0 PHP:' . PHP_VERSION,
             $mockClient->getLastRequest()->getHeaderLine('User-Agent'),
         );
 
-        $digiSign->removeVersion('PHP');
-        $digiSign->request('GET');
+        $dgs->removeVersion('PHP');
+        $dgs->request('GET');
         self::assertSame(
             'digitalcz/digisign:1.0.0',
             $mockClient->getLastRequest()->getHeaderLine('User-Agent'),
@@ -146,14 +172,14 @@ class DigiSignTest extends TestCase
     public function testCreateWithApiBase(): void
     {
         $mockClient = new Client();
-        $digiSign = new DigiSign(
+        $dgs = new DigiSign(
             [
                 'client' => new DigiSignClient($mockClient),
                 'credentials' => new TokenCredentials(new Token('foo', time())),
                 'api_base' => 'https://example.org/api',
             ],
         );
-        $digiSign->request('GET', '/foo');
+        $dgs->request('GET', '/foo');
 
         self::assertSame('https://example.org/api/foo', (string)$mockClient->getLastRequest()->getUri());
     }

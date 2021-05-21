@@ -27,6 +27,6 @@ class DeliveryRecipientsEndpointTest extends EndpointTestCase
 
     protected static function endpoint(): DeliveryRecipientsEndpoint
     {
-        return self::digiSign()->deliveries()->recipients('bar');
+        return self::dgs()->deliveries()->recipients('bar');
     }
 }

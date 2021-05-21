@@ -35,6 +35,6 @@ class WebhooksEndpointTest extends EndpointTestCase
 
     protected static function endpoint(): WebhooksEndpoint
     {
-        return self::digiSign()->webhooks();
+        return self::dgs()->webhooks();
     }
 }

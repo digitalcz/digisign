@@ -29,6 +29,6 @@ class AccountMeEndpointTest extends EndpointTestCase
 
     protected static function endpoint(): AccountMeEndpoint
     {
-        return self::digiSign()->account()->me();
+        return self::dgs()->account()->me();
     }
 }

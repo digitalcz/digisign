@@ -28,6 +28,6 @@ class DeliveryDocumentsEndpointTest extends EndpointTestCase
 
     protected static function endpoint(): DeliveryDocumentsEndpoint
     {
-        return self::digiSign()->deliveries()->documents('bar');
+        return self::dgs()->deliveries()->documents('bar');
     }
 }

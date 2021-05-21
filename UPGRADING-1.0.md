@@ -14,7 +14,7 @@ It aimed to ease configuration and usage and to improve forward compatibility wi
     $psr16Cache = new Symfony\Component\Cache\Psr16Cache($psr6Cache);
   
     $tokenProvider = new DigitalCz\DigiSign\Auth\AuthTokenProvider($psr16Cache);
-    $digiSign = new DigitalCz\DigiSign\DigiSign(
+    $dgs = new DigitalCz\DigiSign\DigiSign(
         'yourAccessKey',
         'yourSecretKey',
         $tokenProvider,
@@ -53,7 +53,7 @@ It aimed to ease configuration and usage and to improve forward compatibility wi
         'your-app-id'
     );
     
-    $envelope = $digiSign->getEnvelopeApi()->createEnvelope($envelope);
+    $envelope = $dgs->getEnvelopeApi()->createEnvelope($envelope);
     ```
   
   After:
@@ -73,7 +73,7 @@ It aimed to ease configuration and usage and to improve forward compatibility wi
   
   Before:
     ```php 
-    $envelope = $digiSign->getEnvelopeApi()->getEnvelope('9181d626-5c99-49d7-ba86-2410e98f6433');
+    $envelope = $dgs->getEnvelopeApi()->getEnvelope('9181d626-5c99-49d7-ba86-2410e98f6433');
     $envelopeId = $envelope->getId(); // '9181d626-5c99-49d7-ba86-2410e98f6433'
     $status = $envelope->getStatus(); // 'draft'
     ```
@@ -90,10 +90,10 @@ It aimed to ease configuration and usage and to improve forward compatibility wi
     ```php
     // uploading
     $file = DigitalCz\DigiSign\Model\Stream::fromPath('path/to/file.pdf');
-    $digiSign->getFileApi()->createFile($file);
+    $dgs->getFileApi()->createFile($file);
   
     // downloading
-    $file = $digiSign->getEnvelopeApi()->downloadEnvelope('9181d626-5c99-49d7-ba86-2410e98f6433');
+    $file = $dgs->getEnvelopeApi()->downloadEnvelope('9181d626-5c99-49d7-ba86-2410e98f6433');
     file_put_contents('path/to/file.pdf', $file->getStream()->getHandle());
     ```
   

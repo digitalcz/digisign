@@ -16,5 +16,5 @@ interface Credentials
     /**
      * Return auth Token for this credentials
      */
-    public function provide(DigiSign $digiSign): Token;
+    public function provide(DigiSign $dgs): Token;
 }

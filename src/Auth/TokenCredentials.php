@@ -23,7 +23,7 @@ final class TokenCredentials implements Credentials
         return md5($this->token->getToken() . $this->token->getExp());
     }
 
-    public function provide(DigiSign $digiSign): Token
+    public function provide(DigiSign $dgs): Token
     {
         return $this->token;
     }

@@ -33,7 +33,7 @@ final class CachedCredentials implements Credentials
         return self::PREFIX . $this->inner->getHash();
     }
 
-    public function provide(DigiSign $digiSign): Token
+    public function provide(DigiSign $dgs): Token
     {
         $key = $this->getHash();
 
@@ -41,7 +41,7 @@ final class CachedCredentials implements Credentials
             return $this->cache->get($key);
         }
 
-        $token = $this->inner->provide($digiSign);
+        $token = $this->inner->provide($dgs);
 
         $this->cache->set($key, $token, $token->getTtl());
 

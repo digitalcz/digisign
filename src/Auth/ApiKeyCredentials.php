@@ -35,10 +35,10 @@ final class ApiKeyCredentials implements Credentials
         return md5($this->accessKey . $this->secretKey);
     }
 
-    public function provide(DigiSign $digiSign): Token
+    public function provide(DigiSign $dgs): Token
     {
         $body = ['accessKey' => $this->getAccessKey(), 'secretKey' => $this->getSecretKey()];
-        $token = $digiSign->auth()->authorize($body);
+        $token = $dgs->auth()->authorize($body);
 
         return new Token($token->token, $token->exp);
     }

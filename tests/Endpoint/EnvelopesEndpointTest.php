@@ -60,6 +60,6 @@ class EnvelopesEndpointTest extends EndpointTestCase
 
     protected static function endpoint(): EnvelopesEndpoint
     {
-        return self::digiSign()->envelopes();
+        return self::dgs()->envelopes();
     }
 }
