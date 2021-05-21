@@ -6,12 +6,13 @@
 [![codecov](https://codecov.io/gh/digitalcz/digisign/branch/master/graph/badge.svg)](https://codecov.io/gh/digitalcz/digisign)
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Provides communication with digisign.cz (see https://api.digisign.org/api/docs) in PHP OOP via PSR-18 http client. 
-Implemented standards PSR18 http client, PSR17 Discovery and PSR16 cache.
+Provides communication with www.digisign.cz in OOP PHP using PSR-18 HTTP Client, PSR-17 HTTP Factories and PSR-16 SimpleCache.
+
+Documentation of API is here https://api.digisign.org/api/docs
 
 ## Install
 
-Via Composer
+Via [Composer](https://getcomposer.org/)
 
 ```bash
 $ composer require digitalcz/digisign
@@ -19,75 +20,97 @@ $ composer require digitalcz/digisign
 
 ## Configuration
 
-#### Example of configuration in Symfony
+#### Example configuration in PHP
+
+```php
+use DigitalCz\DigiSign\Auth\ApiKeyCredentials;
+use DigitalCz\DigiSign\DigiSign;
+use DigitalCz\DigiSign\DigiSignClient;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Component\Cache\Psr16Cache;
+use Symfony\Component\HttpClient\Psr18Client;
+
+// Via constructor options
+$dgs = new DigiSign([
+    'access_key' => '...',
+    'secret_key' => '...',
+
+    // other options
+    'cache' => new Psr16Cache(new FilesystemAdapter()), // or any other PSR16 implementation
+    'http_client' => new Psr18Client(),                 // or any other PSR18 implementation
+    'testing' => true                                   // use testing API base
+]);
+
+// Or via methods
+$dgs = new DigiSign();
+$dgs->setCredentials(new ApiKeyCredentials('...', '...'));
+$dgs->setCache(new Psr16Cache(new FilesystemAdapter()));
+$dgs->setClient(new DigiSignClient(new Psr18Client()));
+$dgs->useTesting(true);
+```
+
+#### Example configuration in Symfony
 
 ```yaml
 services:
-    _defaults:
-        autowire: true
-        autoconfigure: true
-
-    document_signature_cache_provider:
-        class: Symfony\Component\Cache\Simple\DoctrineCache
-        arguments: ['@doctrine_cache.document_signature']
-
-    DigitalCz\DigiSign\Auth\AuthTokenProvider:
-        arguments:
-            - '@document_signature_cache_provider'
-
-    DigitalCz\DigiSign\Auth\AuthTokenProviderInterface: '@DigitalCz\DigiSign\Auth\AuthTokenProvider'
-
     DigitalCz\DigiSign\DigiSign:
-        arguments:
-            $clientId: '%digisign.accessKey%'
-            $clientSecret: '%digisign.secretKey%'
-            $sandbox: '%digisign.sandbox%'
+        $options:
+            # minimal config
+            access_key: '%digisign.accessKey%'
+            secret_key: '%digisign.secretKey%'
 
-    Infrastructure\DocumentSignature\DigiSign\DigiSignAdapter:
-        arguments: ['@DigitalCz\DigiSign\DigiSign']
+            # other options
+            cache: '@psr16.cache'
+            http_client: '@psr18.http_client'
+            testing: true # use testing API
 ```
 
 ## Usage
 
-#### Example of usage in PHP
+#### Create and send Envelope
 
 ```php
-// create PSR6 and PSR16 cache
-$psr6Cache = new Symfony\Component\Cache\Adapter\FilesystemAdapter();
-$psr16Cache = new Symfony\Component\Cache\Psr16Cache($psr6Cache);
+use DigitalCz\DigiSign\DigiSign;
+use DigitalCz\DigiSign\Stream\FileStream;
 
-// create auth token provider
-$tokenProvider = new DigitalCz\DigiSign\Auth\AuthTokenProvider($psr16Cache);
+$dgs = new DigiSign(['access_key' => '...', 'secret_key' => '...']);
 
-$digiSign = new DigitalCz\DigiSign\DigiSign(
-    'yourAccessKey',
-    'yourSecretKey',
-    $tokenProvider
-);
+$envelopes = $dgs->envelopes();
 
-// create envelope DTO
-$envelope = new DigitalCz\DigiSign\Model\DTO\EnvelopeData(
-    'Document to sign',
-    'Hi James,<br/>please sign document.<br/>Thank you.<br/>Anna',
-    'Anna',
-    'anna@example.com',
-    new DateTimeImmutable('2022-09-21T09:45:29+02:00'),
-    'your-app-id'
-);
+$envelope = $envelopes->create([
+    'emailSubject' => 'Please sign',
+    'emailBody' => 'Hello James, please sign these documents.',
+    'senderName' => 'John Smith',
+    'senderEmail' => 'john.smith@example.com'
+]);
 
-// send envelope DTO via DigiSign API
-$envelope = $digiSign->getEnvelopeApi()->createEnvelope($envelope);
+$recipient = $envelopes->recipients($envelope)->create([
+    'role' => 'signer',
+    'name' => 'James Brown',
+    'email' => 'james42@example.com',
+    'mobile' => '+420775300500',
+]);
 
-// get envelope data from api response converted to value object
-$envelopeId = $envelope->getId();
-$status = $envelope->getStatus();
-...
+$file = $dgs->files()->upload(FileStream::open('document.pdf'));
+
+$document = $envelopes->documents($envelope)->create([
+    'name' => 'Contract',
+    'file' => $file->self()
+]);
+
+$envelopes->tags($envelope)->create([
+    'type' => 'signature',
+    'document' => $document,
+    'recipient' => $recipient,
+    'page' => 1,
+    'xPosition' => 200,
+    'yPosition' => 340
+]);
+
+$envelopes->send($envelope->id());
 ```
 
-#### Token Provider
-You can use AuthTokenProvider which use PSR6 CachingInterface (see https://www.php-fig.org/psr/psr-6/) 
-for automatically store token. Or you can implement your own with AccessTokenProviderInterface.
-
+See [examples](examples) for more
 
 ## Change log
 
@@ -96,10 +119,13 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Testing
 
 ``` bash
-$ composer tests
-$ composer phpstan
-$ composer cs       # codesniffer
-$ composer csfix    # code beautifier
+$ composer csfix    # fix codestyle
+$ composer checks   # run all checks 
+
+# or separately
+$ composer tests    # run phpunit
+$ composer phpstan  # run phpstan
+$ composer cs       # run codesniffer
 ```
 
 ## Contributing

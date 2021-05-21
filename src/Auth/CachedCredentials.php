@@ -9,7 +9,7 @@ use LogicException;
 use Psr\SimpleCache\CacheInterface;
 
 /**
- * Decorator to cache Credentials with PSR-16 cache
+ * Decorator to cache Credentials with PSR-16 CacheInterface
  */
 final class CachedCredentials implements Credentials
 {
