@@ -39,12 +39,16 @@ interface ResourceInterface extends JsonSerializable
     public function toArray(): array;
 
     /**
-     * Returns IRI for Resource, null if Resource has no IRI
+     * Returns IRI for Resource
+     *
+     * @throws RuntimeException if Resource has no self link
      */
-    public function self(): ?string;
+    public function self(): string;
 
     /**
-     * Returns ID for Resource, null if Resource has no ID
+     * Returns ID for Resource
+     *
+     * @throws RuntimeException if Resource has no ID
      */
-    public function id(): ?string;
+    public function id(): string;
 }

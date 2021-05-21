@@ -73,14 +73,22 @@ class BaseResource implements ResourceInterface
         return $result;
     }
 
-    public function self(): ?string
+    public function self(): string
     {
-        return $this->_result['_links']['self'] ?? null;
+        if (!isset($this->_result['_links']['self'])) {
+            throw new RuntimeException('Resource has no self link');
+        }
+
+        return $this->_result['_links']['self'];
     }
 
-    public function id(): ?string
+    public function id(): string
     {
-        return $this->_result['id'] ?? null;
+        if (!isset($this->_result['id'])) {
+            throw new RuntimeException('Resource has no ID');
+        }
+
+        return $this->_result['id'];
     }
 
     /**
