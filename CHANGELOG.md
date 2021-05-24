@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [0.1.4] - 2021-05-24
+### Added
+- Add placeholder and positioning to envelope tag DTO
+
 ## [0.1.3] - 2020-11-09
 ### Added
 - Add support of API EnvelopeNotification
