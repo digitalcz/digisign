@@ -55,6 +55,35 @@ class EnvelopeTagApiTest extends BaseApiTestCase
         self::assertEquals('1dae4051-8ea7-4267-b12d-566a3e767d2a', $tag->getId());
     }
 
+    public function testCreateTagWithPlaceholder(): void
+    {
+        $httpClient = $this->httpClient;
+
+        $httpResponse = $this->createMock(ResponseInterface::class);
+        $httpResponse->method('getStatusCode')->willReturn(200);
+        $httpResponse->method('getBody')
+            ->willReturn(
+                file_get_contents(__DIR__ . '/../../Dummy/Responses/envelope_tag.json')
+            );
+        $httpClient->addResponse($httpResponse);
+
+        $api = new EnvelopeTagApi($this->httpClient, $this->requestBuilder);
+
+        $tag = $api->createTag('0211f410-268a-4ac3-ac40-b41ee7647092', new EnvelopeTagData(
+            'signature',
+            '/api/envelopes/85c412fc-ee02-4220-ac79-8b0a721ceb88/recipients/78bd8c9b-6e36-44f7-a103-41c963cf3f03',
+            '/api/envelopes/819c8aa2-3871-4a0d-950f-2b45d2c6f8fc/documents/3fbf6b5d-ea56-49fd-bf6b-0107d32bf4d7',
+            null,
+            null,
+            null,
+            '@signer',
+            'center'
+        ));
+
+        self::assertCount(1, $httpClient->getRequests());
+        self::assertEquals('1dae4051-8ea7-4267-b12d-566a3e767d2a', $tag->getId());
+    }
+
     public function testUpdateTag(): void
     {
         $httpClient = $this->httpClient;
