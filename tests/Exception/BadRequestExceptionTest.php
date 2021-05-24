@@ -10,6 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \DigitalCz\DigiSign\Exception\BadRequestException
+ * @covers \DigitalCz\DigiSign\Resource\Violations
  */
 class BadRequestExceptionTest extends TestCase
 {
