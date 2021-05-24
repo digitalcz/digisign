@@ -41,6 +41,16 @@ class EnvelopeTagData
     private $yPosition;
 
     /**
+     * @var string|null
+     */
+    private $placeholder;
+
+    /**
+     * @var string|null
+     */
+    private $positioning;
+
+    /**
      * @param string|EnvelopeRecipientIri $recipient
      * @param string|EnvelopeDocumentIri $document
      */
@@ -50,7 +60,9 @@ class EnvelopeTagData
         $document,
         ?int $page,
         ?int $xPosition,
-        ?int $yPosition
+        ?int $yPosition,
+        ?string $placeholder = null,
+        ?string $positioning = null
     ) {
         if (is_string($recipient)) {
             $recipient = EnvelopeRecipientIri::parse($recipient);
@@ -70,6 +82,8 @@ class EnvelopeTagData
         $this->page = $page;
         $this->xPosition = $xPosition;
         $this->yPosition = $yPosition;
+        $this->placeholder = $placeholder;
+        $this->positioning = $positioning;
     }
 
     /**
@@ -83,7 +97,9 @@ class EnvelopeTagData
             $data['document'],
             $data['page'] ? (int)$data['page'] : null,
             $data['xPosition'] ? (int)$data['xPosition'] : null,
-            $data['yPosition'] ? (int)$data['yPosition'] : null
+            $data['yPosition'] ? (int)$data['yPosition'] : null,
+            $data['placeholder'],
+            $data['positioning']
         );
     }
 
@@ -99,6 +115,8 @@ class EnvelopeTagData
             'yPosition' => $this->yPosition,
             'recipient' => $this->recipient->toString(),
             'document' => $this->document->toString(),
+            'placeholder' => $this->placeholder,
+            'positioning' => $this->positioning
         ];
     }
 
@@ -130,5 +148,21 @@ class EnvelopeTagData
     public function getYPosition(): ?int
     {
         return $this->yPosition;
+    }
+
+    public function getPlaceholder(): ?string {
+        return $this->placeholder;
+    }
+
+    public function setPlaceholder(?string $placeholder): void {
+        $this->placeholder = $placeholder;
+    }
+
+    public function getPositioning(): ?string {
+        return $this->positioning;
+    }
+
+    public function setPositioning(?string $positioning): void {
+        $this->positioning = $positioning;
     }
 }
