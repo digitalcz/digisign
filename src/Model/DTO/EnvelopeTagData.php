@@ -150,19 +150,23 @@ class EnvelopeTagData
         return $this->yPosition;
     }
 
-    public function getPlaceholder(): ?string {
+    public function getPlaceholder(): ?string
+    {
         return $this->placeholder;
     }
 
-    public function setPlaceholder(?string $placeholder): void {
+    public function setPlaceholder(?string $placeholder): void
+    {
         $this->placeholder = $placeholder;
     }
 
-    public function getPositioning(): ?string {
+    public function getPositioning(): ?string
+    {
         return $this->positioning;
     }
 
-    public function setPositioning(?string $positioning): void {
+    public function setPositioning(?string $positioning): void
+    {
         $this->positioning = $positioning;
     }
 }
