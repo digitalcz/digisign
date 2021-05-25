@@ -4,6 +4,11 @@ All notable changes will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.0.0]
+Complete rewrite of library
+
+see [UPGRADING-1.0](UPGRADING-1.0.md)
+
 ## [0.1.3] - 2020-11-09
 ### Added
 - Add support of API EnvelopeNotification

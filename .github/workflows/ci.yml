@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [7.2, 7.3, 7.4]
+        php: [7.4, 8.0]
         dependency-version: [prefer-lowest, prefer-stable]
 
     name: PHP ${{ matrix.php }} (${{ matrix.dependency-version }})
@@ -33,7 +33,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: mbstring, zip
-          tools: prestissimo, cs2pr
+          tools: cs2pr
           coverage: pcov
 
       - name: Composer Dependencies

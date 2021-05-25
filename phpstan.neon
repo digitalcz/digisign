@@ -1,5 +1,11 @@
 parameters:
-        level: max
-        paths:
+    level: max
+    paths:
+        - examples
         - src
         - tests
+
+    bootstrapFiles:
+        - tests/bootstrap.php
+
+    treatPhpDocTypesAsCertain: false

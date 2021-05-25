@@ -2,7 +2,7 @@
 
 Contributions are **welcome** and will be fully **credited**.
 
-We accept contributions via Pull Requests on [Github](https://github.com/digitalcz/gosms).
+We accept contributions via Pull Requests on [Github](https://github.com/digitalcz/digisign).
 
 
 ## Pull Requests
@@ -25,8 +25,8 @@ We accept contributions via Pull Requests on [Github](https://github.com/digital
 ## Running Tests
 
 ``` bash
-$ composer tests
-$ composer phpstan
+$ composer csfix    # fix codestyle
+$ composer checks   # run all checks
 ```
 
 
