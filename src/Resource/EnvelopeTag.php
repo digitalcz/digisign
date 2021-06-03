@@ -23,10 +23,10 @@ class EnvelopeTag extends BaseResource
     // InputTag
     /** @var string|bool */
     public $value; // phpcs:ignore
-    public string $label;
+    public ?string $label;
     public bool $readonly;
 
     // DocumentTag
-    public string $name;
+    public ?string $name;
     public string $layout;
 }
