@@ -9,28 +9,15 @@ namespace DigitalCz\DigiSign\Endpoint;
  */
 class WebhooksEndpointTest extends EndpointTestCase
 {
-    public function testList(): void
+    public function testCrud(): void
     {
-        self::endpoint()->list(['foo' => 'bar']);
-        self::assertLastRequest('GET', '/api/webhooks?foo=bar');
+        self::assertCrudRequests(self::endpoint(), '/api/webhooks');
     }
 
-    public function testCreate(): void
+    public function testTest(): void
     {
-        self::endpoint()->create(['foo' => 'bar']);
-        self::assertLastRequest('POST', '/api/webhooks', ['foo' => 'bar']);
-    }
-
-    public function testGet(): void
-    {
-        self::endpoint()->get('foo');
-        self::assertLastRequest('GET', '/api/webhooks/foo');
-    }
-
-    public function testDelete(): void
-    {
-        self::endpoint()->delete('foo');
-        self::assertLastRequest('DELETE', '/api/webhooks/foo');
+        self::endpoint()->test('bar');
+        self::assertLastRequest('POST', '/api/webhooks/bar/test');
     }
 
     protected static function endpoint(): WebhooksEndpoint
