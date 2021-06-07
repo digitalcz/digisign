@@ -9,6 +9,11 @@ namespace DigitalCz\DigiSign\Endpoint;
  */
 class WebhooksEndpointTest extends EndpointTestCase
 {
+    public function testChildren(): void
+    {
+        self::assertDefaultEndpointPath(self::endpoint()->attempts('foo'), '/api/webhooks/foo/attempts');
+    }
+
     public function testCrud(): void
     {
         self::assertCrudRequests(self::endpoint(), '/api/webhooks');
