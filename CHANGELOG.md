@@ -9,7 +9,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add new `WebhookAttemptsEndpoint` and `WebhookAttempt` resource
 
 ### Modify
-- Add `Webhook.status` 
+- Add `Webhook.status`
+- Add `Webhook.secret`
 
 ## [1.0.1] - 2021-06-03
 ### Fixed

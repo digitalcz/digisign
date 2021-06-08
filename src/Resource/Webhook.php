@@ -13,4 +13,5 @@ class Webhook extends BaseResource
     public string $event;
     public string $url;
     public string $status;
+    public string $secret;
 }
