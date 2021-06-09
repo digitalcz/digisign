@@ -10,8 +10,15 @@ class Webhook extends BaseResource
 {
     use EntityResourceTrait;
 
-    public string $event;
-    public string $url;
-    public string $status;
-    public string $secret;
+    /** @var string */
+    public $event;
+
+    /** @var string */
+    public $url;
+
+    /** @var string */
+    public $status;
+
+    /** @var string */
+    public $secret;
 }

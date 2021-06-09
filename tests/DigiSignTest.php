@@ -38,7 +38,7 @@ class DigiSignTest extends TestCase
         $this->expectException(LogicException::class);
         $this->expectExceptionMessage(
             'No credentials were provided, Please use setCredentials() ' .
-            'or constructor options to set them.',
+            'or constructor options to set them.'
         );
         $dgs->getCredentials();
     }
@@ -50,7 +50,7 @@ class DigiSignTest extends TestCase
                 'access_key' => 'foo',
                 'secret_key' => 'bar',
                 'cache' => new Psr16Cache(new FilesystemAdapter()),
-            ],
+            ]
         );
 
         $credentials = $dgs->getCredentials();
@@ -68,7 +68,7 @@ class DigiSignTest extends TestCase
             [
                 'credentials' => new CachedCredentials(new TokenCredentials(new Token('foo', time())), $cache),
                 'cache' => new Psr16Cache(new FilesystemAdapter()),
-            ],
+            ]
         );
 
         $credentials = $dgs->getCredentials();
@@ -111,7 +111,7 @@ class DigiSignTest extends TestCase
                 'credentials' => new TokenCredentials(new Token('foo', time())),
                 'http_client' => $mockClient,
                 'testing' => true,
-            ],
+            ]
         );
 
         $dgs->request('GET', '/foo');
@@ -126,7 +126,7 @@ class DigiSignTest extends TestCase
             [
                 'credentials' => new TokenCredentials(new Token('foo', time())),
                 'client' => new DigiSignClient($mockClient),
-            ],
+            ]
         );
 
         $dgs->auth()->request('GET');
@@ -152,20 +152,20 @@ class DigiSignTest extends TestCase
             [
                 'credentials' => new TokenCredentials(new Token('foo', time())),
                 'client' => new DigiSignClient($mockClient),
-            ],
+            ]
         );
 
         $dgs->request('GET');
         self::assertSame(
             'digitalcz/digisign:' . DigiSign::VERSION . ' PHP:' . PHP_VERSION,
-            $mockClient->getLastRequest()->getHeaderLine('User-Agent'),
+            $mockClient->getLastRequest()->getHeaderLine('User-Agent')
         );
 
         $dgs->removeVersion('PHP');
         $dgs->request('GET');
         self::assertSame(
             'digitalcz/digisign:' . DigiSign::VERSION,
-            $mockClient->getLastRequest()->getHeaderLine('User-Agent'),
+            $mockClient->getLastRequest()->getHeaderLine('User-Agent')
         );
     }
 
@@ -177,7 +177,7 @@ class DigiSignTest extends TestCase
                 'client' => new DigiSignClient($mockClient),
                 'credentials' => new TokenCredentials(new Token('foo', time())),
                 'api_base' => 'https://example.org/api',
-            ],
+            ]
         );
         $dgs->request('GET', '/foo');
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Exception;
 
+use DigitalCz\DigiSign\DigiSignClient;
 use DigitalCz\DigiSign\Resource\Violation;
 use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
@@ -31,7 +32,7 @@ class BadRequestExceptionTest extends TestCase
             ],
         ];
 
-        $response = new Response(400, [], json_encode($result, JSON_THROW_ON_ERROR));
+        $response = new Response(400, [], DigiSignClient::jsonEncode($result));
         $exception = new BadRequestException($response);
         $violations = $exception->getViolations();
 

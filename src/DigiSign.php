@@ -26,17 +26,17 @@ final class DigiSign implements EndpointInterface
     public const API_BASE = 'https://api.digisign.org';
     public const API_BASE_TESTING = 'https://api.digisign.digital.cz';
 
-    /** The base URL for requests */
-    private string $apiBase = self::API_BASE;
+    /** @var string The base URL for requests */
+    private $apiBase = self::API_BASE;
 
-    /** The credentials used to authenticate to API */
-    private Credentials $credentials;
+    /** @var Credentials The credentials used to authenticate to API */
+    private $credentials;
 
-    /** The client used to send requests */
-    private DigiSignClient $client;
+    /** @var DigiSignClient The client used to send requests */
+    private $client;
 
     /** @var array<string, string> */
-    private array $versions = [];
+    private $versions = [];
 
     /**
      * Available options:
@@ -106,7 +106,7 @@ final class DigiSign implements EndpointInterface
         if (!isset($this->credentials)) {
             throw new LogicException(
                 'No credentials were provided, Please use setCredentials() ' .
-                'or constructor options to set them.',
+                'or constructor options to set them.'
             );
         }
 

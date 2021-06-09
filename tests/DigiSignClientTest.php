@@ -81,12 +81,12 @@ class DigiSignClientTest extends TestCase
             [
                 'foo' => 'baz', // URI param is string
                 'bar' => new DummyResource(DummyResource::EXAMPLE), // URI param is resource
-            ],
+            ]
         );
 
         self::assertSame(
             'https://example.com/api/baz/' . DummyResource::ID,
-            (string)$httpClient->getLastRequest()->getUri(),
+            (string)$httpClient->getLastRequest()->getUri()
         );
     }
 
@@ -108,12 +108,12 @@ class DigiSignClientTest extends TestCase
         $client->request(
             'GET',
             'https://example.com/api',
-            ['query' => ['foo' => 'bar', 'moo' => ['lt' => 10, 'eq' => 55]]],
+            ['query' => ['foo' => 'bar', 'moo' => ['lt' => 10, 'eq' => 55]]]
         );
 
         self::assertSame(
             'https://example.com/api?foo=bar&moo%5Blt%5D=10&moo%5Beq%5D=55',
-            (string)$httpClient->getLastRequest()->getUri(),
+            (string)$httpClient->getLastRequest()->getUri()
         );
     }
 
@@ -200,7 +200,7 @@ class DigiSignClientTest extends TestCase
         self::assertStringStartsWith("multipart/form-data; boundary=\"$boundary\"", $contentType);
         self::assertSame(
             "--$boundary\r\nContent-Disposition: form-data; name=\"foo\"\r\nContent-Length: 3\r\n\r\nbar\r\n--$boundary--\r\n",
-            (string)$lastRequest->getBody(),
+            (string)$lastRequest->getBody()
         );
     }
 
@@ -212,7 +212,7 @@ class DigiSignClientTest extends TestCase
         $client->request(
             'GET',
             'https://example.com/api',
-            ['multipart' => ['file' => FileStream::open(__DIR__ . '/dummy.pdf')]],
+            ['multipart' => ['file' => FileStream::open(__DIR__ . '/dummy.pdf')]]
         );
 
         $lastRequest = $httpClient->getLastRequest();
@@ -221,7 +221,7 @@ class DigiSignClientTest extends TestCase
         self::assertStringStartsWith("multipart/form-data; boundary=\"$boundary\"", $contentType);
         self::assertStringStartsWith(
             "--$boundary\r\nContent-Disposition: form-data; name=\"file\"; filename=\"dummy.pdf\"\r\nContent-Length: 13264\r\nContent-Type: application/pdf",
-            (string)$lastRequest->getBody(),
+            (string)$lastRequest->getBody()
         );
     }
 

@@ -10,10 +10,21 @@ class Image extends BaseResource
 {
     use EntityResourceTrait;
 
-    public bool $public;
-    public string $name;
-    public string $originalName;
-    public string $mimeType;
-    public int $size;
-    public string $sha1Checksum;
+    /** @var bool */
+    public $public;
+
+    /** @var string */
+    public $name;
+
+    /** @var string */
+    public $originalName;
+
+    /** @var string */
+    public $mimeType;
+
+    /** @var int */
+    public $size;
+
+    /** @var string */
+    public $sha1Checksum;
 }

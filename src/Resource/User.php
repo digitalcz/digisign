@@ -11,16 +11,39 @@ class User extends BaseResource
 {
     use EntityResourceTrait;
 
-    public ?Account $account;
-    public string $status;
-    public string $role;
-    public string $email;
-    public ?string $mobile;
-    public ?string $firstName;
-    public ?string $lastName;
-    public ?string $position;
-    public ?DateTime $verifiedAt;
-    public ?DateTime $deactivatedAt;
-    public string $note;
-    public ?DateTime $lastLoginAt;
+    /** @var Account|null */
+    public $account;
+
+    /** @var string */
+    public $status;
+
+    /** @var string */
+    public $role;
+
+    /** @var string */
+    public $email;
+
+    /** @var string|null */
+    public $mobile;
+
+    /** @var string|null */
+    public $firstName;
+
+    /** @var string|null */
+    public $lastName;
+
+    /** @var string|null */
+    public $position;
+
+    /** @var DateTime|null */
+    public $verifiedAt;
+
+    /** @var DateTime|null */
+    public $deactivatedAt;
+
+    /** @var string */
+    public $note;
+
+    /** @var DateTime|null */
+    public $lastLoginAt;
 }

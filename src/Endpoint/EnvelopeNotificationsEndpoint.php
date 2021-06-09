@@ -28,7 +28,7 @@ class EnvelopeNotificationsEndpoint extends ResourceEndpoint
             $parent,
             '/{envelope}/notifications',
             EnvelopeNotification::class,
-            ['envelope' => $envelope],
+            ['envelope' => $envelope]
         );
     }
 }

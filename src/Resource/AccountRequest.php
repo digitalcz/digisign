@@ -8,21 +8,36 @@ use DateTime;
 
 class AccountRequest extends BaseResource
 {
-    public string $endpoint;
-    public string $ip;
-    public string $source;
-    public string $method;
+    /** @var string */
+    public $endpoint;
+
+    /** @var string */
+    public $ip;
+
+    /** @var string */
+    public $source;
+
+    /** @var string */
+    public $method;
 
     /** @var mixed[] */
-    public array $queryParams;
+    public $queryParams;
 
     /** @var mixed[]|null */
-    public ?array $requestBody;
-    public int $status;
+    public $requestBody;
+
+    /** @var int */
+    public $status;
 
     /** @var mixed[]|null */
-    public ?array $responseBody;
-    public string $id;
-    public DateTime $createdAt;
-    public ?string $createdBy;
+    public $responseBody;
+
+    /** @var string */
+    public $id;
+
+    /** @var DateTime */
+    public $createdAt;
+
+    /** @var string|null */
+    public $createdBy;
 }

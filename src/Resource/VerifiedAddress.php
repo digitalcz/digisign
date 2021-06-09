@@ -6,11 +6,24 @@ namespace DigitalCz\DigiSign\Resource;
 
 class VerifiedAddress extends BaseResource
 {
-    public string $type;
-    public ?string $countryCode;
-    public ?string $region;
-    public ?string $city;
-    public ?string $postalCode;
-    public ?string $addressLine1;
-    public ?string $addressLine2;
+    /** @var string */
+    public $type;
+
+    /** @var string|null */
+    public $countryCode;
+
+    /** @var string|null */
+    public $region;
+
+    /** @var string|null */
+    public $city;
+
+    /** @var string|null */
+    public $postalCode;
+
+    /** @var string|null */
+    public $addressLine1;
+
+    /** @var string|null */
+    public $addressLine2;
 }

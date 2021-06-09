@@ -8,7 +8,12 @@ use DateTime;
 
 trait EntityResourceTrait
 {
-    public string $id;
-    public DateTime $createdAt;
-    public DateTime $updatedAt;
+    /** @var string */
+    public $id;
+
+    /** @var DateTime */
+    public $createdAt;
+
+    /** @var DateTime */
+    public $updatedAt;
 }

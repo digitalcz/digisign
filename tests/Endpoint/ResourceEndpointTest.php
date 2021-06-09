@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
+use DigitalCz\DigiSign\DigiSignClient;
 use DigitalCz\DigiSign\Exception\EmptyResultException;
 use DigitalCz\DigiSign\Exception\ResponseException;
 use DigitalCz\DigiSign\Resource\DummyResource;
@@ -25,7 +26,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('GET'),
                 self::equalTo('/dummy/path'),
-                self::equalTo(['option' => 'bar']),
+                self::equalTo(['option' => 'bar'])
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -43,7 +44,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('GET'),
                 self::equalTo('/dummy/path'),
-                self::equalTo(['option' => 'bar']),
+                self::equalTo(['option' => 'bar'])
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -54,7 +55,7 @@ class ResourceEndpointTest extends TestCase
 
     public function testCreateRequest(): void
     {
-        $expectedResponse = new Response(200, [], json_encode(DummyResource::EXAMPLE, JSON_THROW_ON_ERROR));
+        $expectedResponse = new Response(200, [], DigiSignClient::jsonEncode(DummyResource::EXAMPLE));
 
         $parent = $this->createMock(EndpointInterface::class);
         $parent->expects(self::once())
@@ -62,7 +63,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('POST'),
                 self::equalTo('/dummy'),
-                self::equalTo(['json' => DummyResource::EXAMPLE]),
+                self::equalTo(['json' => DummyResource::EXAMPLE])
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -72,7 +73,7 @@ class ResourceEndpointTest extends TestCase
 
     public function testUpdateRequest(): void
     {
-        $expectedResponse = new Response(200, [], json_encode(DummyResource::EXAMPLE, JSON_THROW_ON_ERROR));
+        $expectedResponse = new Response(200, [], DigiSignClient::jsonEncode(DummyResource::EXAMPLE));
 
         $parent = $this->createMock(EndpointInterface::class);
         $parent->expects(self::once())
@@ -80,7 +81,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('PUT'),
                 self::equalTo('/dummy/{id}'),
-                self::equalTo(['id' => 'foo', 'json' => DummyResource::EXAMPLE]),
+                self::equalTo(['id' => 'foo', 'json' => DummyResource::EXAMPLE])
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -98,7 +99,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('DELETE'),
                 self::equalTo('/dummy/{id}'),
-                self::equalTo(['id' => 'foo']),
+                self::equalTo(['id' => 'foo'])
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -107,7 +108,7 @@ class ResourceEndpointTest extends TestCase
 
     public function testGetRequest(): void
     {
-        $expectedResponse = new Response(200, [], json_encode(DummyResource::EXAMPLE, JSON_THROW_ON_ERROR));
+        $expectedResponse = new Response(200, [], DigiSignClient::jsonEncode(DummyResource::EXAMPLE));
 
         $parent = $this->createMock(EndpointInterface::class);
         $parent->expects(self::once())
@@ -115,7 +116,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('GET'),
                 self::equalTo('/dummy/{id}'),
-                self::equalTo(['id' => DummyResource::ID]),
+                self::equalTo(['id' => DummyResource::ID])
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -125,14 +126,14 @@ class ResourceEndpointTest extends TestCase
 
     public function testPatchRequest(): void
     {
-        $expectedResponse = new Response(200, [], json_encode(DummyResource::EXAMPLE, JSON_THROW_ON_ERROR));
+        $expectedResponse = new Response(200, [], DigiSignClient::jsonEncode(DummyResource::EXAMPLE));
 
         $parent = $this->createMock(EndpointInterface::class);
         $parent->expects(self::once())
             ->method('request')
             ->with(
                 self::equalTo('PATCH'),
-                self::equalTo('/dummy'),
+                self::equalTo('/dummy')
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -151,7 +152,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('GET'),
                 self::equalTo('/dummy/{id}'),
-                self::equalTo(['id' => DummyResource::ID]),
+                self::equalTo(['id' => DummyResource::ID])
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -162,7 +163,7 @@ class ResourceEndpointTest extends TestCase
 
     public function testListRequest(): void
     {
-        $expectedResponse = new Response(200, [], json_encode(DummyResource::LIST_EXAMPLE, JSON_THROW_ON_ERROR));
+        $expectedResponse = new Response(200, [], DigiSignClient::jsonEncode(DummyResource::LIST_EXAMPLE));
 
         $parent = $this->createMock(EndpointInterface::class);
         $parent->expects(self::once())
@@ -170,7 +171,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('GET'),
                 self::equalTo('/dummy'),
-                self::equalTo(['query' => ['foo' => 'bar']]),
+                self::equalTo(['query' => ['foo' => 'bar']])
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);

@@ -10,13 +10,30 @@ class AccountSettings extends BaseResource
 {
     use EntityResourceTrait;
 
-    public ?string $fullName;
-    public ?string $shortName;
-    public ?string $defaultSenderName;
-    public ?string $defaultSenderEmail;
-    public ?string $debuggingEmail;
-    public ?string $identificationNumber;
-    public ?string $vatNumber;
-    public ?Image $logo;
-    public ?Address $address;
+    /** @var string|null */
+    public $fullName;
+
+    /** @var string|null */
+    public $shortName;
+
+    /** @var string|null */
+    public $defaultSenderName;
+
+    /** @var string|null */
+    public $defaultSenderEmail;
+
+    /** @var string|null */
+    public $debuggingEmail;
+
+    /** @var string|null */
+    public $identificationNumber;
+
+    /** @var string|null */
+    public $vatNumber;
+
+    /** @var Image|null */
+    public $logo;
+
+    /** @var Address|null */
+    public $address;
 }

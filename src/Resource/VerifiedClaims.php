@@ -6,14 +6,27 @@ namespace DigitalCz\DigiSign\Resource;
 
 class VerifiedClaims extends BaseResource
 {
-    public string $source;
-    public ?string $sub;
-    public ?string $givenName;
-    public ?string $familyName;
-    public ?string $email;
-    public ?string $birthdate;
-    public ?string $phoneNumber;
+    /** @var string */
+    public $source;
+
+    /** @var string|null */
+    public $sub;
+
+    /** @var string|null */
+    public $givenName;
+
+    /** @var string|null */
+    public $familyName;
+
+    /** @var string|null */
+    public $email;
+
+    /** @var string|null */
+    public $birthdate;
+
+    /** @var string|null */
+    public $phoneNumber;
 
     /** @var Collection<VerifiedAddress> */
-    public Collection $addresses;
+    public $addresses;
 }

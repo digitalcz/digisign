@@ -12,8 +12,11 @@ use Psr\Http\Message\ResponseInterface;
  */
 final class FileResponse
 {
-    private ResponseInterface $response;
-    private FileStream $file;
+    /** @var ResponseInterface  */
+    private $response;
+
+    /** @var FileStream  */
+    private $file;
 
     public function __construct(ResponseInterface $response)
     {
@@ -57,11 +60,12 @@ final class FileResponse
         preg_match_all(
             "/filename[^;=\n]*=(?:(\\?['\"])(.*?)\1|(?:[^\s]+'.*?')?([^;\n]*))/i",
             $contentDisposition,
-            $matches,
+            $matches
         );
+        end($matches[3]);
 
         // if there are multiple matches, return the last
-        return $matches[3][array_key_last($matches[3])] ?? 'file';
+        return $matches[3][key($matches[3])] ?? 'file';
     }
 
     private function getContentLength(): int

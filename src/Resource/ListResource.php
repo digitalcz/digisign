@@ -10,16 +10,28 @@ namespace DigitalCz\DigiSign\Resource;
 class ListResource extends BaseResource
 {
     /** @var array<T> */
-    public array $items;
-    public int $count;
-    public int $page;
-    public int $itemsPerPage;
-    public ?int $nextPage;
-    public ?int $prevPage;
-    public int $lastPage;
+    public $items;
+
+    /** @var int */
+    public $count;
+
+    /** @var int */
+    public $page;
+
+    /** @var int */
+    public $itemsPerPage;
+
+    /** @var int|null */
+    public $nextPage;
+
+    /** @var int|null */
+    public $prevPage;
+
+    /** @var int */
+    public $lastPage;
 
     /** @var class-string<T> */
-    protected string $resourceClass;
+    protected $resourceClass;
 
     /**
      * @param mixed[] $result
@@ -38,7 +50,12 @@ class ListResource extends BaseResource
         $values = parent::toArray();
 
         unset($values['resourceClass']);
-        $values['items'] = array_map(static fn (BaseResource $item) => $item->toArray(), ($values['items'] ?? []));
+        $values['items'] = array_map(
+            static function (BaseResource $item): array {
+                return $item->toArray();
+            },
+            ($values['items'] ?? [])
+        );
 
         return $values;
     }
@@ -48,7 +65,12 @@ class ListResource extends BaseResource
     {
         if ($property === 'items') {
             $resourceClass = $this->resourceClass;
-            $value = array_map(static fn (array $itemValues): BaseResource => new $resourceClass($itemValues), $value);
+            $value = array_map(
+                static function (array $itemValues) use ($resourceClass): BaseResource {
+                    return new $resourceClass($itemValues);
+                },
+                $value
+            );
         }
 
         parent::setProperty($property, $value);

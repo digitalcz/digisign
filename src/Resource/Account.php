@@ -10,8 +10,15 @@ class Account extends BaseResource
 {
     use EntityResourceTrait;
 
-    public string $status;
-    public string $email;
-    public int $number;
-    public AccountSettings $settings;
+    /** @var string */
+    public $status;
+
+    /** @var string */
+    public $email;
+
+    /** @var int */
+    public $number;
+
+    /** @var AccountSettings */
+    public $settings;
 }

@@ -19,14 +19,17 @@ use Psr\Http\Message\ResponseInterface;
  */
 abstract class ResourceEndpoint implements EndpointInterface
 {
-    protected EndpointInterface $parent;
-    private string $resourcePath;
+    /** @var EndpointInterface  */
+    protected $parent;
+
+    /** @var string  */
+    private $resourcePath;
 
     /** @var class-string<T> */
-    private string $resourceClass;
+    private $resourceClass;
 
     /** @var mixed[] */
-    private array $resourceOptions;
+    private $resourceOptions;
 
     /**
      * @param class-string<T> $resourceClass

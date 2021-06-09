@@ -10,23 +10,45 @@ class EnvelopeTag extends BaseResource
 {
     use EntityResourceTrait;
 
-    public ?string $placeholder;
-    public ?int $page;
-    public ?int $xPosition;
-    public ?int $yPosition;
-    public string $positioning;
-    public bool $required;
-    public string $type;
-    public EnvelopeDocument $document;
-    public EnvelopeRecipient $recipient;
+    /** @var string|null */
+    public $placeholder;
 
-    // InputTag
+    /** @var int|null */
+    public $page;
+
+    /** @var int|null */
+    public $xPosition;
+
+    /** @var int|null */
+    public $yPosition;
+
+    /** @var string */
+    public $positioning;
+
+    /** @var bool */
+    public $required;
+
+    /** @var string */
+    public $type;
+
+    /** @var EnvelopeDocument */
+    public $document;
+
+    /** @var EnvelopeRecipient */
+    public $recipient;
+
     /** @var string|bool */
     public $value; // phpcs:ignore
-    public ?string $label;
-    public bool $readonly;
 
-    // DocumentTag
-    public ?string $name;
-    public string $layout;
+    /** @var string|null */
+    public $label;
+
+    /** @var bool */
+    public $readonly;
+
+    /** @var string|null */
+    public $name;
+
+    /** @var string */
+    public $layout;
 }

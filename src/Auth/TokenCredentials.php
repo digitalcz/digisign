@@ -11,7 +11,8 @@ use DigitalCz\DigiSign\DigiSign;
  */
 final class TokenCredentials implements Credentials
 {
-    private Token $token;
+    /** @var Token  */
+    private $token;
 
     public function __construct(Token $token)
     {

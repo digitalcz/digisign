@@ -39,7 +39,7 @@ class BaseResourceTest extends TestCase
         self::assertSame(DummyResource::ID, $resource->id());
     }
 
-    public function testNormalization(): void
+    public function testNormalization(): void // phpcs:ignore
     {
         $resource = new DummyResource(DummyResource::EXAMPLE);
         self::assertEquals(
@@ -52,16 +52,44 @@ class BaseResourceTest extends TestCase
                 'float' => 1.55,
                 'resource' => [
                     'string' => 'bar',
+                    'id' => null,
+                    'bool' => null,
+                    'nullable' => null,
+                    'integer' => null,
+                    'float' => null,
+                    'resource' => null,
+                    'dateTime' => null,
+                    'collection' => null,
                 ],
                 'dateTime' => '2021-01-01T01:01:01+00:00',
                 'collection' => [
-                    ['string' => 'moo'],
-                    ['string' => 'baz'],
+                    [
+                        'string' => 'moo',
+                        'id' => null,
+                        'bool' => null,
+                        'nullable' => null,
+                        'integer' => null,
+                        'float' => null,
+                        'resource' => null,
+                        'dateTime' => null,
+                        'collection' => null,
+                    ],
+                    [
+                        'string' => 'baz',
+                        'id' => null,
+                        'bool' => null,
+                        'nullable' => null,
+                        'integer' => null,
+                        'float' => null,
+                        'resource' => null,
+                        'dateTime' => null,
+                        'collection' => null,
+                    ],
                 ],
                 'unmapped' => 'goo',
                 '_links' => ['self' => '#foobar'],
             ],
-            $resource->toArray(),
+            $resource->toArray()
         );
     }
 

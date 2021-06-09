@@ -11,7 +11,6 @@ use JsonSerializable;
 use LogicException;
 use Psr\Http\Message\ResponseInterface;
 use ReflectionException;
-use ReflectionNamedType;
 use ReflectionProperty;
 
 /**
@@ -20,13 +19,13 @@ use ReflectionProperty;
 class BaseResource implements ResourceInterface
 {
     /** @var array<string, array<string, string>> Cache of resolved mapping types */
-    protected static array $_mapping = []; // phpcs:ignore
+    protected static $_mapping = []; // phpcs:ignore
 
     /** @var ResponseInterface Original API response */
-    protected ResponseInterface $_response; // phpcs:ignore
+    protected $_response; // phpcs:ignore
 
     /** @var mixed[] Original values from API response */
-    protected array $_result; // phpcs:ignore
+    protected $_result; // phpcs:ignore
 
     /**
      * @param mixed[] $result
@@ -64,7 +63,9 @@ class BaseResource implements ResourceInterface
             }
 
             if ($value instanceof Collection) {
-                $value = array_map(static fn (BaseResource $resource) => $resource->toArray(), $value->getArrayCopy());
+                $value = array_map(static function (BaseResource $resource): array {
+                    return $resource->toArray();
+                }, $value->getArrayCopy());
             }
 
             $result[$property] = $value;
@@ -128,10 +129,10 @@ class BaseResource implements ResourceInterface
      */
     protected function setProperty(string $property, $value): void
     {
-        $type = $this->resolveType($property);
-
         if ($value !== null) {
-            // is Resource
+            $type = $this->getMappingType($property);
+
+            // is Resource class
             if (is_a($type, self::class, true)) {
                 $value = new $type($value);
             }
@@ -141,7 +142,9 @@ class BaseResource implements ResourceInterface
                 // parse Resource class from type
                 preg_match('/Collection<(.+)>/', $type, $matches);
                 $resourceClass = $matches[1];
-                $items = array_map(static fn (array $itemValue) => new $resourceClass($itemValue), $value);
+                $items = array_map(static function (array $itemValue) use ($resourceClass) {
+                    return new $resourceClass($itemValue);
+                }, $value);
                 $value = new Collection($items);
             }
 
@@ -153,43 +156,65 @@ class BaseResource implements ResourceInterface
         $this->$property = $value; // @phpstan-ignore-line
     }
 
-    protected function resolveType(string $property): string
+    protected function getMappingType(string $property): string
     {
-        if (isset(static::$_mapping[static::class][$property])) {
-            return static::$_mapping[static::class][$property];
+        // cache resolved mapping types
+        if (!isset(static::$_mapping[static::class][$property])) {
+            static::$_mapping[static::class] = static::$_mapping[static::class] ?? [];
+            static::$_mapping[static::class][$property] = $this->resolveMappingType($property);
         }
 
+        return static::$_mapping[static::class][$property];
+    }
+
+    protected function resolveMappingType(string $property): string
+    {
         try {
-            $propertyRefl = new ReflectionProperty($this, $property);
-            $typeRefl = $propertyRefl->getType();
-
-            $type = $typeRefl instanceof ReflectionNamedType ? $typeRefl->getName() : (string)$typeRefl;
-
-            if ($type === Collection::class) {
-                // parse doc type for Collection inner class
-                $doc = $propertyRefl->getDocComment();
-
-                if ($doc === false) {
-                    throw new LogicException('Cannot resolve Collection type for ' . static::class . '::' . $property);
-                }
-
-                preg_match('/Collection<(\w+)>/', $doc, $matches);
-
-                if (!isset($matches[1])) {
-                    throw new LogicException('Cannot resolve Collection type for ' . static::class . '::' . $property);
-                }
-
-                // expand resource class
-                $resourceClass = __NAMESPACE__ . '\\' . $matches[1];
-                $type = "Collection<$resourceClass>";
-            }
-
-            static::$_mapping[static::class] ??= [];
-            static::$_mapping[static::class][$property] = $type;
-
-            return $type;
+            $reflection = new ReflectionProperty($this, $property);
+            $phpDoc = $reflection->getDocComment();
         } catch (ReflectionException $e) {
-            return 'mixed';
+            return 'mixed'; // property may not exist
         }
+
+        if ($phpDoc === false) {
+            return 'mixed'; // no doc comment
+        }
+
+        if (preg_match('/@var\s+(?<type>[^\s]+)/', $phpDoc, $matches) !== 1) {
+            return 'mixed'; // doc comment without @var type
+        }
+
+        $type = $matches['type'];
+
+        if (class_exists($type)) {
+            return $type; // type is FQCN
+        }
+
+        if (class_exists(__NAMESPACE__ . '\\' . $type)) {
+            return __NAMESPACE__ . '\\' . $type; // type is class in same namespace
+        }
+
+        if (strpos($type, 'Collection') === 0) {
+            $collectionType = $this->resolveCollectionMappingType($phpDoc);
+
+            return "Collection<$collectionType>"; // type is collection
+        }
+
+        return $type;
+    }
+
+    protected function resolveCollectionMappingType(string $phpDoc): string
+    {
+        if (preg_match('/@var\s+Collection<(?<type>[^\s]+)>/', $phpDoc, $matches) !== 1) {
+            throw new LogicException('Cannot resolve Collection type on ' . static::class . ' from ' . $phpDoc);
+        }
+
+        $type = $matches['type'];
+
+        if (class_exists(__NAMESPACE__ . '\\' . $type)) {
+            return __NAMESPACE__ . '\\' . $type; // type is class in same namespace
+        }
+
+        return $type;
     }
 }

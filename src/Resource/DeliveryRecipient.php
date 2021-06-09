@@ -11,15 +11,36 @@ class DeliveryRecipient extends BaseResource
 {
     use EntityResourceTrait;
 
-    public string $status;
-    public ?string $metadata;
-    public string $name;
-    public string $email;
-    public ?string $mobile;
-    public ?string $emailBody;
-    public ?DateTime $sentAt;
-    public ?DateTime $downloadedAt;
-    public ?DateTime $nonDeliveredAt;
-    public ?string $nonDeliveryReason;
-    public ?DateTime $cancelledAt;
+    /** @var string */
+    public $status;
+
+    /** @var string|null */
+    public $metadata;
+
+    /** @var string */
+    public $name;
+
+    /** @var string */
+    public $email;
+
+    /** @var string|null */
+    public $mobile;
+
+    /** @var string|null */
+    public $emailBody;
+
+    /** @var DateTime|null */
+    public $sentAt;
+
+    /** @var DateTime|null */
+    public $downloadedAt;
+
+    /** @var DateTime|null */
+    public $nonDeliveredAt;
+
+    /** @var string|null */
+    public $nonDeliveryReason;
+
+    /** @var DateTime|null */
+    public $cancelledAt;
 }
