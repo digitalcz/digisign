@@ -12,6 +12,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `Webhook.status`
 - Add `Webhook.secret`
 
+### Fixed
+- Fix caching resolved mapping without subclass
+
 ## [1.0.1] - 2021-06-03
 ### Fixed
 - Fix nullable types on EnvelopeTag

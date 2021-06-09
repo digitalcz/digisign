@@ -19,7 +19,7 @@ use ReflectionProperty;
  */
 class BaseResource implements ResourceInterface
 {
-    /** @var array<string, string> Cache of resolved mapping types */
+    /** @var array<string, array<string, string>> Cache of resolved mapping types */
     protected static array $_mapping = []; // phpcs:ignore
 
     /** @var ResponseInterface Original API response */
@@ -155,8 +155,8 @@ class BaseResource implements ResourceInterface
 
     protected function resolveType(string $property): string
     {
-        if (isset(static::$_mapping[$property])) {
-            return static::$_mapping[$property];
+        if (isset(static::$_mapping[static::class][$property])) {
+            return static::$_mapping[static::class][$property];
         }
 
         try {
@@ -184,7 +184,8 @@ class BaseResource implements ResourceInterface
                 $type = "Collection<$resourceClass>";
             }
 
-            static::$_mapping[$property] = $type;
+            static::$_mapping[static::class] ??= [];
+            static::$_mapping[static::class][$property] = $type;
 
             return $type;
         } catch (ReflectionException $e) {
