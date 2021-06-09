@@ -8,9 +8,8 @@ use DigitalCz\DigiSign\Exception\BadRequestException;
 require dirname(__DIR__) . '/vendor/autoload.php';
 
 $dgs = new DigiSign([
-    'access_key' => 'LNWakzBGeg7fcMvuBDU5TN3S',
-    'secret_key' => 'oj5icHayHli66fMoAUd9qFwbhveUeHuIDtAAvbAzpk9QJizhpxRwHPkkQaFNFEdfMCYi8OtoOOL0DbTa',
-    'testing' => true,
+    'access_key' => '...',
+    'secret_key' => '...',
 ]);
 
 try {
