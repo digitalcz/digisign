@@ -3,6 +3,7 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE)
 [![CI](https://github.com/digitalcz/digisign/workflows/CI/badge.svg)]()
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/digitalcz/digisign/badges/quality-score.png?b=1.x)](https://scrutinizer-ci.com/g/digitalcz/digisign/?branch=1.x)
 [![codecov](https://codecov.io/gh/digitalcz/digisign/branch/master/graph/badge.svg)](https://codecov.io/gh/digitalcz/digisign)
 [![Total Downloads][ico-downloads]][link-downloads]
 
