@@ -4,7 +4,7 @@ All notable changes will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [Unreleased]
+## [1.0.2] - 2021-06-09
 ### Added
 - Add new `WebhookAttemptsEndpoint` and `WebhookAttempt` resource
 
