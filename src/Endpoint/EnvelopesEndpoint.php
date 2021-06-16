@@ -93,4 +93,9 @@ final class EnvelopesEndpoint extends ResourceEndpoint
     {
         return $this->createResource($this->postRequest('/{id}/send', ['id' => $id]));
     }
+
+    public function resend(string $id): BaseResource
+    {
+        return $this->createResource($this->postRequest('/{id}/resend', ['id' => $id]));
+    }
 }
