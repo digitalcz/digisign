@@ -11,33 +11,72 @@ class Envelope extends BaseResource
 {
     use EntityResourceTrait;
 
-    public string $status;
-    public ?string $metadata;
-    public string $emailSubject;
-    public string $emailBody;
-    public ?string $senderName;
-    public ?string $senderEmail;
-    public int $expiration;
-    public string $signatureType;
-    public string $authenticationOnOpen;
-    public string $authenticationOnSignature;
-    public string $authenticationOnDownload;
-    public string $language;
-    public string $channelForSigner;
-    public string $channelForDownload;
-    public ?DateTime $validTo;
-    public ?DateTime $sentAt;
-    public ?DateTime $completedAt;
-    public ?DateTime $cancelledAt;
-    public ?DateTime $expiredAt;
-    public ?DateTime $declinedAt;
+    /** @var string */
+    public $status;
+
+    /** @var string|null */
+    public $metadata;
+
+    /** @var string */
+    public $emailSubject;
+
+    /** @var string */
+    public $emailBody;
+
+    /** @var string|null */
+    public $senderName;
+
+    /** @var string|null */
+    public $senderEmail;
+
+    /** @var int */
+    public $expiration;
+
+    /** @var string */
+    public $signatureType;
+
+    /** @var string */
+    public $authenticationOnOpen;
+
+    /** @var string */
+    public $authenticationOnSignature;
+
+    /** @var string */
+    public $authenticationOnDownload;
+
+    /** @var string */
+    public $language;
+
+    /** @var string */
+    public $channelForSigner;
+
+    /** @var string */
+    public $channelForDownload;
+
+    /** @var DateTime|null */
+    public $validTo;
+
+    /** @var DateTime|null */
+    public $sentAt;
+
+    /** @var DateTime|null */
+    public $completedAt;
+
+    /** @var DateTime|null */
+    public $cancelledAt;
+
+    /** @var DateTime|null */
+    public $expiredAt;
+
+    /** @var DateTime|null */
+    public $declinedAt;
 
     /** @var Collection<EnvelopeRecipient> */
-    public Collection $recipients;
+    public $recipients;
 
     /** @var Collection<EnvelopeDocument> */
-    public Collection $documents;
+    public $documents;
 
     /** @var Collection<EnvelopeNotification> */
-    public Collection $notifications;
+    public $notifications;
 }

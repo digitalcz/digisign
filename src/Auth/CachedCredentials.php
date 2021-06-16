@@ -15,8 +15,11 @@ final class CachedCredentials implements Credentials
 {
     private const PREFIX = 'DGS_tok_';
 
-    private Credentials $inner;
-    private CacheInterface $cache;
+    /** @var Credentials  */
+    private $inner;
+
+    /** @var CacheInterface  */
+    private $cache;
 
     public function __construct(Credentials $inner, CacheInterface $cache)
     {

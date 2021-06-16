@@ -6,10 +6,21 @@ namespace DigitalCz\DigiSign\Resource;
 
 class AccountStatistics extends BaseResource
 {
-    public int $countEnvelopeDraft;
-    public int $countEnvelopeSent;
-    public int $countEnvelopeCompleted;
-    public int $countEnvelopeCanceled;
-    public int $countEnvelopeDeclined;
-    public int $countAuthorizationRequestSMS;
+    /** @var int */
+    public $countEnvelopeDraft;
+
+    /** @var int */
+    public $countEnvelopeSent;
+
+    /** @var int */
+    public $countEnvelopeCompleted;
+
+    /** @var int */
+    public $countEnvelopeCanceled;
+
+    /** @var int */
+    public $countEnvelopeDeclined;
+
+    /** @var int */
+    public $countAuthorizationRequestSMS;
 }

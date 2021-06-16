@@ -40,7 +40,7 @@ class FilesEndpointTest extends EndpointTestCase
             "\r\n" .
             file_get_contents(TESTS_DIR . '/dummy.pdf') . "\r\n" .
             "--$boundary--\r\n",
-            (string)$lastRequest->getBody(),
+            (string)$lastRequest->getBody()
         );
     }
 

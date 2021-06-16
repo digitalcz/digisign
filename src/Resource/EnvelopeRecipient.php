@@ -11,32 +11,81 @@ class EnvelopeRecipient extends BaseResource
 {
     use EntityResourceTrait;
 
-    public string $status;
-    public ?string $metadata;
-    public string $role;
-    public string $signatureType;
-    public string $authenticationOnOpen;
-    public string $authenticationOnSignature;
-    public string $authenticationOnDownload;
-    public string $language;
-    public string $channelForSigner;
-    public string $channelForDownload;
-    public string $name;
-    public string $email;
-    public ?string $mobile;
-    public ?string $emailBody;
-    public ?DateTime $sentAt;
-    public ?DateTime $deliveredAt;
-    public ?DateTime $nonDeliveredAt;
-    public ?string $nonDeliveryReason;
-    public ?DateTime $authFailedAt;
-    public ?DateTime $signedAt;
-    public ?DateTime $downloadedAt;
-    public ?DateTime $declinedAt;
-    public ?DateTime $cancelledAt;
+    /** @var string */
+    public $status;
+
+    /** @var string|null */
+    public $metadata;
+
+    /** @var string */
+    public $role;
+
+    /** @var string */
+    public $signatureType;
+
+    /** @var string */
+    public $authenticationOnOpen;
+
+    /** @var string */
+    public $authenticationOnSignature;
+
+    /** @var string */
+    public $authenticationOnDownload;
+
+    /** @var string */
+    public $language;
+
+    /** @var string */
+    public $channelForSigner;
+
+    /** @var string */
+    public $channelForDownload;
+
+    /** @var string */
+    public $name;
+
+    /** @var string */
+    public $email;
+
+    /** @var string|null */
+    public $mobile;
+
+    /** @var string|null */
+    public $emailBody;
+
+    /** @var DateTime|null */
+    public $sentAt;
+
+    /** @var DateTime|null */
+    public $deliveredAt;
+
+    /** @var DateTime|null */
+    public $nonDeliveredAt;
+
+    /** @var string|null */
+    public $nonDeliveryReason;
+
+    /** @var DateTime|null */
+    public $authFailedAt;
+
+    /** @var DateTime|null */
+    public $signedAt;
+
+    /** @var DateTime|null */
+    public $downloadedAt;
+
+    /** @var DateTime|null */
+    public $declinedAt;
+
+    /** @var DateTime|null */
+    public $cancelledAt;
 
     /** @var Collection<EnvelopeTag> */
-    public Collection $tags;
-    public int $signingOrder;
-    public string $attachmentsStatus;
+    public $tags;
+
+    /** @var int */
+    public $signingOrder;
+
+    /** @var string */
+    public $attachmentsStatus;
 }

@@ -28,8 +28,6 @@ use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
-use const JSON_THROW_ON_ERROR;
-
 final class DigiSignClient
 {
     public const HTTP_NO_CONTENT = 204;
@@ -38,10 +36,17 @@ final class DigiSignClient
     public const HTTP_NOT_FOUND = 404;
     public const HTTP_INTERNAL_SERVER_ERROR = 500;
 
-    private ClientInterface $httpClient;
-    private RequestFactoryInterface $requestFactory;
-    private StreamFactoryInterface $streamFactory;
-    private UriFactoryInterface $uriFactory;
+    /** @var ClientInterface  */
+    private $httpClient;
+
+    /** @var RequestFactoryInterface  */
+    private $requestFactory;
+
+    /** @var StreamFactoryInterface  */
+    private $streamFactory;
+
+    /** @var UriFactoryInterface  */
+    private $uriFactory;
 
     public function __construct(
         ?ClientInterface $httpClient = null,
@@ -71,7 +76,13 @@ final class DigiSignClient
         }
 
         try {
-            return json_decode($body, true, 512, JSON_THROW_ON_ERROR);
+            $decoded = json_decode($body, true);
+
+            if (!is_array($decoded)) {
+                throw new JsonException();
+            }
+
+            return $decoded;
         } catch (JsonException $e) {
             throw new RuntimeException('Unable to parse response', 0, $e);
         }
@@ -92,17 +103,35 @@ final class DigiSignClient
     }
 
     /**
-     * @param mixed[] $array
+     * @param mixed $value
      *
-     * @throws InvalidArgumentException When the value cannot be json-encoded
+     * @throws JsonException When the value cannot be json-encoded
      */
-    private static function jsonEncode(array $array): string
+    public static function jsonEncode($value): string
     {
-        try {
-            return json_encode($array, JSON_THROW_ON_ERROR);
-        } catch (JsonException $e) {
-            throw new InvalidArgumentException('Invalid value for "json" option: ' . $e->getMessage());
+        $json = json_encode($value);
+
+        if ($json === false || json_last_error() !== JSON_ERROR_NONE) {
+            throw new JsonException(json_last_error_msg(), json_last_error());
         }
+
+        return $json;
+    }
+
+    /**
+     * @return mixed[]
+     *
+     * @throws JsonException When the json-string is invalid
+     */
+    public static function jsonDecode(string $json): array
+    {
+        $value  = json_decode($json, true);
+
+        if (!is_array($value) || json_last_error() !== JSON_ERROR_NONE) {
+            throw new JsonException(json_last_error_msg(), json_last_error());
+        }
+
+        return $value;
     }
 
     /**
@@ -129,7 +158,9 @@ final class DigiSignClient
             $replaces[] = (string)$param;
         }
 
-        $searches = array_map(static fn (string $search) => sprintf("{%s}", $search), $searches);
+        $searches = array_map(static function (string $search): string {
+            return sprintf("{%s}", $search);
+        }, $searches);
 
         $uri = str_replace($searches, $replaces, $uri);
 
@@ -156,7 +187,7 @@ final class DigiSignClient
         }
 
         // default headers
-        $headers['Accept'] ??= 'application/json';
+        $headers['Accept'] = $headers['Accept'] ?? 'application/json';
 
         if (isset($options['user-agent'])) {
             $headers['User-Agent'] = (string)$options['user-agent'];
@@ -199,7 +230,7 @@ final class DigiSignClient
                 $multipartBuilder->addResource($name, $resource, $resourceOptions);
                 $headers['Content-Type'] = sprintf(
                     'multipart/form-data; boundary="%s"',
-                    $multipartBuilder->getBoundary(),
+                    $multipartBuilder->getBoundary()
                 );
                 $options['body'] = $multipartBuilder->build();
             }
@@ -212,7 +243,11 @@ final class DigiSignClient
 
             $headers['Content-Type'] = 'application/json';
             $json = self::normalizeJson($options['json']);
-            $options['body'] = self::jsonEncode($json);
+            try {
+                $options['body'] = self::jsonEncode($json);
+            } catch (JsonException $e) {
+                throw new InvalidArgumentException('Invalid value for "json" option: ' . $e->getMessage());
+            }
         }
 
         if (isset($options['body'])) {

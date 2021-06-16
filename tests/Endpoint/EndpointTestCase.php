@@ -16,8 +16,11 @@ use RuntimeException;
 
 abstract class EndpointTestCase extends TestCase
 {
-    private static Client $httpClient;
-    private static DigiSign $dgs;
+    /** @var Client  */
+    private static $httpClient;
+
+    /** @var DigiSign  */
+    private static $dgs;
 
     protected static function dgs(): DigiSign
     {
@@ -32,7 +35,7 @@ abstract class EndpointTestCase extends TestCase
             [
                 'credentials' => new TokenCredentials(new Token('token', time())),
                 'client' => new DigiSignClient(self::$httpClient),
-            ],
+            ]
         );
     }
 
@@ -41,7 +44,7 @@ abstract class EndpointTestCase extends TestCase
      */
     protected static function addResponse(int $code, array $result): void
     {
-        self::$httpClient->addResponse(new Response($code, [], json_encode($result, JSON_THROW_ON_ERROR)));
+        self::$httpClient->addResponse(new Response($code, [], DigiSignClient::jsonEncode($result)));
     }
 
     protected static function assertDefaultEndpointPath(EndpointInterface $endpoint, string $path): void
@@ -114,7 +117,7 @@ abstract class EndpointTestCase extends TestCase
      */
     protected static function assertLastRequestJsonBody(array $json): void
     {
-        self::assertLastRequestBody(json_encode($json, JSON_THROW_ON_ERROR));
+        self::assertLastRequestBody(DigiSignClient::jsonEncode($json));
     }
 
     protected static function assertLastRequestBody(string $content): void

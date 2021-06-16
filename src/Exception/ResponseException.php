@@ -10,7 +10,8 @@ use Throwable;
 
 class ResponseException extends RuntimeException
 {
-    private ResponseInterface $response;
+    /** @var ResponseInterface  */
+    private $response;
 
     public function __construct(
         ResponseInterface $response,
@@ -19,8 +20,8 @@ class ResponseException extends RuntimeException
         ?Throwable $previous = null
     ) {
         $this->response = $response;
-        $code ??= $response->getStatusCode();
-        $message ??= sprintf("%s %s", $response->getStatusCode(), $response->getReasonPhrase());
+        $code = $code ?? $response->getStatusCode();
+        $message = $message ?? sprintf("%s %s", $response->getStatusCode(), $response->getReasonPhrase());
 
         try {
             $result = $this->parseResult();

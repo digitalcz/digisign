@@ -11,8 +11,11 @@ use DigitalCz\DigiSign\DigiSign;
  */
 final class ApiKeyCredentials implements Credentials
 {
-    private string $accessKey;
-    private string $secretKey;
+    /** @var string  */
+    private $accessKey;
+
+    /** @var string  */
+    private $secretKey;
 
     public function __construct(string $accessKey, string $secretKey)
     {

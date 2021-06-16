@@ -9,12 +9,14 @@ use InvalidArgumentException;
 
 final class FileStream
 {
-    /**
-     * @var resource
-     */
+    /** @var resource */
     private $handle;
-    private ?int $size;
-    private ?string $filename;
+
+    /** @var int|null  */
+    private $size;
+
+    /** @var string|null  */
+    private $filename;
 
     /**
      * @param resource $handle

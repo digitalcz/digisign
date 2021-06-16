@@ -57,9 +57,9 @@
     <rule ref="SlevomatCodingStandard.Functions">
         <exclude name="SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter"/>
         <exclude name="SlevomatCodingStandard.Functions.DisallowArrowFunction"/>
-        <exclude name="SlevomatCodingStandard.Functions.DisallowTrailingCommaInCall"/>
-        <exclude name="SlevomatCodingStandard.Functions.DisallowTrailingCommaInDeclaration"/>
         <exclude name="SlevomatCodingStandard.Functions.RequireTrailingCommaInDeclaration"/>
+        <exclude name="SlevomatCodingStandard.Functions.RequireTrailingCommaInCall"/>
+        <exclude name="SlevomatCodingStandard.Functions.RequireArrowFunction"/>
         <properties>
             <property name="maxLinesLength" value="50" />
         </properties>
@@ -126,6 +126,7 @@
         <exclude name="SlevomatCodingStandard.ControlStructures.DisallowShortTernaryOperator"/>
         <exclude name="SlevomatCodingStandard.ControlStructures.EarlyExit"/>
         <exclude name="SlevomatCodingStandard.ControlStructures.DisallowNullSafeObjectOperator"/>
+        <exclude name="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceEqualOperator"/>
         <properties>
             <property name="ignoreStandaloneIfInScope" value="true"/>
         </properties>
@@ -205,7 +206,8 @@
         </properties>
         <exclude name="SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint"/>
         <exclude name="SlevomatCodingStandard.TypeHints.DisallowArrayTypeHintSyntax"/>
-        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint"/>
-        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint"/>
     </rule>
 </ruleset>

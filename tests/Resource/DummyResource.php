@@ -43,15 +43,30 @@ class DummyResource extends BaseResource
         'lastPage' => 1,
     ];
 
-    public string $id;
-    public bool $bool;
-    public string $string;
-    public ?string $nullable;
-    public int $integer;
-    public float $float;
-    public DummyResource $resource;
-    public DateTime $dateTime;
+    /** @var string  */
+    public $id;
+
+    /** @var bool  */
+    public $bool;
+
+    /** @var string  */
+    public $string;
+
+    /** @var string|null  */
+    public $nullable;
+
+    /** @var int  */
+    public $integer;
+
+    /** @var float  */
+    public $float;
+
+    /** @var DummyResource  */
+    public $resource;
+
+    /** @var DateTime  */
+    public $dateTime;
 
     /** @var Collection<DummyResource> */
-    public Collection $collection;
+    public $collection;
 }

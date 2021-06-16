@@ -54,7 +54,7 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
     {
         return $this->createListResource(
             $this->getRequest('/{id}/tags', ['id' => $id, 'query' => $query]),
-            EnvelopeTag::class,
+            EnvelopeTag::class
         );
     }
 }

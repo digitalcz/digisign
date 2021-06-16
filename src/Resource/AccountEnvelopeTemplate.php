@@ -10,11 +10,24 @@ class AccountEnvelopeTemplate extends BaseResource
 {
     use EntityResourceTrait;
 
-    public string $signatureType;
-    public string $authenticationMethod;
-    public string $authenticationPlace;
-    public bool $authenticateOnDownload;
-    public string $language;
-    public string $channelForSigner;
-    public string $channelForDownload;
+    /** @var string */
+    public $signatureType;
+
+    /** @var string */
+    public $authenticationMethod;
+
+    /** @var string */
+    public $authenticationPlace;
+
+    /** @var bool */
+    public $authenticateOnDownload;
+
+    /** @var string */
+    public $language;
+
+    /** @var string */
+    public $channelForSigner;
+
+    /** @var string */
+    public $channelForDownload;
 }

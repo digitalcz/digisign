@@ -6,23 +6,15 @@
          forceCoversAnnotation="true"
          beStrictAboutOutputDuringTests="true"
          beStrictAboutTodoAnnotatedTests="true"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
-  <coverage>
-    <include>
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.2/phpunit.xsd">
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
       <directory suffix=".php">src/</directory>
-    </include>
-    <report>
-      <clover outputFile="build/logs/clover.xml"/>
-      <html outputDirectory="build/coverage"/>
-      <text outputFile="build/coverage.txt"/>
-    </report>
-  </coverage>
+    </whitelist>
+  </filter>
   <testsuites>
     <testsuite name="DigitalCz Test Suite">
       <directory>tests</directory>
     </testsuite>
   </testsuites>
-  <logging>
-    <junit outputFile="build/report.junit.xml"/>
-  </logging>
 </phpunit>

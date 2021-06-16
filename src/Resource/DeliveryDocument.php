@@ -10,8 +10,15 @@ class DeliveryDocument extends BaseResource
 {
     use EntityResourceTrait;
 
-    public string $name;
-    public ?string $metadata;
-    public File $file;
-    public int $position;
+    /** @var string */
+    public $name;
+
+    /** @var string|null */
+    public $metadata;
+
+    /** @var File */
+    public $file;
+
+    /** @var int */
+    public $position;
 }

@@ -24,11 +24,67 @@ class ListResourceTest extends TestCase
         self::assertSame('foo', $resource->items[2]->string);
     }
 
-    public function testNormalization(): void
+    public function testNormalization(): void // phpcs:ignore
     {
         $resource = new ListResource(DummyResource::LIST_EXAMPLE, DummyResource::class);
         $array = $resource->toArray();
 
-        self::assertEquals(DummyResource::LIST_EXAMPLE, $array);
+        $expectedItem = [
+            'id' => DummyResource::ID,
+            'bool' => true,
+            'string' => 'foo',
+            'nullable' => null,
+            'integer' => 123,
+            'float' => 1.55,
+            'resource' => [
+                'string' => 'bar',
+                'id' => null,
+                'bool' => null,
+                'nullable' => null,
+                'integer' => null,
+                'float' => null,
+                'resource' => null,
+                'dateTime' => null,
+                'collection' => null,
+            ],
+            'dateTime' => '2021-01-01T01:01:01+00:00',
+            'collection' => [
+                [
+                    'string' => 'moo',
+                    'id' => null,
+                    'bool' => null,
+                    'nullable' => null,
+                    'integer' => null,
+                    'float' => null,
+                    'resource' => null,
+                    'dateTime' => null,
+                    'collection' => null,
+                ],
+                [
+                    'string' => 'baz',
+                    'id' => null,
+                    'bool' => null,
+                    'nullable' => null,
+                    'integer' => null,
+                    'float' => null,
+                    'resource' => null,
+                    'dateTime' => null,
+                    'collection' => null,
+                ],
+            ],
+            'unmapped' => 'goo',
+            '_links' => ['self' => '#foobar'],
+        ];
+        $expected = [
+            'items' => [$expectedItem, $expectedItem, $expectedItem],
+            'count' => 3,
+            'page' => 1,
+            'itemsPerPage' => 10,
+            'lastPage' => 1,
+            'nextPage' => null,
+            'prevPage' => null,
+        ];
+
+        self::assertEquals($expected, $array);
     }
 }
