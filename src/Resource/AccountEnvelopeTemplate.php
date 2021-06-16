@@ -30,4 +30,10 @@ class AccountEnvelopeTemplate extends BaseResource
 
     /** @var string */
     public $channelForDownload;
+
+    /** @var bool */
+    public $timestampDocuments;
+
+    /** @var bool */
+    public $sendCompleted;
 }

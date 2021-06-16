@@ -79,4 +79,7 @@ class Envelope extends BaseResource
 
     /** @var Collection<EnvelopeNotification> */
     public $notifications;
+
+    /** @var bool */
+    public $sendCompleted;
 }
