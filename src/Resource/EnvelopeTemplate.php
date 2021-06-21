@@ -19,6 +19,9 @@ class EnvelopeTemplate extends BaseResource
     /** @var Collection<EnvelopeTemplateNotification> */
     public $notifications;
 
+    /** @var Collection<EnvelopeTemplateTag> */
+    public $tags;
+
     /** @var string */
     public $emailSubject;
 
