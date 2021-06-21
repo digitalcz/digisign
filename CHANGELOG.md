@@ -14,6 +14,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeTemplate.sendCompleted`
 - Add `EnvelopeTemplate.timestampDocuments`
 - Add `resend` for `EnvelopesEndpoint`
+- Add new `EnvelopeTemplate` endpoints and resources 
 
 ## [1.0.2] - 2021-06-09
 ### Added

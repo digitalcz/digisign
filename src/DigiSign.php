@@ -12,6 +12,7 @@ use DigitalCz\DigiSign\Endpoint\AuthEndpoint;
 use DigitalCz\DigiSign\Endpoint\DeliveriesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EndpointInterface;
 use DigitalCz\DigiSign\Endpoint\EnvelopesEndpoint;
+use DigitalCz\DigiSign\Endpoint\EnvelopeTemplatesEndpoint;
 use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
 use DigitalCz\DigiSign\Endpoint\ImagesEndpoint;
 use DigitalCz\DigiSign\Endpoint\WebhooksEndpoint;
@@ -173,6 +174,11 @@ final class DigiSign implements EndpointInterface
     public function envelopes(): EnvelopesEndpoint
     {
         return new EnvelopesEndpoint($this);
+    }
+
+    public function envelopeTemplates(): EnvelopeTemplatesEndpoint
+    {
+        return new EnvelopeTemplatesEndpoint($this);
     }
 
     public function deliveries(): DeliveriesEndpoint
