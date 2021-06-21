@@ -25,26 +25,34 @@ final class EnvelopeTemplatesEndpoint extends ResourceEndpoint
     }
 
     /**
-     * @param EnvelopeTemplate|string $envelope
+     * @param EnvelopeTemplate|string $template
      */
-    public function documents($envelope): EnvelopeTemplateDocumentsEndpoint
+    public function documents($template): EnvelopeTemplateDocumentsEndpoint
     {
-        return new EnvelopeTemplateDocumentsEndpoint($this, $envelope);
+        return new EnvelopeTemplateDocumentsEndpoint($this, $template);
     }
 
     /**
-     * @param EnvelopeTemplate|string $envelope
+     * @param EnvelopeTemplate|string $template
      */
-    public function recipients($envelope): EnvelopeTemplateRecipientsEndpoint
+    public function recipients($template): EnvelopeTemplateRecipientsEndpoint
     {
-        return new EnvelopeTemplateRecipientsEndpoint($this, $envelope);
+        return new EnvelopeTemplateRecipientsEndpoint($this, $template);
     }
 
     /**
-     * @param EnvelopeTemplate|string $envelope
+     * @param EnvelopeTemplate|string $template
      */
-    public function notifications($envelope): EnvelopeTemplateNotificationsEndpoint
+    public function notifications($template): EnvelopeTemplateNotificationsEndpoint
     {
-        return new EnvelopeTemplateNotificationsEndpoint($this, $envelope);
+        return new EnvelopeTemplateNotificationsEndpoint($this, $template);
+    }
+
+    /**
+     * @param EnvelopeTemplate|string $template
+     */
+    public function tags($template): EnvelopeTemplateTagsEndpoint
+    {
+        return new EnvelopeTemplateTagsEndpoint($this, $template);
     }
 }
