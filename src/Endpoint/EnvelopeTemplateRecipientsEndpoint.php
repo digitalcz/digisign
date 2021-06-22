@@ -31,4 +31,12 @@ final class EnvelopeTemplateRecipientsEndpoint extends ResourceEndpoint
             ['template' => $template]
         );
     }
+
+    /**
+     * @param mixed[] $body
+     */
+    public function signingOrder(array $body): void
+    {
+        $this->putRequest('/signing-order', ['json' => $body]);
+    }
 }
