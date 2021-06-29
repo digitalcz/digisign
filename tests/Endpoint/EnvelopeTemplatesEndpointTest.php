@@ -30,6 +30,12 @@ class EnvelopeTemplatesEndpointTest extends EndpointTestCase
         self::assertCrudRequests(self::endpoint(), '/api/envelope-templates');
     }
 
+    public function testUse(): void
+    {
+        self::endpoint()->use('foo');
+        self::assertLastRequest('POST', '/api/envelope-templates/foo/use');
+    }
+
     protected static function endpoint(): EnvelopeTemplatesEndpoint
     {
         return self::dgs()->envelopeTemplates();

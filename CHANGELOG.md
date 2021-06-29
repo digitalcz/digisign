@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [Unreleased]
+### Added
+- Add `use` for `EnvelopeTemplateEndpoint`
+
 ## [1.1.0] - 2021-06-25
 ### Added
 - Add PHP 7.2 compatibility

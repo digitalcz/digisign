@@ -6,6 +6,7 @@ namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\DigiSign;
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
+use DigitalCz\DigiSign\Resource\Envelope;
 use DigitalCz\DigiSign\Resource\EnvelopeTemplate;
 
 /**
@@ -22,6 +23,14 @@ final class EnvelopeTemplatesEndpoint extends ResourceEndpoint
     public function __construct(DigiSign $parent)
     {
         parent::__construct($parent, '/api/envelope-templates', EnvelopeTemplate::class);
+    }
+
+    /**
+     * @param EnvelopeTemplate|string $template
+     */
+    public function use($template): Envelope
+    {
+        return $this->createResource($this->postRequest('/{id}/use', ['id' => $template]), Envelope::class);
     }
 
     /**
