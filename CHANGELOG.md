@@ -11,6 +11,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeTemplate.bankIdScopes`
 - Add new `EnumsEndpoint`
 
+### Modify
+- Add `final` to all resources
+
 ## [1.1.0] - 2021-06-25
 ### Added
 - Add PHP 7.2 compatibility

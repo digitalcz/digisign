@@ -15,7 +15,7 @@ use DigitalCz\DigiSign\Resource\Webhook;
  * @method Webhook create(array $body)
  * @method Webhook update(string $id, array $body)
  */
-class WebhooksEndpoint extends ResourceEndpoint
+final class WebhooksEndpoint extends ResourceEndpoint
 {
     /** @use CRUDEndpointTrait<Webhook> */
     use CRUDEndpointTrait;

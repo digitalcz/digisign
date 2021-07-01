@@ -15,7 +15,7 @@ use DigitalCz\DigiSign\Resource\Delivery;
  * @method Delivery create(array $body)
  * @method Delivery update(string $id, array $body)
  */
-class DeliveriesEndpoint extends ResourceEndpoint
+final class DeliveriesEndpoint extends ResourceEndpoint
 {
     /** @use CRUDEndpointTrait<Delivery> */
     use CRUDEndpointTrait;

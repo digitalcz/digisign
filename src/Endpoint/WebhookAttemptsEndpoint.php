@@ -13,7 +13,7 @@ use DigitalCz\DigiSign\Resource\WebhookAttempt;
  * @extends ResourceEndpoint<WebhookAttempt>
  * @method WebhookAttempt get(string $id)
  */
-class WebhookAttemptsEndpoint extends ResourceEndpoint
+final class WebhookAttemptsEndpoint extends ResourceEndpoint
 {
     /** @use ListEndpointTrait<WebhookAttempt> */
     use ListEndpointTrait;

@@ -15,7 +15,7 @@ use DigitalCz\DigiSign\Stream\FileStream;
  * @extends ResourceEndpoint<Image>
  * @method Image get(string $id)
  */
-class ImagesEndpoint extends ResourceEndpoint
+final class ImagesEndpoint extends ResourceEndpoint
 {
     /** @use ListEndpointTrait<Image> */
     use ListEndpointTrait;
