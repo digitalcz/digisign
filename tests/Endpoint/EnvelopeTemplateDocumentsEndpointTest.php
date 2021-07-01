@@ -14,6 +14,12 @@ class EnvelopeTemplateDocumentsEndpointTest extends EndpointTestCase
         self::assertCrudRequests(self::endpoint(), '/api/envelope-templates/bar/documents');
     }
 
+    public function testDownload(): void
+    {
+        self::endpoint()->download('foo', ['foo' => 'bar']);
+        self::assertLastRequest('GET', '/api/envelope-templates/bar/documents/foo/download?foo=bar');
+    }
+
     protected static function endpoint(): EnvelopeTemplateDocumentsEndpoint
     {
         return self::dgs()->envelopeTemplates()->documents('bar');

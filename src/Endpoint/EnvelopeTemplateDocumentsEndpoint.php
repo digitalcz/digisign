@@ -7,6 +7,7 @@ namespace DigitalCz\DigiSign\Endpoint;
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
 use DigitalCz\DigiSign\Resource\EnvelopeTemplate;
 use DigitalCz\DigiSign\Resource\EnvelopeTemplateDocument;
+use DigitalCz\DigiSign\Stream\FileResponse;
 
 /**
  * @extends ResourceEndpoint<EnvelopeTemplateDocument>
@@ -30,5 +31,13 @@ final class EnvelopeTemplateDocumentsEndpoint extends ResourceEndpoint
             EnvelopeTemplateDocument::class,
             ['template' => $template]
         );
+    }
+
+    /**
+     * @param mixed[] $query
+     */
+    public function download(string $id, array $query = []): FileResponse
+    {
+        return $this->stream(self::METHOD_GET, '/{id}/download', ['id' => $id, 'query' => $query]);
     }
 }

@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountSettings.bankIdProduct`
 - Add `EnvelopeTemplate.bankIdScopes`
 - Add new `EnumsEndpoint`
+- Add `EnvelopeTemplateDocumentsEndpoint::download`
 
 ### Modify
 - Add `final` to all resources
