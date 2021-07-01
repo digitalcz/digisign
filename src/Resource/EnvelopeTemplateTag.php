@@ -55,6 +55,9 @@ class EnvelopeTemplateTag extends BaseResource
     /** @var int|null */
     public $width;
 
+    /** @var int */
+    public $scale;
+
     /** @var string|null */
     public $bankIdClaim;
 }

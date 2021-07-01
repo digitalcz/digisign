@@ -11,6 +11,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeTemplate.bankIdScopes`
 - Add new `EnumsEndpoint`
 - Add `EnvelopeTemplateDocumentsEndpoint::download`
+- Add `EnvelopeTag.scale` and `EnvelopeTemplateTag.scale`
 
 ### Modify
 - Add `final` to all resources
