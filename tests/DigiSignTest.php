@@ -145,6 +145,8 @@ class DigiSignTest extends TestCase
         self::assertSame('/api/images', $mockClient->getLastRequest()->getUri()->getPath());
         $dgs->webhooks()->request('GET');
         self::assertSame('/api/webhooks', $mockClient->getLastRequest()->getUri()->getPath());
+        $dgs->enums()->request('GET');
+        self::assertSame('/api/enums', $mockClient->getLastRequest()->getUri()->getPath());
     }
 
     public function testUserAgent(): void

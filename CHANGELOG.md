@@ -9,6 +9,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `use` for `EnvelopeTemplateEndpoint`
 - Add `AccountSettings.bankIdProduct`
 - Add `EnvelopeTemplate.bankIdScopes`
+- Add new `EnumsEndpoint`
 
 ## [1.1.0] - 2021-06-25
 ### Added

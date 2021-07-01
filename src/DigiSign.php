@@ -11,6 +11,7 @@ use DigitalCz\DigiSign\Endpoint\AccountEndpoint;
 use DigitalCz\DigiSign\Endpoint\AuthEndpoint;
 use DigitalCz\DigiSign\Endpoint\DeliveriesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EndpointInterface;
+use DigitalCz\DigiSign\Endpoint\EnumsEndpoint;
 use DigitalCz\DigiSign\Endpoint\EnvelopesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EnvelopeTemplatesEndpoint;
 use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
@@ -199,6 +200,11 @@ final class DigiSign implements EndpointInterface
     public function webhooks(): WebhooksEndpoint
     {
         return new WebhooksEndpoint($this);
+    }
+
+    public function enums(): EnumsEndpoint
+    {
+        return new EnumsEndpoint($this);
     }
 
     private function createUserAgent(): string
