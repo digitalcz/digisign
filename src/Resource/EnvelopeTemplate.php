@@ -60,4 +60,7 @@ class EnvelopeTemplate extends BaseResource
 
     /** @var array<string> */
     public $fileCategoriesToConvert;
+
+    /** @var array<string, string> */
+    public $bankIdScopes;
 }

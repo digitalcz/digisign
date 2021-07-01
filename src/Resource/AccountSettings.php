@@ -36,4 +36,7 @@ class AccountSettings extends BaseResource
 
     /** @var Address|null */
     public $address;
+
+    /** @var string */
+    public $bankIdProduct;
 }
