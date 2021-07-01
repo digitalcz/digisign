@@ -16,6 +16,18 @@ class EnvelopeTemplateRecipient extends BaseResource
     /** @var string */
     public $role;
 
+    /** @var string */
+    public $signatureType;
+
+    /** @var string */
+    public $authenticationOnOpen;
+
+    /** @var string */
+    public $authenticationOnSignature;
+
+    /** @var string */
+    public $authenticationOnDownload;
+
     /** @var string|null */
     public $name;
 
@@ -30,6 +42,12 @@ class EnvelopeTemplateRecipient extends BaseResource
 
     /** @var string */
     public $language;
+
+    /** @var string */
+    public $channelForSigner;
+
+    /** @var string */
+    public $channelForDownload;
 
     /** @var int */
     public $signingOrder;

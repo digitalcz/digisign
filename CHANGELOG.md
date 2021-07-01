@@ -12,6 +12,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add new `EnumsEndpoint`
 - Add `EnvelopeTemplateDocumentsEndpoint::download`
 - Add `EnvelopeTag.scale` and `EnvelopeTemplateTag.scale`
+- Add multiple fields to `EnvelopeTemplateRecipient`
 
 ### Modify
 - Add `final` to all resources
