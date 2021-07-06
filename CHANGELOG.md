@@ -13,6 +13,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeTemplateDocumentsEndpoint::download`
 - Add `EnvelopeTag.scale` and `EnvelopeTemplateTag.scale`
 - Add multiple fields to `EnvelopeTemplateRecipient`
+- Add `Envelope.template`
 
 ### Modify
 - Add `final` to all resources

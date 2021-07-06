@@ -82,4 +82,7 @@ class Envelope extends BaseResource
 
     /** @var bool */
     public $sendCompleted;
+
+    /** @var string */
+    public $template;
 }
