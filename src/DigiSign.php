@@ -16,6 +16,7 @@ use DigitalCz\DigiSign\Endpoint\EnvelopesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EnvelopeTemplatesEndpoint;
 use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
 use DigitalCz\DigiSign\Endpoint\ImagesEndpoint;
+use DigitalCz\DigiSign\Endpoint\MyEndpoint;
 use DigitalCz\DigiSign\Endpoint\WebhooksEndpoint;
 use InvalidArgumentException;
 use LogicException;
@@ -205,6 +206,11 @@ final class DigiSign implements EndpointInterface
     public function enums(): EnumsEndpoint
     {
         return new EnumsEndpoint($this);
+    }
+
+    public function my(): MyEndpoint
+    {
+        return new MyEndpoint($this);
     }
 
     private function createUserAgent(): string
