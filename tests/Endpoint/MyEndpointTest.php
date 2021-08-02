@@ -13,6 +13,7 @@ class MyEndpointTest extends EndpointTestCase
     {
         self::assertDefaultEndpointPath(self::endpoint()->dashboard(), '/api/my/dashboard');
         self::assertDefaultEndpointPath(self::endpoint()->envelopes(), '/api/my/envelopes');
+        self::assertDefaultEndpointPath(self::endpoint()->accounts(), '/api/my/accounts');
     }
 
     private static function endpoint(): MyEndpoint

@@ -26,4 +26,9 @@ final class MyEndpoint extends ResourceEndpoint
     {
         return new MyEnvelopesEndpoint($this);
     }
+
+    public function accounts(): MyAccountsEndpoint
+    {
+        return new MyAccountsEndpoint($this);
+    }
 }
