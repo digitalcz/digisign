@@ -16,6 +16,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `Envelope.template`
 - Add new endpoints `MyEndpoint`, `MyDashboardEndpoint`, `MyEnvelopesEndpoint`
 - Add new resources `MyDashboard`, `MyEnvelope`, `MyEnvelopeDocument` and `MyEnvelopeRecipient`
+- Add new `MyAccount` endpoint and resource
 
 ### Modify
 - Add `final` to all resources
