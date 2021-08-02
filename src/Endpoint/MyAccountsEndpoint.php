@@ -7,9 +7,11 @@ namespace DigitalCz\DigiSign\Endpoint;
 use DigitalCz\DigiSign\Endpoint\Traits\CreateEndpointTrait;
 use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\MyAccount;
+use DigitalCz\DigiSign\Resource\ResourceInterface;
 
 /**
  * @extends ResourceEndpoint<MyAccount>
+ * @method MyAccount create(array $body)
  */
 final class MyAccountsEndpoint extends ResourceEndpoint
 {
