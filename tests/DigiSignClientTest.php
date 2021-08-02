@@ -360,4 +360,13 @@ class DigiSignClientTest extends TestCase
         $expectedJson = '{"datetime":"2020-01-01T13:30:00+02:00","resource":"foo-bar","nested":{"foo":"bar","resource":"moo-baz"}}';
         self::assertSame($expectedJson, (string)$lastRequest->getBody());
     }
+
+    public function testJsonDecode(): void
+    {
+        $json = '{"foo":"bar","moo":45,"baz":{"foo":"bar"}}';
+        $expected = ['foo' => 'bar', 'moo' => 45, 'baz' => ['foo' => 'bar']];
+        $value = DigiSignClient::jsonDecode($json);
+
+        self::assertSame($expected, $value);
+    }
 }
