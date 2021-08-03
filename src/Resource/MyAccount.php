@@ -12,6 +12,9 @@ class MyAccount extends BaseResource
     /** @var string */
     public $name;
 
+    /** @var string */
+    public $status;
+
     /** @var bool */
     public $active;
 }

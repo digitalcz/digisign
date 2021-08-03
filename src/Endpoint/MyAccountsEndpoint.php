@@ -7,7 +7,6 @@ namespace DigitalCz\DigiSign\Endpoint;
 use DigitalCz\DigiSign\Endpoint\Traits\CreateEndpointTrait;
 use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\MyAccount;
-use DigitalCz\DigiSign\Resource\ResourceInterface;
 
 /**
  * @extends ResourceEndpoint<MyAccount>
@@ -28,5 +27,15 @@ final class MyAccountsEndpoint extends ResourceEndpoint
     public function list(): Collection
     {
         return new Collection($this->parseResponse($this->getRequest()));
+    }
+
+    public function accept(string $id): MyAccount
+    {
+        return $this->makeResource($this->postRequest('/{id}/accept', ['id' => $id]));
+    }
+
+    public function decline(string $id): void
+    {
+        $this->postRequest('/{id}/decline', ['id' => $id]);
     }
 }

@@ -48,4 +48,9 @@ final class AccountUsersEndpoint extends ResourceEndpoint
     {
         return $this->makeCreateRequest($body);
     }
+
+    public function reinvite(string $id): User
+    {
+        return $this->makeResource($this->postRequest('/{id}/reinvite', ['id' => $id]));
+    }
 }

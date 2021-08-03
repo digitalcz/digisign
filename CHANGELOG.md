@@ -17,6 +17,10 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add new endpoints `MyEndpoint`, `MyDashboardEndpoint`, `MyEnvelopesEndpoint`
 - Add new resources `MyDashboard`, `MyEnvelope`, `MyEnvelopeDocument` and `MyEnvelopeRecipient`
 - Add new `MyAccount` endpoint and resource
+- Add `MyAccountsEndpoint.accept` endpoint
+- Add `MyAccountsEndpoint.decline` endpoint
+- Add `MyAccount.status` property
+- Add `AccountUsersEndpoint.reinvite` endpoint
 
 ### Modify
 - Add `final` to all resources
