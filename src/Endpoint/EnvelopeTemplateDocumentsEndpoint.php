@@ -40,4 +40,12 @@ final class EnvelopeTemplateDocumentsEndpoint extends ResourceEndpoint
     {
         return $this->stream(self::METHOD_GET, '/{id}/download', ['id' => $id, 'query' => $query]);
     }
+
+    /**
+     * @param mixed[] $body
+     */
+    public function documentOrder(array $body): void
+    {
+        $this->putRequest('/document-order', ['json' => $body]);
+    }
 }
