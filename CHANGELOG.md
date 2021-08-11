@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.3.0] - 2021-08-11
+### Added
+- Add `EnvelopeTemplateDocument.positions` endpoint
+
 ## [1.2.0] - 2021-08-06
 ### Added
 - Add `use` for `EnvelopeTemplateEndpoint`
