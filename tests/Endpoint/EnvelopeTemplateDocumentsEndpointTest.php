@@ -20,10 +20,10 @@ class EnvelopeTemplateDocumentsEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/envelope-templates/bar/documents/foo/download?foo=bar');
     }
 
-    public function testDocumentOrder(): void
+    public function testPositions(): void
     {
-        self::endpoint()->documentOrder(['foo' => 'bar']);
-        self::assertLastRequest('PUT', '/api/envelope-templates/bar/documents/document-order');
+        self::endpoint()->positions(['foo' => 'bar']);
+        self::assertLastRequest('PUT', '/api/envelope-templates/bar/documents/positions');
     }
 
     protected static function endpoint(): EnvelopeTemplateDocumentsEndpoint

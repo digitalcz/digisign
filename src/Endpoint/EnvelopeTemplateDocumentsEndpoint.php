@@ -44,8 +44,8 @@ final class EnvelopeTemplateDocumentsEndpoint extends ResourceEndpoint
     /**
      * @param mixed[] $body
      */
-    public function documentOrder(array $body): void
+    public function positions(array $body): void
     {
-        $this->putRequest('/document-order', ['json' => $body]);
+        $this->putRequest('/positions', ['json' => $body]);
     }
 }
