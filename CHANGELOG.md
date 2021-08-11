@@ -4,7 +4,7 @@ All notable changes will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [1.3.0] - 2021-08-11
+## [Unreleased]
 ### Added
 - Add `EnvelopeTemplateDocument.positions` endpoint
 
@@ -83,4 +83,3 @@ see [UPGRADING-1.0](UPGRADING-1.0.md)
 - Add new IriTemplate and Iri classes to improve work with IRIs
 - Add more implementations of Iri, Add abstract ResourceIri to simplify Iri classes
 - Add more tests for increase code coverage
-
