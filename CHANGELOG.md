@@ -8,6 +8,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add `EnvelopeTemplateDocument.positions` endpoint
 
+### Modify
+- Allow setting auth_bearer via options
+
 ## [1.2.0] - 2021-08-06
 ### Added
 - Add `use` for `EnvelopeTemplateEndpoint`
