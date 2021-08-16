@@ -9,6 +9,7 @@ use DigitalCz\DigiSign\Auth\CachedCredentials;
 use DigitalCz\DigiSign\Auth\Credentials;
 use DigitalCz\DigiSign\Endpoint\AccountEndpoint;
 use DigitalCz\DigiSign\Endpoint\AuthEndpoint;
+use DigitalCz\DigiSign\Endpoint\ContactsEndpoint;
 use DigitalCz\DigiSign\Endpoint\DeliveriesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EndpointInterface;
 use DigitalCz\DigiSign\Endpoint\EnumsEndpoint;
@@ -171,6 +172,11 @@ final class DigiSign implements EndpointInterface
     public function account(): AccountEndpoint
     {
         return new AccountEndpoint($this);
+    }
+
+    public function contacts(): ContactsEndpoint
+    {
+        return new ContactsEndpoint($this);
     }
 
     public function envelopes(): EnvelopesEndpoint

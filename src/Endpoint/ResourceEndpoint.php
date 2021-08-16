@@ -9,6 +9,7 @@ use DigitalCz\DigiSign\Exception\EmptyResultException;
 use DigitalCz\DigiSign\Exception\ResponseException;
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use DigitalCz\DigiSign\Resource\BaseResource;
+use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\ListResource;
 use DigitalCz\DigiSign\Resource\ResourceInterface;
 use DigitalCz\DigiSign\Stream\FileResponse;
@@ -225,6 +226,21 @@ abstract class ResourceEndpoint implements EndpointInterface
         $resource->setResponse($response);
 
         return $resource;
+    }
+
+    /**
+     * @param class-string<U> $resourceClass
+     * @return Collection<U>
+     * @template U of ResourceInterface
+     */
+    protected function createCollectionResource(
+        ResponseInterface $response,
+        string $resourceClass = BaseResource::class
+    ): Collection {
+        $collection = new Collection($this->parseResponse($response), $resourceClass);
+        $collection->setResponse($response);
+
+        return $collection;
     }
 
     /**
