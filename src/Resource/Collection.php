@@ -21,7 +21,7 @@ class Collection extends ArrayObject implements ResourceInterface
     /**
      * @var class-string<T>
      */
-    protected string $resourceClass;
+    protected $resourceClass;
 
     /**
      * @param mixed[] $result
