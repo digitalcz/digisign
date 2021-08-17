@@ -9,7 +9,6 @@ use DigitalCz\DigiSign\Auth\CachedCredentials;
 use DigitalCz\DigiSign\Auth\Credentials;
 use DigitalCz\DigiSign\Endpoint\AccountEndpoint;
 use DigitalCz\DigiSign\Endpoint\AuthEndpoint;
-use DigitalCz\DigiSign\Endpoint\ContactsEndpoint;
 use DigitalCz\DigiSign\Endpoint\DeliveriesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EndpointInterface;
 use DigitalCz\DigiSign\Endpoint\EnumsEndpoint;
@@ -17,6 +16,7 @@ use DigitalCz\DigiSign\Endpoint\EnvelopesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EnvelopeTemplatesEndpoint;
 use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
 use DigitalCz\DigiSign\Endpoint\ImagesEndpoint;
+use DigitalCz\DigiSign\Endpoint\MyContactsEndpoint;
 use DigitalCz\DigiSign\Endpoint\MyEndpoint;
 use DigitalCz\DigiSign\Endpoint\WebhooksEndpoint;
 use InvalidArgumentException;
@@ -174,9 +174,9 @@ final class DigiSign implements EndpointInterface
         return new AccountEndpoint($this);
     }
 
-    public function contacts(): ContactsEndpoint
+    public function contacts(): MyContactsEndpoint
     {
-        return new ContactsEndpoint($this);
+        return new MyContactsEndpoint($this);
     }
 
     public function envelopes(): EnvelopesEndpoint

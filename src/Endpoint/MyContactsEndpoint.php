@@ -11,11 +11,11 @@ use DigitalCz\DigiSign\Resource\Contact;
 /**
  * @extends ResourceEndpoint<Contact>
  */
-final class ContactsEndpoint extends ResourceEndpoint
+final class MyContactsEndpoint extends ResourceEndpoint
 {
     public function __construct(DigiSign $parent)
     {
-        parent::__construct($parent, '/api/contacts', Contact::class);
+        parent::__construct($parent, '/api/my/contacts', Contact::class);
     }
 
     /**
