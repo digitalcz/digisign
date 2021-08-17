@@ -15,6 +15,53 @@ use PHPUnit\Framework\TestCase;
  */
 class BaseResourceTest extends TestCase
 {
+    public const DUMMY_RESOURCE_ARRAYED = [
+        'id' => DummyResource::ID,
+        'bool' => true,
+        'string' => 'foo',
+        'nullable' => null,
+        'integer' => 123,
+        'float' => 1.55,
+        'resource' => [
+            'id' => null,
+            'bool' => null,
+            'string' => 'bar',
+            'nullable' => null,
+            'integer' => null,
+            'float' => null,
+            'resource' => null,
+            'dateTime' => null,
+            'collection' => null,
+        ],
+        'dateTime' => '2021-01-01T01:01:01+00:00',
+        'collection' => [
+            [
+                'id' => null,
+                'bool' => null,
+                'string' => 'moo',
+                'nullable' => null,
+                'integer' => null,
+                'float' => null,
+                'resource' => null,
+                'dateTime' => null,
+                'collection' => null,
+            ],
+            [
+                'id' => null,
+                'bool' => null,
+                'string' => 'baz',
+                'nullable' => null,
+                'integer' => null,
+                'float' => null,
+                'resource' => null,
+                'dateTime' => null,
+                'collection' => null,
+            ],
+        ],
+        'unmapped' => 'goo',
+        '_links' => ['self' => '#foobar'],
+    ];
+
     public function testHydration(): void
     {
         // clear cached mapping
@@ -43,52 +90,7 @@ class BaseResourceTest extends TestCase
     {
         $resource = new DummyResource(DummyResource::EXAMPLE);
         self::assertEquals(
-            [
-                'id' => DummyResource::ID,
-                'bool' => true,
-                'string' => 'foo',
-                'nullable' => null,
-                'integer' => 123,
-                'float' => 1.55,
-                'resource' => [
-                    'string' => 'bar',
-                    'id' => null,
-                    'bool' => null,
-                    'nullable' => null,
-                    'integer' => null,
-                    'float' => null,
-                    'resource' => null,
-                    'dateTime' => null,
-                    'collection' => null,
-                ],
-                'dateTime' => '2021-01-01T01:01:01+00:00',
-                'collection' => [
-                    [
-                        'string' => 'moo',
-                        'id' => null,
-                        'bool' => null,
-                        'nullable' => null,
-                        'integer' => null,
-                        'float' => null,
-                        'resource' => null,
-                        'dateTime' => null,
-                        'collection' => null,
-                    ],
-                    [
-                        'string' => 'baz',
-                        'id' => null,
-                        'bool' => null,
-                        'nullable' => null,
-                        'integer' => null,
-                        'float' => null,
-                        'resource' => null,
-                        'dateTime' => null,
-                        'collection' => null,
-                    ],
-                ],
-                'unmapped' => 'goo',
-                '_links' => ['self' => '#foobar'],
-            ],
+            self::DUMMY_RESOURCE_ARRAYED,
             $resource->toArray()
         );
     }
