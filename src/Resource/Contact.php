@@ -16,12 +16,9 @@ class Contact extends BaseResource
     /** @var string */
     public $email;
 
-    /** @var string */
+    /** @var string|null */
     public $mobile;
 
     /** @var string */
     public $language;
-
-    /** @var array<string, mixed> */
-    public $account;
 }

@@ -17,6 +17,6 @@ final class MyContactsEndpointTest extends EndpointTestCase
 
     protected static function endpoint(): MyContactsEndpoint
     {
-        return self::dgs()->contacts();
+        return self::dgs()->my()->contacts();
     }
 }

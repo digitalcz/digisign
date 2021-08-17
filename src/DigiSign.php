@@ -16,7 +16,6 @@ use DigitalCz\DigiSign\Endpoint\EnvelopesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EnvelopeTemplatesEndpoint;
 use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
 use DigitalCz\DigiSign\Endpoint\ImagesEndpoint;
-use DigitalCz\DigiSign\Endpoint\MyContactsEndpoint;
 use DigitalCz\DigiSign\Endpoint\MyEndpoint;
 use DigitalCz\DigiSign\Endpoint\WebhooksEndpoint;
 use InvalidArgumentException;
@@ -172,11 +171,6 @@ final class DigiSign implements EndpointInterface
     public function account(): AccountEndpoint
     {
         return new AccountEndpoint($this);
-    }
-
-    public function contacts(): MyContactsEndpoint
-    {
-        return new MyContactsEndpoint($this);
     }
 
     public function envelopes(): EnvelopesEndpoint
