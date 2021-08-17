@@ -58,12 +58,12 @@ class BaseResource implements ResourceInterface
                 $value = $value->format(DateTimeInterface::ATOM);
             }
 
-            if ($value instanceof JsonSerializable) {
-                $value = $value->jsonSerialize();
-            }
-
             if ($value instanceof Collection) {
                 $value = $value->toArray();
+            }
+
+            if ($value instanceof JsonSerializable) {
+                $value = $value->jsonSerialize();
             }
 
             $result[$property] = $value;

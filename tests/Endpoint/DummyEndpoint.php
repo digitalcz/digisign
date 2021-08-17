@@ -32,6 +32,6 @@ class DummyEndpoint extends ResourceEndpoint
      */
     public function collection(ResponseInterface $response): Collection
     {
-        return new Collection($this->parseResponse($response), DummyResource::class);
+        return $this->createCollectionResource($response, DummyResource::class);
     }
 }
