@@ -43,6 +43,12 @@ class DummyResource extends BaseResource
         'lastPage' => 1,
     ];
 
+    public const COLLECTION_EXAMPLE = [
+        DummyResource::EXAMPLE,
+        DummyResource::EXAMPLE,
+        DummyResource::EXAMPLE,
+    ];
+
     /** @var string  */
     public $id;
 
