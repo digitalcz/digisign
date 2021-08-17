@@ -7,6 +7,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 ### Added
 - Add `EnvelopeTemplateDocument.positions` endpoint
+- Add `EnvelopeDocument.fromTemplate`
+- Add `EnvelopeRecipient.fromTemplate`
+- Add `EnvelopeTag.fromTemplate`
 
 ### Modify
 - Allow setting auth_bearer via options

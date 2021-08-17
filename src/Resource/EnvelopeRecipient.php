@@ -88,4 +88,7 @@ class EnvelopeRecipient extends BaseResource
 
     /** @var string */
     public $attachmentsStatus;
+
+    /** @var bool */
+    public $fromTemplate;
 }

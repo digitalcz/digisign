@@ -27,4 +27,7 @@ class EnvelopeDocument extends BaseResource
 
     /** @var bool */
     public $signable;
+
+    /** @var bool */
+    public $fromTemplate;
 }
