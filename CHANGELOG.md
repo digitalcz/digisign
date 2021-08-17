@@ -8,6 +8,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add `EnvelopeTemplateDocument.positions` endpoint
 - Add Suggest Contact EP `GET /api/my/contacts/suggest`
+- Add `MyEnvelopeRecipient` authenticationMethod properties
 
 ### Modify
 - Allow setting auth_bearer via options
