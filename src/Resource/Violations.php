@@ -20,6 +20,6 @@ class Violations extends BaseResource
     {
         parent::__construct($result);
 
-        $this->violations = $this->violations ?? new Collection();
+        $this->violations = $this->violations ?? new Collection([], Violation::class);
     }
 }

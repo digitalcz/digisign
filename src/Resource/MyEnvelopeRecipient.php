@@ -20,4 +20,13 @@ class MyEnvelopeRecipient extends BaseResource
 
     /** @var string */
     public $status;
+
+    /** @var string */
+    public $authenticationOnOpen;
+
+    /** @var string */
+    public $authenticationOnSignature;
+
+    /** @var string */
+    public $authenticationOnDownload;
 }

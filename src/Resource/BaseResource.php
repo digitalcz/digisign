@@ -58,14 +58,12 @@ class BaseResource implements ResourceInterface
                 $value = $value->format(DateTimeInterface::ATOM);
             }
 
-            if ($value instanceof JsonSerializable) {
-                $value = $value->jsonSerialize();
+            if ($value instanceof Collection) {
+                $value = $value->toArray();
             }
 
-            if ($value instanceof Collection) {
-                $value = array_map(static function (BaseResource $resource): array {
-                    return $resource->toArray();
-                }, $value->getArrayCopy());
+            if ($value instanceof JsonSerializable) {
+                $value = $value->jsonSerialize();
             }
 
             $result[$property] = $value;
@@ -142,10 +140,7 @@ class BaseResource implements ResourceInterface
                 // parse Resource class from type
                 preg_match('/Collection<(.+)>/', $type, $matches);
                 $resourceClass = $matches[1];
-                $items = array_map(static function (array $itemValue) use ($resourceClass) {
-                    return new $resourceClass($itemValue);
-                }, $value);
-                $value = new Collection($items);
+                $value = new Collection($value, $resourceClass);
             }
 
             if ($type === DateTime::class) {

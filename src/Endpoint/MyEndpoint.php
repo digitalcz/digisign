@@ -31,4 +31,9 @@ final class MyEndpoint extends ResourceEndpoint
     {
         return new MyAccountsEndpoint($this);
     }
+
+    public function contacts(): MyContactsEndpoint
+    {
+        return new MyContactsEndpoint($this);
+    }
 }

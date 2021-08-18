@@ -26,7 +26,7 @@ final class MyAccountsEndpoint extends ResourceEndpoint
      */
     public function list(): Collection
     {
-        return new Collection($this->parseResponse($this->getRequest()));
+        return $this->createCollectionResource($this->getRequest(), MyAccount::class);
     }
 
     public function accept(string $id): MyAccount
