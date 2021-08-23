@@ -23,6 +23,9 @@ class MyEnvelope extends BaseResource
     /** @var string|null */
     public $senderName;
 
+    /** @var string|null */
+    public $senderEmail;
+
     /** @var DateTime|null */
     public $sentAt;
 

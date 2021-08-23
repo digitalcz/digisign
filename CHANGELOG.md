@@ -12,6 +12,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeDocument.fromTemplate`
 - Add `EnvelopeRecipient.fromTemplate`
 - Add `EnvelopeTag.fromTemplate`
+- Add `MyEnvelope.senderEmail`
+- Add `MyEnvelopeRecipient.signatureType`
 
 ### Modify
 - Allow setting auth_bearer via options

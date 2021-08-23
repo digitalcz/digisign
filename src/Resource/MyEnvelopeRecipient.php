@@ -29,4 +29,7 @@ class MyEnvelopeRecipient extends BaseResource
 
     /** @var string */
     public $authenticationOnDownload;
+
+    /** @var string */
+    public $signatureType;
 }
