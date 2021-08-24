@@ -64,6 +64,12 @@ class EnvelopesEndpointTest extends EndpointTestCase
         self::assertLastRequest('POST', '/api/envelopes/foo/resend');
     }
 
+    public function testTemplate(): void
+    {
+        self::endpoint()->template('foo');
+        self::assertLastRequest('GET', '/api/envelopes/foo/template');
+    }
+
     protected static function endpoint(): EnvelopesEndpoint
     {
         return self::dgs()->envelopes();

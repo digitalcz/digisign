@@ -4,7 +4,7 @@ All notable changes will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [1.3.0] - 2021-08-23
+## [Unreleased]
 ### Added
 - Add `EnvelopeTemplateDocument.positions` endpoint
 - Add Suggest Contact EP `GET /api/my/contacts/suggest`
@@ -14,6 +14,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeTag.fromTemplate`
 - Add `MyEnvelope.senderEmail`
 - Add `MyEnvelopeRecipient.signatureType`
+- Add `EnvelopesEndpoint.template`
 
 ### Modify
 - Allow setting auth_bearer via options

@@ -8,6 +8,7 @@ use DigitalCz\DigiSign\DigiSign;
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
 use DigitalCz\DigiSign\Resource\BaseResource;
 use DigitalCz\DigiSign\Resource\Envelope;
+use DigitalCz\DigiSign\Resource\EnvelopeTemplate;
 use DigitalCz\DigiSign\Stream\FileResponse;
 
 /**
@@ -97,5 +98,13 @@ final class EnvelopesEndpoint extends ResourceEndpoint
     public function resend(string $id): BaseResource
     {
         return $this->createResource($this->postRequest('/{id}/resend', ['id' => $id]));
+    }
+
+    /**
+     * @param Envelope|string $id
+     */
+    public function template($id): EnvelopeTemplate
+    {
+        return $this->createResource($this->getRequest('/{id}/template', ['id' => $id]), EnvelopeTemplate::class);
     }
 }
