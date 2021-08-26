@@ -42,8 +42,14 @@ class EnvelopesEndpointTest extends EndpointTestCase
 
     public function testEmbedEdit(): void
     {
-        self::endpoint()->embedEdit('foo');
-        self::assertLastRequest('POST', '/api/envelopes/foo/embed/edit');
+        self::endpoint()->embedEdit('foo', ['foo' => 'bar']);
+        self::assertLastRequest('POST', '/api/envelopes/foo/embed/edit', ['foo' => 'bar']);
+    }
+
+    public function testEmbedSigning(): void
+    {
+        self::endpoint()->embedSigning('foo', ['foo' => 'bar']);
+        self::assertLastRequest('POST', '/api/envelopes/foo/embed/signing', ['foo' => 'bar']);
     }
 
     public function testExtend(): void

@@ -77,9 +77,20 @@ final class EnvelopesEndpoint extends ResourceEndpoint
         return $this->stream(self::METHOD_GET, '/{id}/download', ['id' => $id, 'query' => $query]);
     }
 
-    public function embedEdit(string $id): BaseResource
+    /**
+     * @param mixed[] $body
+     */
+    public function embedEdit(string $id, array $body = []): BaseResource
     {
-        return $this->createResource($this->postRequest('/{id}/embed/edit', ['id' => $id]));
+        return $this->createResource($this->postRequest('/{id}/embed/edit', ['id' => $id, 'json' => $body]));
+    }
+
+    /**
+     * @param mixed[] $body
+     */
+    public function embedSigning(string $id, array $body = []): BaseResource
+    {
+        return $this->createResource($this->postRequest('/{id}/embed/signing', ['id' => $id, 'json' => $body]));
     }
 
     /**

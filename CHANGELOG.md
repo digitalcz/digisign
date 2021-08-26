@@ -15,9 +15,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `MyEnvelope.senderEmail`
 - Add `MyEnvelopeRecipient.signatureType`
 - Add `EnvelopesEndpoint.template`
+- Add `EnvelopesEndpoint.embedSigning`
 
 ### Modify
 - Allow setting auth_bearer via options
+- Add body param for `EnvelopesEndpoint.embedEdit`
 
 ## [1.2.0] - 2021-08-06
 ### Added
