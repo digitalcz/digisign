@@ -63,4 +63,10 @@ class EnvelopeTag extends BaseResource
 
     /** @var bool */
     public $fromTemplate;
+
+    /** @var string */
+    public $group;
+
+    /** @var string */
+    public $choice;
 }

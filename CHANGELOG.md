@@ -16,6 +16,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `MyEnvelopeRecipient.signatureType`
 - Add `EnvelopesEndpoint.template`
 - Add `EnvelopesEndpoint.embedSigning`
+- Add `EnvelopeTag.choice` and `EnvelopeTag.group`
+- Add `EnvelopeTemplateTag.choice` and `EnvelopeTemplateTag.group`
 
 ### Modify
 - Allow setting auth_bearer via options
