@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+### Added
 - Add `EnvelopeRecipient.intermediaryName` and `EnvelopeRecipient.intermediaryEmail`
 
 ## [1.3.0] - 2021-09-03
