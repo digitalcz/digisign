@@ -91,4 +91,10 @@ class EnvelopeRecipient extends BaseResource
 
     /** @var bool */
     public $fromTemplate;
+
+    /** @var string|null */
+    public $intermediaryName;
+
+    /** @var string|null */
+    public $intermediaryEmail;
 }
