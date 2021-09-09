@@ -9,6 +9,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeRecipient.intermediaryName` and `EnvelopeRecipient.intermediaryEmail`
 - Add `EnvelopeTemplateRecipient.intermediaryName` and `EnvelopeTemplateRecipient.intermediaryEmail`
 - Add `MyEnvelopeRecipient.intermediaryName` and `MyEnvelopeRecipient.intermediaryEmail`
+- Add `AccountSecurity` endpoint and resource
 
 ## [1.3.0] - 2021-09-03
 ### Added
