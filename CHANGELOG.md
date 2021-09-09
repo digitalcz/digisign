@@ -7,6 +7,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 ### Added
 - Add `EnvelopeRecipient.intermediaryName` and `EnvelopeRecipient.intermediaryEmail`
+- Add `EnvelopeTemplateRecipient.intermediaryName` and `EnvelopeTemplateRecipient.intermediaryEmail`
+- Add `MyEnvelopeRecipient.intermediaryName` and `MyEnvelopeRecipient.intermediaryEmail`
 
 ## [1.3.0] - 2021-09-03
 ### Added
