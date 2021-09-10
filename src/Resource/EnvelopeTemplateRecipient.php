@@ -51,4 +51,10 @@ class EnvelopeTemplateRecipient extends BaseResource
 
     /** @var int */
     public $signingOrder;
+
+    /** @var string */
+    public $intermediaryName;
+
+    /** @var string */
+    public $intermediaryEmail;
 }

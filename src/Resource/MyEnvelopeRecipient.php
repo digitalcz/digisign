@@ -32,4 +32,10 @@ class MyEnvelopeRecipient extends BaseResource
 
     /** @var string */
     public $signatureType;
+
+    /** @var string */
+    public $intermediaryName;
+
+    /** @var string */
+    public $intermediaryEmail;
 }
