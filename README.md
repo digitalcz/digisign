@@ -39,14 +39,15 @@ $dgs->setCredentials(new ApiKeyCredentials('...', '...'));
 ```
 
 #### Available constructor options
-*  `access_key`      - string; ApiKey access key
-*  `secret_key`      - string; ApiKey secret key
-*  `credentials`     - DigitalCz\DigiSign\Auth\Credentials instance
-*  `client`          - DigitalCz\DigiSign\DigiSignClient instance with your custom PSR17/18 objects
-*  `http_client`     - Psr\Http\Client\ClientInterface instance of your custom PSR18 client
-*  `cache`           - Psr\SimpleCache\CacheInterface for caching Credentials Tokens
-*  `testing`         - bool; whether to use testing or production API
-*  `api_base`        - string; override the base API url
+*  `access_key`          - string; ApiKey access key
+*  `secret_key`          - string; ApiKey secret key
+*  `credentials`         - DigitalCz\DigiSign\Auth\Credentials instance
+*  `client`              - DigitalCz\DigiSign\DigiSignClient instance with your custom PSR17/18 objects
+*  `http_client`         - Psr\Http\Client\ClientInterface instance of your custom PSR18 client
+*  `cache`               - Psr\SimpleCache\CacheInterface for caching Credentials Tokens
+*  `testing`             - bool; whether to use testing or production API
+*  `api_base`            - string; override the base API url
+*  `signature_tolerance` - int; The tolerance for webhook signature age validation (in seconds)
 
 #### Available configuration methods
 
@@ -70,6 +71,8 @@ $dgs->setCache(new Psr16Cache(new FilesystemAdapter()));
 $dgs->useTesting(true);
 // Overwrite API base
 $dgs->setApiBase('https://example.com/api');
+// Set maximum age of webhook request to one minute
+$dgs->setSignatureTolerance(60);
 ```
 
 #### Example configuration in Symfony
@@ -164,7 +167,7 @@ If you discover any security related issues, please email devs@digital.cz instea
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/digitalcz/digisign.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square

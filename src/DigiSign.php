@@ -18,6 +18,7 @@ use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
 use DigitalCz\DigiSign\Endpoint\ImagesEndpoint;
 use DigitalCz\DigiSign\Endpoint\MyEndpoint;
 use DigitalCz\DigiSign\Endpoint\WebhooksEndpoint;
+use DigitalCz\DigiSign\Exception\InvalidSignatureException;
 use InvalidArgumentException;
 use LogicException;
 use Psr\Http\Message\ResponseInterface;
@@ -41,16 +42,20 @@ final class DigiSign implements EndpointInterface
     /** @var array<string, string> */
     private $versions = [];
 
+    /** @var int The tolerance for webhook signature age validation (in seconds) */
+    private $signatureTolerance = 300;
+
     /**
      * Available options:
-     *  access_key      - string; ApiKey access key
-     *  secret_key      - string; ApiKey secret key
-     *  credentials     - DigitalCz\DigiSign\Auth\Credentials instance
-     *  client          - DigitalCz\DigiSign\DigiSignClient instance with your custom PSR17/18 objects
-     *  http_client     - Psr\Http\Client\ClientInterface instance of your custom PSR18 client
-     *  cache           - Psr\SimpleCache\CacheInterface for caching Credentials auth Tokens
-     *  testing         - bool; whether to use testing or production API
-     *  api_base        - string; override the base API url
+     *  access_key          - string; ApiKey access key
+     *  secret_key          - string; ApiKey secret key
+     *  credentials         - DigitalCz\DigiSign\Auth\Credentials instance
+     *  client              - DigitalCz\DigiSign\DigiSignClient instance with your custom PSR17/18 objects
+     *  http_client         - Psr\Http\Client\ClientInterface instance of your custom PSR18 client
+     *  cache               - Psr\SimpleCache\CacheInterface for caching Credentials auth Tokens
+     *  testing             - bool; whether to use testing or production API
+     *  api_base            - string; override the base API url
+     *  signature_tolerance - int; The tolerance for webhook signature age validation (in seconds)
      *
      * @param mixed[] $options
      */
@@ -89,6 +94,37 @@ final class DigiSign implements EndpointInterface
             }
 
             $this->setCache($options['cache']);
+        }
+
+        if (isset($options['signature_tolerance'])) {
+            if (!is_int($options['signature_tolerance'])) {
+                throw new InvalidArgumentException('Invalid value for "signature_tolerance" option');
+            }
+
+            $this->setSignatureTolerance($options['signature_tolerance']);
+        }
+    }
+
+    /**
+     * @throws InvalidSignatureException
+     */
+    public function validateSignature(string $payload, string $header, string $secret): void
+    {
+        if (preg_match('/t=(?<t>\d+),s=(?<s>\w+)/', $header, $matches) !== 1) {
+            throw new InvalidSignatureException('Unable to parse signature header');
+        }
+
+        $ts = (int)($matches['t'] ?? 0);
+        $signature = $matches['s'] ?? '';
+
+        if ($ts < time() - $this->signatureTolerance) {
+            throw new InvalidSignatureException("Request is older than {$this->signatureTolerance} seconds");
+        }
+
+        $expected = hash_hmac('sha256', $ts . '.' . $payload, $secret);
+
+        if (hash_equals($expected, $signature) === false) {
+            throw new InvalidSignatureException('Signature is invalid');
         }
     }
 
@@ -148,6 +184,11 @@ final class DigiSign implements EndpointInterface
     public function removeVersion(string $tool): void
     {
         unset($this->versions[$tool]);
+    }
+
+    public function setSignatureTolerance(int $signatureTolerance): void
+    {
+        $this->signatureTolerance = $signatureTolerance;
     }
 
     /** @inheritDoc */
