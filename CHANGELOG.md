@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeTemplateRecipient.intermediaryName` and `EnvelopeTemplateRecipient.intermediaryEmail`
 - Add `MyEnvelopeRecipient.intermediaryName` and `MyEnvelopeRecipient.intermediaryEmail`
 - Add `AccountSecurity` endpoint and resource
+- Add new method `DigiSign::validateSignature` for validation of webhook signatures
 
 ## [1.3.0] - 2021-09-03
 ### Added

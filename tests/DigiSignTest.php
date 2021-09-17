@@ -8,6 +8,7 @@ use DigitalCz\DigiSign\Auth\ApiKeyCredentials;
 use DigitalCz\DigiSign\Auth\CachedCredentials;
 use DigitalCz\DigiSign\Auth\Token;
 use DigitalCz\DigiSign\Auth\TokenCredentials;
+use DigitalCz\DigiSign\Exception\InvalidSignatureException;
 use Http\Mock\Client;
 use InvalidArgumentException;
 use LogicException;
@@ -196,5 +197,75 @@ class DigiSignTest extends TestCase
         $this->expectExceptionMessage('Invalid value for "api_base" option');
 
         new DigiSign(['api_base' => ['https://example.org/api']]);
+    }
+
+    public function testCreateWithInvalidSignatureTolerance(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid value for "signature_tolerance" option');
+
+        new DigiSign(['signature_tolerance' => '123456789']);
+    }
+
+    public function testValidateSignatureWithValidSignature(): void
+    {
+        $this->expectNotToPerformAssertions();
+
+        $payload = '{"foo": "bar"}';
+        $secret = 'secret';
+        $ts = time();
+        $signature = hash_hmac('sha256', "$ts.$payload", $secret);
+        $header = "t=$ts,s=$signature";
+
+        $dgs = new DigiSign();
+        $dgs->validateSignature($payload, $header, $secret);
+    }
+
+    public function testValidateSignatureWithStaleSignature(): void
+    {
+        $payload = '{"foo": "bar"}';
+        $secret = 'secret';
+        $ts = time() - 300; // request is 5 minutes old
+        $signature = hash_hmac('sha256', "$ts.$payload", $secret);
+        $header = "t=$ts,s=$signature";
+
+        $dgs = new DigiSign(['signature_tolerance' => 60]); // tolerate only minute old requests
+
+        $this->expectException(InvalidSignatureException::class);
+        $this->expectExceptionMessage('Request is older than 60 seconds');
+
+        $dgs->validateSignature($payload, $header, $secret);
+    }
+
+    public function testValidateSignatureWithInvalidHeader(): void
+    {
+        $payload = '{"foo": "bar"}';
+        $secret = 'secret';
+        $header = "foobar";
+
+        $dgs = new DigiSign();
+        $this->expectException(InvalidSignatureException::class);
+        $this->expectExceptionMessage('Unable to parse signature header');
+
+        $dgs->validateSignature($payload, $header, $secret);
+    }
+
+    public function testValidateSignatureWithInvalidSignature(): void
+    {
+        $payload = '{"foo": "bar"}';
+        $secret = 'secret';
+        $ts = time() - 300; // request is 5 minutes old
+        $signature = hash_hmac('sha256', "$ts.$payload", $secret);
+
+        // trying to fake timestamp to go around age tolerance
+        $fakeTimestamp = time() - 30;
+        $header = "t=$fakeTimestamp,s=$signature";
+
+        $dgs = new DigiSign(['signature_tolerance' => 60]); // tolerate only minute old requests
+
+        $this->expectException(InvalidSignatureException::class);
+        $this->expectExceptionMessage('Signature is invalid');
+
+        $dgs->validateSignature($payload, $header, $secret);
     }
 }
