@@ -38,6 +38,13 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
         $this->putRequest('/positions', ['json' => $body]);
     }
 
+    public function merge(): EnvelopeDocument
+    {
+        $response = $this->postRequest("/merge");
+
+        return $this->makeResource($response);
+    }
+
     /**
      * @param mixed[] $query
      */
