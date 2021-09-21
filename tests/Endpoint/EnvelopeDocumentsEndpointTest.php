@@ -20,6 +20,12 @@ class EnvelopeDocumentsEndpointTest extends EndpointTestCase
         self::assertLastRequest('PUT', '/api/envelopes/bar/documents/positions');
     }
 
+    public function testMerge(): void
+    {
+        self::endpoint()->merge();
+        self::assertLastRequest('POST', '/api/envelopes/bar/documents/merge');
+    }
+
     public function testDownload(): void
     {
         self::endpoint()->download('foo', ['foo' => 'bar']);
