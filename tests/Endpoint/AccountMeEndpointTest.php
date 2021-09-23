@@ -17,7 +17,7 @@ class AccountMeEndpointTest extends EndpointTestCase
 
     public function testPut(): void
     {
-        self::endpoint()->put([]);
+        self::endpoint()->update([]);
         self::assertLastRequest('PUT', '/api/account/me');
     }
 
