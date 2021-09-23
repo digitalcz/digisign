@@ -36,7 +36,7 @@ final class AccountMeEndpoint extends ResourceEndpoint
      * @param mixed[] $body
      * @return User
      */
-    public function put(array $body): User
+    public function update(array $body): User
     {
         return $this->createResource($this->putRequest('', ['json' => $body]), User::class);
     }

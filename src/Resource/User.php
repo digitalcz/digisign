@@ -47,6 +47,6 @@ class User extends BaseResource
     /** @var DateTime|null */
     public $lastLoginAt;
 
-    /** @var bool|null */
+    /** @var bool */
     public $prefillAsRecipient;
 }
