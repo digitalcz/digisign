@@ -7,6 +7,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 ### Added
 - Add `EnvelopeDocumentsEndpoint.merge`
+- Add `AccountMeEndpoint.update`
 
 ## [1.4.0] - 2021-09-17
 ### Added

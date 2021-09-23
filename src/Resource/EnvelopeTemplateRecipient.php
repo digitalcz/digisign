@@ -57,4 +57,7 @@ class EnvelopeTemplateRecipient extends BaseResource
 
     /** @var string */
     public $intermediaryEmail;
+
+    /** @var string */
+    public $prefill;
 }
