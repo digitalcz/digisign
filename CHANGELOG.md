@@ -8,6 +8,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add `EnvelopeDocumentsEndpoint.merge`
 - Add `AccountMeEndpoint.update`
+- Add `AccountSettings.bankIdSign`
 
 ## [1.4.0] - 2021-09-17
 ### Added
