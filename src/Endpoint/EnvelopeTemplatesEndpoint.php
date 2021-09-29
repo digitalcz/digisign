@@ -28,6 +28,14 @@ final class EnvelopeTemplatesEndpoint extends ResourceEndpoint
     /**
      * @param EnvelopeTemplate|string $template
      */
+    public function clone($template): EnvelopeTemplate
+    {
+        return $this->createResource($this->postRequest('/{id}/clone', ['id' => $template]), EnvelopeTemplate::class);
+    }
+
+    /**
+     * @param EnvelopeTemplate|string $template
+     */
     public function use($template): Envelope
     {
         return $this->createResource($this->postRequest('/{id}/use', ['id' => $template]), Envelope::class);
