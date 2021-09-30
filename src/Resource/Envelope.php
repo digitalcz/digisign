@@ -85,4 +85,7 @@ class Envelope extends BaseResource
 
     /** @var string|null */
     public $template;
+
+    /** @var EnvelopeProperties */
+    public $properties;
 }

@@ -9,6 +9,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeDocumentsEndpoint.merge`
 - Add `EnvelopeTemplatesEndpoint.clone`
 - Add `AccountMeEndpoint.update`
+- Add `EnvelopeProperties` resource and `Envelope.properties`
 
 ## [1.4.0] - 2021-09-17
 ### Added
