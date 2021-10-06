@@ -10,6 +10,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeTemplatesEndpoint.clone`
 - Add `AccountMeEndpoint.update`
 - Add `EnvelopeProperties` resource and `Envelope.properties`
+- Add `EnvelopeTemplateTag.assignment` + `EnvelopeTemplateTag.EnvelopeRecipient` can be null
+- Add `EnvelopeTag.assignment` + `EnvelopeTag.EnvelopeRecipient` can be null
 
 ## [1.4.0] - 2021-09-17
 ### Added
