@@ -63,4 +63,7 @@ class EnvelopeTemplate extends BaseResource
 
     /** @var array<string, string> */
     public $bankIdScopes;
+
+    /** @var bool */
+    public $useDefaultTemplateSettings;
 }
