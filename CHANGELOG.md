@@ -13,6 +13,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeTemplateTag.assignment` + `EnvelopeTemplateTag.EnvelopeRecipient` can be null
 - Add `EnvelopeTag.assignment` + `EnvelopeTag.EnvelopeRecipient` can be null
 - Add `EnvelopeTemplate.useDefaultTemplateSettings`
+- Add `EnvelopeDocument.labelPositioning`, `EnvelopeDocument.labelPositionX`, `EnvelopeDocument.labelPositionY`, 
+- Add `EnvelopeTemplateDocument.labelPositioning`, `EnvelopeTemplateDocument.labelPositionX`, `EnvelopeTemplateDocument.labelPositionY`, 
 - Add `AccountSettings.bankIdSign`
 
 ## [1.4.0] - 2021-09-17

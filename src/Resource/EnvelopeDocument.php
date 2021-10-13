@@ -30,4 +30,13 @@ class EnvelopeDocument extends BaseResource
 
     /** @var bool */
     public $fromTemplate;
+
+    /** @var string */
+    public $labelPositioning;
+
+    /** @var int */
+    public $labelPositionX;
+
+    /** @var int */
+    public $labelPositionY;
 }
