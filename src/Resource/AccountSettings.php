@@ -39,4 +39,7 @@ class AccountSettings extends BaseResource
 
     /** @var string */
     public $bankIdProduct;
+
+    /** @var bool */
+    public $bankIdSign;
 }
