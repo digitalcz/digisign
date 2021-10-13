@@ -34,7 +34,7 @@ class EnvelopeTemplateTag extends BaseResource
     /** @var EnvelopeDocument */
     public $document;
 
-    /** @var EnvelopeRecipient */
+    /** @var EnvelopeRecipient|null */
     public $recipient;
 
     /** @var string|bool */
@@ -66,4 +66,7 @@ class EnvelopeTemplateTag extends BaseResource
 
     /** @var string */
     public $choice;
+
+    /** @var string */
+    public $assignment;
 }
