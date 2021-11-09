@@ -5,16 +5,19 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Endpoint\Traits\CreateEndpointTrait;
+use DigitalCz\DigiSign\Endpoint\Traits\GetEndpointTrait;
 use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\MyAccount;
 
 /**
  * @extends ResourceEndpoint<MyAccount>
  * @method MyAccount create(array $body)
+ * @method MyAccount get(string $id)
  */
 final class MyAccountsEndpoint extends ResourceEndpoint
 {
     use CreateEndpointTrait;
+    use GetEndpointTrait;
 
     public function __construct(MyEndpoint $parent)
     {

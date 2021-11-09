@@ -17,4 +17,7 @@ class MyAccount extends BaseResource
 
     /** @var bool */
     public $active;
+
+    /** @var string */
+    public $idpDomain;
 }

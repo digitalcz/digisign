@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [Unreleased]
+### Added
+- Add `MyAccountsEndpoint.get` and `MyAccount.idpDomain`
+
 ## [1.5.0] - 2021-11-09
 ### Added
 - Add `EnvelopeDocumentsEndpoint.merge`
