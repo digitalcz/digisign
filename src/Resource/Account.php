@@ -21,4 +21,7 @@ class Account extends BaseResource
 
     /** @var AccountSettings */
     public $settings;
+
+    /** @var IdentityProvider|null */
+    public $identityProvider;
 }
