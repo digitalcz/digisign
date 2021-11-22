@@ -11,4 +11,10 @@ class EnvelopeProperties extends BaseResource
 
     /** @var string|null */
     public $mergedDocumentName;
+
+    /** @var bool */
+    public $declineAllowed;
+
+    /** @var bool */
+    public $declineReasonRequired;
 }

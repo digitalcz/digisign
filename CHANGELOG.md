@@ -9,6 +9,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `MyAccountsEndpoint.get` and `MyAccount.idpDomain`
 - Add `IdentityProvider` resource and `Account.identityProvider`
 - Add `EnvelopeEndpoint.clone`
+- Add `EnvelopeProperties.declineAllowed` and `EnvelopeProperties.declineReasonRequired`
 
 ## [1.5.0] - 2021-11-09
 ### Added
