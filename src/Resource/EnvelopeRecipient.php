@@ -77,6 +77,9 @@ class EnvelopeRecipient extends BaseResource
     /** @var DateTime|null */
     public $declinedAt;
 
+    /** @var string|null */
+    public $declineReason;
+
     /** @var DateTime|null */
     public $cancelledAt;
 
