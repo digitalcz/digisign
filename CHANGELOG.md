@@ -11,6 +11,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeEndpoint.clone`
 - Add `EnvelopeProperties.declineAllowed` and `EnvelopeProperties.declineReasonRequired`
 - Add `EnvelopeRecipient.declineReason`
+- Add `EnvelopeRecipientAttachment` resource
 
 ## [1.5.0] - 2021-11-09
 ### Added
