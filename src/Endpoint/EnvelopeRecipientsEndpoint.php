@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
+use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\Envelope;
 use DigitalCz\DigiSign\Resource\EnvelopeRecipient;
+use DigitalCz\DigiSign\Resource\EnvelopeRecipientAttachment;
 use DigitalCz\DigiSign\Resource\EnvelopeTag;
 use DigitalCz\DigiSign\Resource\ListResource;
 use DigitalCz\DigiSign\Resource\ResourceInterface;
@@ -91,5 +93,13 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
     public function signingOrder(array $body): void
     {
         $this->putRequest('/signing-order', ['json' => $body]);
+    }
+
+    /**
+     * @return Collection<EnvelopeRecipientAttachment>
+     */
+    public function attachments(): Collection
+    {
+        return $this->createCollectionResource($this->getRequest('/attachments'), EnvelopeRecipientAttachment::class);
     }
 }
