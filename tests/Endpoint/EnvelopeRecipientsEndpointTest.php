@@ -17,6 +17,10 @@ class EnvelopeRecipientsEndpointTest extends EndpointTestCase
     public function testChildren(): void
     {
         self::assertDefaultEndpointPath(self::endpoint()->block('foo'), '/api/envelopes/bar/recipients/foo/block');
+        self::assertDefaultEndpointPath(
+            self::endpoint()->attachments('foo'),
+            '/api/envelopes/bar/recipients/foo/attachments'
+        );
     }
 
     public function testCreateMany(): void
@@ -55,9 +59,9 @@ class EnvelopeRecipientsEndpointTest extends EndpointTestCase
         self::assertLastRequest('PUT', '/api/envelopes/bar/recipients/signing-order');
     }
 
-    public function testAttachments(): void
+    public function testListAttachments(): void
     {
-        self::endpoint()->attachments();
+        self::endpoint()->listAttachments();
         self::assertLastRequest('GET', '/api/envelopes/bar/recipients/attachments');
     }
 

@@ -8,11 +8,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add `MyAccountsEndpoint.get` and `MyAccount.idpDomain`
 - Add `IdentityProvider` resource and `Account.identityProvider`
-- Add `EnvelopeEndpoint.clone`
+- Add `EnvelopesEndpoint.clone`
 - Add `EnvelopeProperties.declineAllowed` and `EnvelopeProperties.declineReasonRequired`
 - Add `EnvelopeRecipient.declineReason`
 - Add `EnvelopeRecipientAttachment` resource
 - Add `EnvelopeRecipientEndpoint.attachments`
+- Add `EnvelopeRecipientAttachmentsEndpoint`
 
 ## [1.5.0] - 2021-11-09
 ### Added

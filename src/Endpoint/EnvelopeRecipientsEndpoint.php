@@ -42,6 +42,14 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
     }
 
     /**
+     * @param EnvelopeRecipient|string $recipient
+     */
+    public function attachments($recipient): EnvelopeRecipientAttachmentsEndpoint
+    {
+        return new EnvelopeRecipientAttachmentsEndpoint($this, $recipient);
+    }
+
+    /**
      * @param mixed[] $body
      * @return array<EnvelopeRecipient>
      */
@@ -98,7 +106,7 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
     /**
      * @return Collection<EnvelopeRecipientAttachment>
      */
-    public function attachments(): Collection
+    public function listAttachments(): Collection
     {
         return $this->createCollectionResource($this->getRequest('/attachments'), EnvelopeRecipientAttachment::class);
     }
