@@ -11,8 +11,8 @@ class EnvelopeRecipientAttachmentsEndpointTest extends EndpointTestCase
 {
     public function testList(): void
     {
-        self::endpoint()->list(['foo' => 'bar']);
-        self::assertLastRequest('GET', '/api/envelopes/bar/recipients/foo/attachments?foo=bar');
+        self::endpoint()->list();
+        self::assertLastRequest('GET', '/api/envelopes/bar/recipients/foo/attachments');
     }
 
     public function testGet(): void

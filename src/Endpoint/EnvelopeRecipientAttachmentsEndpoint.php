@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Endpoint\Traits\GetEndpointTrait;
-use DigitalCz\DigiSign\Endpoint\Traits\ListEndpointTrait;
+use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\EnvelopeRecipient;
 use DigitalCz\DigiSign\Resource\EnvelopeRecipientAttachment;
 use DigitalCz\DigiSign\Stream\FileResponse;
@@ -16,8 +16,6 @@ use DigitalCz\DigiSign\Stream\FileResponse;
  */
 final class EnvelopeRecipientAttachmentsEndpoint extends ResourceEndpoint
 {
-    /** @use ListEndpointTrait<EnvelopeRecipientAttachment> */
-    use ListEndpointTrait;
     use GetEndpointTrait;
 
     /**
@@ -31,6 +29,14 @@ final class EnvelopeRecipientAttachmentsEndpoint extends ResourceEndpoint
             EnvelopeRecipientAttachment::class,
             ['recipient' => $recipient]
         );
+    }
+
+    /**
+     * @return Collection<EnvelopeRecipientAttachment>
+     */
+    public function list(): Collection
+    {
+        return $this->createCollectionResource($this->getRequest(), $this->getResourceClass());
     }
 
     /**
