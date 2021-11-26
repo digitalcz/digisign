@@ -5,6 +5,8 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+
+## [1.6.0] - 2021-11-26
 ### Added
 - Add `MyAccountsEndpoint.get` and `MyAccount.idpDomain`
 - Add `IdentityProvider` resource and `Account.identityProvider`

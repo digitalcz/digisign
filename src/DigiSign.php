@@ -26,7 +26,7 @@ use Psr\SimpleCache\CacheInterface;
 
 final class DigiSign implements EndpointInterface
 {
-    public const VERSION = '1.5.0';
+    public const VERSION = '1.6.0';
     public const API_BASE = 'https://api.digisign.org';
     public const API_BASE_TESTING = 'https://api.digisign.digital.cz';
 
