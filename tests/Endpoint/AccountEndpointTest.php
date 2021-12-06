@@ -18,6 +18,7 @@ class AccountEndpointTest extends EndpointTestCase
         self::assertDefaultEndpointPath(self::endpoint()->envelopeTemplate(), '/api/account/envelope-template');
         self::assertDefaultEndpointPath(self::endpoint()->apiKeys(), '/api/account/api-keys');
         self::assertDefaultEndpointPath(self::endpoint()->users(), '/api/account/users');
+        self::assertDefaultEndpointPath(self::endpoint()->certificates(), '/api/account/certificates');
     }
 
     public function testGet(): void

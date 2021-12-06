@@ -56,6 +56,11 @@ final class AccountEndpoint extends ResourceEndpoint
         return new AccountUsersEndpoint($this);
     }
 
+    public function certificates(): AccountCertificatesEndpoint
+    {
+        return new AccountCertificatesEndpoint($this);
+    }
+
     public function get(): Account
     {
         return $this->makeResource($this->getRequest());
