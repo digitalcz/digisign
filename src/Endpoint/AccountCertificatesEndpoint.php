@@ -9,6 +9,7 @@ use DigitalCz\DigiSign\Endpoint\Traits\DeleteEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\GetEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\ListEndpointTrait;
 use DigitalCz\DigiSign\Resource\Certificate;
+use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
  * @extends ResourceEndpoint<Certificate>
