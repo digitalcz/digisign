@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Endpoint\Traits\CreateEndpointTrait;
+use DigitalCz\DigiSign\Endpoint\Traits\DeleteEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\GetEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\ListEndpointTrait;
 use DigitalCz\DigiSign\Resource\Certificate;
@@ -21,6 +22,7 @@ class AccountCertificatesEndpoint extends ResourceEndpoint
     use ListEndpointTrait;
     use GetEndpointTrait;
     use CreateEndpointTrait;
+    use DeleteEndpointTrait;
 
     public function __construct(AccountEndpoint $parent)
     {
