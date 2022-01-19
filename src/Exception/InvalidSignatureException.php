@@ -6,5 +6,4 @@ namespace DigitalCz\DigiSign\Exception;
 
 final class InvalidSignatureException extends RuntimeException
 {
-
 }

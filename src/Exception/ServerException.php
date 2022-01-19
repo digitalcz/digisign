@@ -9,5 +9,4 @@ namespace DigitalCz\DigiSign\Exception;
  */
 final class ServerException extends ResponseException
 {
-
 }
