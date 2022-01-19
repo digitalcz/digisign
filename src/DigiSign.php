@@ -16,6 +16,7 @@ use DigitalCz\DigiSign\Endpoint\EnvelopesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EnvelopeTemplatesEndpoint;
 use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
 use DigitalCz\DigiSign\Endpoint\ImagesEndpoint;
+use DigitalCz\DigiSign\Endpoint\LabelsEndpoint;
 use DigitalCz\DigiSign\Endpoint\MyEndpoint;
 use DigitalCz\DigiSign\Endpoint\WebhooksEndpoint;
 use DigitalCz\DigiSign\Exception\InvalidSignatureException;
@@ -237,6 +238,11 @@ final class DigiSign implements EndpointInterface
     public function images(): ImagesEndpoint
     {
         return new ImagesEndpoint($this);
+    }
+
+    public function labels(): LabelsEndpoint
+    {
+        return new LabelsEndpoint($this);
     }
 
     public function webhooks(): WebhooksEndpoint
