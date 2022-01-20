@@ -59,6 +59,14 @@ final class EnvelopesEndpoint extends ResourceEndpoint
         return new EnvelopeNotificationsEndpoint($this, $envelope);
     }
 
+    /**
+     * @param Envelope|string $envelope
+     */
+    public function labels($envelope): EnvelopeLabelsEndpoint
+    {
+        return new EnvelopeLabelsEndpoint($this, $envelope);
+    }
+
     public function cancel(string $id): BaseResource
     {
         return $this->createResource($this->postRequest('/{id}/cancel', ['id' => $id]));

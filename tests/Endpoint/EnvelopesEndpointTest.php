@@ -15,6 +15,7 @@ class EnvelopesEndpointTest extends EndpointTestCase
         self::assertDefaultEndpointPath(self::endpoint()->recipients('foo'), '/api/envelopes/foo/recipients');
         self::assertDefaultEndpointPath(self::endpoint()->tags('foo'), '/api/envelopes/foo/tags');
         self::assertDefaultEndpointPath(self::endpoint()->notifications('foo'), '/api/envelopes/foo/notifications');
+        self::assertDefaultEndpointPath(self::endpoint()->labels('foo'), '/api/envelopes/foo/labels');
     }
 
     public function testCRUD(): void
