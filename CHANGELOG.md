@@ -7,6 +7,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 ### Added
 - Add `AccountCertificateEndpoint` and `Certificate` resource
+- Add `Label` resource and `LabelsEndpoint`
+- Add `EnvelopeLabelsEndpoint`
 
 ## [1.6.0] - 2021-11-26
 ### Added
