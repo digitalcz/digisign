@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `Label` resource and `LabelsEndpoint`
 - Add `EnvelopeLabelsEndpoint`
 - Add `EnvelopeRecipient.bankIdScopes`
+- Add `AccountCertificatesEndpoint.enable` and `AccountCertificatesEndpoint.disable`
 
 ## [1.6.0] - 2021-11-26
 ### Added

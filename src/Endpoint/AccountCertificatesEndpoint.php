@@ -37,4 +37,20 @@ class AccountCertificatesEndpoint extends ResourceEndpoint
     {
         return $this->makeResource($this->postRequest('/{id}/reload', ['id' => $id]));
     }
+
+    /**
+     * @param Certificate|string $id
+     */
+    public function disable($id): Certificate
+    {
+        return $this->makeResource($this->postRequest('/{id}/disable', ['id' => $id]));
+    }
+
+    /**
+     * @param Certificate|string $id
+     */
+    public function enable($id): Certificate
+    {
+        return $this->makeResource($this->postRequest('/{id}/enable', ['id' => $id]));
+    }
 }
