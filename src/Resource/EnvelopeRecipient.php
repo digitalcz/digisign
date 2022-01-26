@@ -100,4 +100,7 @@ class EnvelopeRecipient extends BaseResource
 
     /** @var string|null */
     public $intermediaryEmail;
+
+    /** @var array<string, string> */
+    public $bankIdScopes;
 }
