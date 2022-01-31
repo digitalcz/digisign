@@ -33,6 +33,18 @@ class AccountCertificatesEndpointTest extends EndpointTestCase
         self::assertLastRequest('POST', '/api/account/certificates/foo/reload');
     }
 
+    public function testEnable(): void
+    {
+        self::endpoint()->enable('foo');
+        self::assertLastRequest('POST', '/api/account/certificates/foo/enable');
+    }
+
+    public function testDisable(): void
+    {
+        self::endpoint()->disable('foo');
+        self::assertLastRequest('POST', '/api/account/certificates/foo/disable');
+    }
+
     protected static function endpoint(): AccountCertificatesEndpoint
     {
         return self::dgs()->account()->certificates();
