@@ -35,13 +35,13 @@ class EnvelopeTemplate extends BaseResource
     public $signatureType;
 
     /** @var string */
-    public $authenticationMethod;
+    public $authenticationOnOpen;
 
     /** @var string */
-    public $authenticationPlace;
+    public $authenticationOnSignature;
 
-    /** @var bool */
-    public $authenticateOnDownload;
+    /** @var string */
+    public $authenticationOnDownload;
 
     /** @var string */
     public $language;
