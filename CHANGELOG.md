@@ -12,6 +12,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeRecipient.bankIdScopes`
 - Add `AccountCertificatesEndpoint.enable` and `AccountCertificatesEndpoint.disable`
 
+### Changed
+- Replace fields `authenticationMethod`, `authenticationPlace` and `authenticateOnDownload` with `authenticationOnOpen`, `authenticationOnSignature` and `authenticationOnDownload`
+
 ## [1.6.0] - 2021-11-26
 ### Added
 - Add `MyAccountsEndpoint.get` and `MyAccount.idpDomain`
