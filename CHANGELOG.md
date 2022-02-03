@@ -14,6 +14,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Changed
 - Replace fields `authenticationMethod`, `authenticationPlace` and `authenticateOnDownload` with `authenticationOnOpen`, `authenticationOnSignature` and `authenticationOnDownload`
+- Remove `AccountEnvelopeTemplate`, leave only `EnvelopeTemplate`
 
 ## [1.6.0] - 2021-11-26
 ### Added

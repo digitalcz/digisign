@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
-use DigitalCz\DigiSign\Resource\AccountEnvelopeTemplate;
+use DigitalCz\DigiSign\Resource\EnvelopeTemplate;
 
 /**
- * @extends ResourceEndpoint<AccountEnvelopeTemplate>
+ * @extends ResourceEndpoint<EnvelopeTemplate>
  */
 final class AccountEnvelopeTemplateEndpoint extends ResourceEndpoint
 {
     public function __construct(AccountEndpoint $parent)
     {
-        parent::__construct($parent, '/envelope-template', AccountEnvelopeTemplate::class);
+        parent::__construct($parent, '/envelope-template', EnvelopeTemplate::class);
     }
 
-    public function get(): AccountEnvelopeTemplate
+    public function get(): EnvelopeTemplate
     {
         return $this->makeResource($this->getRequest());
     }
@@ -24,7 +24,7 @@ final class AccountEnvelopeTemplateEndpoint extends ResourceEndpoint
     /**
      * @param mixed[] $body
      */
-    public function update(array $body): AccountEnvelopeTemplate
+    public function update(array $body): EnvelopeTemplate
     {
         return $this->makeResource($this->putRequest('', ['json' => $body]));
     }
