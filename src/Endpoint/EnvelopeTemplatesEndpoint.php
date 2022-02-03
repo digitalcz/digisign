@@ -72,4 +72,12 @@ final class EnvelopeTemplatesEndpoint extends ResourceEndpoint
     {
         return new EnvelopeTemplateTagsEndpoint($this, $template);
     }
+
+    /**
+     * @param EnvelopeTemplate|string $template
+     */
+    public function labels($template): EnvelopeTemplateLabelsEndpoint
+    {
+        return new EnvelopeTemplateLabelsEndpoint($this, $template);
+    }
 }

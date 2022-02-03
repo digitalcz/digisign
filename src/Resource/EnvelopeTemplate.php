@@ -66,4 +66,7 @@ class EnvelopeTemplate extends BaseResource
 
     /** @var bool */
     public $useDefaultTemplateSettings;
+
+    /** @var Collection<Label> */
+    public $labels;
 }
