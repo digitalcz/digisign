@@ -88,4 +88,7 @@ class Envelope extends BaseResource
 
     /** @var EnvelopeProperties */
     public $properties;
+
+    /** @var Collection<Label> */
+    public $labels;
 }

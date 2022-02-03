@@ -27,6 +27,10 @@ class EnvelopeTemplatesEndpointTest extends EndpointTestCase
             self::endpoint()->tags('foo'),
             '/api/envelope-templates/foo/tags'
         );
+        self::assertDefaultEndpointPath(
+            self::endpoint()->labels('foo'),
+            '/api/envelope-templates/foo/labels'
+        );
     }
 
     public function testCRUD(): void
