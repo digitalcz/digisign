@@ -134,4 +134,20 @@ final class EnvelopesEndpoint extends ResourceEndpoint
     {
         return $this->makeResource($this->postRequest('/{id}/clone', ['id' => $id]));
     }
+
+    /**
+     * @param Envelope|string $id
+     */
+    public function discard($id): Envelope
+    {
+        return $this->makeResource($this->postRequest('/{id}/discard', ['id' => $id]));
+    }
+
+    /**
+     * @param Envelope|string $id
+     */
+    public function restore($id): Envelope
+    {
+        return $this->makeResource($this->postRequest('/{id}/restore', ['id' => $id]));
+    }
 }
