@@ -12,6 +12,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeRecipient.bankIdScopes`
 - Add `AccountCertificatesEndpoint.enable` and `AccountCertificatesEndpoint.disable`
 - Add `EnvelopeTemplateLabelsEndpoint`
+- Add `EnvelopeEndpoint.discard` and `EnvelopeEndpoint.restore`
 
 ### Changed
 - Replace fields `authenticationMethod`, `authenticationPlace` and `authenticateOnDownload` with `authenticationOnOpen`, `authenticationOnSignature` and `authenticationOnDownload`
