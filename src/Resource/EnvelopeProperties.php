@@ -17,4 +17,7 @@ class EnvelopeProperties extends BaseResource
 
     /** @var bool */
     public $declineReasonRequired;
+
+    /** @var array<string> */
+    public $signatureTagParts;
 }

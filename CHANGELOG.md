@@ -13,6 +13,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountCertificatesEndpoint.enable` and `AccountCertificatesEndpoint.disable`
 - Add `EnvelopeTemplateLabelsEndpoint`
 - Add `EnvelopeEndpoint.discard` and `EnvelopeEndpoint.restore`
+- Add `EnvelopeProperties.signatureTagParts`
 
 ### Changed
 - Replace fields `authenticationMethod`, `authenticationPlace` and `authenticateOnDownload` with `authenticationOnOpen`, `authenticationOnSignature` and `authenticationOnDownload`
