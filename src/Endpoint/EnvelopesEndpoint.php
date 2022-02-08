@@ -150,4 +150,12 @@ final class EnvelopesEndpoint extends ResourceEndpoint
     {
         return $this->makeResource($this->postRequest('/{id}/restore', ['id' => $id]));
     }
+
+    /**
+     * @param Envelope|string $id
+     */
+    public function validate($id): void
+    {
+        $this->getRequest('/{id}/validate', ['id' => $id]);
+    }
 }
