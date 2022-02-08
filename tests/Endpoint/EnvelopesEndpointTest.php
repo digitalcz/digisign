@@ -89,6 +89,12 @@ class EnvelopesEndpointTest extends EndpointTestCase
         self::assertLastRequest('POST', '/api/envelopes/foo/discard');
     }
 
+    public function testValidate(): void
+    {
+        self::endpoint()->validate('foo');
+        self::assertLastRequest('GET', '/api/envelopes/foo/validate');
+    }
+
     public function testRestore(): void
     {
         self::endpoint()->restore('foo');
