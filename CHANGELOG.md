@@ -8,6 +8,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add `EnvelopeRecipientTemplate.bankIdScopes`
 
+## [Unreleased]
+### Added
+- Add `EnvelopeRecipientTemplate.bankIdScopes`
+- Add emailBodyCompleted to four resources
+
 ## [1.7.0]
 ### Added
 - Add `AccountCertificateEndpoint` and `Certificate` resource

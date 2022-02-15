@@ -40,6 +40,9 @@ class EnvelopeTemplateRecipient extends BaseResource
     /** @var string|null */
     public $emailBody;
 
+    /** @var string|null */
+    public $emailBodyCompleted;
+
     /** @var string */
     public $language;
 

@@ -24,6 +24,9 @@ class Envelope extends BaseResource
     public $emailBody;
 
     /** @var string|null */
+    public $emailBodyCompleted;
+
+    /** @var string|null */
     public $senderName;
 
     /** @var string|null */
