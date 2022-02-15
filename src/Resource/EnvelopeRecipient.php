@@ -53,6 +53,9 @@ class EnvelopeRecipient extends BaseResource
     /** @var string|null */
     public $emailBody;
 
+    /** @var string|null */
+    public $emailBodyCompleted;
+
     /** @var DateTime|null */
     public $sentAt;
 

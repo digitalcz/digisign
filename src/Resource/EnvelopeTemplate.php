@@ -28,6 +28,9 @@ class EnvelopeTemplate extends BaseResource
     /** @var string */
     public $emailBody;
 
+    /** @var string|null */
+    public $emailBodyCompleted;
+
     /** @var int */
     public $expiration;
 
