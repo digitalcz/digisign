@@ -23,6 +23,7 @@ class DummyResource extends BaseResource
             'string' => 'bar',
         ],
         'dateTime' => '2021-01-01T01:01:01+00:00',
+        'dateTimeNullable' => '2021-01-01T01:01:01+00:00',
         'collection' => [
             ['string' => 'moo'],
             ['string' => 'baz'],
@@ -72,6 +73,9 @@ class DummyResource extends BaseResource
 
     /** @var DateTime  */
     public $dateTime;
+
+    /** @var DateTime|null  */
+    public $dateTimeNullable;
 
     /** @var Collection<DummyResource> */
     public $collection;

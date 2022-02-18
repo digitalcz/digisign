@@ -181,6 +181,9 @@ class BaseResource implements ResourceInterface
 
         $type = $matches['type'];
 
+        // remove |null suffix
+        $type = str_replace('|null', '', $type);
+
         if (class_exists($type)) {
             return $type; // type is FQCN
         }

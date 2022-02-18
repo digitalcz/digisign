@@ -31,9 +31,11 @@ class BaseResourceTest extends TestCase
             'float' => null,
             'resource' => null,
             'dateTime' => null,
+            'dateTimeNullable' => null,
             'collection' => null,
         ],
         'dateTime' => '2021-01-01T01:01:01+00:00',
+        'dateTimeNullable' => '2021-01-01T01:01:01+00:00',
         'collection' => [
             [
                 'id' => null,
@@ -44,6 +46,7 @@ class BaseResourceTest extends TestCase
                 'float' => null,
                 'resource' => null,
                 'dateTime' => null,
+                'dateTimeNullable' => null,
                 'collection' => null,
             ],
             [
@@ -55,6 +58,7 @@ class BaseResourceTest extends TestCase
                 'float' => null,
                 'resource' => null,
                 'dateTime' => null,
+                'dateTimeNullable' => null,
                 'collection' => null,
             ],
         ],
@@ -75,6 +79,8 @@ class BaseResourceTest extends TestCase
         self::assertSame(1.55, $resource->float);
         self::assertSame('bar', $resource->resource->string);
         self::assertEquals('2021-01-01T01:01:01+00:00', $resource->dateTime->format(DateTimeInterface::ATOM));
+        self::assertInstanceOf(DateTimeInterface::class, $resource->dateTimeNullable);
+        self::assertEquals('2021-01-01T01:01:01+00:00', $resource->dateTimeNullable->format(DateTimeInterface::ATOM));
         self::assertCount(2, $resource->collection);
         self::assertInstanceOf(DummyResource::class, $resource->collection[0]);
         self::assertSame('moo', $resource->collection[0]->string);

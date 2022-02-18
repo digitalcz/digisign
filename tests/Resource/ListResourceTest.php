@@ -45,9 +45,11 @@ class ListResourceTest extends TestCase
                 'float' => null,
                 'resource' => null,
                 'dateTime' => null,
+                'dateTimeNullable' => null,
                 'collection' => null,
             ],
             'dateTime' => '2021-01-01T01:01:01+00:00',
+            'dateTimeNullable' => '2021-01-01T01:01:01+00:00',
             'collection' => [
                 [
                     'string' => 'moo',
@@ -58,6 +60,7 @@ class ListResourceTest extends TestCase
                     'float' => null,
                     'resource' => null,
                     'dateTime' => null,
+                    'dateTimeNullable' => null,
                     'collection' => null,
                 ],
                 [
@@ -69,6 +72,7 @@ class ListResourceTest extends TestCase
                     'float' => null,
                     'resource' => null,
                     'dateTime' => null,
+                    'dateTimeNullable' => null,
                     'collection' => null,
                 ],
             ],

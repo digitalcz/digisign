@@ -7,11 +7,10 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 ### Added
 - Add `EnvelopeRecipientTemplate.bankIdScopes`
-
-## [Unreleased]
-### Added
-- Add `EnvelopeRecipientTemplate.bankIdScopes`
 - Add emailBodyCompleted to four resources
+
+### Fixed
+- Fix hydration of nullable properties
 
 ## [1.7.0]
 ### Added
