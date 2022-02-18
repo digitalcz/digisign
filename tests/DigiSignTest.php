@@ -150,6 +150,8 @@ class DigiSignTest extends TestCase
         self::assertSame('/api/enums', $mockClient->getLastRequest()->getUri()->getPath());
         $dgs->my()->request('GET');
         self::assertSame('/api/my', $mockClient->getLastRequest()->getUri()->getPath());
+        $dgs->report()->request('GET');
+        self::assertSame('/api/report', $mockClient->getLastRequest()->getUri()->getPath());
     }
 
     public function testUserAgent(): void

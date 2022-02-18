@@ -18,6 +18,7 @@ use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
 use DigitalCz\DigiSign\Endpoint\ImagesEndpoint;
 use DigitalCz\DigiSign\Endpoint\LabelsEndpoint;
 use DigitalCz\DigiSign\Endpoint\MyEndpoint;
+use DigitalCz\DigiSign\Endpoint\ReportEndpoint;
 use DigitalCz\DigiSign\Endpoint\WebhooksEndpoint;
 use DigitalCz\DigiSign\Exception\InvalidSignatureException;
 use InvalidArgumentException;
@@ -258,6 +259,11 @@ final class DigiSign implements EndpointInterface
     public function my(): MyEndpoint
     {
         return new MyEndpoint($this);
+    }
+
+    public function report(): ReportEndpoint
+    {
+        return new ReportEndpoint($this);
     }
 
     private function createUserAgent(): string

@@ -8,6 +8,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add `EnvelopeRecipientTemplate.bankIdScopes`
 - Add emailBodyCompleted to four resources
+- Add `ReportEndpoint.sentEnvelopes`
 
 ### Fixed
 - Fix hydration of nullable properties
