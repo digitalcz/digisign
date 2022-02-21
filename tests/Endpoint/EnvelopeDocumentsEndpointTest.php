@@ -38,6 +38,12 @@ class EnvelopeDocumentsEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/envelopes/bar/documents/foo/tags?foo=bar');
     }
 
+    public function testReplaceFile(): void
+    {
+        self::endpoint()->replaceFile('foo', ['foo' => 'bar']);
+        self::assertLastRequest('POST', '/api/envelopes/bar/documents/foo/replace-file', ['foo' => 'bar']);
+    }
+
     protected static function endpoint(): EnvelopeDocumentsEndpoint
     {
         return self::dgs()->envelopes()->documents('bar');

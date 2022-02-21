@@ -64,4 +64,15 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
             EnvelopeTag::class
         );
     }
+
+    /**
+     * @param EnvelopeDocument|string $document
+     * @param mixed[] $body
+     */
+    public function replaceFile($document, array $body): EnvelopeDocument
+    {
+        return $this->makeResource(
+            $this->postRequest('/{document}/replace-file', ['document' => $document, 'json' => $body])
+        );
+    }
 }
