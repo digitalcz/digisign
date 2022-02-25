@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add emailBodyCompleted to four resources
 - Add `ReportEndpoint.sentEnvelopes`
 - Add `EnvelopeDocumentsEndpoint.replaceFile`
+- Add `EnvelopeTemplateDocumentsEndpoint.replaceFile`
 
 ### Fixed
 - Fix hydration of nullable properties

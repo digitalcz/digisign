@@ -26,6 +26,12 @@ class EnvelopeTemplateDocumentsEndpointTest extends EndpointTestCase
         self::assertLastRequest('PUT', '/api/envelope-templates/bar/documents/positions');
     }
 
+    public function testReplaceFile(): void
+    {
+        self::endpoint()->replaceFile('moo', ['foo' => 'bar']);
+        self::assertLastRequest('POST', '/api/envelope-templates/bar/documents/moo/replace-file', ['foo' => 'bar']);
+    }
+
     protected static function endpoint(): EnvelopeTemplateDocumentsEndpoint
     {
         return self::dgs()->envelopeTemplates()->documents('bar');

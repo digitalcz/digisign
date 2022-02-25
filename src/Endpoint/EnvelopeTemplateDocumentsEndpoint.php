@@ -48,4 +48,15 @@ final class EnvelopeTemplateDocumentsEndpoint extends ResourceEndpoint
     {
         $this->putRequest('/positions', ['json' => $body]);
     }
+
+    /**
+     * @param EnvelopeTemplateDocument|string $document
+     * @param mixed[] $body
+     */
+    public function replaceFile($document, array $body): EnvelopeTemplateDocument
+    {
+        return $this->makeResource(
+            $this->postRequest('/{document}/replace-file', ['document' => $document, 'json' => $body])
+        );
+    }
 }
