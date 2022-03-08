@@ -18,6 +18,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Fixed
 - Fix hydration of nullable properties
 
+### Changed
+- Change EnvelopeTemplateDocument.labelPositioning as not nullable
+
 ## [1.7.0]
 ### Added
 - Add `AccountCertificateEndpoint` and `Certificate` resource
