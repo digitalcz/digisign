@@ -20,4 +20,7 @@ class EnvelopeProperties extends BaseResource
 
     /** @var array<string> */
     public $signatureTagParts;
+
+    /** @var string */
+    public $labelPositioning;
 }
