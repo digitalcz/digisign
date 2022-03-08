@@ -11,12 +11,13 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `ReportEndpoint.sentEnvelopes`
 - Add `EnvelopeDocumentsEndpoint.replaceFile`
 - Add `EnvelopeTemplateDocumentsEndpoint.replaceFile`
+- Add `EnvelopeProperties.labelPositioning`
 
 ### Fixed
 - Fix hydration of nullable properties
 
-### Fixed
-- Fix hydration of nullable properties
+### Changed
+- Change EnvelopeTemplateDocument.labelPositioning as not nullable
 
 ## [1.7.0]
 ### Added
