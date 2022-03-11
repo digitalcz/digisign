@@ -63,6 +63,9 @@ class Envelope extends BaseResource
     public $sentAt;
 
     /** @var DateTime|null */
+    public $sealedAt;
+
+    /** @var DateTime|null */
     public $completedAt;
 
     /** @var DateTime|null */
