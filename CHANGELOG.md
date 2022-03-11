@@ -12,6 +12,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeDocumentsEndpoint.replaceFile`
 - Add `EnvelopeTemplateDocumentsEndpoint.replaceFile`
 - Add `EnvelopeProperties.labelPositioning`
+- Add `Envelope.sealedAt`
 
 ### Fixed
 - Fix hydration of nullable properties
