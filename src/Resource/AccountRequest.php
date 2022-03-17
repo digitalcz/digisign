@@ -40,4 +40,13 @@ class AccountRequest extends BaseResource
 
     /** @var string|null */
     public $createdBy;
+
+    /** @var DateTime */
+    public $requestTime;
+
+    /** @var DateTime */
+    public $responseTime;
+
+    /** @var int */
+    public $duration;
 }
