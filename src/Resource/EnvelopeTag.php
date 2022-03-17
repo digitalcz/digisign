@@ -72,4 +72,7 @@ class EnvelopeTag extends BaseResource
 
     /** @var string */
     public $assignment;
+
+    /** @var bool */
+    public $renderInteractive;
 }

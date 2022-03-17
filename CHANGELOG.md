@@ -7,6 +7,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 ### Added
 - Add `AccountRequest.requestTime|responseTime|duration`
+- Add `EnvelopeTag.renderInteractive` and `EnvelopeTemplateTag.renderInteractive`
 
 ## [1.8.0]
 ### Added
