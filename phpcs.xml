@@ -95,6 +95,7 @@
         <exclude name="SlevomatCodingStandard.Classes.RequireConstructorPropertyPromotion"/>
         <exclude name="SlevomatCodingStandard.Classes.DisallowConstructorPropertyPromotion"/>
         <exclude name="SlevomatCodingStandard.Classes.ModernClassNameReference"/>
+        <exclude name="SlevomatCodingStandard.Classes.RequireAbstractOrFinal"/>
     </rule>
     <rule ref="SlevomatCodingStandard.Classes.ClassStructure">
         <properties>
