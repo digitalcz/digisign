@@ -23,4 +23,19 @@ class AccountStatistics extends BaseResource
 
     /** @var int */
     public $countAuthorizationRequestSMS;
+
+    /** @var int */
+    public $countDeliveriesSent;
+
+    /** @var int */
+    public $countBankIdConnect;
+
+    /** @var int */
+    public $countBankIdIdentify;
+
+    /** @var int */
+    public $countBankIdIdentifyPlus;
+
+    /** @var int */
+    public $countActiveUsers;
 }

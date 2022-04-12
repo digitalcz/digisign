@@ -8,6 +8,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add `AccountRequest.requestTime|responseTime|duration`
 - Add `EnvelopeTag.renderInteractive` and `EnvelopeTemplateTag.renderInteractive`
+- Add new fields for `AccountStatistics` and `AccountSmsLog`
 
 ## [1.8.0]
 ### Added

@@ -8,11 +8,14 @@ use DateTime;
 
 class AccountSmsLog extends BaseResource
 {
-    /** @var string */
+    /** @var string|null */
     public $envelopeId;
 
-    /** @var string */
+    /** @var string|null */
     public $recipientId;
+
+    /** @var string */
+    public $type;
 
     /** @var string */
     public $mobile;
