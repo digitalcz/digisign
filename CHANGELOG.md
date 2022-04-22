@@ -9,6 +9,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountRequest.requestTime|responseTime|duration`
 - Add `EnvelopeTag.renderInteractive` and `EnvelopeTemplateTag.renderInteractive`
 - Add new fields for `AccountStatistics` and `AccountSmsLog`
+- Add `EnvelopeEndpoint.startCorrection` and `EnvelopeEndpoint.finishCorrection`
 
 ## [1.8.0]
 ### Added

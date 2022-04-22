@@ -101,6 +101,18 @@ class EnvelopesEndpointTest extends EndpointTestCase
         self::assertLastRequest('POST', '/api/envelopes/foo/restore');
     }
 
+    public function testStartCorrection(): void
+    {
+        self::endpoint()->startCorrection('foo');
+        self::assertLastRequest('POST', '/api/envelopes/foo/start-correction');
+    }
+
+    public function testFinishCorrection(): void
+    {
+        self::endpoint()->finishCorrection('foo');
+        self::assertLastRequest('POST', '/api/envelopes/foo/finish-correction');
+    }
+
     protected static function endpoint(): EnvelopesEndpoint
     {
         return self::dgs()->envelopes();

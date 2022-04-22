@@ -158,4 +158,20 @@ final class EnvelopesEndpoint extends ResourceEndpoint
     {
         $this->getRequest('/{id}/validate', ['id' => $id]);
     }
+
+    /**
+     * @param Envelope|string $id
+     */
+    public function startCorrection($id): void
+    {
+        $this->postRequest('/{id}/start-correction', ['id' => $id]);
+    }
+
+    /**
+     * @param Envelope|string $id
+     */
+    public function finishCorrection($id): void
+    {
+        $this->postRequest('/{id}/finish-correction', ['id' => $id]);
+    }
 }
