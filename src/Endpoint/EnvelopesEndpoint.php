@@ -169,9 +169,10 @@ final class EnvelopesEndpoint extends ResourceEndpoint
 
     /**
      * @param Envelope|string $id
+     * @param mixed[] $body
      */
-    public function finishCorrection($id): void
+    public function finishCorrection($id, array $body = []): void
     {
-        $this->postRequest('/{id}/finish-correction', ['id' => $id]);
+        $this->postRequest('/{id}/finish-correction', ['id' => $id, 'json' => $body]);
     }
 }

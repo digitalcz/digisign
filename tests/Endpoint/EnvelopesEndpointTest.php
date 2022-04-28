@@ -109,8 +109,8 @@ class EnvelopesEndpointTest extends EndpointTestCase
 
     public function testFinishCorrection(): void
     {
-        self::endpoint()->finishCorrection('foo');
-        self::assertLastRequest('POST', '/api/envelopes/foo/finish-correction');
+        self::endpoint()->finishCorrection('foo', ['foo' => 'bar']);
+        self::assertLastRequest('POST', '/api/envelopes/foo/finish-correction', ['foo' => 'bar']);
     }
 
     protected static function endpoint(): EnvelopesEndpoint
