@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Resource\BaseResource;
-use Psr\Http\Message\ResponseInterface;
 
 /**
  * @extends ResourceEndpoint<BaseResource>
@@ -30,8 +29,8 @@ class EnvelopeDocumentAssignmentsEndpoint extends ResourceEndpoint
     /**
      * @param array<string, array<string, string>> $body
      */
-    public function set(array $body): ResponseInterface
+    public function set(array $body): void
     {
-        return $this->putRequest('', ['json' => $body]);
+        $this->putRequest('', ['json' => $body]);
     }
 }
