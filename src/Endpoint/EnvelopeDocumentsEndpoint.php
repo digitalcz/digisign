@@ -30,6 +30,11 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
         parent::__construct($parent, '/{envelope}/documents', EnvelopeDocument::class, ['envelope' => $envelope]);
     }
 
+    public function assignments(): EnvelopeDocumentAssignmentsEndpoint
+    {
+        return new EnvelopeDocumentAssignmentsEndpoint($this);
+    }
+
     /**
      * @param mixed[] $body
      */
