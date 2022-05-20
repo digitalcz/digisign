@@ -7,6 +7,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 - Add `EnvelopeDocumentAssignmentsEndpoint`
 - Add `AccountBrandings` CRUD endpoint
+- Add `Envelope.branding` and `EnvelopeTemplate.branding`
 
 ## [1.9.0]
 ### Added

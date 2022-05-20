@@ -100,4 +100,7 @@ class Envelope extends BaseResource
 
     /** @var Collection<Label> */
     public $labels;
+
+    /** @var Branding|null */
+    public $branding;
 }
