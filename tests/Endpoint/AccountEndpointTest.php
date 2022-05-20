@@ -19,6 +19,7 @@ class AccountEndpointTest extends EndpointTestCase
         self::assertDefaultEndpointPath(self::endpoint()->apiKeys(), '/api/account/api-keys');
         self::assertDefaultEndpointPath(self::endpoint()->users(), '/api/account/users');
         self::assertDefaultEndpointPath(self::endpoint()->certificates(), '/api/account/certificates');
+        self::assertDefaultEndpointPath(self::endpoint()->brandings(), '/api/account/brandings');
     }
 
     public function testGet(): void
