@@ -12,4 +12,25 @@ class Branding extends BaseResource
 
     /** @var string */
     public $name;
+
+    /** @var string|null */
+    public $defaultSenderName;
+
+    /** @var string|null */
+    public $defaultSenderEmail;
+
+    /** @var Image|null */
+    public $logo;
+
+    /** @var string */
+    public $logoSize;
+
+    /** @var string|null */
+    public $primaryColor;
+
+    /** @var string|null */
+    public $complementaryColor;
+
+    /** @var string|null */
+    public $secondaryColor;
 }
