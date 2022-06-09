@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `Envelope.branding` and `EnvelopeTemplate.branding`
 - Add multiple fields for `Branding`
 - Add new `AccountMessaging` endpoint and resource
+- Add `Branding.ownConditions`
 
 ## [1.9.0]
 ### Added
