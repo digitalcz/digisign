@@ -9,6 +9,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountBrandings` CRUD endpoint
 - Add `Envelope.branding` and `EnvelopeTemplate.branding`
 - Add multiple fields for `Branding`
+- Add new `AccountMessaging` endpoint and resource
 
 ## [1.9.0]
 ### Added
