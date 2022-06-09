@@ -31,6 +31,11 @@ final class AccountEndpoint extends ResourceEndpoint
         return new AccountSettingsEndpoint($this);
     }
 
+    public function messaging(): AccountMessagingEndpoint
+    {
+        return new AccountMessagingEndpoint($this);
+    }
+
     public function security(): AccountSecurityEndpoint
     {
         return new AccountSecurityEndpoint($this);
