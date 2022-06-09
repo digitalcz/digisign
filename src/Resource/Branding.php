@@ -33,4 +33,7 @@ class Branding extends BaseResource
 
     /** @var string|null */
     public $secondaryColor;
+
+    /** @var string[] */
+    public $ownConditions;
 }
