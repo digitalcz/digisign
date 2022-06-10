@@ -6,6 +6,6 @@ namespace DigitalCz\DigiSign\Resource;
 
 class AccountMessaging extends BaseResource
 {
-    /** @var Collection<AccountMessagingEmail> */
-    public $emails;
+    /** @var mixed[] */
+    public $messages;
 }
