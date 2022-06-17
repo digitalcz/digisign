@@ -42,4 +42,10 @@ class AccountSettings extends BaseResource
 
     /** @var bool */
     public $bankIdSign;
+    
+    /** @var string */
+    public $defaultMobileCountryCode;
+    
+    /** @var string */
+    public $defaultLanguage;
 }
