@@ -11,6 +11,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add multiple fields for `Branding`
 - Add new `AccountMessaging` endpoint and resource
 - Add `Branding.ownConditions`
+- Add multiple fields for `AccountSettings`
 
 ## [1.9.0]
 ### Added
