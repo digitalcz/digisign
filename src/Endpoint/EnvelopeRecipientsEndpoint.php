@@ -9,6 +9,7 @@ use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\Envelope;
 use DigitalCz\DigiSign\Resource\EnvelopeRecipient;
 use DigitalCz\DigiSign\Resource\EnvelopeRecipientAttachment;
+use DigitalCz\DigiSign\Resource\EnvelopeRecipientIdentifications;
 use DigitalCz\DigiSign\Resource\EnvelopeTag;
 use DigitalCz\DigiSign\Resource\ListResource;
 use DigitalCz\DigiSign\Resource\ResourceInterface;
@@ -109,5 +110,16 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
     public function listAttachments(): Collection
     {
         return $this->createCollectionResource($this->getRequest('/attachments'), EnvelopeRecipientAttachment::class);
+    }
+
+    /**
+     * @param EnvelopeRecipient|string $recipient
+     */
+    public function listIdentifications($recipient): EnvelopeRecipientIdentifications
+    {
+        return $this->createResource(
+            $this->getRequest('/{id}/identifications', ['id' => $recipient]),
+            EnvelopeRecipientIdentifications::class
+        );
     }
 }

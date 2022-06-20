@@ -12,6 +12,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add new `AccountMessaging` endpoint and resource
 - Add `Branding.ownConditions`
 - Add multiple fields for `AccountSettings`
+- Add new endpoint `EnvelopeRecipientEndpoint.listIdentifications`
+- Update VerifiedClaims resource
 
 ## [1.9.0]
 ### Added
