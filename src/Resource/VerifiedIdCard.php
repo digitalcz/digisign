@@ -4,26 +4,26 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Resource;
 
-class VerifiedAddress extends BaseResource
+class VerifiedIdCard extends BaseResource
 {
     /** @var string|null */
     public $type;
 
     /** @var string|null */
-    public $countryCode;
+    public $description;
 
     /** @var string|null */
-    public $region;
+    public $country;
 
     /** @var string|null */
-    public $city;
+    public $number;
 
     /** @var string|null */
-    public $postalCode;
+    public $validTo;
 
     /** @var string|null */
-    public $addressLine1;
+    public $issuer;
 
     /** @var string|null */
-    public $addressLine2;
+    public $issueDate;
 }
