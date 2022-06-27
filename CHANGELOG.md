@@ -5,6 +5,9 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+
+## [1.10.0]
+### Added
 - Add `EnvelopeDocumentAssignmentsEndpoint`
 - Add `AccountBrandings` CRUD endpoint
 - Add `Envelope.branding` and `EnvelopeTemplate.branding`
@@ -13,6 +16,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `Branding.ownConditions`
 - Add multiple fields for `AccountSettings`
 - Add new endpoint `EnvelopeRecipientEndpoint.listIdentifications`
+
+### Modified
 - Update VerifiedClaims resource
 
 ## [1.9.0]
