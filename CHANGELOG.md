@@ -5,6 +5,8 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+### Added
+- Add new oidc fields for `AccountSecurity` resource
 
 ## [1.10.0]
 ### Added
