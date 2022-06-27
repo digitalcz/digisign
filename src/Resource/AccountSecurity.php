@@ -12,4 +12,13 @@ class AccountSecurity extends BaseResource
 
     /** @var bool */
     public $reuseRecipientAuthentication;
+
+    /** @var string|null  */
+    public $oidcPrompt;
+
+    /** @var bool  */
+    public $oidcLoginHint;
+
+    /** @var bool  */
+    public $oidcDomainHint;
 }
