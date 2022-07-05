@@ -31,4 +31,10 @@ class Certificate extends BaseResource
 
     /** @var string|null */
     public $certificateIdentifier;
+
+    /** @var string|null */
+    public $vaultName;
+
+    /** @var string|null */
+    public $certificateName;
 }
