@@ -8,6 +8,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add new oidc fields for `AccountSecurity` resource
 - Add `Certificate.vaultName`, `Certificate.certificateName`
+- Add `EnvelopeProperties.sendDocumentsAsEmailAttachment`
+- Add `EnvelopeProperties.generateSignatureSheet`
 
 ## [1.10.0]
 ### Added
