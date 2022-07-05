@@ -23,4 +23,10 @@ class EnvelopeProperties extends BaseResource
 
     /** @var string */
     public $labelPositioning;
+
+    /** @var bool */
+    public $sendDocumentsAsEmailAttachment;
+
+    /** @var bool */
+    public $generateSignatureSheet;
 }
