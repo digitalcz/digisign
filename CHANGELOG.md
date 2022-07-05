@@ -7,6 +7,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 ### Added
 - Add new oidc fields for `AccountSecurity` resource
+- Add `Certificate.vaultName`, `Certificate.certificateName`
 
 ## [1.10.0]
 ### Added
