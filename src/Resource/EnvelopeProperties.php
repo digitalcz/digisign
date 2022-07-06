@@ -29,4 +29,7 @@ class EnvelopeProperties extends BaseResource
 
     /** @var bool */
     public $generateSignatureSheet;
+
+    /** @var bool */
+    public $auditLogAvailableToAllRecipients;
 }
