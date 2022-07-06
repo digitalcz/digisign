@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `Certificate.vaultName`, `Certificate.certificateName`
 - Add `EnvelopeProperties.sendDocumentsAsEmailAttachment`
 - Add `EnvelopeProperties.generateSignatureSheet`
+- Add `EnvelopeProperties.auditLogAvailableToAllRecipients`
 
 ## [1.10.0]
 ### Added
