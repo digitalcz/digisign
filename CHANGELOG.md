@@ -11,6 +11,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeProperties.sendDocumentsAsEmailAttachment`
 - Add `EnvelopeProperties.generateSignatureSheet`
 - Add `EnvelopeProperties.auditLogAvailableToAllRecipients`
+- Add `EnvelopeRecipient.authFailedReason`
 
 ## [1.10.0]
 ### Added
