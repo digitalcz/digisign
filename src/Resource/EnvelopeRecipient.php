@@ -106,4 +106,7 @@ class EnvelopeRecipient extends BaseResource
 
     /** @var array<string, string> */
     public $bankIdScopes;
+
+    /** @var string|null */
+    public $authFailedReason;
 }
