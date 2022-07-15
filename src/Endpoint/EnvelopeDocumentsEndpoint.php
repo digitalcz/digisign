@@ -80,4 +80,12 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
             $this->postRequest('/{document}/replace-file', ['document' => $document, 'json' => $body])
         );
     }
+
+    /**
+     * @return array<mixed>
+     */
+    public function signatureSheets(): array
+    {
+        return $this->parseResponse($this->getRequest('/signature-sheets'));
+    }
 }
