@@ -85,7 +85,7 @@ class EnvelopesEndpointTest extends EndpointTestCase
 
     public function testDiscard(): void
     {
-        self::endpoint()->discard('foo');
+        self::endpoint()->discard('foo', ['foo' => 'bar']);
         self::assertLastRequest('POST', '/api/envelopes/foo/discard');
     }
 

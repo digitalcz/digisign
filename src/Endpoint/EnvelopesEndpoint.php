@@ -137,10 +137,11 @@ final class EnvelopesEndpoint extends ResourceEndpoint
 
     /**
      * @param Envelope|string $id
+     * @param mixed[] $body
      */
-    public function discard($id): Envelope
+    public function discard($id, array $body = []): Envelope
     {
-        return $this->makeResource($this->postRequest('/{id}/discard', ['id' => $id]));
+        return $this->makeResource($this->postRequest('/{id}/discard', ['id' => $id, 'json' => $body]));
     }
 
     /**

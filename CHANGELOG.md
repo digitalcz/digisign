@@ -12,6 +12,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeProperties.generateSignatureSheet`
 - Add `EnvelopeProperties.auditLogAvailableToAllRecipients`
 - Add `EnvelopeRecipient.authFailedReason`
+- Update `EnvelopesEndpoint.discard` with body like discardAt param
 
 ## [1.10.0]
 ### Added
