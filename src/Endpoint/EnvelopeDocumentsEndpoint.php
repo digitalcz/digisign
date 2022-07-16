@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
+use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\Envelope;
 use DigitalCz\DigiSign\Resource\EnvelopeDocument;
 use DigitalCz\DigiSign\Resource\EnvelopeTag;
@@ -82,10 +83,17 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
     }
 
     /**
-     * @return array<mixed>
+     * @return array{documents: Collection<EnvelopeDocument>, tags: Collection<EnvelopeTag>}
      */
     public function signatureSheets(): array
     {
-        return $this->parseResponse($this->getRequest('/signature-sheets'));
+        $response = $this->getRequest('/signature-sheets');
+        /** @var array{documents: array<EnvelopeDocument>, tags: array<EnvelopeTag>} $parsedResponse */
+        $parsedResponse = $this->parseResponse($response);
+
+        return [
+            'documents' => $this->createCollectionResourceFromArray($response, $parsedResponse['documents'], EnvelopeDocument::class),
+            'tags' => $this->createCollectionResourceFromArray($response, $parsedResponse['tags'], EnvelopeTag::class),
+        ];
     }
 }

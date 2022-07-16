@@ -244,6 +244,28 @@ abstract class ResourceEndpoint implements EndpointInterface
     }
 
     /**
+     * @param class-string<U> $resourceClass
+     * @return Collection<U>
+     * @template U of ResourceInterface
+     */
+    protected function createCollectionResourceFromArray(
+        ResponseInterface $response,
+        array $data,
+        string $resourceClass = BaseResource::class
+    ): Collection {
+        $collection = new Collection([], $resourceClass);
+
+        foreach ($data as $item) {
+            $resource = new $resourceClass($item);
+            $resource->setResponse($response);
+
+            $collection->append($resource);
+        }
+
+        return $collection;
+    }
+
+    /**
      * @param mixed[] $options
      * @return mixed[]
      */
