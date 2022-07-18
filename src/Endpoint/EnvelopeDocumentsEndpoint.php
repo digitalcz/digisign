@@ -7,6 +7,7 @@ namespace DigitalCz\DigiSign\Endpoint;
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
 use DigitalCz\DigiSign\Resource\Envelope;
 use DigitalCz\DigiSign\Resource\EnvelopeDocument;
+use DigitalCz\DigiSign\Resource\EnvelopeDocumentSignatureSheets;
 use DigitalCz\DigiSign\Resource\EnvelopeTag;
 use DigitalCz\DigiSign\Resource\ListResource;
 use DigitalCz\DigiSign\Stream\FileResponse;
@@ -79,5 +80,10 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
         return $this->makeResource(
             $this->postRequest('/{document}/replace-file', ['document' => $document, 'json' => $body])
         );
+    }
+
+    public function signatureSheets(): EnvelopeDocumentSignatureSheets
+    {
+        return $this->createResource($this->getRequest('/signature-sheets'), EnvelopeDocumentSignatureSheets::class);
     }
 }
