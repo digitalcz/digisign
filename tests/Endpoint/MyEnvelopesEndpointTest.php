@@ -33,6 +33,12 @@ class MyEnvelopesEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/my/envelopes/waiting-for-others?page=3&itemsPerPage=10');
     }
 
+    public function testInfo(): void
+    {
+        self::endpoint()->info('foo');
+        self::assertLastRequest('GET', '/api/my/envelopes/foo/info');
+    }
+
     protected static function endpoint(): MyEnvelopesEndpoint
     {
         return self::dgs()->my()->envelopes();
