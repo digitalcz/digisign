@@ -15,6 +15,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Update `EnvelopesEndpoint.discard` with body like discardAt param
 - Add new `EnvelopeDocumentSignatureSheets` resource and endpoint
 - Add my envelope info endpoint
+- Add `User.autoscrollSignatureTags`
 
 ## [1.10.0]
 ### Added
