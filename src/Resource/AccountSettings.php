@@ -48,4 +48,7 @@ class AccountSettings extends BaseResource
 
     /** @var string */
     public $defaultLanguage;
+
+    /** @var bool */
+    public $useEnvelopeDescription;
 }

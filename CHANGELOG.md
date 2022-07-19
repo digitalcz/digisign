@@ -16,6 +16,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add new `EnvelopeDocumentSignatureSheets` resource and endpoint
 - Add my envelope info endpoint
 - Add `User.autoscrollSignatureTags`
+- Add `AccountSettings.useEnvelopeDescription`, `Envelope.description` and `EnvelopeTemplate.description`
 
 ## [1.10.0]
 ### Added

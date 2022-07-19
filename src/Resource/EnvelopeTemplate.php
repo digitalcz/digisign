@@ -75,4 +75,7 @@ class EnvelopeTemplate extends BaseResource
 
     /** @var Branding|null */
     public $branding;
+
+    /** @var string|null */
+    public $description;
 }
