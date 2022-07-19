@@ -49,4 +49,7 @@ class User extends BaseResource
 
     /** @var bool */
     public $prefillAsRecipient;
+
+    /** @var bool */
+    public $autoscrollSignatureTags;
 }
