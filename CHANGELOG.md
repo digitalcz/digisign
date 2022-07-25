@@ -17,7 +17,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add my envelope info endpoint
 - Add `AccountSettings.useEnvelopeDescription`, `Envelope.description` and `EnvelopeTemplate.description`
 - Add `User.autoscrollSignatureTags`
-- Add `EnvelopeProperties.timestampDocuments`, `EnvelopeProperties.timestampAuditlog`, `EnvelopeProperties.timestampingAuthorities`
+- Add `EnvelopeProperties.timestampDocuments`, `EnvelopeProperties.timestampAuditlog`, `EnvelopeProperties.timestampingAuthorities`, `EnvelopeProperties.sendCompleted`
 
 ## [1.10.0]
 ### Added
