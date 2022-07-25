@@ -103,4 +103,7 @@ class Envelope extends BaseResource
 
     /** @var Branding|null */
     public $branding;
+
+    /** @var string|null */
+    public $description;
 }
