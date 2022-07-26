@@ -37,7 +37,7 @@ class EnvelopeProperties extends BaseResource
     public $timestampDocuments;
 
     /** @var bool */
-    public $timestampAuditlog;
+    public $timestampAuditLog;
 
     /** @var array<string> */
     public $timestampingAuthorities;
