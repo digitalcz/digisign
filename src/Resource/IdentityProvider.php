@@ -14,5 +14,14 @@ class IdentityProvider extends BaseResource
     public $domain;
 
     /** @var string */
+    public $issuer;
+
+    /** @var string */
     public $tenantId;
+
+    /** @var bool */
+    public $createUser;
+
+    /** @var bool */
+    public $syncUser;
 }
