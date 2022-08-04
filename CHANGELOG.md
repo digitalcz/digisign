@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 - Add new fields for IdentityProvider
+- Add new field $userId for User
 
 ## [1.11.0]
 ### Added

@@ -52,4 +52,7 @@ class User extends BaseResource
 
     /** @var bool */
     public $autoscrollTags;
+
+    /** @var string */
+    public $userId;
 }
