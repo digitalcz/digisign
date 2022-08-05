@@ -22,6 +22,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountSettings.useEnvelopeDescription`, `Envelope.description` and `EnvelopeTemplate.description`
 - Add `User.autoscrollTags`
 - Add `AccountSecurity.discardedEnvelopeRetention`
+- Add `EnvelopeProperties.timestampDocuments`, `EnvelopeProperties.timestampAuditlog`, `EnvelopeProperties.timestampingAuthorities`, `EnvelopeProperties.sendCompleted`
 
 ## [1.10.0]
 ### Added

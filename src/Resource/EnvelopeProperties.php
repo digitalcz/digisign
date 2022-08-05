@@ -32,4 +32,16 @@ class EnvelopeProperties extends BaseResource
 
     /** @var bool */
     public $auditLogAvailableToAllRecipients;
+
+    /** @var bool */
+    public $timestampDocuments;
+
+    /** @var bool */
+    public $timestampAuditLog;
+
+    /** @var array<string> */
+    public $timestampingAuthorities;
+
+    /** @var bool */
+    public $sendCompleted;
 }
