@@ -51,5 +51,8 @@ class User extends BaseResource
     public $prefillAsRecipient;
 
     /** @var bool */
-    public $autoscrollSignatureTags;
+    public $autoscrollTags;
+
+    /** @var string */
+    public $userId;
 }

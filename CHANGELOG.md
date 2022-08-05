@@ -5,6 +5,10 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add new fields for IdentityProvider
+- Add new field $userId for User
+
+## [1.11.0]
 ### Added
 - Add new oidc fields for `AccountSecurity` resource
 - Add `Certificate.vaultName`, `Certificate.certificateName`
@@ -16,7 +20,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add new `EnvelopeDocumentSignatureSheets` resource and endpoint
 - Add my envelope info endpoint
 - Add `AccountSettings.useEnvelopeDescription`, `Envelope.description` and `EnvelopeTemplate.description`
-- Add `User.autoscrollSignatureTags`
+- Add `User.autoscrollTags`
+- Add `AccountSecurity.discardedEnvelopeRetention`
 - Add `EnvelopeProperties.timestampDocuments`, `EnvelopeProperties.timestampAuditlog`, `EnvelopeProperties.timestampingAuthorities`, `EnvelopeProperties.sendCompleted`
 
 ## [1.10.0]

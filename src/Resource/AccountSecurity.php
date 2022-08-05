@@ -21,4 +21,7 @@ class AccountSecurity extends BaseResource
 
     /** @var bool  */
     public $oidcDomainHint;
+
+    /** @var int */
+    public $discardedEnvelopeRetention;
 }
