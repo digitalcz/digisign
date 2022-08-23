@@ -24,4 +24,7 @@ class AccountSecurity extends BaseResource
 
     /** @var int */
     public $discardedEnvelopeRetention;
+
+    /** @var bool  */
+    public $continuousSigning;
 }
