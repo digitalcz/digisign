@@ -39,4 +39,7 @@ class EnvelopeDocument extends BaseResource
 
     /** @var int */
     public $labelPositionY;
+
+    /** @var string */
+    public $signatureValidity;
 }
