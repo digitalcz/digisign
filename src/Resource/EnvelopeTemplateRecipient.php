@@ -66,4 +66,10 @@ class EnvelopeTemplateRecipient extends BaseResource
 
     /** @var array<string, string> */
     public $bankIdScopes;
+
+    /** @var string */
+    public $identificationNumber;
+
+    /** @var string */
+    public $address;
 }
