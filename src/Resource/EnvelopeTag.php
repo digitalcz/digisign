@@ -55,6 +55,9 @@ class EnvelopeTag extends BaseResource
     /** @var int|null */
     public $width;
 
+    /** @var int|null */
+    public $height;
+
     /** @var int */
     public $scale;
 
