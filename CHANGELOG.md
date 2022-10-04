@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add new field $signatureValidity for EnvelopeDocument
 - Add new field $height for EnvelopeTag and EnvelopeTemplateTag
 - Add `EnvelopeTag.recipientClaim`, `EnvelopeTemplateTag.recipientClaim`
+- Add new fields $identificationNumber, $address for `EnvelopeRecipient` and `EnvelopeTemplateRecipient`
 
 ## [1.11.0]
 ### Added
