@@ -8,7 +8,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add new fields for IdentityProvider
 - Add new field $userId for User
 - Add new field $signatureValidity for EnvelopeDocument
+- Add new field $height for EnvelopeTag and EnvelopeTemplateTag
 - Add `EnvelopeTag.recipientClaim`, `EnvelopeTemplateTag.recipientClaim`
+
 ## [1.11.0]
 ### Added
 - Add new oidc fields for `AccountSecurity` resource
