@@ -110,9 +110,9 @@ class EnvelopeRecipient extends BaseResource
     /** @var string|null */
     public $authFailedReason;
 
-    /** @var string */
+    /** @var string|null */
     public $identificationNumber;
 
-    /** @var string */
+    /** @var string|null */
     public $address;
 }
