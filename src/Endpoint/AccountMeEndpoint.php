@@ -8,6 +8,7 @@ use DigitalCz\DigiSign\Resource\ApiKey;
 use DigitalCz\DigiSign\Resource\BaseResource;
 use DigitalCz\DigiSign\Resource\ResourceInterface;
 use DigitalCz\DigiSign\Resource\User;
+use DigitalCz\DigiSign\Stream\FileResponse;
 
 /**
  * @extends ResourceEndpoint<BaseResource>
@@ -55,5 +56,10 @@ final class AccountMeEndpoint extends ResourceEndpoint
     public function verifyPassword(array $body): void
     {
         $this->postRequest('/verify-password', ['json' => $body]);
+    }
+
+    public function signatureImageContent(): FileResponse
+    {
+        return $this->stream(self::METHOD_GET, '/signature-image/content');
     }
 }
