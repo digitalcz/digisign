@@ -33,6 +33,12 @@ class AccountMeEndpointTest extends EndpointTestCase
         self::assertLastRequest('POST', '/api/account/me/verify-password', ['foo' => 'bar']);
     }
 
+    public function testSignatureImageContent(): void
+    {
+        self::endpoint()->signatureImageContent();
+        self::assertLastRequest('GET', '/api/account/me/signature-image/content');
+    }
+
     protected static function endpoint(): AccountMeEndpoint
     {
         return self::dgs()->account()->me();

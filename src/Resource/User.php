@@ -55,4 +55,7 @@ class User extends BaseResource
 
     /** @var string */
     public $userId;
+
+    /** @var bool */
+    public $hasSignatureImage;
 }
