@@ -28,7 +28,7 @@ use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
-final class DigiSignClient
+final class DigiSignClient implements DigiSignClientInterface
 {
     public const HTTP_NO_CONTENT = 204;
     public const HTTP_BAD_REQUEST = 400;

@@ -38,7 +38,7 @@ final class DigiSign implements EndpointInterface
     /** @var Credentials The credentials used to authenticate to API */
     private $credentials;
 
-    /** @var DigiSignClient The client used to send requests */
+    /** @var DigiSignClientInterface The client used to send requests */
     private $client;
 
     /** @var array<string, string> */
@@ -159,7 +159,7 @@ final class DigiSign implements EndpointInterface
         $this->credentials = $credentials;
     }
 
-    public function setClient(DigiSignClient $client): void
+    public function setClient(DigiSignClientInterface $client): void
     {
         $this->client = $client;
     }
