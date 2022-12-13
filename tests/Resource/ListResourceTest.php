@@ -17,7 +17,6 @@ class ListResourceTest extends TestCase
         self::assertSame(3, $resource->count);
         self::assertSame(1, $resource->page);
         self::assertSame(10, $resource->itemsPerPage);
-        self::assertSame(1, $resource->lastPage);
         self::assertCount(3, $resource->items);
         self::assertSame('foo', $resource->items[0]->string);
         self::assertSame('foo', $resource->items[1]->string);
@@ -84,9 +83,11 @@ class ListResourceTest extends TestCase
             'count' => 3,
             'page' => 1,
             'itemsPerPage' => 10,
-            'lastPage' => 1,
-            'nextPage' => null,
-            'prevPage' => null,
+            '_links' => [
+                'self' => '/api/envelopes',
+                'next' => '/api/envelopes?&page=2',
+                'last' => '/api/envelopes?&page=13',
+            ],
         ];
 
         self::assertEquals($expected, $array);

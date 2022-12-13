@@ -21,15 +21,6 @@ class ListResource extends BaseResource
     /** @var int */
     public $itemsPerPage;
 
-    /** @var int|null */
-    public $nextPage;
-
-    /** @var int|null */
-    public $prevPage;
-
-    /** @var int */
-    public $lastPage;
-
     /** @var class-string<T> */
     protected $resourceClass;
 

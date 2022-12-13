@@ -41,7 +41,11 @@ class DummyResource extends BaseResource
         'count' => 3,
         'page' => 1,
         'itemsPerPage' => 10,
-        'lastPage' => 1,
+        '_links' => [
+            'self' => '/api/envelopes',
+            'next' => '/api/envelopes?&page=2',
+            'last' => '/api/envelopes?&page=13',
+        ],
     ];
 
     public const COLLECTION_EXAMPLE = [
@@ -50,31 +54,31 @@ class DummyResource extends BaseResource
         DummyResource::EXAMPLE,
     ];
 
-    /** @var string  */
+    /** @var string */
     public $id;
 
-    /** @var bool  */
+    /** @var bool */
     public $bool;
 
-    /** @var string  */
+    /** @var string */
     public $string;
 
-    /** @var string|null  */
+    /** @var string|null */
     public $nullable;
 
-    /** @var int  */
+    /** @var int */
     public $integer;
 
-    /** @var float  */
+    /** @var float */
     public $float;
 
-    /** @var DummyResource  */
+    /** @var DummyResource */
     public $resource;
 
-    /** @var DateTime  */
+    /** @var DateTime */
     public $dateTime;
 
-    /** @var DateTime|null  */
+    /** @var DateTime|null */
     public $dateTimeNullable;
 
     /** @var Collection<DummyResource> */

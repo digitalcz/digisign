@@ -13,6 +13,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add new fields $identificationNumber, $address for `EnvelopeRecipient` and `EnvelopeTemplateRecipient`
 - Add signatureImageContent endpoint to AccountMe 
 - Add new field $hasSignatureImage to User
+- Remove invalid fields on ListResource + fix tests
 
 ## [1.11.0]
 ### Added
