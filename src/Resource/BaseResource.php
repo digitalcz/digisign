@@ -74,11 +74,11 @@ class BaseResource implements ResourceInterface
 
     public function self(): string
     {
-        if (!isset($this->_result['_links']['self'])) {
+        if (!isset($this->links()['self'])) {
             throw new RuntimeException('Resource has no self link');
         }
 
-        return $this->_result['_links']['self'];
+        return $this->links()['self'];
     }
 
     public function id(): string
@@ -88,6 +88,18 @@ class BaseResource implements ResourceInterface
         }
 
         return $this->_result['id'];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function links(): array
+    {
+        if (!isset($this->_result['_links']['self'])) {
+            throw new RuntimeException('Resource has no links');
+        }
+
+        return $this->_result['_links'];
     }
 
     /**

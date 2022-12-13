@@ -127,7 +127,7 @@ class BaseResourceTest extends TestCase
     {
         $resource = new BaseResource(['id' => 'foo']);
         $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage('Resource has no self link');
+        $this->expectExceptionMessage('Resource has no links');
         $resource->self();
     }
 

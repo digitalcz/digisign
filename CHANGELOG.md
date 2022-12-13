@@ -14,6 +14,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add signatureImageContent endpoint to AccountMe 
 - Add new field $hasSignatureImage to User
 - Remove invalid fields on ListResource + fix tests
+- Add method BaseResource::links() that returns links
 
 ## [1.11.0]
 ### Added
