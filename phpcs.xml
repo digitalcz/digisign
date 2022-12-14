@@ -68,6 +68,7 @@
     <!--  Files  -->
     <rule ref="SlevomatCodingStandard.Files">
         <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName"/>
+        <exclude name="SlevomatCodingStandard.Files.FileLength"/>
         <properties>
             <property name="lineLengthLimit" value="180"/>
             <property name="maxLinesLength" value="50" />
@@ -83,6 +84,7 @@
 
     <!--  Classes  -->
     <rule ref="SlevomatCodingStandard.Classes">
+        <exclude name="SlevomatCodingStandard.Classes.ClassLength"/>
         <exclude name="SlevomatCodingStandard.Classes.EmptyLinesAroundClassBraces"/>
         <exclude name="SlevomatCodingStandard.Classes.TraitUseSpacing"/>
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousInterfaceNaming"/>
