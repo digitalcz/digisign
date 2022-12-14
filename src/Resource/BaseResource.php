@@ -27,6 +27,9 @@ class BaseResource implements ResourceInterface
     /** @var mixed[] Original values from API response */
     protected array $_result; // phpcs:ignore
 
+    /** @var mixed[] Dynamic properties */
+    protected array $_data = []; // phpcs:ignore
+
     /**
      * @param mixed[] $result
      */
@@ -45,12 +48,11 @@ class BaseResource implements ResourceInterface
     /** @inheritDoc */
     public function toArray(): array
     {
-        $values = get_object_vars($this);
-
+        $values = get_object_vars($this) + $this->_data;
         $result = [];
         foreach ($values as $property => $value) {
             // skip internal properties
-            if (in_array($property, ['_mapping', '_response', '_result'], true)) {
+            if (in_array($property, ['_mapping', '_response', '_result', '_data'], true)) {
                 continue;
             }
 
@@ -239,5 +241,20 @@ class BaseResource implements ResourceInterface
         }
 
         return $type;
+    }
+
+    public function __get(string $name): mixed
+    {
+        return $this->_data[$name] ?? null;
+    }
+
+    public function __set(string $name, mixed $value): void
+    {
+        $this->_data[$name] = $value;
+    }
+
+    public function __isset(string $name): bool
+    {
+        return isset($this->_data[$name]);
     }
 }

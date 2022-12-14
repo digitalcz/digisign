@@ -86,7 +86,7 @@ class BaseResourceTest extends TestCase
         self::assertSame('moo', $resource->collection[0]->string);
         self::assertInstanceOf(DummyResource::class, $resource->collection[1]);
         self::assertSame('baz', $resource->collection[1]->string);
-        self::assertObjectHasAttribute('unmapped', $resource);
+        self::assertObjectNotHasAttribute('unmapped', $resource);
         self::assertSame('goo', $resource->unmapped);
         self::assertSame('#foobar', $resource->self());
         self::assertSame(DummyResource::ID, $resource->id());
