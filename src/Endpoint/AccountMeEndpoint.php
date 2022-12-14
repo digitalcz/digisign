@@ -36,7 +36,6 @@ final class AccountMeEndpoint extends ResourceEndpoint
 
     /**
      * @param mixed[] $body
-     * @return User
      */
     public function update(array $body): User
     {

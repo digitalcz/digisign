@@ -15,9 +15,8 @@ final class RecipientBlockEndpoint extends ResourceEndpoint
 {
     /**
      * @param EnvelopeRecipientsEndpoint|DeliveryRecipientsEndpoint $parent
-     * @param EnvelopeRecipient|DeliveryRecipient|string $recipient
      */
-    public function __construct(EndpointInterface $parent, $recipient)
+    public function __construct(EndpointInterface $parent, EnvelopeRecipient|DeliveryRecipient|string $recipient)
     {
         parent::__construct($parent, '/{recipient}/block', RecipientBlock::class, ['recipient' => $recipient]);
     }

@@ -16,11 +16,9 @@ use RuntimeException;
 
 abstract class EndpointTestCase extends TestCase
 {
-    /** @var Client  */
-    private static $httpClient;
+    private static Client $httpClient;
 
-    /** @var DigiSign  */
-    private static $dgs;
+    private static DigiSign $dgs;
 
     protected static function dgs(): DigiSign
     {

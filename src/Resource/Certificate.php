@@ -11,30 +11,21 @@ class Certificate extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $storage;
+    public string $storage;
 
-    /** @var string */
-    public $subject;
+    public string $subject;
 
-    /** @var string */
-    public $issuer;
+    public string $issuer;
 
-    /** @var DateTimeInterface */
-    public $expiresAt;
+    public DateTimeInterface $expiresAt;
 
-    /** @var User */
-    public $owner;
+    public User $owner;
 
-    /** @var string */
-    public $status;
+    public string $status;
 
-    /** @var string|null */
-    public $certificateIdentifier;
+    public ?string $certificateIdentifier = null;
 
-    /** @var string|null */
-    public $vaultName;
+    public ?string $vaultName = null;
 
-    /** @var string|null */
-    public $certificateName;
+    public ?string $certificateName = null;
 }

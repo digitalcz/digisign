@@ -8,24 +8,18 @@ use DateTime;
 
 class EnvelopeRecipientIdentification extends BaseResource
 {
-    /** @var DateTime */
-    public $createdAt;
+    public DateTime $createdAt;
 
-    /** @var string */
-    public $product;
+    public string $product;
 
     /** @var mixed[]|null */
-    public $bank;
+    public ?array $bank = null;
 
-    /** @var string */
-    public $place;
+    public string $place;
 
-    /** @var bool */
-    public $authenticated;
+    public bool $authenticated;
 
-    /** @var string|null */
-    public $error;
+    public ?string $error = null;
 
-    /** @var VerifiedClaims|null */
-    public $claims;
+    public ?VerifiedClaims $claims = null;
 }

@@ -7,5 +7,5 @@ namespace DigitalCz\DigiSign\Resource;
 class AccountMessaging extends BaseResource
 {
     /** @var mixed[] */
-    public $messages;
+    public array $messages;
 }

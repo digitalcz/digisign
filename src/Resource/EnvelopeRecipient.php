@@ -11,108 +11,75 @@ class EnvelopeRecipient extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $status;
+    public string $status;
 
-    /** @var string|null */
-    public $metadata;
+    public ?string $metadata = null;
 
-    /** @var string */
-    public $role;
+    public string $role;
 
-    /** @var string */
-    public $signatureType;
+    public string $signatureType;
 
-    /** @var string */
-    public $authenticationOnOpen;
+    public string $authenticationOnOpen;
 
-    /** @var string */
-    public $authenticationOnSignature;
+    public string $authenticationOnSignature;
 
-    /** @var string */
-    public $authenticationOnDownload;
+    public string $authenticationOnDownload;
 
-    /** @var string */
-    public $language;
+    public string $language;
 
-    /** @var string */
-    public $channelForSigner;
+    public string $channelForSigner;
 
-    /** @var string */
-    public $channelForDownload;
+    public string $channelForDownload;
 
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var string */
-    public $email;
+    public string $email;
 
-    /** @var string|null */
-    public $mobile;
+    public ?string $mobile = null;
 
-    /** @var string|null */
-    public $emailBody;
+    public ?string $emailBody = null;
 
-    /** @var string|null */
-    public $emailBodyCompleted;
+    public ?string $emailBodyCompleted = null;
 
-    /** @var DateTime|null */
-    public $sentAt;
+    public ?DateTime $sentAt = null;
 
-    /** @var DateTime|null */
-    public $deliveredAt;
+    public ?DateTime $deliveredAt = null;
 
-    /** @var DateTime|null */
-    public $nonDeliveredAt;
+    public ?DateTime $nonDeliveredAt = null;
 
-    /** @var string|null */
-    public $nonDeliveryReason;
+    public ?string $nonDeliveryReason = null;
 
-    /** @var DateTime|null */
-    public $authFailedAt;
+    public ?DateTime $authFailedAt = null;
 
-    /** @var DateTime|null */
-    public $signedAt;
+    public ?DateTime $signedAt = null;
 
-    /** @var DateTime|null */
-    public $downloadedAt;
+    public ?DateTime $downloadedAt = null;
 
-    /** @var DateTime|null */
-    public $declinedAt;
+    public ?DateTime $declinedAt = null;
 
-    /** @var string|null */
-    public $declineReason;
+    public ?string $declineReason = null;
 
-    /** @var DateTime|null */
-    public $cancelledAt;
+    public ?DateTime $cancelledAt = null;
 
     /** @var Collection<EnvelopeTag> */
-    public $tags;
+    public Collection $tags;
 
-    /** @var int */
-    public $signingOrder;
+    public int $signingOrder;
 
-    /** @var string */
-    public $attachmentsStatus;
+    public string $attachmentsStatus;
 
-    /** @var bool */
-    public $fromTemplate;
+    public bool $fromTemplate;
 
-    /** @var string|null */
-    public $intermediaryName;
+    public ?string $intermediaryName = null;
 
-    /** @var string|null */
-    public $intermediaryEmail;
+    public ?string $intermediaryEmail = null;
 
     /** @var array<string, string> */
-    public $bankIdScopes;
+    public array $bankIdScopes;
 
-    /** @var string|null */
-    public $authFailedReason;
+    public ?string $authFailedReason = null;
 
-    /** @var string|null */
-    public $identificationNumber;
+    public ?string $identificationNumber = null;
 
-    /** @var string|null */
-    public $address;
+    public ?string $address = null;
 }

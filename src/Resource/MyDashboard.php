@@ -6,12 +6,10 @@ namespace DigitalCz\DigiSign\Resource;
 
 class MyDashboard extends BaseResource
 {
-    /** @var int */
-    public $toSign;
+    public int $toSign;
 
-    /** @var int */
-    public $forOthers;
+    public int $forOthers;
 
     /** @var Collection<MyEnvelope> */
-    public $latest;
+    public Collection $latest;
 }

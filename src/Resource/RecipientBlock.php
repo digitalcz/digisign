@@ -8,15 +8,11 @@ use DateTime;
 
 class RecipientBlock extends BaseResource
 {
-    /** @var string */
-    public $address;
+    public string $address;
 
-    /** @var int */
-    public $code;
+    public int $code;
 
-    /** @var string */
-    public $error;
+    public string $error;
 
-    /** @var DateTime */
-    public $createdAt;
+    public DateTime $createdAt;
 }

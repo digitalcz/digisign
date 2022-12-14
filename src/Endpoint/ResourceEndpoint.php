@@ -20,32 +20,16 @@ use Psr\Http\Message\ResponseInterface;
  */
 abstract class ResourceEndpoint implements EndpointInterface
 {
-    /** @var EndpointInterface  */
-    protected $parent;
-
-    /** @var string  */
-    private $resourcePath;
-
-    /** @var class-string<T> */
-    private $resourceClass;
-
-    /** @var mixed[] */
-    private $resourceOptions;
-
     /**
      * @param class-string<T> $resourceClass
      * @param mixed[] $resourceOptions
      */
     public function __construct(
-        EndpointInterface $parent,
-        string $resourcePath,
-        string $resourceClass = BaseResource::class,
-        array $resourceOptions = []
+        protected EndpointInterface $parent,
+        private string $resourcePath,
+        private string $resourceClass = BaseResource::class,
+        private array $resourceOptions = []
     ) {
-        $this->parent = $parent;
-        $this->resourcePath = $resourcePath;
-        $this->resourceClass = $resourceClass;
-        $this->resourceOptions = $resourceOptions;
     }
 
     /**

@@ -10,18 +10,13 @@ class IdentityProvider extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $domain;
+    public string $domain;
 
-    /** @var string */
-    public $issuer;
+    public string $issuer;
 
-    /** @var string */
-    public $tenantId;
+    public string $tenantId;
 
-    /** @var bool */
-    public $createUser;
+    public bool $createUser;
 
-    /** @var bool */
-    public $syncUser;
+    public bool $syncUser;
 }

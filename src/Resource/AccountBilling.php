@@ -8,33 +8,23 @@ use DateTime;
 
 class AccountBilling extends BaseResource
 {
-    /** @var string */
-    public $customerId;
+    public string $customerId;
 
-    /** @var bool */
-    public $hasSubscription;
+    public bool $hasSubscription;
 
-    /** @var DateTime|null */
-    public $billingPeriodStart;
+    public ?DateTime $billingPeriodStart;
 
-    /** @var DateTime|null */
-    public $billingPeriodEnd;
+    public ?DateTime $billingPeriodEnd;
 
-    /** @var int */
-    public $userUsage;
+    public int $userUsage;
 
-    /** @var int|null */
-    public $userLimit;
+    public ?int $userLimit;
 
-    /** @var int */
-    public $envelopeUsage;
+    public int $envelopeUsage;
 
-    /** @var int|null */
-    public $envelopeLimit;
+    public ?int $envelopeLimit;
 
-    /** @var int */
-    public $smsUsage;
+    public int $smsUsage;
 
-    /** @var int */
-    public $bankIdUsage;
+    public int $bankIdUsage;
 }

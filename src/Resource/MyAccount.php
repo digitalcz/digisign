@@ -6,18 +6,13 @@ namespace DigitalCz\DigiSign\Resource;
 
 class MyAccount extends BaseResource
 {
-    /** @var string */
-    public $id;
+    public string $id;
 
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var string */
-    public $status;
+    public string $status;
 
-    /** @var bool */
-    public $active;
+    public bool $active;
 
-    /** @var string */
-    public $idpDomain;
+    public string $idpDomain;
 }

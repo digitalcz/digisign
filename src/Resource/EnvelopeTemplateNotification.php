@@ -10,9 +10,7 @@ class EnvelopeTemplateNotification extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $type;
+    public string $type;
 
-    /** @var int */
-    public $days;
+    public int $days;
 }

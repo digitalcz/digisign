@@ -6,72 +6,53 @@ namespace DigitalCz\DigiSign\Resource;
 
 class VerifiedClaims extends BaseResource
 {
-    /** @var string */
-    public $source;
+    public string $source;
 
-    /** @var string|null  */
-    public $txn;
+    public ?string $txn = null;
 
-    /** @var string|null  */
-    public $sub;
+    public ?string $sub = null;
 
-    /** @var string|null  */
-    public $name;
+    public ?string $name = null;
 
-    /** @var string|null  */
-    public $givenName;
+    public ?string $givenName = null;
 
-    /** @var string|null  */
-    public $familyName;
+    public ?string $familyName = null;
 
-    /** @var string|null  */
-    public $gender;
+    public ?string $gender = null;
 
-    /** @var string|null  */
-    public $birthdate;
+    public ?string $birthdate = null;
 
-    /** @var string|null  */
-    public $birthnumber;
+    public ?string $birthnumber = null;
 
-    /** @var int|null  */
-    public $age;
+    public ?int $age = null;
 
-    /** @var bool|null  */
-    public $majority;
+    public ?bool $majority = null;
 
-    /** @var string|null  */
-    public $birthplace;
+    public ?string $birthplace = null;
 
-    /** @var string|null  */
-    public $primaryNationality;
+    public ?string $primaryNationality = null;
 
     /** @var array<string> */
-    public $nationalities;
+    public array $nationalities;
 
-    /** @var string|null  */
-    public $maritalStatus;
+    public ?string $maritalStatus = null;
 
-    /** @var string|null  */
-    public $email;
+    public ?string $email = null;
 
-    /** @var string|null  */
-    public $phoneNumber;
+    public ?string $phoneNumber = null;
 
-    /** @var bool|null  */
-    public $pep;
+    public ?bool $pep = null;
 
-    /** @var bool|null  */
-    public $limitedLegalCapacity;
+    public ?bool $limitedLegalCapacity = null;
 
     /** @var Collection<VerifiedAddress> */
-    public $addresses;
+    public Collection $addresses;
 
     /** @var Collection<VerifiedIdCard> */
-    public $idCards;
+    public Collection $idCards;
 
     /** @var array<string> */
-    public $paymentAccounts;
+    public array $paymentAccounts;
 
-    /** @var VerifiedVerification|null */
-    public $verification;
+    public ?VerifiedVerification $verification = null;
 }

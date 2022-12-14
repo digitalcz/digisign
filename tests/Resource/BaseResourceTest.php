@@ -95,10 +95,7 @@ class BaseResourceTest extends TestCase
     public function testNormalization(): void // phpcs:ignore
     {
         $resource = new DummyResource(DummyResource::EXAMPLE);
-        self::assertEquals(
-            self::DUMMY_RESOURCE_ARRAYED,
-            $resource->toArray()
-        );
+        self::assertEquals(DummyResource::EXAMPLE, $resource->toArray());
     }
 
     public function testGetResult(): void

@@ -10,8 +10,7 @@ use Throwable;
 
 class ResponseException extends RuntimeException
 {
-    /** @var ResponseInterface  */
-    private $response;
+    private ResponseInterface $response;
 
     public function __construct(
         ResponseInterface $response,

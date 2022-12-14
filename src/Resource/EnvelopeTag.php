@@ -10,75 +10,52 @@ class EnvelopeTag extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string|null */
-    public $placeholder;
+    public ?string $placeholder = null;
 
-    /** @var int|null */
-    public $page;
+    public ?int $page = null;
 
-    /** @var int|null */
-    public $xPosition;
+    public ?int $xPosition = null;
 
-    /** @var int|null */
-    public $yPosition;
+    public ?int $yPosition = null;
 
-    /** @var string */
-    public $positioning;
+    public string $positioning;
 
-    /** @var bool */
-    public $required;
+    public bool $required;
 
-    /** @var string */
-    public $type;
+    public string $type;
 
-    /** @var EnvelopeDocument */
-    public $document;
+    public EnvelopeDocument $document;
 
-    /** @var EnvelopeRecipient|null */
-    public $recipient;
+    public ?EnvelopeRecipient $recipient = null;
 
     /** @var string|bool */
     public $value; // phpcs:ignore
 
-    /** @var string|null */
-    public $label;
+    public ?string $label = null;
 
-    /** @var bool */
-    public $readonly;
+    public bool $readonly;
 
-    /** @var string|null */
-    public $name;
+    public ?string $name = null;
 
-    /** @var string */
-    public $layout;
+    public string $layout;
 
-    /** @var int|null */
-    public $width;
+    public ?int $width = null;
 
-    /** @var int|null */
-    public $height;
+    public ?int $height = null;
 
-    /** @var int */
-    public $scale;
+    public int $scale;
 
-    /** @var string|null */
-    public $bankIdClaim;
+    public ?string $bankIdClaim = null;
 
-    /** @var string|null */
-    public $recipientClaim;
+    public ?string $recipientClaim = null;
 
-    /** @var bool */
-    public $fromTemplate;
+    public bool $fromTemplate;
 
-    /** @var string */
-    public $group;
+    public string $group;
 
-    /** @var string */
-    public $choice;
+    public string $choice;
 
-    /** @var string */
-    public $assignment;
+    public string $assignment;
 
-    /** @var bool */
-    public $renderInteractive;
+    public bool $renderInteractive;
 }

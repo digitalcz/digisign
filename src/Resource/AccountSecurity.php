@@ -10,21 +10,15 @@ class AccountSecurity extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var bool */
-    public $reuseRecipientAuthentication;
+    public bool $reuseRecipientAuthentication;
 
-    /** @var string|null  */
-    public $oidcPrompt;
+    public ?string $oidcPrompt = null;
 
-    /** @var bool  */
-    public $oidcLoginHint;
+    public bool $oidcLoginHint;
 
-    /** @var bool  */
-    public $oidcDomainHint;
+    public bool $oidcDomainHint;
 
-    /** @var int */
-    public $discardedEnvelopeRetention;
+    public int $discardedEnvelopeRetention;
 
-    /** @var bool  */
-    public $continuousSigning;
+    public bool $continuousSigning;
 }

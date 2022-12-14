@@ -8,30 +8,23 @@ use DateTime;
 
 class MyEnvelope extends BaseResource
 {
-    /** @var string */
-    public $id;
+    public string $id;
 
-    /** @var string */
-    public $status;
+    public string $status;
 
-    /** @var string */
-    public $emailSubject;
+    public string $emailSubject;
 
-    /** @var string */
-    public $emailBody;
+    public string $emailBody;
 
-    /** @var string|null */
-    public $senderName;
+    public ?string $senderName = null;
 
-    /** @var string|null */
-    public $senderEmail;
+    public ?string $senderEmail = null;
 
-    /** @var DateTime|null */
-    public $sentAt;
+    public ?DateTime $sentAt = null;
 
     /** @var Collection<MyEnvelopeDocument> */
-    public $documents;
+    public Collection $documents;
 
     /** @var Collection<MyEnvelopeRecipient> */
-    public $recipients;
+    public Collection $recipients;
 }

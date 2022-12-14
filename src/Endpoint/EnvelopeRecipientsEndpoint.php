@@ -26,26 +26,17 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
     /** @use CRUDEndpointTrait<EnvelopeRecipient> */
     use CRUDEndpointTrait;
 
-    /**
-     * @param Envelope|string $envelope
-     */
-    public function __construct(EnvelopesEndpoint $parent, $envelope)
+    public function __construct(EnvelopesEndpoint $parent, Envelope|string $envelope)
     {
         parent::__construct($parent, '/{envelope}/recipients', EnvelopeRecipient::class, ['envelope' => $envelope]);
     }
 
-    /**
-     * @param EnvelopeRecipient|string $recipient
-     */
-    public function block($recipient): RecipientBlockEndpoint
+    public function block(EnvelopeRecipient|string $recipient): RecipientBlockEndpoint
     {
         return new RecipientBlockEndpoint($this, $recipient);
     }
 
-    /**
-     * @param EnvelopeRecipient|string $recipient
-     */
-    public function attachments($recipient): EnvelopeRecipientAttachmentsEndpoint
+    public function attachments(EnvelopeRecipient|string $recipient): EnvelopeRecipientAttachmentsEndpoint
     {
         return new EnvelopeRecipientAttachmentsEndpoint($this, $recipient);
     }
@@ -113,10 +104,7 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
         return $this->createCollectionResource($this->getRequest('/attachments'), EnvelopeRecipientAttachment::class);
     }
 
-    /**
-     * @param EnvelopeRecipient|string $recipient
-     */
-    public function listIdentifications($recipient): EnvelopeRecipientIdentifications
+    public function listIdentifications(EnvelopeRecipient|string $recipient): EnvelopeRecipientIdentifications
     {
         return $this->createResource(
             $this->getRequest('/{id}/identifications', ['id' => $recipient]),

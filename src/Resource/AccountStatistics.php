@@ -6,36 +6,25 @@ namespace DigitalCz\DigiSign\Resource;
 
 class AccountStatistics extends BaseResource
 {
-    /** @var int */
-    public $countEnvelopeDraft;
+    public int $countEnvelopeDraft;
 
-    /** @var int */
-    public $countEnvelopeSent;
+    public int $countEnvelopeSent;
 
-    /** @var int */
-    public $countEnvelopeCompleted;
+    public int $countEnvelopeCompleted;
 
-    /** @var int */
-    public $countEnvelopeCanceled;
+    public int $countEnvelopeCanceled;
 
-    /** @var int */
-    public $countEnvelopeDeclined;
+    public int $countEnvelopeDeclined;
 
-    /** @var int */
-    public $countAuthorizationRequestSMS;
+    public int $countAuthorizationRequestSMS;
 
-    /** @var int */
-    public $countDeliveriesSent;
+    public int $countDeliveriesSent;
 
-    /** @var int */
-    public $countBankIdConnect;
+    public int $countBankIdConnect;
 
-    /** @var int */
-    public $countBankIdIdentify;
+    public int $countBankIdIdentify;
 
-    /** @var int */
-    public $countBankIdIdentifyPlus;
+    public int $countBankIdIdentifyPlus;
 
-    /** @var int */
-    public $countActiveUsers;
+    public int $countActiveUsers;
 }

@@ -37,17 +37,13 @@ final class DigiSignClient implements DigiSignClientInterface
     public const HTTP_NOT_FOUND = 404;
     public const HTTP_INTERNAL_SERVER_ERROR = 500;
 
-    /** @var ClientInterface  */
-    private $httpClient;
+    private ClientInterface $httpClient;
 
-    /** @var RequestFactoryInterface  */
-    private $requestFactory;
+    private RequestFactoryInterface $requestFactory;
 
-    /** @var StreamFactoryInterface  */
-    private $streamFactory;
+    private StreamFactoryInterface $streamFactory;
 
-    /** @var UriFactoryInterface  */
-    private $uriFactory;
+    private UriFactoryInterface $uriFactory;
 
     public function __construct(
         ?ClientInterface $httpClient = null,
@@ -104,11 +100,9 @@ final class DigiSignClient implements DigiSignClientInterface
     }
 
     /**
-     * @param mixed $value
-     *
      * @throws JsonException When the value cannot be json-encoded
      */
-    public static function jsonEncode($value): string
+    public static function jsonEncode(mixed $value): string
     {
         $json = json_encode($value);
 

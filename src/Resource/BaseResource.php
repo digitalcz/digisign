@@ -11,6 +11,7 @@ use JsonSerializable;
 use LogicException;
 use Psr\Http\Message\ResponseInterface;
 use ReflectionException;
+use ReflectionNamedType;
 use ReflectionProperty;
 
 /**
@@ -144,10 +145,7 @@ class BaseResource implements ResourceInterface
         }
     }
 
-    /**
-     * @param mixed $value
-     */
-    protected function setProperty(string $property, $value): void
+    protected function setProperty(string $property, mixed $value): void
     {
         if ($value !== null) {
             $type = $this->getMappingType($property);
@@ -193,6 +191,13 @@ class BaseResource implements ResourceInterface
     {
         try {
             $reflection = new ReflectionProperty($this, $property);
+
+            $nativeType = $reflection->getType();
+
+            if ($nativeType instanceof ReflectionNamedType && !is_a($nativeType->getName(), Collection::class, true)) {
+                return $nativeType->getName();
+            }
+
             $phpDoc = $reflection->getDocComment();
         } catch (ReflectionException $e) {
             return 'mixed'; // property may not exist

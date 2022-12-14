@@ -25,10 +25,7 @@ final class WebhooksEndpoint extends ResourceEndpoint
         parent::__construct($parent, '/api/webhooks', Webhook::class);
     }
 
-    /**
-     * @param Webhook|string $webhook
-     */
-    public function attempts($webhook): WebhookAttemptsEndpoint
+    public function attempts(Webhook|string $webhook): WebhookAttemptsEndpoint
     {
         return new WebhookAttemptsEndpoint($this, $webhook);
     }

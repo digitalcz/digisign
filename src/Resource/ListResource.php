@@ -49,8 +49,7 @@ class ListResource extends BaseResource
         return $values;
     }
 
-    /** @inheritDoc */
-    protected function setProperty(string $property, $value): void
+    protected function setProperty(string $property, mixed $value): void
     {
         if ($property === 'items') {
             /** @var array<array<mixed>> $items */

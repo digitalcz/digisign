@@ -30,26 +30,17 @@ class AccountCertificatesEndpoint extends ResourceEndpoint
         parent::__construct($parent, '/certificates', Certificate::class);
     }
 
-    /**
-     * @param Certificate|string $id
-     */
-    public function reload($id): Certificate
+    public function reload(Certificate|string $id): Certificate
     {
         return $this->makeResource($this->postRequest('/{id}/reload', ['id' => $id]));
     }
 
-    /**
-     * @param Certificate|string $id
-     */
-    public function disable($id): Certificate
+    public function disable(Certificate|string $id): Certificate
     {
         return $this->makeResource($this->postRequest('/{id}/disable', ['id' => $id]));
     }
 
-    /**
-     * @param Certificate|string $id
-     */
-    public function enable($id): Certificate
+    public function enable(Certificate|string $id): Certificate
     {
         return $this->makeResource($this->postRequest('/{id}/enable', ['id' => $id]));
     }

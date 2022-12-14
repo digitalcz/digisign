@@ -12,11 +12,9 @@ final class FileStream
     /** @var resource */
     private $handle;
 
-    /** @var int|null  */
-    private $size;
+    private ?int $size = null;
 
-    /** @var string|null  */
-    private $filename;
+    private ?string $filename = null;
 
     /**
      * @param resource $handle

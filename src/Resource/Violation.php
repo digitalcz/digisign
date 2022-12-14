@@ -6,15 +6,12 @@ namespace DigitalCz\DigiSign\Resource;
 
 class Violation extends BaseResource
 {
-    /** @var string */
-    public $propertyPath;
+    public string $propertyPath;
 
-    /** @var string */
-    public $title;
+    public string $title;
 
     /** @var string[] */
-    public $parameters;
+    public array $parameters;
 
-    /** @var string */
-    public $type;
+    public string $type;
 }

@@ -210,8 +210,5 @@
         </properties>
         <exclude name="SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint"/>
         <exclude name="SlevomatCodingStandard.TypeHints.DisallowArrayTypeHintSyntax"/>
-        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint"/>
-        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint"/>
-        <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint"/>
     </rule>
 </ruleset>

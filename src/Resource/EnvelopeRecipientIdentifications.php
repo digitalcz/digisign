@@ -7,5 +7,5 @@ namespace DigitalCz\DigiSign\Resource;
 class EnvelopeRecipientIdentifications extends BaseResource
 {
     /** @var Collection<EnvelopeRecipientIdentification> */
-    public $identifications;
+    public Collection $identifications;
 }

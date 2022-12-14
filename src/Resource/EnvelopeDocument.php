@@ -10,36 +10,26 @@ class EnvelopeDocument extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var string|null */
-    public $metadata;
+    public ?string $metadata = null;
 
-    /** @var File */
-    public $file;
+    public File $file;
 
     /** @var Collection<EnvelopeTag> */
-    public $tags;
+    public Collection $tags;
 
-    /** @var int */
-    public $position;
+    public int $position;
 
-    /** @var bool */
-    public $signable;
+    public bool $signable;
 
-    /** @var bool */
-    public $fromTemplate;
+    public bool $fromTemplate;
 
-    /** @var string */
-    public $labelPositioning;
+    public string $labelPositioning;
 
-    /** @var int */
-    public $labelPositionX;
+    public int $labelPositionX;
 
-    /** @var int */
-    public $labelPositionY;
+    public int $labelPositionY;
 
-    /** @var string */
-    public $signatureValidity;
+    public string $signatureValidity;
 }

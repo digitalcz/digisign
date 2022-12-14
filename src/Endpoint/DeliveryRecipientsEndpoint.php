@@ -20,18 +20,12 @@ final class DeliveryRecipientsEndpoint extends ResourceEndpoint
     /** @use CRUDEndpointTrait<DeliveryRecipient> */
     use CRUDEndpointTrait;
 
-    /**
-     * @param Delivery|string $delivery
-     */
-    public function __construct(DeliveriesEndpoint $parent, $delivery)
+    public function __construct(DeliveriesEndpoint $parent, Delivery|string $delivery)
     {
         parent::__construct($parent, '/{delivery}/recipients', DeliveryRecipient::class, ['delivery' => $delivery]);
     }
 
-    /**
-     * @param DeliveryRecipient|string $recipient
-     */
-    public function block($recipient): RecipientBlockEndpoint
+    public function block(DeliveryRecipient|string $recipient): RecipientBlockEndpoint
     {
         return new RecipientBlockEndpoint($this, $recipient);
     }

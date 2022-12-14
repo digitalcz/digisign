@@ -27,42 +27,27 @@ final class EnvelopesEndpoint extends ResourceEndpoint
         parent::__construct($parent, '/api/envelopes', Envelope::class);
     }
 
-    /**
-     * @param Envelope|string $envelope
-     */
-    public function documents($envelope): EnvelopeDocumentsEndpoint
+    public function documents(Envelope|string $envelope): EnvelopeDocumentsEndpoint
     {
         return new EnvelopeDocumentsEndpoint($this, $envelope);
     }
 
-    /**
-     * @param Envelope|string $envelope
-     */
-    public function recipients($envelope): EnvelopeRecipientsEndpoint
+    public function recipients(Envelope|string $envelope): EnvelopeRecipientsEndpoint
     {
         return new EnvelopeRecipientsEndpoint($this, $envelope);
     }
 
-    /**
-     * @param Envelope|string $envelope
-     */
-    public function tags($envelope): EnvelopeTagsEndpoint
+    public function tags(Envelope|string $envelope): EnvelopeTagsEndpoint
     {
         return new EnvelopeTagsEndpoint($this, $envelope);
     }
 
-    /**
-     * @param Envelope|string $envelope
-     */
-    public function notifications($envelope): EnvelopeNotificationsEndpoint
+    public function notifications(Envelope|string $envelope): EnvelopeNotificationsEndpoint
     {
         return new EnvelopeNotificationsEndpoint($this, $envelope);
     }
 
-    /**
-     * @param Envelope|string $envelope
-     */
-    public function labels($envelope): EnvelopeLabelsEndpoint
+    public function labels(Envelope|string $envelope): EnvelopeLabelsEndpoint
     {
         return new EnvelopeLabelsEndpoint($this, $envelope);
     }
@@ -119,60 +104,43 @@ final class EnvelopesEndpoint extends ResourceEndpoint
         return $this->createResource($this->postRequest('/{id}/resend', ['id' => $id]));
     }
 
-    /**
-     * @param Envelope|string $id
-     */
-    public function template($id): EnvelopeTemplate
+    public function template(Envelope|string $id): EnvelopeTemplate
     {
         return $this->createResource($this->getRequest('/{id}/template', ['id' => $id]), EnvelopeTemplate::class);
     }
 
-    /**
-     * @param Envelope|string $id
-     */
-    public function clone($id): Envelope
+    public function clone(Envelope|string $id): Envelope
     {
         return $this->makeResource($this->postRequest('/{id}/clone', ['id' => $id]));
     }
 
     /**
-     * @param Envelope|string $id
      * @param mixed[] $body
      */
-    public function discard($id, array $body = []): Envelope
+    public function discard(Envelope|string $id, array $body = []): Envelope
     {
         return $this->makeResource($this->postRequest('/{id}/discard', ['id' => $id, 'json' => $body]));
     }
 
-    /**
-     * @param Envelope|string $id
-     */
-    public function restore($id): Envelope
+    public function restore(Envelope|string $id): Envelope
     {
         return $this->makeResource($this->postRequest('/{id}/restore', ['id' => $id]));
     }
 
-    /**
-     * @param Envelope|string $id
-     */
-    public function validate($id): void
+    public function validate(Envelope|string $id): void
     {
         $this->getRequest('/{id}/validate', ['id' => $id]);
     }
 
-    /**
-     * @param Envelope|string $id
-     */
-    public function startCorrection($id): void
+    public function startCorrection(Envelope|string $id): void
     {
         $this->postRequest('/{id}/start-correction', ['id' => $id]);
     }
 
     /**
-     * @param Envelope|string $id
      * @param mixed[] $body
      */
-    public function finishCorrection($id, array $body = []): void
+    public function finishCorrection(Envelope|string $id, array $body = []): void
     {
         $this->postRequest('/{id}/finish-correction', ['id' => $id, 'json' => $body]);
     }
