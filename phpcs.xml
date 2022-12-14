@@ -105,6 +105,7 @@
                 <!-- constants -->
                 <element value="public constants"/>
                 <element value="constants"/>
+                <element value="enum cases"/>
 
                 <!-- properties -->
                 <element value="static properties"/>
