@@ -12,11 +12,8 @@ use Psr\Http\Message\ResponseInterface;
  */
 final class FileResponse
 {
-    /** @var ResponseInterface  */
-    private $response;
-
-    /** @var FileStream  */
-    private $file;
+    private ResponseInterface $response;
+    private FileStream $file;
 
     public function __construct(ResponseInterface $response)
     {

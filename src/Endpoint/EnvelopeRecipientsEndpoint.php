@@ -57,6 +57,7 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
     public function createMany(array $body): array
     {
         $response = $this->patchRequest('', ['json' => $body]);
+        /** @var array<array<mixed>> $result */
         $result = $this->parseResponse($response);
 
         return array_map(static function (array $recipientResult): EnvelopeRecipient {

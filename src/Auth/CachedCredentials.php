@@ -15,11 +15,8 @@ final class CachedCredentials implements Credentials
 {
     private const PREFIX = 'DGS_tok_';
 
-    /** @var Credentials  */
-    private $inner;
-
-    /** @var CacheInterface  */
-    private $cache;
+    private Credentials $inner;
+    private CacheInterface $cache;
 
     public function __construct(Credentials $inner, CacheInterface $cache)
     {
@@ -41,7 +38,11 @@ final class CachedCredentials implements Credentials
         $key = $this->getHash();
 
         if ($this->cache->has($key)) {
-            return $this->cache->get($key);
+            $token = $this->cache->get($key);
+
+            if ($token instanceof Token) {
+                return $token;
+            }
         }
 
         $token = $this->inner->provide($dgs);

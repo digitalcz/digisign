@@ -82,7 +82,7 @@ class DigiSignTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid value for "cache" option');
-        new DigiSign(['cache' => new stdClass()]);
+        new DigiSign(['cache' => new stdClass()]); // @phpstan-ignore-line
     }
 
     public function testCreateWithCustomCredentials(): void
@@ -101,7 +101,7 @@ class DigiSignTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid value for "credentials" option');
 
-        new DigiSign(['credentials' => 'foo:bar']);
+        new DigiSign(['credentials' => 'foo:bar']); // @phpstan-ignore-line
     }
 
     public function testCreateAsTesting(): void
@@ -198,7 +198,7 @@ class DigiSignTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid value for "api_base" option');
 
-        new DigiSign(['api_base' => ['https://example.org/api']]);
+        new DigiSign(['api_base' => ['https://example.org/api']]); // @phpstan-ignore-line
     }
 
     public function testCreateWithInvalidSignatureTolerance(): void
@@ -206,7 +206,7 @@ class DigiSignTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid value for "signature_tolerance" option');
 
-        new DigiSign(['signature_tolerance' => '123456789']);
+        new DigiSign(['signature_tolerance' => '123456789']); // @phpstan-ignore-line
     }
 
     public function testValidateSignatureWithValidSignature(): void

@@ -21,9 +21,10 @@ class EnvelopeDocumentAssignmentsEndpoint extends ResourceEndpoint
      */
     public function get(): array
     {
-        return $this->parseResponse(
-            $this->getRequest('')
-        );
+        /** @var array<string, array<string, string>> $result */
+        $result = $this->parseResponse($this->getRequest());
+
+        return $result;
     }
 
     /**

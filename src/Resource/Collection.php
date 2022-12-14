@@ -9,19 +9,17 @@ use DigitalCz\DigiSign\Exception\RuntimeException;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * @template T
+ * @template T of ResourceInterface
  *
  * @extends ArrayObject<int|string, T>
  */
 class Collection extends ArrayObject implements ResourceInterface
 {
-    /** @var ResponseInterface Original API response */
-    protected $_response; // phpcs:ignore
+    /** Original API response */
+    protected ?ResponseInterface $_response = null; // phpcs:ignore
 
-    /**
-     * @var class-string<T>
-     */
-    protected $resourceClass;
+    /** @var class-string<T> */
+    protected string $resourceClass;
 
     /**
      * @param mixed[] $result
@@ -31,7 +29,7 @@ class Collection extends ArrayObject implements ResourceInterface
     {
         $this->resourceClass = $resourceClass;
 
-        $items = array_map(static function (array $itemValue) use ($resourceClass) {
+        $items = array_map(static function (mixed $itemValue) use ($resourceClass) {
             return new $resourceClass($itemValue);
         }, $result);
 
@@ -66,7 +64,7 @@ class Collection extends ArrayObject implements ResourceInterface
     public function toArray(): array
     {
         return array_map(
-            static function (BaseResource $item): array {
+            static function (ResourceInterface $item): array {
                 return $item->toArray();
             },
             $this->getArrayCopy()

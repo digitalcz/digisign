@@ -19,13 +19,13 @@ use ReflectionProperty;
 class BaseResource implements ResourceInterface
 {
     /** @var array<string, array<string, string>> Cache of resolved mapping types */
-    protected static $_mapping = []; // phpcs:ignore
+    protected static array $_mapping = []; // phpcs:ignore
 
-    /** @var ResponseInterface Original API response */
-    protected $_response; // phpcs:ignore
+    /** Original API response */
+    protected ?ResponseInterface $_response = null; // phpcs:ignore
 
     /** @var mixed[] Original values from API response */
-    protected $_result; // phpcs:ignore
+    protected array $_result; // phpcs:ignore
 
     /**
      * @param mixed[] $result
@@ -87,6 +87,10 @@ class BaseResource implements ResourceInterface
             throw new RuntimeException('Resource has no ID');
         }
 
+        if (!is_string($this->_result['id'])) {
+            throw new RuntimeException('Invalid ID');
+        }
+
         return $this->_result['id'];
     }
 
@@ -95,8 +99,12 @@ class BaseResource implements ResourceInterface
      */
     public function links(): array
     {
-        if (!isset($this->_result['_links']['self'])) {
+        if (!isset($this->_result['_links'])) {
             throw new RuntimeException('Resource has no links');
+        }
+
+        if (!is_array($this->_result['_links'])) {
+            throw new RuntimeException('Invalid links');
         }
 
         return $this->_result['_links'];
@@ -151,11 +159,16 @@ class BaseResource implements ResourceInterface
             if (is_array($value) && strpos($type, 'Collection') === 0) {
                 // parse Resource class from type
                 preg_match('/Collection<(.+)>/', $type, $matches);
+                /** @var class-string<ResourceInterface> $resourceClass */
                 $resourceClass = $matches[1];
                 $value = new Collection($value, $resourceClass);
             }
 
             if ($type === DateTime::class) {
+                if (!is_string($value)) {
+                    throw new RuntimeException('Unexpected value for DateTime field');
+                }
+
                 $value = new DateTime($value);
             }
         }

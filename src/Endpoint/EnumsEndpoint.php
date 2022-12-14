@@ -18,7 +18,7 @@ final class EnumsEndpoint extends ResourceEndpoint
     }
 
     /**
-     * @return array<string>
+     * @return mixed[]
      */
     public function get(string $enum): array
     {
