@@ -5,6 +5,9 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+
+## [1.12.0] - 2022-12-14
+### Added
 - Add new fields for IdentityProvider
 - Add new field $userId for User
 - Add new field $signatureValidity for EnvelopeDocument
@@ -13,8 +16,10 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add new fields $identificationNumber, $address for `EnvelopeRecipient` and `EnvelopeTemplateRecipient`
 - Add signatureImageContent endpoint to AccountMe 
 - Add new field $hasSignatureImage to User
-- Remove invalid fields on ListResource + fix tests
 - Add method BaseResource::links() that returns links
+
+### Fixed
+- Remove invalid fields on ListResource + fix tests
 
 ## [1.11.0]
 ### Added
