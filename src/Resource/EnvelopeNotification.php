@@ -11,12 +11,9 @@ class EnvelopeNotification extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $type;
+    public string $type;
 
-    /** @var int */
-    public $days;
+    public int $days;
 
-    /** @var DateTime|null */
-    public $cancelledAt;
+    public ?DateTime $cancelledAt = null;
 }

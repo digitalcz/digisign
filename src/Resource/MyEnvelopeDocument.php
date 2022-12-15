@@ -6,12 +6,9 @@ namespace DigitalCz\DigiSign\Resource;
 
 class MyEnvelopeDocument extends BaseResource
 {
-    /** @var string */
-    public $id;
+    public string $id;
 
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var string */
-    public $fileMimeType;
+    public string $fileMimeType;
 }

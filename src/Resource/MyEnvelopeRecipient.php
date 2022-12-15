@@ -6,36 +6,25 @@ namespace DigitalCz\DigiSign\Resource;
 
 class MyEnvelopeRecipient extends BaseResource
 {
-    /** @var string */
-    public $id;
+    public string $id;
 
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var string */
-    public $email;
+    public string $email;
 
-    /** @var string */
-    public $role;
+    public string $role;
 
-    /** @var string */
-    public $status;
+    public string $status;
 
-    /** @var string */
-    public $authenticationOnOpen;
+    public string $authenticationOnOpen;
 
-    /** @var string */
-    public $authenticationOnSignature;
+    public string $authenticationOnSignature;
 
-    /** @var string */
-    public $authenticationOnDownload;
+    public string $authenticationOnDownload;
 
-    /** @var string */
-    public $signatureType;
+    public string $signatureType;
 
-    /** @var string */
-    public $intermediaryName;
+    public string $intermediaryName;
 
-    /** @var string */
-    public $intermediaryEmail;
+    public string $intermediaryEmail;
 }

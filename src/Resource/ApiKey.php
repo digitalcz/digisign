@@ -11,24 +11,17 @@ class ApiKey extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $status;
+    public string $status;
 
-    /** @var string */
-    public $accessKey;
+    public string $accessKey;
 
-    /** @var string|null */
-    public $name;
+    public ?string $name = null;
 
-    /** @var string|null */
-    public $description;
+    public ?string $description = null;
 
-    /** @var string|null */
-    public $domain;
+    public ?string $domain = null;
 
-    /** @var DateTime|null */
-    public $deactivatedAt;
+    public ?DateTime $deactivatedAt = null;
 
-    /** @var User */
-    public $owner;
+    public User $owner;
 }

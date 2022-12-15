@@ -11,6 +11,7 @@ use JsonSerializable;
 use LogicException;
 use Psr\Http\Message\ResponseInterface;
 use ReflectionException;
+use ReflectionNamedType;
 use ReflectionProperty;
 
 /**
@@ -19,13 +20,16 @@ use ReflectionProperty;
 class BaseResource implements ResourceInterface
 {
     /** @var array<string, array<string, string>> Cache of resolved mapping types */
-    protected static $_mapping = []; // phpcs:ignore
+    protected static array $_mapping = []; // phpcs:ignore
 
-    /** @var ResponseInterface Original API response */
-    protected $_response; // phpcs:ignore
+    /** Original API response */
+    protected ?ResponseInterface $_response = null; // phpcs:ignore
 
     /** @var mixed[] Original values from API response */
-    protected $_result; // phpcs:ignore
+    protected array $_result; // phpcs:ignore
+
+    /** @var mixed[] Dynamic properties */
+    protected array $_data = []; // phpcs:ignore
 
     /**
      * @param mixed[] $result
@@ -45,12 +49,11 @@ class BaseResource implements ResourceInterface
     /** @inheritDoc */
     public function toArray(): array
     {
-        $values = get_object_vars($this);
-
+        $values = get_object_vars($this) + $this->_data;
         $result = [];
         foreach ($values as $property => $value) {
             // skip internal properties
-            if (in_array($property, ['_mapping', '_response', '_result'], true)) {
+            if (in_array($property, ['_mapping', '_response', '_result', '_data'], true)) {
                 continue;
             }
 
@@ -87,6 +90,10 @@ class BaseResource implements ResourceInterface
             throw new RuntimeException('Resource has no ID');
         }
 
+        if (!is_string($this->_result['id'])) {
+            throw new RuntimeException('Invalid ID');
+        }
+
         return $this->_result['id'];
     }
 
@@ -95,8 +102,12 @@ class BaseResource implements ResourceInterface
      */
     public function links(): array
     {
-        if (!isset($this->_result['_links']['self'])) {
+        if (!isset($this->_result['_links'])) {
             throw new RuntimeException('Resource has no links');
+        }
+
+        if (!is_array($this->_result['_links'])) {
+            throw new RuntimeException('Invalid links');
         }
 
         return $this->_result['_links'];
@@ -134,10 +145,7 @@ class BaseResource implements ResourceInterface
         }
     }
 
-    /**
-     * @param mixed $value
-     */
-    protected function setProperty(string $property, $value): void
+    protected function setProperty(string $property, mixed $value): void
     {
         if ($value !== null) {
             $type = $this->getMappingType($property);
@@ -151,11 +159,16 @@ class BaseResource implements ResourceInterface
             if (is_array($value) && strpos($type, 'Collection') === 0) {
                 // parse Resource class from type
                 preg_match('/Collection<(.+)>/', $type, $matches);
+                /** @var class-string<ResourceInterface> $resourceClass */
                 $resourceClass = $matches[1];
                 $value = new Collection($value, $resourceClass);
             }
 
             if ($type === DateTime::class) {
+                if (!is_string($value)) {
+                    throw new RuntimeException('Unexpected value for DateTime field');
+                }
+
                 $value = new DateTime($value);
             }
         }
@@ -178,6 +191,13 @@ class BaseResource implements ResourceInterface
     {
         try {
             $reflection = new ReflectionProperty($this, $property);
+
+            $nativeType = $reflection->getType();
+
+            if ($nativeType instanceof ReflectionNamedType && !is_a($nativeType->getName(), Collection::class, true)) {
+                return $nativeType->getName();
+            }
+
             $phpDoc = $reflection->getDocComment();
         } catch (ReflectionException $e) {
             return 'mixed'; // property may not exist
@@ -226,5 +246,20 @@ class BaseResource implements ResourceInterface
         }
 
         return $type;
+    }
+
+    public function __get(string $name): mixed
+    {
+        return $this->_data[$name] ?? null;
+    }
+
+    public function __set(string $name, mixed $value): void
+    {
+        $this->_data[$name] = $value;
+    }
+
+    public function __isset(string $name): bool
+    {
+        return isset($this->_data[$name]);
     }
 }

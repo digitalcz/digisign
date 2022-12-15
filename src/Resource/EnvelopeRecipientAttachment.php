@@ -10,15 +10,11 @@ class EnvelopeRecipientAttachment extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $recipient;
+    public string $recipient;
 
-    /** @var string */
-    public $type;
+    public string $type;
 
-    /** @var File */
-    public $file;
+    public File $file;
 
-    /** @var string|null */
-    public $name;
+    public ?string $name = null;
 }

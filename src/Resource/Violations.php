@@ -6,14 +6,11 @@ namespace DigitalCz\DigiSign\Resource;
 
 class Violations extends BaseResource
 {
-    /** @var string */
-    public $title;
-
-    /** @var string */
-    public $detail;
+    public string $title;
+    public string $detail;
 
     /** @var Collection<Violation> */
-    public $violations;
+    public Collection $violations;
 
     /** @param mixed[] $result */
     public function __construct(array $result)

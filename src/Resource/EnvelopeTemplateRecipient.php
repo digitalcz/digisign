@@ -10,66 +10,46 @@ class EnvelopeTemplateRecipient extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $alias;
+    public string $alias;
 
-    /** @var string */
-    public $role;
+    public string $role;
 
-    /** @var string */
-    public $signatureType;
+    public string $signatureType;
 
-    /** @var string */
-    public $authenticationOnOpen;
+    public string $authenticationOnOpen;
 
-    /** @var string */
-    public $authenticationOnSignature;
+    public string $authenticationOnSignature;
 
-    /** @var string */
-    public $authenticationOnDownload;
+    public string $authenticationOnDownload;
 
-    /** @var string|null */
-    public $name;
+    public ?string $name = null;
 
-    /** @var string|null */
-    public $email;
+    public ?string $email = null;
 
-    /** @var string|null */
-    public $mobile;
+    public ?string $mobile = null;
 
-    /** @var string|null */
-    public $emailBody;
+    public ?string $emailBody = null;
 
-    /** @var string|null */
-    public $emailBodyCompleted;
+    public ?string $emailBodyCompleted = null;
 
-    /** @var string */
-    public $language;
+    public string $language;
 
-    /** @var string */
-    public $channelForSigner;
+    public string $channelForSigner;
 
-    /** @var string */
-    public $channelForDownload;
+    public string $channelForDownload;
 
-    /** @var int */
-    public $signingOrder;
+    public int $signingOrder;
 
-    /** @var string */
-    public $intermediaryName;
+    public string $intermediaryName;
 
-    /** @var string */
-    public $intermediaryEmail;
+    public string $intermediaryEmail;
 
-    /** @var string */
-    public $prefill;
+    public string $prefill;
 
     /** @var array<string, string> */
-    public $bankIdScopes;
+    public array $bankIdScopes;
 
-    /** @var string|null */
-    public $identificationNumber;
+    public ?string $identificationNumber = null;
 
-    /** @var string|null */
-    public $address;
+    public ?string $address = null;
 }

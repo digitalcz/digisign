@@ -27,6 +27,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
+use Stringable;
 
 final class DigiSignClient implements DigiSignClientInterface
 {
@@ -36,17 +37,13 @@ final class DigiSignClient implements DigiSignClientInterface
     public const HTTP_NOT_FOUND = 404;
     public const HTTP_INTERNAL_SERVER_ERROR = 500;
 
-    /** @var ClientInterface  */
-    private $httpClient;
+    private ClientInterface $httpClient;
 
-    /** @var RequestFactoryInterface  */
-    private $requestFactory;
+    private RequestFactoryInterface $requestFactory;
 
-    /** @var StreamFactoryInterface  */
-    private $streamFactory;
+    private StreamFactoryInterface $streamFactory;
 
-    /** @var UriFactoryInterface  */
-    private $uriFactory;
+    private UriFactoryInterface $uriFactory;
 
     public function __construct(
         ?ClientInterface $httpClient = null,
@@ -103,11 +100,9 @@ final class DigiSignClient implements DigiSignClientInterface
     }
 
     /**
-     * @param mixed $value
-     *
      * @throws JsonException When the value cannot be json-encoded
      */
-    public static function jsonEncode($value): string
+    public static function jsonEncode(mixed $value): string
     {
         $json = json_encode($value);
 
@@ -152,7 +147,11 @@ final class DigiSignClient implements DigiSignClientInterface
             $param = $options[$search];
 
             if ($param instanceof BaseResource) {
-                $param = $param->id() ?? '';
+                $param = $param->id();
+            }
+
+            if (!is_scalar($param) && !$param instanceof Stringable) {
+                throw new RuntimeException(sprintf('Cannot cast uri parameter %s to string', $search));
             }
 
             $replaces[] = (string)$param;
@@ -168,6 +167,10 @@ final class DigiSignClient implements DigiSignClientInterface
         $psrUri = $this->uriFactory->createUri($uri);
 
         if (isset($options['query'])) {
+            if (!is_array($options['query'])) {
+                throw new InvalidArgumentException('Invalid value for "query" option');
+            }
+
             $psrUri = $psrUri->withQuery(http_build_query($options['query']));
         }
 

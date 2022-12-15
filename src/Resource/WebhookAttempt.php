@@ -8,21 +8,15 @@ use DateTime;
 
 class WebhookAttempt extends BaseResource
 {
-    /** @var string */
-    public $id;
+    public string $id;
 
-    /** @var DateTime */
-    public $createdAt;
+    public DateTime $createdAt;
 
-    /** @var string */
-    public $status;
+    public string $status;
 
-    /** @var string */
-    public $request;
+    public string $request;
 
-    /** @var string */
-    public $response;
+    public string $response;
 
-    /** @var EntityEvent */
-    public $event;
+    public EntityEvent $event;
 }

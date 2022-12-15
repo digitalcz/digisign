@@ -11,99 +11,71 @@ class Envelope extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $status;
+    public string $status;
 
-    /** @var string|null */
-    public $metadata;
+    public ?string $metadata = null;
 
-    /** @var string */
-    public $emailSubject;
+    public string $emailSubject;
 
-    /** @var string */
-    public $emailBody;
+    public string $emailBody;
 
-    /** @var string|null */
-    public $emailBodyCompleted;
+    public ?string $emailBodyCompleted = null;
 
-    /** @var string|null */
-    public $senderName;
+    public ?string $senderName = null;
 
-    /** @var string|null */
-    public $senderEmail;
+    public ?string $senderEmail = null;
 
-    /** @var int */
-    public $expiration;
+    public int $expiration;
 
-    /** @var string */
-    public $signatureType;
+    public string $signatureType;
 
-    /** @var string */
-    public $authenticationOnOpen;
+    public string $authenticationOnOpen;
 
-    /** @var string */
-    public $authenticationOnSignature;
+    public string $authenticationOnSignature;
 
-    /** @var string */
-    public $authenticationOnDownload;
+    public string $authenticationOnDownload;
 
-    /** @var string */
-    public $language;
+    public string $language;
 
-    /** @var string */
-    public $channelForSigner;
+    public string $channelForSigner;
 
-    /** @var string */
-    public $channelForDownload;
+    public string $channelForDownload;
 
-    /** @var DateTime|null */
-    public $validTo;
+    public ?DateTime $validTo = null;
 
-    /** @var DateTime|null */
-    public $sentAt;
+    public ?DateTime $sentAt = null;
 
-    /** @var DateTime|null */
-    public $sealedAt;
+    public ?DateTime $sealedAt = null;
 
-    /** @var DateTime|null */
-    public $completedAt;
+    public ?DateTime $completedAt = null;
 
-    /** @var DateTime|null */
-    public $cancelledAt;
+    public ?DateTime $cancelledAt = null;
 
-    /** @var DateTime|null */
-    public $expiredAt;
+    public ?DateTime $expiredAt = null;
 
-    /** @var DateTime|null */
-    public $declinedAt;
+    public ?DateTime $declinedAt = null;
 
-    /** @var DateTime|null */
-    public $discardedAt;
+    public ?DateTime $discardedAt = null;
 
     /** @var Collection<EnvelopeRecipient> */
-    public $recipients;
+    public Collection $recipients;
 
     /** @var Collection<EnvelopeDocument> */
-    public $documents;
+    public Collection $documents;
 
     /** @var Collection<EnvelopeNotification> */
-    public $notifications;
+    public Collection $notifications;
 
-    /** @var bool */
-    public $sendCompleted;
+    public bool $sendCompleted;
 
-    /** @var string|null */
-    public $template;
+    public ?string $template = null;
 
-    /** @var EnvelopeProperties */
-    public $properties;
+    public EnvelopeProperties $properties;
 
     /** @var Collection<Label> */
-    public $labels;
+    public Collection $labels;
 
-    /** @var Branding|null */
-    public $branding;
+    public ?Branding $branding = null;
 
-    /** @var string|null */
-    public $description;
+    public ?string $description = null;
 }

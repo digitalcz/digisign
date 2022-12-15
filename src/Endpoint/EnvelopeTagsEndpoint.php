@@ -19,10 +19,7 @@ final class EnvelopeTagsEndpoint extends ResourceEndpoint
     /** @use CRUDEndpointTrait<EnvelopeTag> */
     use CRUDEndpointTrait;
 
-    /**
-     * @param Envelope|string $envelope
-     */
-    public function __construct(EnvelopesEndpoint $parent, $envelope)
+    public function __construct(EnvelopesEndpoint $parent, Envelope|string $envelope)
     {
         parent::__construct($parent, '/{envelope}/tags', EnvelopeTag::class, ['envelope' => $envelope]);
     }

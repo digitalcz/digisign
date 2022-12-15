@@ -19,10 +19,7 @@ final class WebhookAttemptsEndpoint extends ResourceEndpoint
     use ListEndpointTrait;
     use GetEndpointTrait;
 
-    /**
-     * @param Webhook|string $webhook
-     */
-    public function __construct(WebhooksEndpoint $parent, $webhook)
+    public function __construct(WebhooksEndpoint $parent, Webhook|string $webhook)
     {
         parent::__construct($parent, '/{webhook}/attempts', WebhookAttempt::class, ['webhook' => $webhook]);
     }

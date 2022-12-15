@@ -11,71 +11,55 @@ class EnvelopeTemplate extends BaseResource
     use EntityResourceTrait;
 
     /** @var Collection<EnvelopeTemplateDocument> */
-    public $documents;
+    public Collection $documents;
 
     /** @var Collection<EnvelopeTemplateRecipient> */
-    public $recipients;
+    public Collection $recipients;
 
     /** @var Collection<EnvelopeTemplateNotification> */
-    public $notifications;
+    public Collection $notifications;
 
     /** @var Collection<EnvelopeTemplateTag> */
-    public $tags;
+    public Collection $tags;
 
-    /** @var string */
-    public $emailSubject;
+    public string $emailSubject;
 
-    /** @var string */
-    public $emailBody;
+    public string $emailBody;
 
-    /** @var string|null */
-    public $emailBodyCompleted;
+    public ?string $emailBodyCompleted = null;
 
-    /** @var int */
-    public $expiration;
+    public int $expiration;
 
-    /** @var string */
-    public $signatureType;
+    public string $signatureType;
 
-    /** @var string */
-    public $authenticationOnOpen;
+    public string $authenticationOnOpen;
 
-    /** @var string */
-    public $authenticationOnSignature;
+    public string $authenticationOnSignature;
 
-    /** @var string */
-    public $authenticationOnDownload;
+    public string $authenticationOnDownload;
 
-    /** @var string */
-    public $language;
+    public string $language;
 
-    /** @var string */
-    public $channelForSigner;
+    public string $channelForSigner;
 
-    /** @var string */
-    public $channelForDownload;
+    public string $channelForDownload;
 
-    /** @var bool */
-    public $timestampDocuments;
+    public bool $timestampDocuments;
 
-    /** @var bool */
-    public $sendCompleted;
+    public bool $sendCompleted;
 
     /** @var array<string> */
-    public $fileCategoriesToConvert;
+    public array $fileCategoriesToConvert;
 
     /** @var array<string, string> */
-    public $bankIdScopes;
+    public array $bankIdScopes;
 
-    /** @var bool */
-    public $useDefaultTemplateSettings;
+    public bool $useDefaultTemplateSettings;
 
     /** @var Collection<Label> */
-    public $labels;
+    public Collection $labels;
 
-    /** @var Branding|null */
-    public $branding;
+    public ?Branding $branding = null;
 
-    /** @var string|null */
-    public $description;
+    public ?string $description = null;
 }

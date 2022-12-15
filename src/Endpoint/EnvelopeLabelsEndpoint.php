@@ -13,10 +13,7 @@ use DigitalCz\DigiSign\Resource\Label;
  */
 final class EnvelopeLabelsEndpoint extends ResourceEndpoint
 {
-    /**
-     * @param Envelope|string $envelope
-     */
-    public function __construct(EnvelopesEndpoint $parent, $envelope)
+    public function __construct(EnvelopesEndpoint $parent, Envelope|string $envelope)
     {
         parent::__construct($parent, '/{envelope}/labels', Label::class, ['envelope' => $envelope]);
     }
@@ -38,18 +35,12 @@ final class EnvelopeLabelsEndpoint extends ResourceEndpoint
         return $this->createCollectionResource($this->putRequest('', ['json' => $body]), $this->getResourceClass());
     }
 
-    /**
-     * @param Label|string $label
-     */
-    public function add($label): void
+    public function add(Label|string $label): void
     {
         $this->putRequest('/{label}', ['label' => $label]);
     }
 
-    /**
-     * @param Label|string $label
-     */
-    public function remove($label): void
+    public function remove(Label|string $label): void
     {
         $this->deleteRequest('/{label}', ['label' => $label]);
     }

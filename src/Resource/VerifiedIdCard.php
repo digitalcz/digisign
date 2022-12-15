@@ -6,24 +6,17 @@ namespace DigitalCz\DigiSign\Resource;
 
 class VerifiedIdCard extends BaseResource
 {
-    /** @var string|null */
-    public $type;
+    public ?string $type = null;
 
-    /** @var string|null */
-    public $description;
+    public ?string $description = null;
 
-    /** @var string|null */
-    public $country;
+    public ?string $country = null;
 
-    /** @var string|null */
-    public $number;
+    public ?string $number = null;
 
-    /** @var string|null */
-    public $validTo;
+    public ?string $validTo = null;
 
-    /** @var string|null */
-    public $issuer;
+    public ?string $issuer = null;
 
-    /** @var string|null */
-    public $issueDate;
+    public ?string $issueDate = null;
 }

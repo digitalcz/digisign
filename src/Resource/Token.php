@@ -6,12 +6,9 @@ namespace DigitalCz\DigiSign\Resource;
 
 class Token extends BaseResource
 {
-    /** @var string */
-    public $token;
+    public string $token;
 
-    /** @var int */
-    public $exp;
+    public int $exp;
 
-    /** @var int */
-    public $iat;
+    public int $iat;
 }

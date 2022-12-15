@@ -6,42 +6,31 @@ namespace DigitalCz\DigiSign\Resource;
 
 class EnvelopeProperties extends BaseResource
 {
-    /** @var bool */
-    public $mergeDocuments;
+    public bool $mergeDocuments;
 
-    /** @var string|null */
-    public $mergedDocumentName;
+    public ?string $mergedDocumentName = null;
 
-    /** @var bool */
-    public $declineAllowed;
+    public bool $declineAllowed;
 
-    /** @var bool */
-    public $declineReasonRequired;
+    public bool $declineReasonRequired;
 
     /** @var array<string> */
-    public $signatureTagParts;
+    public array $signatureTagParts;
 
-    /** @var string */
-    public $labelPositioning;
+    public string $labelPositioning;
 
-    /** @var bool */
-    public $sendDocumentsAsEmailAttachment;
+    public bool $sendDocumentsAsEmailAttachment;
 
-    /** @var bool */
-    public $generateSignatureSheet;
+    public bool $generateSignatureSheet;
 
-    /** @var bool */
-    public $auditLogAvailableToAllRecipients;
+    public bool $auditLogAvailableToAllRecipients;
 
-    /** @var bool */
-    public $timestampDocuments;
+    public bool $timestampDocuments;
 
-    /** @var bool */
-    public $timestampAuditLog;
+    public bool $timestampAuditLog;
 
     /** @var array<string> */
-    public $timestampingAuthorities;
+    public array $timestampingAuthorities;
 
-    /** @var bool */
-    public $sendCompleted;
+    public bool $sendCompleted;
 }

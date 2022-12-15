@@ -8,24 +8,18 @@ use DateTime;
 
 class EntityEvent extends BaseResource
 {
-    /** @var string */
-    public $id;
+    public string $id;
 
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var DateTime */
-    public $time;
+    public DateTime $time;
 
-    /** @var DateTime */
-    public $createdAt;
+    public DateTime $createdAt;
 
-    /** @var string */
-    public $entityName;
+    public string $entityName;
 
-    /** @var string */
-    public $entityId;
+    public string $entityId;
 
     /** @var mixed[] */
-    public $data;
+    public array $data;
 }

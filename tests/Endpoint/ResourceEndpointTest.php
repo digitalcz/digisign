@@ -7,7 +7,6 @@ namespace DigitalCz\DigiSign\Endpoint;
 use DigitalCz\DigiSign\DigiSignClient;
 use DigitalCz\DigiSign\Exception\EmptyResultException;
 use DigitalCz\DigiSign\Exception\ResponseException;
-use DigitalCz\DigiSign\Resource\BaseResourceTest;
 use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\DummyResource;
 use Nyholm\Psr7\Response;
@@ -189,11 +188,7 @@ class ResourceEndpointTest extends TestCase
         $endpoint = new DummyEndpoint($parent);
         /** @var Collection<DummyResource> $resource */
         $resource = $endpoint->collection($expectedResponse);
-        self::assertSame([
-            BaseResourceTest::DUMMY_RESOURCE_ARRAYED,
-            BaseResourceTest::DUMMY_RESOURCE_ARRAYED,
-            BaseResourceTest::DUMMY_RESOURCE_ARRAYED,
-        ], $resource->toArray());
+        self::assertSame(DummyResource::COLLECTION_EXAMPLE, $resource->toArray());
     }
 
     public function testResponseExceptionEmptyBody(): void

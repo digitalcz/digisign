@@ -10,45 +10,31 @@ class AccountSettings extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string|null */
-    public $fullName;
+    public ?string $fullName = null;
 
-    /** @var string|null */
-    public $shortName;
+    public ?string $shortName = null;
 
-    /** @var string|null */
-    public $defaultSenderName;
+    public ?string $defaultSenderName = null;
 
-    /** @var string|null */
-    public $defaultSenderEmail;
+    public ?string $defaultSenderEmail = null;
 
-    /** @var string|null */
-    public $debuggingEmail;
+    public ?string $debuggingEmail = null;
 
-    /** @var string|null */
-    public $identificationNumber;
+    public ?string $identificationNumber = null;
 
-    /** @var string|null */
-    public $vatNumber;
+    public ?string $vatNumber = null;
 
-    /** @var Image|null */
-    public $logo;
+    public ?Image $logo = null;
 
-    /** @var Address|null */
-    public $address;
+    public ?Address $address = null;
 
-    /** @var string */
-    public $bankIdProduct;
+    public string $bankIdProduct;
 
-    /** @var bool */
-    public $bankIdSign;
+    public bool $bankIdSign;
 
-    /** @var string */
-    public $defaultMobileCountryCode;
+    public string $defaultMobileCountryCode;
 
-    /** @var string */
-    public $defaultLanguage;
+    public string $defaultLanguage;
 
-    /** @var bool */
-    public $useEnvelopeDescription;
+    public bool $useEnvelopeDescription;
 }

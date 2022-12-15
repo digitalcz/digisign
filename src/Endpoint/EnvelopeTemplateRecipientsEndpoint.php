@@ -19,10 +19,7 @@ final class EnvelopeTemplateRecipientsEndpoint extends ResourceEndpoint
     /** @use CRUDEndpointTrait<EnvelopeTemplateRecipient> */
     use CRUDEndpointTrait;
 
-    /**
-     * @param EnvelopeTemplate|string $template
-     */
-    public function __construct(EnvelopeTemplatesEndpoint $parent, $template)
+    public function __construct(EnvelopeTemplatesEndpoint $parent, EnvelopeTemplate|string $template)
     {
         parent::__construct(
             $parent,

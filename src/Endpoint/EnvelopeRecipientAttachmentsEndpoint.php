@@ -18,10 +18,7 @@ final class EnvelopeRecipientAttachmentsEndpoint extends ResourceEndpoint
 {
     use GetEndpointTrait;
 
-    /**
-     * @param EnvelopeRecipient|string $recipient
-     */
-    public function __construct(EnvelopeRecipientsEndpoint $parent, $recipient)
+    public function __construct(EnvelopeRecipientsEndpoint $parent, EnvelopeRecipient|string $recipient)
     {
         parent::__construct(
             $parent,
@@ -40,10 +37,9 @@ final class EnvelopeRecipientAttachmentsEndpoint extends ResourceEndpoint
     }
 
     /**
-     * @param EnvelopeRecipientAttachment|string $id
      * @param mixed[] $query
      */
-    public function download($id, array $query = []): FileResponse
+    public function download(EnvelopeRecipientAttachment|string $id, array $query = []): FileResponse
     {
         return $this->stream(self::METHOD_GET, '/{id}/download', ['id' => $id, 'query' => $query]);
     }

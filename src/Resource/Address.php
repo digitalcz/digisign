@@ -10,24 +10,17 @@ class Address extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $countryCode;
+    public string $countryCode;
 
-    /** @var string */
-    public $region;
+    public string $region;
 
-    /** @var string */
-    public $city;
+    public string $city;
 
-    /** @var string */
-    public $postalCode;
+    public string $postalCode;
 
-    /** @var string */
-    public $sortingCode;
+    public string $sortingCode;
 
-    /** @var string */
-    public $addressLine1;
+    public string $addressLine1;
 
-    /** @var string */
-    public $addressLine2;
+    public string $addressLine2;
 }

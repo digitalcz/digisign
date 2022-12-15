@@ -9,11 +9,8 @@ namespace DigitalCz\DigiSign\Auth;
  */
 final class Token
 {
-    /** @var string  */
-    private $token;
-
-    /** @var int  */
-    private $exp;
+    private string $token;
+    private int $exp;
 
     public function __construct(string $token, int $exp)
     {

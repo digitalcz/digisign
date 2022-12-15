@@ -10,15 +10,11 @@ class Contact extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var string */
-    public $email;
+    public string $email;
 
-    /** @var string|null */
-    public $mobile;
+    public ?string $mobile = null;
 
-    /** @var string */
-    public $language;
+    public string $language;
 }

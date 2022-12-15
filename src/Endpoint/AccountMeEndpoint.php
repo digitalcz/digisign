@@ -25,17 +25,17 @@ final class AccountMeEndpoint extends ResourceEndpoint
      */
     public function get(): ResourceInterface
     {
-        $result = $this->getRequest();
+        $response = $this->getRequest();
+        $result = $this->parseResponse($response);
 
         // identify resource User/ApiKey
-        $resourceClass = isset($result->firstName) ? User::class : ApiKey::class;
+        $resourceClass = isset($result['firstName']) ? User::class : ApiKey::class;
 
-        return $this->createResource($result, $resourceClass);
+        return $this->createResource($response, $resourceClass);
     }
 
     /**
      * @param mixed[] $body
-     * @return User
      */
     public function update(array $body): User
     {

@@ -7,8 +7,8 @@ namespace DigitalCz\DigiSign\Resource;
 class EnvelopeDocumentSignatureSheets extends BaseResource
 {
     /** @var Collection<EnvelopeDocument> */
-    public $documents;
+    public Collection $documents;
 
     /** @var Collection<EnvelopeTag> */
-    public $tags;
+    public Collection $tags;
 }

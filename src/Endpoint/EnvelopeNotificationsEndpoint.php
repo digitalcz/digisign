@@ -19,10 +19,7 @@ final class EnvelopeNotificationsEndpoint extends ResourceEndpoint
     /** @use CRUDEndpointTrait<EnvelopeNotification> */
     use CRUDEndpointTrait;
 
-    /**
-     * @param Envelope|string $envelope
-     */
-    public function __construct(EnvelopesEndpoint $parent, $envelope)
+    public function __construct(EnvelopesEndpoint $parent, Envelope|string $envelope)
     {
         parent::__construct(
             $parent,

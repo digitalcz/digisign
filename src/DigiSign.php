@@ -23,6 +23,7 @@ use DigitalCz\DigiSign\Endpoint\WebhooksEndpoint;
 use DigitalCz\DigiSign\Exception\InvalidSignatureException;
 use InvalidArgumentException;
 use LogicException;
+use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\SimpleCache\CacheInterface;
 
@@ -32,20 +33,20 @@ final class DigiSign implements EndpointInterface
     public const API_BASE = 'https://api.digisign.org';
     public const API_BASE_TESTING = 'https://api.digisign.digital.cz';
 
-    /** @var string The base URL for requests */
-    private $apiBase = self::API_BASE;
+    /** The base URL for requests */
+    private string $apiBase = self::API_BASE;
 
-    /** @var Credentials The credentials used to authenticate to API */
-    private $credentials;
+    /** The credentials used to authenticate to API */
+    private Credentials $credentials;
 
-    /** @var DigiSignClientInterface The client used to send requests */
-    private $client;
+    /** The client used to send requests */
+    private DigiSignClientInterface $client;
 
     /** @var array<string, string> */
-    private $versions = [];
+    private array $versions = [];
 
-    /** @var int The tolerance for webhook signature age validation (in seconds) */
-    private $signatureTolerance = 300;
+    /** The tolerance for webhook signature age validation (in seconds) */
+    private int $signatureTolerance = 300;
 
     /**
      * Available options:
@@ -59,7 +60,17 @@ final class DigiSign implements EndpointInterface
      *  api_base            - string; override the base API url
      *  signature_tolerance - int; The tolerance for webhook signature age validation (in seconds)
      *
-     * @param mixed[] $options
+     * @param array{
+     *      access_key?: string,
+     *      secret_key?: string,
+     *      credentials?: Credentials,
+     *      client?: DigiSignClient,
+     *      http_client?: ClientInterface,
+     *      cache?: CacheInterface,
+     *      testing?: bool,
+     *      api_base?: string,
+     *      signature_tolerance?: int
+     * } $options
      */
     public function __construct(array $options = [])
     {

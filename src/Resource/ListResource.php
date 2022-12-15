@@ -5,24 +5,19 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Resource;
 
 /**
- * @template T
+ * @template T of ResourceInterface
  */
 class ListResource extends BaseResource
 {
     /** @var array<T> */
-    public $items;
+    public array $items;
 
-    /** @var int */
-    public $count;
-
-    /** @var int */
-    public $page;
-
-    /** @var int */
-    public $itemsPerPage;
+    public int $count;
+    public int $page;
+    public int $itemsPerPage;
 
     /** @var class-string<T> */
-    protected $resourceClass;
+    protected string $resourceClass;
 
     /**
      * @param mixed[] $result
@@ -41,26 +36,30 @@ class ListResource extends BaseResource
         $values = parent::toArray();
 
         unset($values['resourceClass']);
+
+        /** @var array<BaseResource> $items */
+        $items = $values['items'] ?? [];
         $values['items'] = array_map(
             static function (BaseResource $item): array {
                 return $item->toArray();
             },
-            ($values['items'] ?? [])
+            $items
         );
 
         return $values;
     }
 
-    /** @inheritDoc */
-    protected function setProperty(string $property, $value): void
+    protected function setProperty(string $property, mixed $value): void
     {
         if ($property === 'items') {
+            /** @var array<array<mixed>> $items */
+            $items = $value;
             $resourceClass = $this->resourceClass;
             $value = array_map(
-                static function (array $itemValues) use ($resourceClass): BaseResource {
+                static function (array $itemValues) use ($resourceClass): ResourceInterface {
                     return new $resourceClass($itemValues);
                 },
-                $value
+                $items
             );
         }
 

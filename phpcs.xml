@@ -68,6 +68,7 @@
     <!--  Files  -->
     <rule ref="SlevomatCodingStandard.Files">
         <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName"/>
+        <exclude name="SlevomatCodingStandard.Files.FileLength"/>
         <properties>
             <property name="lineLengthLimit" value="180"/>
             <property name="maxLinesLength" value="50" />
@@ -83,6 +84,7 @@
 
     <!--  Classes  -->
     <rule ref="SlevomatCodingStandard.Classes">
+        <exclude name="SlevomatCodingStandard.Classes.ClassLength"/>
         <exclude name="SlevomatCodingStandard.Classes.EmptyLinesAroundClassBraces"/>
         <exclude name="SlevomatCodingStandard.Classes.TraitUseSpacing"/>
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousInterfaceNaming"/>
@@ -105,6 +107,7 @@
                 <!-- constants -->
                 <element value="public constants"/>
                 <element value="constants"/>
+                <element value="enum cases"/>
 
                 <!-- properties -->
                 <element value="static properties"/>
@@ -207,8 +210,5 @@
         </properties>
         <exclude name="SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint"/>
         <exclude name="SlevomatCodingStandard.TypeHints.DisallowArrayTypeHintSyntax"/>
-        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint"/>
-        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint"/>
-        <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint"/>
     </rule>
 </ruleset>

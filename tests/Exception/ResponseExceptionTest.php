@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Exception;
 
 use Nyholm\Psr7\Response;
-use PHPStan\Testing\TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \DigitalCz\DigiSign\Exception\ResponseException

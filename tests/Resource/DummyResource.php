@@ -54,33 +54,24 @@ class DummyResource extends BaseResource
         DummyResource::EXAMPLE,
     ];
 
-    /** @var string */
-    public $id;
+    public string $id;
 
-    /** @var bool */
-    public $bool;
+    public bool $bool;
 
-    /** @var string */
-    public $string;
+    public string $string;
 
-    /** @var string|null */
-    public $nullable;
+    public ?string $nullable;
 
-    /** @var int */
-    public $integer;
+    public int $integer;
 
-    /** @var float */
-    public $float;
+    public float $float;
 
-    /** @var DummyResource */
-    public $resource;
+    public DummyResource $resource;
 
-    /** @var DateTime */
-    public $dateTime;
+    public DateTime $dateTime;
 
-    /** @var DateTime|null */
-    public $dateTimeNullable;
+    public ?DateTime $dateTimeNullable;
 
     /** @var Collection<DummyResource> */
-    public $collection;
+    public Collection $collection;
 }

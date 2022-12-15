@@ -10,21 +10,16 @@ class File extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var string */
-    public $originalName;
+    public string $originalName;
 
-    /** @var string */
-    public $mimeType;
+    public string $mimeType;
 
-    /** @var int */
-    public $size;
+    public int $size;
 
-    /** @var string */
-    public $sha1Checksum;
+    public string $sha1Checksum;
 
     /** @var array<string, mixed> */
-    public $metadata;
+    public array $metadata;
 }

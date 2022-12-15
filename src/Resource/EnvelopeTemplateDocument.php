@@ -10,21 +10,15 @@ class EnvelopeTemplateDocument extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var File */
-    public $file;
+    public File $file;
 
-    /** @var int */
-    public $position;
+    public int $position;
 
-    /** @var string */
-    public $labelPositioning;
+    public string $labelPositioning;
 
-    /** @var int|null */
-    public $labelPositionX;
+    public ?int $labelPositionX = null;
 
-    /** @var int|null */
-    public $labelPositionY;
+    public ?int $labelPositionY = null;
 }

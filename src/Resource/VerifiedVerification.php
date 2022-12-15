@@ -6,12 +6,9 @@ namespace DigitalCz\DigiSign\Resource;
 
 class VerifiedVerification extends BaseResource
 {
-    /** @var string|null */
-    public $trustFramework;
+    public ?string $trustFramework = null;
 
-    /** @var string|null */
-    public $time;
+    public ?string $time = null;
 
-    /** @var string|null */
-    public $verificationProcess;
+    public ?string $verificationProcess = null;
 }

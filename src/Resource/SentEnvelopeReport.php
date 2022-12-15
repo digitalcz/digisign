@@ -8,42 +8,31 @@ use DateTime;
 
 class SentEnvelopeReport extends BaseResource
 {
-    /** @var string */
-    public $id;
+    public string $id;
 
-    /** @var string */
-    public $emailSubject;
+    public string $emailSubject;
 
     /** @var string[] */
-    public $labels;
+    public array $labels;
 
-    /** @var string */
-    public $createdBy;
+    public string $createdBy;
 
-    /** @var DateTime */
-    public $createdAt;
+    public DateTime $createdAt;
 
-    /** @var DateTime */
-    public $sentAt;
+    public DateTime $sentAt;
 
-    /** @var string */
-    public $status;
+    public string $status;
 
     /** @var string[] */
-    public $recipients;
+    public array $recipients;
 
-    /** @var int */
-    public $documentsCount;
+    public int $documentsCount;
 
-    /** @var int */
-    public $smsCount;
+    public int $smsCount;
 
-    /** @var int */
-    public $bankIdConnectCount;
+    public int $bankIdConnectCount;
 
-    /** @var int */
-    public $bankIdIdentifyCount;
+    public int $bankIdIdentifyCount;
 
-    /** @var int */
-    public $bankIdIdentifyPlusCount;
+    public int $bankIdIdentifyPlusCount;
 }

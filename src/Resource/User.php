@@ -11,51 +11,35 @@ class User extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var Account|null */
-    public $account;
+    public ?Account $account = null;
 
-    /** @var string */
-    public $status;
+    public string $status;
 
-    /** @var string */
-    public $role;
+    public string $role;
 
-    /** @var string */
-    public $email;
+    public string $email;
 
-    /** @var string|null */
-    public $mobile;
+    public ?string $mobile = null;
 
-    /** @var string|null */
-    public $firstName;
+    public ?string $firstName = null;
 
-    /** @var string|null */
-    public $lastName;
+    public ?string $lastName = null;
 
-    /** @var string|null */
-    public $position;
+    public ?string $position = null;
 
-    /** @var DateTime|null */
-    public $verifiedAt;
+    public ?DateTime $verifiedAt = null;
 
-    /** @var DateTime|null */
-    public $deactivatedAt;
+    public ?DateTime $deactivatedAt = null;
 
-    /** @var string */
-    public $note;
+    public string $note;
 
-    /** @var DateTime|null */
-    public $lastLoginAt;
+    public ?DateTime $lastLoginAt = null;
 
-    /** @var bool */
-    public $prefillAsRecipient;
+    public bool $prefillAsRecipient;
 
-    /** @var bool */
-    public $autoscrollTags;
+    public bool $autoscrollTags;
 
-    /** @var string */
-    public $userId;
+    public string $userId;
 
-    /** @var bool */
-    public $hasSignatureImage;
+    public bool $hasSignatureImage;
 }

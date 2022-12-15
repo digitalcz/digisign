@@ -86,7 +86,7 @@ class BaseResourceTest extends TestCase
         self::assertSame('moo', $resource->collection[0]->string);
         self::assertInstanceOf(DummyResource::class, $resource->collection[1]);
         self::assertSame('baz', $resource->collection[1]->string);
-        self::assertObjectHasAttribute('unmapped', $resource);
+        self::assertObjectNotHasAttribute('unmapped', $resource);
         self::assertSame('goo', $resource->unmapped);
         self::assertSame('#foobar', $resource->self());
         self::assertSame(DummyResource::ID, $resource->id());
@@ -95,10 +95,7 @@ class BaseResourceTest extends TestCase
     public function testNormalization(): void // phpcs:ignore
     {
         $resource = new DummyResource(DummyResource::EXAMPLE);
-        self::assertEquals(
-            self::DUMMY_RESOURCE_ARRAYED,
-            $resource->toArray()
-        );
+        self::assertEquals(DummyResource::EXAMPLE, $resource->toArray());
     }
 
     public function testGetResult(): void

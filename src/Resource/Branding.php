@@ -10,30 +10,22 @@ class Branding extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var string|null */
-    public $defaultSenderName;
+    public ?string $defaultSenderName = null;
 
-    /** @var string|null */
-    public $defaultSenderEmail;
+    public ?string $defaultSenderEmail = null;
 
-    /** @var Image|null */
-    public $logo;
+    public ?Image $logo = null;
 
-    /** @var string */
-    public $logoSize;
+    public string $logoSize;
 
-    /** @var string|null */
-    public $primaryColor;
+    public ?string $primaryColor = null;
 
-    /** @var string|null */
-    public $complementaryColor;
+    public ?string $complementaryColor = null;
 
-    /** @var string|null */
-    public $secondaryColor;
+    public ?string $secondaryColor = null;
 
     /** @var string[] */
-    public $ownConditions;
+    public array $ownConditions;
 }

@@ -20,10 +20,7 @@ final class EnvelopeTemplateDocumentsEndpoint extends ResourceEndpoint
     /** @use CRUDEndpointTrait<EnvelopeTemplateDocument> */
     use CRUDEndpointTrait;
 
-    /**
-     * @param EnvelopeTemplate|string $template
-     */
-    public function __construct(EnvelopeTemplatesEndpoint $parent, $template)
+    public function __construct(EnvelopeTemplatesEndpoint $parent, EnvelopeTemplate|string $template)
     {
         parent::__construct(
             $parent,
@@ -50,10 +47,9 @@ final class EnvelopeTemplateDocumentsEndpoint extends ResourceEndpoint
     }
 
     /**
-     * @param EnvelopeTemplateDocument|string $document
      * @param mixed[] $body
      */
-    public function replaceFile($document, array $body): EnvelopeTemplateDocument
+    public function replaceFile(EnvelopeTemplateDocument|string $document, array $body): EnvelopeTemplateDocument
     {
         return $this->makeResource(
             $this->postRequest('/{document}/replace-file', ['document' => $document, 'json' => $body])

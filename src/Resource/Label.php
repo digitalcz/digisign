@@ -10,9 +10,7 @@ class Label extends BaseResource
 {
     use EntityResourceTrait;
 
-    /** @var string */
-    public $name;
+    public string $name;
 
-    /** @var string */
-    public $color;
+    public string $color;
 }

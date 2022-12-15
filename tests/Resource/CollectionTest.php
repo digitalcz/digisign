@@ -22,7 +22,7 @@ final class CollectionTest extends TestCase
         self::assertNotNull($parsedResponse);
 
         $collection = new Collection($parsedResponse, DummyResource::class);
-        self::expectException(RuntimeException::class);
+        $this->expectException(RuntimeException::class);
         $collection->getResponse();
     }
 
@@ -68,11 +68,7 @@ final class CollectionTest extends TestCase
 
         $collection = new Collection($parsedResponse, DummyResource::class);
 
-        self::assertSame([
-            BaseResourceTest::DUMMY_RESOURCE_ARRAYED,
-            BaseResourceTest::DUMMY_RESOURCE_ARRAYED,
-            BaseResourceTest::DUMMY_RESOURCE_ARRAYED,
-        ], $collection->toArray());
+        self::assertSame(DummyResource::COLLECTION_EXAMPLE, $collection->toArray());
     }
 
     public function testJsonSerialize(): void
@@ -84,11 +80,7 @@ final class CollectionTest extends TestCase
 
         $collection = new Collection($parsedResponse, DummyResource::class);
 
-        self::assertSame([
-            BaseResourceTest::DUMMY_RESOURCE_ARRAYED,
-            BaseResourceTest::DUMMY_RESOURCE_ARRAYED,
-            BaseResourceTest::DUMMY_RESOURCE_ARRAYED,
-        ], $collection->jsonSerialize());
+        self::assertSame(DummyResource::COLLECTION_EXAMPLE, $collection->jsonSerialize());
     }
 
     public function testGetSelf(): void
@@ -99,7 +91,7 @@ final class CollectionTest extends TestCase
         self::assertNotNull($parsedResponse);
 
         $collection = new Collection($parsedResponse, DummyResource::class);
-        self::expectException(RuntimeException::class);
+        $this->expectException(RuntimeException::class);
         $collection->self();
     }
 
@@ -111,7 +103,7 @@ final class CollectionTest extends TestCase
         self::assertNotNull($parsedResponse);
 
         $collection = new Collection($parsedResponse, DummyResource::class);
-        self::expectException(RuntimeException::class);
+        $this->expectException(RuntimeException::class);
         $collection->id();
     }
 

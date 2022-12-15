@@ -20,10 +20,7 @@ final class DeliveryDocumentsEndpoint extends ResourceEndpoint
     /** @use CRUDEndpointTrait<DeliveryDocument> */
     use CRUDEndpointTrait;
 
-    /**
-     * @param Delivery|string $delivery
-     */
-    public function __construct(DeliveriesEndpoint $parent, $delivery)
+    public function __construct(DeliveriesEndpoint $parent, Delivery|string $delivery)
     {
         parent::__construct($parent, '/{delivery}/documents', DeliveryDocument::class, ['delivery' => $delivery]);
     }
