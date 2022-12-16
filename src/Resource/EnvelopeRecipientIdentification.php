@@ -10,6 +10,8 @@ class EnvelopeRecipientIdentification extends BaseResource
 {
     public DateTime $createdAt;
 
+    public ?DateTime $authorizedAt;
+
     public string $product;
 
     /** @var mixed[]|null */
