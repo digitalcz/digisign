@@ -5,6 +5,8 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+### Added
+- Add `EnvelopeRecipientIdentification.authorizedAt`
 
 ## [1.12.0] - 2022-12-14
 ### Added
