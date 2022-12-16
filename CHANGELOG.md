@@ -8,6 +8,13 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add `EnvelopeRecipientIdentification.authorizedAt`
 
+### Changed
+- Added native types to all properties
+- Replaced usage of dynamic properties with magic methods
+
+### Removed
+- Removed support for older PHP versions (<8.0)
+
 ## [1.12.0] - 2022-12-14
 ### Added
 - Add new fields for IdentityProvider
