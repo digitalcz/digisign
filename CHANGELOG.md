@@ -8,6 +8,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add `EnvelopeRecipientIdentification.authorizedAt`
 
+### Fixed
+- Fix nullable type on `MyAccount.idpDomain`
+
 ### Changed
 - Added native types to all properties
 - Replaced usage of dynamic properties with magic methods

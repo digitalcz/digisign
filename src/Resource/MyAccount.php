@@ -14,5 +14,5 @@ class MyAccount extends BaseResource
 
     public bool $active;
 
-    public string $idpDomain;
+    public ?string $idpDomain;
 }
