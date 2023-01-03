@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Fixed
 - Fix nullable type on `MyAccount.idpDomain`
+- Fix nullable type on `Branding.ownConditions`
 
 ### Changed
 - Added native types to all properties
