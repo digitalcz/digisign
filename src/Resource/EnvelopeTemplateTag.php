@@ -24,9 +24,9 @@ class EnvelopeTemplateTag extends BaseResource
 
     public string $type;
 
-    public EnvelopeDocument $document;
+    public EnvelopeTemplateDocument $document;
 
-    public ?EnvelopeRecipient $recipient = null;
+    public ?EnvelopeTemplateRecipient $recipient = null;
 
     /** @var string|bool */
     public $value; // phpcs:ignore
