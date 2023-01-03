@@ -40,9 +40,9 @@ class EnvelopeTemplateRecipient extends BaseResource
 
     public int $signingOrder;
 
-    public string $intermediaryName;
+    public ?string $intermediaryName = null;
 
-    public string $intermediaryEmail;
+    public ?string $intermediaryEmail = null;
 
     public string $prefill;
 
