@@ -7,6 +7,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 ### Added
 - Add `EnvelopeRecipientIdentification.authorizedAt`
+- Add option `timeout` for DigiSignClient::request()
 
 ### Fixed
 - Fix nullable type on `MyAccount.idpDomain`

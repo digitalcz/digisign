@@ -267,6 +267,14 @@ final class DigiSignClient implements DigiSignClientInterface
             $request = $request->withBody($body);
         }
 
+        if (isset($options['timeout'])) {
+            if (!is_int($options['timeout'])) {
+                throw new InvalidArgumentException('Invalid value for "timeout" option');
+            }
+
+            $request = $request->withTimeout($options['timeout']);
+        }
+
         foreach ($headers as $name => $value) {
             $request = $request->withHeader($name, $value);
         }
