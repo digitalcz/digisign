@@ -31,7 +31,7 @@ class AccountRequest extends BaseResource
 
     public DateTime $createdAt;
 
-    public ?string $createdBy = null;
+    public ?Blame $createdBy = null;
 
     public DateTime $requestTime;
 
