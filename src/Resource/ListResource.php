@@ -40,10 +40,8 @@ class ListResource extends BaseResource
         /** @var array<BaseResource> $items */
         $items = $values['items'] ?? [];
         $values['items'] = array_map(
-            static function (BaseResource $item): array {
-                return $item->toArray();
-            },
-            $items
+            static fn (BaseResource $item): array => $item->toArray(),
+            $items,
         );
 
         return $values;
@@ -56,10 +54,8 @@ class ListResource extends BaseResource
             $items = $value;
             $resourceClass = $this->resourceClass;
             $value = array_map(
-                static function (array $itemValues) use ($resourceClass): ResourceInterface {
-                    return new $resourceClass($itemValues);
-                },
-                $items
+                static fn (array $itemValues): ResourceInterface => new $resourceClass($itemValues),
+                $items,
             );
         }
 

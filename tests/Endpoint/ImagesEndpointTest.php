@@ -45,7 +45,7 @@ class ImagesEndpointTest extends EndpointTestCase
             "\r\n" .
             "true\r\n" .
             "--$boundary--\r\n",
-            (string)$lastRequest->getBody()
+            (string)$lastRequest->getBody(),
         );
     }
 

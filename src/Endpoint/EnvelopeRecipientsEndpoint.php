@@ -51,9 +51,10 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
         /** @var array<array<mixed>> $result */
         $result = $this->parseResponse($response);
 
-        return array_map(static function (array $recipientResult): EnvelopeRecipient {
-            return new EnvelopeRecipient($recipientResult);
-        }, $result);
+        return array_map(
+            static fn (array $recipientResult): EnvelopeRecipient => new EnvelopeRecipient($recipientResult),
+            $result,
+        );
     }
 
     /**
@@ -62,7 +63,7 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
     public function embed(string $id, array $body): ResourceInterface
     {
         return $this->createResource(
-            $this->postRequest('/{id}/embed', ['id' => $id, 'json' => $body])
+            $this->postRequest('/{id}/embed', ['id' => $id, 'json' => $body]),
         );
     }
 
@@ -74,7 +75,7 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
     {
         return $this->createListResource(
             $this->getRequest('/{id}/tags', ['id' => $id, 'query' => $query]),
-            EnvelopeTag::class
+            EnvelopeTag::class,
         );
     }
 
@@ -108,7 +109,7 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
     {
         return $this->createResource(
             $this->getRequest('/{id}/identifications', ['id' => $recipient]),
-            EnvelopeRecipientIdentifications::class
+            EnvelopeRecipientIdentifications::class,
         );
     }
 }

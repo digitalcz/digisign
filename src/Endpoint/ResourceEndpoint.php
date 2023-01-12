@@ -28,7 +28,7 @@ abstract class ResourceEndpoint implements EndpointInterface
         protected EndpointInterface $parent,
         private string $resourcePath,
         private string $resourceClass = BaseResource::class,
-        private array $resourceOptions = []
+        private array $resourceOptions = [],
     ) {
     }
 
@@ -181,7 +181,7 @@ abstract class ResourceEndpoint implements EndpointInterface
      */
     protected function createResource(
         ResponseInterface $response,
-        string $resourceClass = BaseResource::class
+        string $resourceClass = BaseResource::class,
     ): ResourceInterface {
         $resource = new $resourceClass($this->parseResponse($response));
         $resource->setResponse($response);
@@ -204,7 +204,7 @@ abstract class ResourceEndpoint implements EndpointInterface
      */
     protected function createListResource(
         ResponseInterface $response,
-        string $resourceClass = BaseResource::class
+        string $resourceClass = BaseResource::class,
     ): ListResource {
         $resource = new ListResource($this->parseResponse($response), $resourceClass);
         $resource->setResponse($response);
@@ -219,7 +219,7 @@ abstract class ResourceEndpoint implements EndpointInterface
      */
     protected function createCollectionResource(
         ResponseInterface $response,
-        string $resourceClass = BaseResource::class
+        string $resourceClass = BaseResource::class,
     ): Collection {
         $collection = new Collection($this->parseResponse($response), $resourceClass);
         $collection->setResponse($response);

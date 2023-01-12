@@ -19,7 +19,7 @@ class EnvelopeRecipientsEndpointTest extends EndpointTestCase
         self::assertDefaultEndpointPath(self::endpoint()->block('foo'), '/api/envelopes/bar/recipients/foo/block');
         self::assertDefaultEndpointPath(
             self::endpoint()->attachments('foo'),
-            '/api/envelopes/bar/recipients/foo/attachments'
+            '/api/envelopes/bar/recipients/foo/attachments',
         );
     }
 

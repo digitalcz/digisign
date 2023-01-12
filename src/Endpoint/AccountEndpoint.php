@@ -92,7 +92,7 @@ final class AccountEndpoint extends ResourceEndpoint
     {
         return $this->createResource(
             $this->getRequest('/statistics', ['query' => $query]),
-            AccountStatistics::class
+            AccountStatistics::class,
         );
     }
 

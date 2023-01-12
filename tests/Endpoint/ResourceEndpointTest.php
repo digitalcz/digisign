@@ -27,7 +27,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('GET'),
                 self::equalTo('/dummy/path'),
-                self::equalTo(['option' => 'bar'])
+                self::equalTo(['option' => 'bar']),
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -45,7 +45,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('GET'),
                 self::equalTo('/dummy/path'),
-                self::equalTo(['option' => 'bar'])
+                self::equalTo(['option' => 'bar']),
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -64,7 +64,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('POST'),
                 self::equalTo('/dummy'),
-                self::equalTo(['json' => DummyResource::EXAMPLE])
+                self::equalTo(['json' => DummyResource::EXAMPLE]),
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -82,7 +82,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('PUT'),
                 self::equalTo('/dummy/{id}'),
-                self::equalTo(['id' => 'foo', 'json' => DummyResource::EXAMPLE])
+                self::equalTo(['id' => 'foo', 'json' => DummyResource::EXAMPLE]),
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -100,7 +100,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('DELETE'),
                 self::equalTo('/dummy/{id}'),
-                self::equalTo(['id' => 'foo'])
+                self::equalTo(['id' => 'foo']),
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -117,7 +117,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('GET'),
                 self::equalTo('/dummy/{id}'),
-                self::equalTo(['id' => DummyResource::ID])
+                self::equalTo(['id' => DummyResource::ID]),
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -134,7 +134,7 @@ class ResourceEndpointTest extends TestCase
             ->method('request')
             ->with(
                 self::equalTo('PATCH'),
-                self::equalTo('/dummy')
+                self::equalTo('/dummy'),
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -153,7 +153,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('GET'),
                 self::equalTo('/dummy/{id}'),
-                self::equalTo(['id' => DummyResource::ID])
+                self::equalTo(['id' => DummyResource::ID]),
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);
@@ -172,7 +172,7 @@ class ResourceEndpointTest extends TestCase
             ->with(
                 self::equalTo('GET'),
                 self::equalTo('/dummy'),
-                self::equalTo(['query' => ['foo' => 'bar']])
+                self::equalTo(['query' => ['foo' => 'bar']]),
             )->willReturn($expectedResponse);
 
         $endpoint = new DummyEndpoint($parent);

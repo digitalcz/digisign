@@ -33,7 +33,7 @@ abstract class EndpointTestCase extends TestCase
             [
                 'credentials' => new TokenCredentials(new Token('token', time())),
                 'client' => new DigiSignClient(self::$httpClient),
-            ]
+            ],
         );
     }
 

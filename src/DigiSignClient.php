@@ -49,7 +49,7 @@ final class DigiSignClient implements DigiSignClientInterface
         ?ClientInterface $httpClient = null,
         ?RequestFactoryInterface $requestFactory = null,
         ?StreamFactoryInterface $streamFactory = null,
-        ?UriFactoryInterface $uriFactory = null
+        ?UriFactoryInterface $uriFactory = null,
     ) {
         $this->httpClient = $httpClient ?? Psr18ClientDiscovery::find();
         $this->requestFactory = $requestFactory ?? Psr17FactoryDiscovery::findRequestFactory();
@@ -157,9 +157,7 @@ final class DigiSignClient implements DigiSignClientInterface
             $replaces[] = (string)$param;
         }
 
-        $searches = array_map(static function (string $search): string {
-            return sprintf("{%s}", $search);
-        }, $searches);
+        $searches = array_map(static fn (string $search): string => sprintf("{%s}", $search), $searches);
 
         $uri = str_replace($searches, $replaces, $uri);
 
@@ -190,7 +188,7 @@ final class DigiSignClient implements DigiSignClientInterface
         }
 
         // default headers
-        $headers['Accept'] = $headers['Accept'] ?? 'application/json';
+        $headers['Accept'] ??= 'application/json';
 
         if (isset($options['user-agent'])) {
             $headers['User-Agent'] = (string)$options['user-agent'];
@@ -233,7 +231,7 @@ final class DigiSignClient implements DigiSignClientInterface
                 $multipartBuilder->addResource($name, $resource, $resourceOptions);
                 $headers['Content-Type'] = sprintf(
                     'multipart/form-data; boundary="%s"',
-                    $multipartBuilder->getBoundary()
+                    $multipartBuilder->getBoundary(),
                 );
                 $options['body'] = $multipartBuilder->build();
             }

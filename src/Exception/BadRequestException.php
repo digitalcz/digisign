@@ -15,7 +15,7 @@ final class BadRequestException extends ClientException
     {
         try {
             return new Violations($this->parseResult());
-        } catch (EmptyResultException $e) {
+        } catch (EmptyResultException) {
             return null;
         }
     }

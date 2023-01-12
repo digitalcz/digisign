@@ -25,7 +25,7 @@ final class EnvelopeTemplateRecipientsEndpoint extends ResourceEndpoint
             $parent,
             '/{template}/recipients',
             EnvelopeTemplateRecipient::class,
-            ['template' => $template]
+            ['template' => $template],
         );
     }
 

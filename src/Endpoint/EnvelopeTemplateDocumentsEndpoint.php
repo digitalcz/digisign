@@ -26,7 +26,7 @@ final class EnvelopeTemplateDocumentsEndpoint extends ResourceEndpoint
             $parent,
             '/{template}/documents',
             EnvelopeTemplateDocument::class,
-            ['template' => $template]
+            ['template' => $template],
         );
     }
 
@@ -52,7 +52,7 @@ final class EnvelopeTemplateDocumentsEndpoint extends ResourceEndpoint
     public function replaceFile(EnvelopeTemplateDocument|string $document, array $body): EnvelopeTemplateDocument
     {
         return $this->makeResource(
-            $this->postRequest('/{document}/replace-file', ['document' => $document, 'json' => $body])
+            $this->postRequest('/{document}/replace-file', ['document' => $document, 'json' => $body]),
         );
     }
 }

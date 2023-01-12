@@ -25,7 +25,7 @@ final class EnvelopeTemplateNotificationsEndpoint extends ResourceEndpoint
             $parent,
             '/{template}/notifications',
             EnvelopeTemplateNotification::class,
-            ['template' => $template]
+            ['template' => $template],
         );
     }
 }
