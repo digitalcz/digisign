@@ -24,7 +24,7 @@ final class EnvelopeRecipientAttachmentsEndpoint extends ResourceEndpoint
             $parent,
             '/{recipient}/attachments',
             EnvelopeRecipientAttachment::class,
-            ['recipient' => $recipient]
+            ['recipient' => $recipient],
         );
     }
 

@@ -64,7 +64,7 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
     {
         return $this->createListResource(
             $this->getRequest('/{id}/tags', ['id' => $id, 'query' => $query]),
-            EnvelopeTag::class
+            EnvelopeTag::class,
         );
     }
 
@@ -74,7 +74,7 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
     public function replaceFile(EnvelopeDocument|string $document, array $body): EnvelopeDocument
     {
         return $this->makeResource(
-            $this->postRequest('/{document}/replace-file', ['document' => $document, 'json' => $body])
+            $this->postRequest('/{document}/replace-file', ['document' => $document, 'json' => $body]),
         );
     }
 

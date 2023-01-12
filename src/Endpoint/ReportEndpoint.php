@@ -27,7 +27,7 @@ final class ReportEndpoint extends ResourceEndpoint
     {
         return $this->createListResource(
             $this->getRequest('/sent-envelopes', ['query' => $query]),
-            SentEnvelopeReport::class
+            SentEnvelopeReport::class,
         );
     }
 }

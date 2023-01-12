@@ -180,7 +180,7 @@ class BaseResource implements ResourceInterface
     {
         // cache resolved mapping types
         if (!isset(static::$_mapping[static::class][$property])) {
-            static::$_mapping[static::class] = static::$_mapping[static::class] ?? [];
+            static::$_mapping[static::class] ??= [];
             static::$_mapping[static::class][$property] = $this->resolveMappingType($property);
         }
 
@@ -199,7 +199,7 @@ class BaseResource implements ResourceInterface
             }
 
             $phpDoc = $reflection->getDocComment();
-        } catch (ReflectionException $e) {
+        } catch (ReflectionException) {
             return 'mixed'; // property may not exist
         }
 

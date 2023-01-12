@@ -13,23 +13,23 @@ class EnvelopeTemplatesEndpointTest extends EndpointTestCase
     {
         self::assertDefaultEndpointPath(
             self::endpoint()->documents('foo'),
-            '/api/envelope-templates/foo/documents'
+            '/api/envelope-templates/foo/documents',
         );
         self::assertDefaultEndpointPath(
             self::endpoint()->recipients('foo'),
-            '/api/envelope-templates/foo/recipients'
+            '/api/envelope-templates/foo/recipients',
         );
         self::assertDefaultEndpointPath(
             self::endpoint()->notifications('foo'),
-            '/api/envelope-templates/foo/notifications'
+            '/api/envelope-templates/foo/notifications',
         );
         self::assertDefaultEndpointPath(
             self::endpoint()->tags('foo'),
-            '/api/envelope-templates/foo/tags'
+            '/api/envelope-templates/foo/tags',
         );
         self::assertDefaultEndpointPath(
             self::endpoint()->labels('foo'),
-            '/api/envelope-templates/foo/labels'
+            '/api/envelope-templates/foo/labels',
         );
     }
 

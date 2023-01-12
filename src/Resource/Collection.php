@@ -29,9 +29,7 @@ class Collection extends ArrayObject implements ResourceInterface
     {
         $this->resourceClass = $resourceClass;
 
-        $items = array_map(static function (mixed $itemValue) use ($resourceClass) {
-            return new $resourceClass($itemValue);
-        }, $result);
+        $items = array_map(static fn (mixed $itemValue) => new $resourceClass($itemValue), $result);
 
         parent::__construct($items);
     }
@@ -64,10 +62,8 @@ class Collection extends ArrayObject implements ResourceInterface
     public function toArray(): array
     {
         return array_map(
-            static function (ResourceInterface $item): array {
-                return $item->toArray();
-            },
-            $this->getArrayCopy()
+            static fn (ResourceInterface $item): array => $item->toArray(),
+            $this->getArrayCopy(),
         );
     }
 

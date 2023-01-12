@@ -57,7 +57,7 @@ final class FileResponse
         preg_match_all(
             "/filename[^;=\n]*=(?:(\\?['\"])(.*?)\1|(?:[^\s]+'.*?')?([^;\n]*))/i",
             $contentDisposition,
-            $matches
+            $matches,
         );
         end($matches[3]);
 
