@@ -6,7 +6,6 @@ namespace DigitalCz\DigiSign\Resource;
 
 class UserInfo extends BaseResource
 {
-
     public string $id;
 
     public string $email;
