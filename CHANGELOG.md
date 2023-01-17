@@ -8,6 +8,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add `EnvelopeRecipientIdentification.authorizedAt`
 - Add resource `Blame`
+- Add `Envelope.sender`
 
 ### Fixed
 - Fix nullable type on `MyAccount.idpDomain`
