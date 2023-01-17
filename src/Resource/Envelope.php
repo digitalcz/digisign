@@ -78,4 +78,6 @@ class Envelope extends BaseResource
     public ?Branding $branding = null;
 
     public ?string $description = null;
+
+    public ?UserInfo $sender = null;
 }
