@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Resource;
 
-use DateTimeInterface;
+use DateTime;
 use DigitalCz\DigiSign\Resource\Traits\EntityResourceTrait;
 
 class Certificate extends BaseResource
@@ -17,7 +17,7 @@ class Certificate extends BaseResource
 
     public string $issuer;
 
-    public DateTimeInterface $expiresAt;
+    public DateTime $expiresAt;
 
     public User $owner;
 

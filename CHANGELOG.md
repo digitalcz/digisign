@@ -16,6 +16,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Fix nullable type on `EnvelopeTemplateRecipient.intermediaryName`
 - Fix incorrect type on `EnvelopeTemplateTag.document` and `EnvelopeTemlateTag.recipient`
 - Fix incorrect type on `AccountRequest.createdBy`
+- Fix incorrect type on `Certificate.expiresAt`
 
 ### Changed
 - Added native types to all properties
