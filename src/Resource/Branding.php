@@ -28,4 +28,7 @@ class Branding extends BaseResource
 
     /** @var string[] */
     public ?array $ownConditions;
+
+    /** @var string[] */
+    public ?array $signerReturnUrl;
 }
