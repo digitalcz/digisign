@@ -9,6 +9,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeRecipientIdentification.authorizedAt`
 - Add resource `Blame`
 - Add `Envelope.sender`
+- Add `Branding.signerReturnUrl`
 
 ### Fixed
 - Fix nullable type on `MyAccount.idpDomain`
