@@ -47,6 +47,12 @@ class AccountEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/account/billing');
     }
 
+    public function testManageBilling(): void
+    {
+        self::endpoint()->manageBilling();
+        self::assertLastRequest('POST', '/api/account/manage-billing');
+    }
+
     protected static function endpoint(): AccountEndpoint
     {
         return self::dgs()->account();

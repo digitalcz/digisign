@@ -7,6 +7,7 @@ namespace DigitalCz\DigiSign\Endpoint;
 use DigitalCz\DigiSign\DigiSign;
 use DigitalCz\DigiSign\Resource\Account;
 use DigitalCz\DigiSign\Resource\AccountBilling;
+use DigitalCz\DigiSign\Resource\AccountManageBilling;
 use DigitalCz\DigiSign\Resource\AccountSmsLog;
 use DigitalCz\DigiSign\Resource\AccountStatistics;
 use DigitalCz\DigiSign\Resource\ListResource;
@@ -99,5 +100,10 @@ final class AccountEndpoint extends ResourceEndpoint
     public function billing(): AccountBilling
     {
         return $this->createResource($this->getRequest('/billing'), AccountBilling::class);
+    }
+
+    public function manageBilling(): AccountManageBilling
+    {
+        return $this->createResource($this->postRequest('/manage-billing'), AccountManageBilling::class);
     }
 }

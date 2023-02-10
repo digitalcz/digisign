@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add resource `Blame`
 - Add `Envelope.sender`
 - Add `Branding.signerReturnUrl`
+- Add `AccountEndpoint.manageBilling`
 
 ### Fixed
 - Fix nullable type on `MyAccount.idpDomain`
