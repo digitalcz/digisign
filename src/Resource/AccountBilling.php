@@ -12,6 +12,8 @@ class AccountBilling extends BaseResource
 
     public bool $hasSubscription;
 
+    public string $planName;
+
     public ?DateTime $billingPeriodStart;
 
     public ?DateTime $billingPeriodEnd;
@@ -26,5 +28,17 @@ class AccountBilling extends BaseResource
 
     public int $smsUsage;
 
-    public int $bankIdUsage;
+    public int $bankIdConnectUsage;
+
+    public int $bankIdIdentifyUsage;
+
+    public int $bankIdIdentifyPlusUsage;
+
+    public bool $branding;
+
+    public bool $brandingPlus;
+
+    public bool $timestamps;
+
+    public bool $fileCertificates;
 }

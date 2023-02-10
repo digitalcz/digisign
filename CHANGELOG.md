@@ -11,6 +11,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `Envelope.sender`
 - Add `Branding.signerReturnUrl`
 - Add `AccountEndpoint.manageBilling`
+- Add multiple fields for `AccountBilling`
 
 ### Fixed
 - Fix nullable type on `MyAccount.idpDomain`
