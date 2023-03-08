@@ -138,6 +138,8 @@ class DigiSignTest extends TestCase
         self::assertSame('/api/envelopes', $mockClient->getLastRequest()->getUri()->getPath());
         $dgs->envelopeTemplates()->request('GET');
         self::assertSame('/api/envelope-templates', $mockClient->getLastRequest()->getUri()->getPath());
+        $dgs->identifications()->request('GET');
+        self::assertSame('/api/identifications', $mockClient->getLastRequest()->getUri()->getPath());
         $dgs->deliveries()->request('GET');
         self::assertSame('/api/deliveries', $mockClient->getLastRequest()->getUri()->getPath());
         $dgs->files()->request('GET');
