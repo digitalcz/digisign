@@ -15,6 +15,7 @@ use DigitalCz\DigiSign\Endpoint\EnumsEndpoint;
 use DigitalCz\DigiSign\Endpoint\EnvelopesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EnvelopeTemplatesEndpoint;
 use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
+use DigitalCz\DigiSign\Endpoint\IdentificationsEndpoint;
 use DigitalCz\DigiSign\Endpoint\ImagesEndpoint;
 use DigitalCz\DigiSign\Endpoint\LabelsEndpoint;
 use DigitalCz\DigiSign\Endpoint\MyEndpoint;
@@ -240,6 +241,11 @@ final class DigiSign implements EndpointInterface
     public function deliveries(): DeliveriesEndpoint
     {
         return new DeliveriesEndpoint($this);
+    }
+
+    public function identifications(): IdentificationsEndpoint
+    {
+        return new IdentificationsEndpoint($this);
     }
 
     public function files(): FilesEndpoint

@@ -13,7 +13,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountEndpoint.manageBilling`
 - Add multiple fields for `AccountBilling`
 - Add identify field for `AccountBilling`
-- 
+- Add `IdentificationsEndpoint` and `Identification` resource
+
 ### Fixed
 - Fix nullable type on `MyAccount.idpDomain`
 - Fix nullable type on `Branding.ownConditions`
