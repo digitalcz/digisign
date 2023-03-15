@@ -72,6 +72,11 @@ final class AccountEndpoint extends ResourceEndpoint
         return new AccountBrandingsEndpoint($this);
     }
 
+    public function signatureScenarios(): AccountSignatureScenariosEndpoint
+    {
+        return new AccountSignatureScenariosEndpoint($this);
+    }
+
     public function get(): Account
     {
         return $this->makeResource($this->getRequest());

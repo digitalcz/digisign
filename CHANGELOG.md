@@ -14,6 +14,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add multiple fields for `AccountBilling`
 - Add identify field for `AccountBilling`
 - Add `IdentificationsEndpoint` and `Identification` resource
+- Add `AccountSignatureScenarioEndpoint` and `SignatureScenario` resource
 
 ### Fixed
 - Fix nullable type on `MyAccount.idpDomain`
