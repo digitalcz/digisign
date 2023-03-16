@@ -12,9 +12,9 @@ class SignatureScenario extends BaseResource
 
     public string $name;
 
-    public ?string $status = null;
+    public string $status;
 
-    public ?string $signerRole = null;
+    public ?string $role = null;
 
     public ?string $channel = null;
 }
