@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
-use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
+use DigitalCz\DigiSign\Endpoint\Traits\CreateEndpointTrait;
+use DigitalCz\DigiSign\Endpoint\Traits\GetEndpointTrait;
+use DigitalCz\DigiSign\Endpoint\Traits\ListEndpointTrait;
+use DigitalCz\DigiSign\Endpoint\Traits\UpdateEndpointTrait;
 use DigitalCz\DigiSign\Resource\ListResource;
 use DigitalCz\DigiSign\Resource\SignatureScenario;
 
@@ -17,11 +20,19 @@ use DigitalCz\DigiSign\Resource\SignatureScenario;
  */
 class AccountSignatureScenariosEndpoint extends ResourceEndpoint
 {
-    /** @use CRUDEndpointTrait<SignatureScenario> */
-    use CRUDEndpointTrait;
+    /** @use ListEndpointTrait<SignatureScenario> */
+    use ListEndpointTrait;
+    use CreateEndpointTrait;
+    use GetEndpointTrait;
+    use UpdateEndpointTrait;
 
     public function __construct(AccountEndpoint $parent)
     {
         parent::__construct($parent, '/signature-scenarios', SignatureScenario::class);
+    }
+
+    public function versions(SignatureScenario|string $scenario): AccountSignatureScenarioVersionsEndpoint
+    {
+        return new AccountSignatureScenarioVersionsEndpoint($this, $scenario);
     }
 }

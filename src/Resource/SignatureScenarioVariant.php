@@ -1,0 +1,23 @@
+<?php
+
+declare(strict_types=1);
+
+namespace DigitalCz\DigiSign\Resource;
+
+use DigitalCz\DigiSign\Resource\Traits\EntityResourceTrait;
+
+class SignatureScenarioVariant extends BaseResource
+{
+    use EntityResourceTrait;
+
+    public int $position;
+
+    /** @var array<string, string> */
+    public array $name;
+
+    /** @var array<string, string> */
+    public array $description;
+    public string $signatureType;
+    public string $authenticationOnOpen;
+    public string $authenticationOnSignature;
+}
