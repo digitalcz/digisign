@@ -37,4 +37,6 @@ class AccountSettings extends BaseResource
     public string $defaultLanguage;
 
     public bool $useEnvelopeDescription;
+
+    public bool $signatureScenarios;
 }
