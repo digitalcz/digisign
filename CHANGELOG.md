@@ -17,6 +17,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountSignatureScenariosEndpoint` and `SignatureScenario` resource
 - Add `AccountSignatureScenarioVersionsEndpoint`, `SignatureScenarioVersion` and `SignatureScenarioVariant` resource
 - Add `AccountSettings.signatureScenarios`
+- Add `AccountBilling.signatureScenarios`
 
 ### Fixed
 - Fix nullable type on `MyAccount.idpDomain`
