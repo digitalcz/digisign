@@ -80,4 +80,6 @@ class Envelope extends BaseResource
     public ?string $description = null;
 
     public ?UserInfo $sender = null;
+
+    public bool $sentWithSignatureScenarios;
 }
