@@ -12,11 +12,11 @@ class SignatureScenarioVariant extends BaseResource
 
     public int $position;
 
-    /** @var array<string, string> */
-    public array $name;
+    /** @var array<string, string>|null */
+    public ?array $name;
 
-    /** @var array<string, string> */
-    public array $description;
+    /** @var array<string, string>|null */
+    public ?array $description;
     public string $signatureType;
     public string $authenticationOnOpen;
     public string $authenticationOnSignature;
