@@ -10,6 +10,7 @@ use DigitalCz\DigiSign\Exception\RuntimeException;
 use JsonSerializable;
 use LogicException;
 use Psr\Http\Message\ResponseInterface;
+use ReflectionClass;
 use ReflectionException;
 use ReflectionNamedType;
 use ReflectionProperty;
@@ -161,6 +162,14 @@ class BaseResource implements ResourceInterface
                 preg_match('/Collection<(.+)>/', $type, $matches);
                 /** @var class-string<ResourceInterface> $resourceClass */
                 $resourceClass = $matches[1];
+
+                if (!class_exists($resourceClass)) {
+                    $reflection = new ReflectionClass($this::class);
+                    $namespace = $reflection->getNamespaceName();
+                    /** @var class-string<ResourceInterface> $resourceClass */
+                    $resourceClass = "$namespace\\$resourceClass";
+                }
+
                 $value = new Collection($value, $resourceClass);
             }
 
