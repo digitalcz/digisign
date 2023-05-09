@@ -21,4 +21,6 @@ class AccountSecurity extends BaseResource
     public int $discardedEnvelopeRetention;
 
     public bool $continuousSigning;
+
+    public bool $auditLogDownloadDefaultUnchecked;
 }
