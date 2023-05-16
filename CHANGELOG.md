@@ -8,6 +8,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Added
 - Add `AccountSecurity.auditLogDownloadDefaultUnchecked`
 
+### Changed
+- Change `Identification.envelope` from string to EnvelopeInfo
+
 ## [1.13.0] - 2023-05-09
 ### Added
 - Add `EnvelopeRecipientIdentification.authorizedAt`
