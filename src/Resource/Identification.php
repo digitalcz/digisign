@@ -14,7 +14,7 @@ class Identification extends BaseResource
     public ?string $name;
     public string $status;
     public string $language;
-    public EnvelopeInfo $envelope;
+    public ?EnvelopeInfo $envelope;
     public ?string $redirectUrl;
     public ?DateTime $startedAt;
     public ?DateTime $openedAt;
