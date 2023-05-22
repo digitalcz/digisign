@@ -12,6 +12,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Changed
 - Change `Identification.envelope` from string to EnvelopeInfo
 
+### Fixed
+- Fix `MyEnelopeRecipient.intermediaryName` and `MyEnvelopeRecipient.intermediaryEmail` type as nullable
+
 ## [1.13.0] - 2023-05-09
 ### Added
 - Add `EnvelopeRecipientIdentification.authorizedAt`
