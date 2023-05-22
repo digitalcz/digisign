@@ -7,8 +7,6 @@ namespace DigitalCz\DigiSign\Resource;
 class MyEnvelopeInfo extends BaseResource
 {
     public string $id;
-
     public string $accountId;
-
     public string $accountName;
 }
