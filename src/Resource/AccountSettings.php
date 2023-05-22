@@ -39,4 +39,6 @@ class AccountSettings extends BaseResource
     public bool $useEnvelopeDescription;
 
     public bool $signatureScenarios;
+
+    public bool $documentsMerging;
 }
