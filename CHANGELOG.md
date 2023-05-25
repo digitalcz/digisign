@@ -9,6 +9,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountSecurity.auditLogDownloadDefaultUnchecked`
 - Add `AccountSettings.documentsMerging`
 - Add `MyEnvelope.subjectName`
+- Add `MyEnvelope.validTo`
 
 ### Changed
 - Change `Identification.envelope` from string to EnvelopeInfo

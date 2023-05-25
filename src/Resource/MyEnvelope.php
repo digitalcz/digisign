@@ -16,6 +16,7 @@ class MyEnvelope extends BaseResource
     public ?string $senderEmail = null;
     public string $subjectName;
     public ?DateTime $sentAt = null;
+    public ?DateTime $validTo = null;
 
     /** @var Collection<MyEnvelopeDocument> */
     public Collection $documents;
