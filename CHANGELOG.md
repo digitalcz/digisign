@@ -13,6 +13,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountIdentifyScenariosEndpoint` and `IdentifyScenario` resource
 - Add `AccountIdentifyScenarioVersionsEndpoint` and `IdentifyScenarioVersion` resource
 - Add `AccountSettings.identify`
+- Add multiple fields for `IdentifyScenarioVersion`
 
 ### Changed
 - Change `Identification.envelope` from string to EnvelopeInfo

@@ -13,4 +13,13 @@ class IdentifyScenarioVersion extends BaseResource
     public int $version;
     public bool $latest;
     public Blame $createdBlame;
+    public bool $primaryDocumentEnabled;
+
+    /** @var array<string> */
+    public array $primaryDocumentTypes;
+    public bool $secondaryDocumentEnabled;
+
+    /** @var array<string> */
+    public array $secondaryDocumentTypes;
+    public bool $bankStatementEnabled;
 }
