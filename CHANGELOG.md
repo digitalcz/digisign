@@ -12,6 +12,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `MyEnvelope.validTo`
 - Add `AccountIdentifyScenariosEndpoint` and `IdentifyScenario` resource
 - Add `AccountIdentifyScenarioVersionsEndpoint` and `IdentifyScenarioVersion` resource
+- Add multiple fields for `IdentifyScenarioVersion`
 
 ### Changed
 - Change `Identification.envelope` from string to EnvelopeInfo
