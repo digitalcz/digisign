@@ -32,6 +32,12 @@ class AccountIdentifyScenariosEndpointTest extends EndpointTestCase
         self::assertLastRequest('PUT', "/api/account/identify-scenarios/foo", ['foo' => 'bar']);
     }
 
+    public function testInfo(): void
+    {
+        self::endpoint()->info();
+        self::assertLastRequest('GET', "/api/account/identify-scenarios/info");
+    }
+
     protected static function endpoint(): AccountIdentifyScenariosEndpoint
     {
         return self::dgs()->account()->identifyScenarios();
