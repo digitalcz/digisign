@@ -8,7 +8,9 @@ use DigitalCz\DigiSign\Endpoint\Traits\CreateEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\GetEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\ListEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\UpdateEndpointTrait;
+use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\IdentifyScenario;
+use DigitalCz\DigiSign\Resource\IdentifyScenarioInfo;
 use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
@@ -34,5 +36,13 @@ class AccountIdentifyScenariosEndpoint extends ResourceEndpoint
     public function versions(IdentifyScenario|string $scenario): AccountIdentifyScenarioVersionsEndpoint
     {
         return new AccountIdentifyScenarioVersionsEndpoint($this, $scenario);
+    }
+
+    /**
+     * @return Collection<IdentifyScenarioInfo>
+     */
+    public function info(): Collection
+    {
+        return $this->createCollectionResource($this->getRequest('/info'), IdentifyScenarioInfo::class);
     }
 }
