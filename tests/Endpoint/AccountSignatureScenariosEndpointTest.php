@@ -32,6 +32,12 @@ class AccountSignatureScenariosEndpointTest extends EndpointTestCase
         self::assertLastRequest('PUT', "/api/account/signature-scenarios/foo", ['foo' => 'bar']);
     }
 
+    public function testInfo(): void
+    {
+        self::endpoint()->info();
+        self::assertLastRequest('GET', "/api/account/signature-scenarios/info");
+    }
+
     protected static function endpoint(): AccountSignatureScenariosEndpoint
     {
         return self::dgs()->account()->signatureScenarios();
