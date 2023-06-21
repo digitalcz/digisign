@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add various 'ScenarioVersionInfo' entities and add corresponding fields to 'EnvelopeRecipient' and 'EnvelopeRecipientTemplate'
 - Add `AccountSecurity.auditLogDownloadDefaultUnchecked`
 - Add `AccountSettings.documentsMerging`
 - Add `MyEnvelope.subjectName`

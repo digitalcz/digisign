@@ -30,4 +30,5 @@ class SignatureScenarioVersion extends BaseResource
     public array $validatedFields;
     public bool $delegation;
     public bool $latest;
+    public ?IdentifyScenario $identifyScenario;
 }
