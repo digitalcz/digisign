@@ -20,4 +20,5 @@ class SignatureScenarioVariant extends BaseResource
     public string $signatureType;
     public string $authenticationOnOpen;
     public string $authenticationOnSignature;
+    public string $identifyScenario;
 }
