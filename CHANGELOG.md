@@ -16,6 +16,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add multiple fields for `IdentifyScenarioVersion`
 - Add `IdentifyScenariosEndpoint.info` endpoint
 - Add `SignatureScenariosEndpoint.info` endpoint
+- Add scenario fields on `EnvelopeRecipient` and `EnvelopeTemplateRecipient`
 
 ### Changed
 - Change `Identification.envelope` from string to EnvelopeInfo
