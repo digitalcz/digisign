@@ -62,4 +62,10 @@ class EnvelopeTemplate extends BaseResource
     public ?Branding $branding = null;
 
     public ?string $description = null;
+
+    public ?string $scenario = null;
+
+    public ?string $identifyScenario = null;
+
+    public ?IdentifyScenarioInfo $identifyScenarioInfo = null;
 }
