@@ -19,6 +19,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add scenario fields on `EnvelopeRecipient` and `EnvelopeTemplateRecipient` and `EnvelopeTemplate`
 - Modify and add various `SignatureScenarioVariant` fields
 - Add `IdentificationScenarioVersion.approvalMode`
+- Add `IdentificationInfo` resource and `EnvelopeRecipient.identification`
 
 ### Changed
 - Change `Identification.envelope` from string to EnvelopeInfo
