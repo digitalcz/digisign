@@ -18,6 +18,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `SignatureScenariosEndpoint.info` endpoint
 - Add scenario fields on `EnvelopeRecipient` and `EnvelopeTemplateRecipient` and `EnvelopeTemplate`
 - Modify and add various `SignatureScenarioVariant` fields
+- Add `IdentificationScenarioVersion.approvalMode`
 
 ### Changed
 - Change `Identification.envelope` from string to EnvelopeInfo
