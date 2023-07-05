@@ -20,6 +20,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Modify and add various `SignatureScenarioVariant` fields
 - Add `IdentificationScenarioVersion.approvalMode`
 - Add `IdentificationInfo` resource and `EnvelopeRecipient.identification`
+- Add `EnvelopeProperties.auditLogAvailableToAccountUsers`
 
 ### Changed
 - Change `Identification.envelope` from string to EnvelopeInfo
