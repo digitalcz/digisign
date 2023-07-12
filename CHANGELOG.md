@@ -21,6 +21,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `IdentificationScenarioVersion.approvalMode`
 - Add `IdentificationInfo` resource and `EnvelopeRecipient.identification`
 - Add `EnvelopeProperties.auditLogAvailableToAccountUsers`
+- Add `IdentificationInfo.approvalMode`
 
 ### Changed
 - Change `Identification.envelope` from string to EnvelopeInfo
