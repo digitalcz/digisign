@@ -4,7 +4,7 @@ All notable changes will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [Unreleased]
+## [2.1.0] - 2023-07-12
 ### Added
 - Add `AccountSecurity.auditLogDownloadDefaultUnchecked`
 - Add `AccountSettings.documentsMerging`
@@ -29,7 +29,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Fixed
 - Fix `MyEnelopeRecipient.intermediaryName` and `MyEnvelopeRecipient.intermediaryEmail` type as nullable
 
-## [1.13.0] - 2023-05-09
+## [2.0.0] - 2023-05-09
 ### Added
 - Add `EnvelopeRecipientIdentification.authorizedAt`
 - Add resource `Blame`
