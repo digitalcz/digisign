@@ -122,6 +122,14 @@ final class EnvelopesEndpoint extends ResourceEndpoint
         return $this->makeResource($this->postRequest('/{id}/discard', ['id' => $id, 'json' => $body]));
     }
 
+    /**
+     * @param mixed[] $body
+     */
+    public function anonymize(Envelope|string $id, array $body = []): Envelope
+    {
+        return $this->makeResource($this->postRequest('/{id}/anonymize', ['id' => $id, 'json' => $body]));
+    }
+
     public function restore(Envelope|string $id): Envelope
     {
         return $this->makeResource($this->postRequest('/{id}/restore', ['id' => $id]));

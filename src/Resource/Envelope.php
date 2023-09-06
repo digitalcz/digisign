@@ -57,6 +57,10 @@ class Envelope extends BaseResource
 
     public ?DateTime $discardedAt = null;
 
+    public ?DateTime $anonymizeAt = null;
+
+    public ?DateTime $anonymizedAt = null;
+
     /** @var Collection<EnvelopeRecipient> */
     public Collection $recipients;
 

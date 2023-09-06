@@ -18,6 +18,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `SignatureScenariosEndpoint.info` endpoint
 - Add scenario fields on `EnvelopeRecipient` and `EnvelopeTemplateRecipient`
 - Modify and add various `SignatureScenarioVariant` fields
+- Add `envelopeAnonymizeRetention` and `envelopeAnonymizeGroups` to `AccountSecurity`
+- Add `anonymizeAt` and `anonymizedAt` to `Envelope`
+- Add anonymize action to `Envelope`
 
 ### Changed
 - Change `Identification.envelope` from string to EnvelopeInfo
