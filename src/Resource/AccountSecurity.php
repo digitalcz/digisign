@@ -20,6 +20,13 @@ class AccountSecurity extends BaseResource
 
     public int $discardedEnvelopeRetention;
 
+    public ?int $envelopeAnonymizeRetention;
+
+    /**
+     * @var array<string>
+     */
+    public array $envelopeAnonymizeGroups;
+
     public bool $continuousSigning;
 
     public bool $auditLogDownloadDefaultUnchecked;

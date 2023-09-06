@@ -89,6 +89,12 @@ class EnvelopesEndpointTest extends EndpointTestCase
         self::assertLastRequest('POST', '/api/envelopes/foo/discard');
     }
 
+    public function testAnonymize(): void
+    {
+        self::endpoint()->anonymize('foo', ['foo' => 'bar']);
+        self::assertLastRequest('POST', '/api/envelopes/foo/anonymize');
+    }
+
     public function testValidate(): void
     {
         self::endpoint()->validate('foo');

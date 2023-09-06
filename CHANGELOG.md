@@ -4,6 +4,12 @@ All notable changes will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [Unreleased]
+### Added
+- Add `envelopeAnonymizeRetention` and `envelopeAnonymizeGroups` to `AccountSecurity`
+- Add `anonymizeAt` and `anonymizedAt` to `Envelope`
+- Add anonymize action to `Envelope`
+
 ## [2.1.0] - 2023-07-12
 ### Added
 - Add `AccountSecurity.auditLogDownloadDefaultUnchecked`
