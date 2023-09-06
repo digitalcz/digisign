@@ -90,4 +90,6 @@ class EnvelopeRecipient extends BaseResource
     public ?SignatureScenarioVersionInfo $scenarioVersionInfo = null;
 
     public ?IdentifyScenarioInfo $identifyScenarioInfo = null;
+
+    public ?IdentificationInfo $identification = null;
 }

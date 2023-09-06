@@ -25,6 +25,8 @@ class EnvelopeProperties extends BaseResource
 
     public bool $auditLogAvailableToAllRecipients;
 
+    public bool $auditLogAvailableToAccountUsers;
+
     public bool $timestampDocuments;
 
     public bool $timestampAuditLog;
