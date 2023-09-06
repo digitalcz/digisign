@@ -6,6 +6,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add `envelopeAnonymizeRetention` and `envelopeAnonymizeGroups` to `AccountSecurity`
+- Add `anonymizeAt` and `anonymizedAt` to `Envelope`
+- Add anonymize action to `Envelope`
+
+## [2.1.0] - 2023-07-12
+### Added
 - Add `AccountSecurity.auditLogDownloadDefaultUnchecked`
 - Add `AccountSettings.documentsMerging`
 - Add `MyEnvelope.subjectName`
@@ -16,11 +22,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add multiple fields for `IdentifyScenarioVersion`
 - Add `IdentifyScenariosEndpoint.info` endpoint
 - Add `SignatureScenariosEndpoint.info` endpoint
-- Add scenario fields on `EnvelopeRecipient` and `EnvelopeTemplateRecipient`
+- Add scenario fields on `EnvelopeRecipient` and `EnvelopeTemplateRecipient` and `EnvelopeTemplate`
 - Modify and add various `SignatureScenarioVariant` fields
-- Add `envelopeAnonymizeRetention` and `envelopeAnonymizeGroups` to `AccountSecurity`
-- Add `anonymizeAt` and `anonymizedAt` to `Envelope`
-- Add anonymize action to `Envelope`
+- Add `IdentificationScenarioVersion.approvalMode`
+- Add `IdentificationInfo` resource and `EnvelopeRecipient.identification`
+- Add `EnvelopeProperties.auditLogAvailableToAccountUsers`
+- Add `IdentificationInfo.approvalMode`
 
 ### Changed
 - Change `Identification.envelope` from string to EnvelopeInfo
@@ -28,7 +35,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ### Fixed
 - Fix `MyEnelopeRecipient.intermediaryName` and `MyEnvelopeRecipient.intermediaryEmail` type as nullable
 
-## [1.13.0] - 2023-05-09
+## [2.0.0] - 2023-05-09
 ### Added
 - Add `EnvelopeRecipientIdentification.authorizedAt`
 - Add resource `Blame`

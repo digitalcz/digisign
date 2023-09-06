@@ -22,4 +22,5 @@ class IdentifyScenarioVersion extends BaseResource
     /** @var array<string> */
     public array $secondaryDocumentTypes;
     public bool $bankStatementEnabled;
+    public string $approvalMode;
 }
