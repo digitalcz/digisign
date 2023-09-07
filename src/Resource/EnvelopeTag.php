@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Resource;
 
+use DateTime;
 use DigitalCz\DigiSign\Resource\Traits\EntityResourceTrait;
 
 class EnvelopeTag extends BaseResource
