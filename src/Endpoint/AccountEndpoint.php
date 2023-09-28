@@ -9,7 +9,6 @@ use DigitalCz\DigiSign\Resource\Account;
 use DigitalCz\DigiSign\Resource\AccountBilling;
 use DigitalCz\DigiSign\Resource\AccountManageBilling;
 use DigitalCz\DigiSign\Resource\AccountSmsLog;
-use DigitalCz\DigiSign\Resource\AccountSmsSender;
 use DigitalCz\DigiSign\Resource\AccountStatistics;
 use DigitalCz\DigiSign\Resource\ListResource;
 

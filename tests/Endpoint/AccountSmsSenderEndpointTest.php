@@ -9,9 +9,16 @@ namespace DigitalCz\DigiSign\Endpoint;
  */
 class AccountSmsSenderEndpointTest extends EndpointTestCase
 {
-    public function testCRUD(): void
+    public function testList(): void
     {
-        self::assertCrudRequests(self::endpoint(), '/api/account/sms-sender');
+        self::endpoint()->list();
+        self::assertLastRequest('GET', '/api/account/sms-senders');
+    }
+
+    public function testGet(): void
+    {
+        self::endpoint()->get('foo');
+        self::assertLastRequest('GET', '/api/account/sms-senders/foo');
     }
 
     protected static function endpoint(): AccountSmsSendersEndpoint
