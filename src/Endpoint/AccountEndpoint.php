@@ -9,6 +9,7 @@ use DigitalCz\DigiSign\Resource\Account;
 use DigitalCz\DigiSign\Resource\AccountBilling;
 use DigitalCz\DigiSign\Resource\AccountManageBilling;
 use DigitalCz\DigiSign\Resource\AccountSmsLog;
+use DigitalCz\DigiSign\Resource\AccountSmsSender;
 use DigitalCz\DigiSign\Resource\AccountStatistics;
 use DigitalCz\DigiSign\Resource\ListResource;
 
@@ -115,5 +116,10 @@ final class AccountEndpoint extends ResourceEndpoint
     public function manageBilling(): AccountManageBilling
     {
         return $this->createResource($this->postRequest('/manage-billing'), AccountManageBilling::class);
+    }
+
+    public function smsSenders(): AccountSmsSendersEndpoint
+    {
+        return new AccountSmsSendersEndpoint($this);
     }
 }
