@@ -59,6 +59,4 @@ class EnvelopeTag extends BaseResource
     public string $assignment;
 
     public bool $renderInteractive;
-
-    public ?DateTime $approvedAt = null;
 }
