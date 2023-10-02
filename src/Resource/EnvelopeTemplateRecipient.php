@@ -60,4 +60,8 @@ class EnvelopeTemplateRecipient extends BaseResource
     public ?SignatureScenarioVersionInfo $scenarioVersionInfo = null;
 
     public ?IdentifyScenarioInfo $identifyScenarioInfo = null;
+
+    public string $approvalMode;
+
+    public bool $approveDocumentsAtOnce;
 }

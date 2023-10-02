@@ -92,4 +92,8 @@ class EnvelopeRecipient extends BaseResource
     public ?IdentifyScenarioInfo $identifyScenarioInfo = null;
 
     public ?IdentificationInfo $identification = null;
+
+    public string $approvalMode;
+
+    public bool $approveDocumentsAtOnce;
 }
