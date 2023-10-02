@@ -116,4 +116,9 @@ final class AccountEndpoint extends ResourceEndpoint
     {
         return $this->createResource($this->postRequest('/manage-billing'), AccountManageBilling::class);
     }
+
+    public function smsSenders(): AccountSmsSendersEndpoint
+    {
+        return new AccountSmsSendersEndpoint($this);
+    }
 }

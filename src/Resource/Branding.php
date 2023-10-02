@@ -31,4 +31,6 @@ class Branding extends BaseResource
 
     /** @var string[] */
     public ?array $signerReturnUrl;
+
+    public ?AccountSmsSender $smsSender;
 }

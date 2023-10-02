@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add `AccountSmsSendersEndpoint` and `AccountSmsSender` resource
 - Add `envelopeAnonymizeRetention` and `envelopeAnonymizeGroups` to `AccountSecurity`
 - Add `anonymizeAt` and `anonymizedAt` to `Envelope`
 - Add anonymize action to `Envelope`
