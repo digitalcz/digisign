@@ -26,7 +26,6 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeRecipient.approveDocumentsAtOnce`
 - Add `EnvelopeTemplateRecipient.approvalMode`
 - Add `EnvelopeTemplateRecipient.approveDocumentsAtOnce`
-- Add `EnvelopeTag.approvedAt`
 
 ### Changed
 - Change `Identification.envelope` from string to EnvelopeInfo
