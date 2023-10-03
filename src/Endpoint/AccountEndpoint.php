@@ -121,4 +121,9 @@ final class AccountEndpoint extends ResourceEndpoint
     {
         return new AccountSmsSendersEndpoint($this);
     }
+
+    public function emailSenders(): AccountEmailSendersEndpoint
+    {
+        return new AccountEmailSendersEndpoint($this);
+    }
 }

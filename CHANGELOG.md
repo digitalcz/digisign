@@ -10,6 +10,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `envelopeAnonymizeRetention` and `envelopeAnonymizeGroups` to `AccountSecurity`
 - Add `anonymizeAt` and `anonymizedAt` to `Envelope`
 - Add anonymize action to `Envelope`
+- Add `AccountEmailSendersEndpoint` and `AccountEmailSender` resource
+
 
 ## [2.1.0] - 2023-07-12
 ### Added
