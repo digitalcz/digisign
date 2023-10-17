@@ -14,7 +14,7 @@ class EnvelopeDocument extends BaseResource
 
     public ?string $metadata = null;
 
-    public File $file;
+    public ?File $file;
 
     /** @var Collection<EnvelopeTag> */
     public Collection $tags;
