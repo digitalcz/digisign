@@ -19,4 +19,7 @@ class Identification extends BaseResource
     public ?DateTime $startedAt;
     public ?DateTime $openedAt;
     public ?DateTime $completedAt;
+    public ?DateTime $approvedAt;
+    public ?DateTime $deniedAt;
+    public ?string $denialMessage;
 }

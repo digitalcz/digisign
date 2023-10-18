@@ -10,6 +10,9 @@ use DigitalCz\DigiSign\Resource\Identification;
 
 /**
  * @extends ResourceEndpoint<Identification>
+ * @method Identification get(string $id)
+ * @method Identification create(array $body)
+ * @method Identification update(string $id, array $body)
  */
 final class IdentificationsEndpoint extends ResourceEndpoint
 {
@@ -19,5 +22,18 @@ final class IdentificationsEndpoint extends ResourceEndpoint
     public function __construct(DigiSign $parent)
     {
         parent::__construct($parent, '/api/identifications', Identification::class);
+    }
+
+    public function approve(Identification|string $id): Identification
+    {
+        return $this->makeResource($this->postRequest('/{id}/approve', ['id' => $id]));
+    }
+
+    /**
+     * @param mixed[] $body
+     */
+    public function deny(Identification|string $id, array $body = []): Identification
+    {
+        return $this->makeResource($this->postRequest('/{id}/deny', ['id' => $id, 'json' => $body]));
     }
 }
