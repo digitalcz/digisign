@@ -14,6 +14,18 @@ class IdentificationsEndpointTest extends EndpointTestCase
         self::assertCrudRequests(self::endpoint(), '/api/identifications');
     }
 
+    public function testApprove(): void
+    {
+        self::endpoint()->approve('foo');
+        self::assertLastRequest('GET', '/api/identifications/foo/approve');
+    }
+
+    public function testDeny(): void
+    {
+        self::endpoint()->deny('foo');
+        self::assertLastRequest('GET', '/api/identifications/foo/deny');
+    }
+
     protected static function endpoint(): IdentificationsEndpoint
     {
         return self::dgs()->identifications();
