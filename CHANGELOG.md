@@ -12,6 +12,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add anonymize action to `Envelope`
 - Add `AccountEmailSendersEndpoint` and `AccountEmailSender` resource
 
+### Changed
+- Change `EnvelopeDocument.file` to nullable
 
 ## [2.1.0] - 2023-07-12
 ### Added
