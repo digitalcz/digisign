@@ -11,6 +11,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `anonymizeAt` and `anonymizedAt` to `Envelope`
 - Add anonymize action to `Envelope`
 - Add `AccountEmailSendersEndpoint` and `AccountEmailSender` resource
+- Add `approvedAt`, `deniedAt` and `denailMessage` to `Identification`
+- Add `Identification.approve` endpoint and `Identification.deny` endpoint
 
 ### Changed
 - Change `EnvelopeDocument.file` to nullable

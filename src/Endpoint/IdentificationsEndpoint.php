@@ -20,4 +20,17 @@ final class IdentificationsEndpoint extends ResourceEndpoint
     {
         parent::__construct($parent, '/api/identifications', Identification::class);
     }
+
+    public function approve(Identification|string $id): Identification
+    {
+        return $this->makeResource($this->postRequest('/{id}/approve', ['id' => $id]));
+    }
+
+    /**
+     * @param mixed[] $body
+     */
+    public function deny(Identification|string $id, array $body = []): Identification
+    {
+        return $this->makeResource($this->postRequest('/{id}/deny', ['id' => $id, 'json' => $body]));
+    }
 }
