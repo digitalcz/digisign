@@ -17,13 +17,13 @@ class IdentificationsEndpointTest extends EndpointTestCase
     public function testApprove(): void
     {
         self::endpoint()->approve('foo');
-        self::assertLastRequest('GET', '/api/identifications/foo/approve');
+        self::assertLastRequest('POST', '/api/identifications/foo/approve');
     }
 
     public function testDeny(): void
     {
         self::endpoint()->deny('foo');
-        self::assertLastRequest('GET', '/api/identifications/foo/deny');
+        self::assertLastRequest('POST', '/api/identifications/foo/deny');
     }
 
     protected static function endpoint(): IdentificationsEndpoint
