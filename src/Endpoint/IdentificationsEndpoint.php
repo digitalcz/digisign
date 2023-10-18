@@ -10,7 +10,6 @@ use DigitalCz\DigiSign\Resource\Identification;
 
 /**
  * @extends ResourceEndpoint<Identification>
- *
  * @method Identification get(string $id)
  * @method Identification create(array $body)
  * @method Identification update(string $id, array $body)
