@@ -16,6 +16,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ### Changed
 - Change `EnvelopeDocument.file` to nullable
+- Change `EnvelopeRecipientAttachment.file` to nullable
 
 ## [2.1.0] - 2023-07-12
 ### Added
