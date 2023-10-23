@@ -14,7 +14,7 @@ class EnvelopeRecipientAttachment extends BaseResource
 
     public string $type;
 
-    public File $file;
+    public ?File $file;
 
     public ?string $name = null;
 }
