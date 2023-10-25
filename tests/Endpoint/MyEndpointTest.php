@@ -17,6 +17,12 @@ class MyEndpointTest extends EndpointTestCase
         self::assertDefaultEndpointPath(self::endpoint()->contacts(), '/api/my/contacts');
     }
 
+    public function testInfo(): void
+    {
+        self::endpoint()->info();
+        self::assertLastRequest('GET', '/api/my/info');
+    }
+
     private static function endpoint(): MyEndpoint
     {
         return self::dgs()->my();

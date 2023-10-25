@@ -33,6 +33,12 @@ class MyAccountsEndpointTest extends EndpointTestCase
         self::assertLastRequest('POST', '/api/my/accounts/foo/decline');
     }
 
+    public function testSwitch(): void
+    {
+        self::endpoint()->switch('foo');
+        self::assertLastRequest('POST', '/api/my/accounts/foo/switch');
+    }
+
     private static function endpoint(): MyAccountsEndpoint
     {
         return self::dgs()->my()->accounts();
