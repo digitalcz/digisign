@@ -11,6 +11,6 @@ class MyInfo extends BaseResource
     public ?string $lastName;
 
     /** @var string[] */
-    public array $permission;
+    public array $permissions;
     public ?MyAccount $account;
 }
