@@ -41,4 +41,9 @@ final class MyAccountsEndpoint extends ResourceEndpoint
     {
         $this->postRequest('/{id}/decline', ['id' => $id]);
     }
+
+    public function switch(string $id): void
+    {
+        $this->postRequest('/{id}/switch', ['id' => $id]);
+    }
 }

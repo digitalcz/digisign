@@ -6,6 +6,7 @@ namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\DigiSign;
 use DigitalCz\DigiSign\Resource\BaseResource;
+use DigitalCz\DigiSign\Resource\MyInfo;
 
 /**
  * @extends ResourceEndpoint<BaseResource>
@@ -35,5 +36,10 @@ final class MyEndpoint extends ResourceEndpoint
     public function contacts(): MyContactsEndpoint
     {
         return new MyContactsEndpoint($this);
+    }
+
+    public function info(): MyInfo
+    {
+        return $this->createResource($this->getRequest('/info'), MyInfo::class);
     }
 }

@@ -6,6 +6,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add `MyEndpoint.info` endpoint and `MyInfo` resource
+- Add `MyAccountEndpoint.switch` endpoint
 - Add `AccountSmsSendersEndpoint` and `AccountSmsSender` resource
 - Add `envelopeAnonymizeRetention` and `envelopeAnonymizeGroups` to `AccountSecurity`
 - Add `anonymizeAt` and `anonymizedAt` to `Envelope`
