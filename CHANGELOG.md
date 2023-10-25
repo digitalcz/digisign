@@ -15,6 +15,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountEmailSendersEndpoint` and `AccountEmailSender` resource
 - Add `approvedAt`, `deniedAt` and `denailMessage` to `Identification`
 - Add `Identification.approve` endpoint and `Identification.deny` endpoint
+- Add `notificationForSenderEmail` to `AccountSettings`
 
 ### Changed
 - Change `EnvelopeDocument.file` to nullable

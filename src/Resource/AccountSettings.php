@@ -43,4 +43,6 @@ class AccountSettings extends BaseResource
     public bool $documentsMerging;
 
     public bool $identify;
+
+    public bool $notificationForSenderEmail;
 }
