@@ -22,5 +22,5 @@ class Identification extends BaseResource
     public ?DateTime $approvedAt;
     public ?DateTime $deniedAt;
     public ?string $denialMessage;
-    public IdentifyScenarioVersionInfo $scenarioVersion;
+    public ?IdentifyScenarioVersionInfo $scenarioVersion;
 }
