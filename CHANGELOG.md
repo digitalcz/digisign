@@ -16,6 +16,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `approvedAt`, `deniedAt` and `denailMessage` to `Identification`
 - Add `Identification.approve` endpoint and `Identification.deny` endpoint
 - Add `notificationForSenderEmail` to `AccountSettings`
+- Add `EnvelopeTag.format`, `EnvelopeTag.dateOfSignature`, `EnvelopeTemplateTag.format`
 - Add `ScenarioVersionInfo` to `Identification`
 
 ### Changed
