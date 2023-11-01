@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Resource;
 
+use \DateTime;
 use DigitalCz\DigiSign\Resource\Traits\EntityResourceTrait;
 
 class EnvelopeTag extends BaseResource
@@ -58,4 +59,8 @@ class EnvelopeTag extends BaseResource
     public string $assignment;
 
     public bool $renderInteractive;
+
+    public ?string $format;
+
+    public ?DateTime $dateOfSignature;
 }
