@@ -59,7 +59,7 @@ class EnvelopeTemplate extends BaseResource
 
     /** @var array<string, string> */
     public array $validatedFields;
-    
+
     public bool $useDefaultTemplateSettings;
 
     /** @var Collection<Label> */
