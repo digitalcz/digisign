@@ -18,6 +18,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `notificationForSenderEmail` to `AccountSettings`
 - Add `EnvelopeTag.format`, `EnvelopeTag.dateOfSignature`, `EnvelopeTemplateTag.format`
 - Add `ScenarioVersionInfo` to `Identification`
+- Add `EnvelopeTemplate.visibleFields`, `EnvelopeTemplate.validatedFields`, `EnvelopeTemplate.delegation`
+- Add `EnvelopeTemplate.signerDefaults`, `EnvelopeTemplate.approverDefaults`, `EnvelopeTemplate.ccDefaults`
+- Add `EnvelopeTemplateRecipientDefaults`
 
 ### Changed
 - Change `EnvelopeDocument.file` to nullable
