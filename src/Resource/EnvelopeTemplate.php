@@ -54,6 +54,12 @@ class EnvelopeTemplate extends BaseResource
     /** @var array<string, string> */
     public array $bankIdScopes;
 
+    /** @var array<string, string> */
+    public array $visibleFields;
+
+    /** @var array<string, string> */
+    public array $validatedFields;
+    
     public bool $useDefaultTemplateSettings;
 
     /** @var Collection<Label> */
@@ -63,9 +69,17 @@ class EnvelopeTemplate extends BaseResource
 
     public ?string $description = null;
 
+    public bool $delegation;
+
     public ?string $scenario = null;
 
     public ?string $identifyScenario = null;
 
     public ?IdentifyScenarioInfo $identifyScenarioInfo = null;
+
+    public ?EnvelopeTemplateRecipientDefaults $signerDefaults = null;
+
+    public ?EnvelopeTemplateRecipientDefaults $approverDefaults = null;
+
+    public ?EnvelopeTemplateRecipientDefaults $ccDefaults = null;
 }
