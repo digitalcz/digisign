@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add `IdentifyScenarioVersion.ownConditions`
 - Add `MyAccount.shortName`
 - Add `MyEndpoint.info` endpoint and `MyInfo` resource
 - Add `MyAccountEndpoint.switch` endpoint
