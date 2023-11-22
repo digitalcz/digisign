@@ -6,6 +6,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add `MyContactsEndpoint.create` endpoint
+- Add `MyContactsEndpoint.list` endpoint
+- Add `MyContactsEndpoint.update` endpoint
+- Add `MyContactsEndpoint.delete` endpoint
+- Add `MyAccount.shortName`
 - Add `MyEndpoint.info` endpoint and `MyInfo` resource
 - Add `MyAccountEndpoint.switch` endpoint
 - Add `AccountSmsSendersEndpoint` and `AccountSmsSender` resource
