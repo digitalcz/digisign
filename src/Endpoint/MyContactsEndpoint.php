@@ -16,6 +16,8 @@ use DigitalCz\DigiSign\Resource\Contact;
  */
 final class MyContactsEndpoint extends ResourceEndpoint
 {
+
+    /** @use ListEndpointTrait<Contact> */
     use CreateEndpointTrait;
     use DeleteEndpointTrait;
     use ListEndpointTrait;
