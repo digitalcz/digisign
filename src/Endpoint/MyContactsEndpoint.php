@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
+use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
 use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\Contact;
 
@@ -12,6 +13,9 @@ use DigitalCz\DigiSign\Resource\Contact;
  */
 final class MyContactsEndpoint extends ResourceEndpoint
 {
+    /** @use CRUDEndpointTrait<Contact> */
+    use CRUDEndpointTrait;
+
     public function __construct(MyEndpoint $parent)
     {
         parent::__construct($parent, '/contacts', Contact::class);
