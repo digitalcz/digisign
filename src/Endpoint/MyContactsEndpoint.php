@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
-use DigitalCz\DigiSign\Endpoint\Traits\CreateEndpointTrait;
-use DigitalCz\DigiSign\Endpoint\Traits\DeleteEndpointTrait;
-use DigitalCz\DigiSign\Endpoint\Traits\ListEndpointTrait;
-use DigitalCz\DigiSign\Endpoint\Traits\UpdateEndpointTrait;
+use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
 use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\Contact;
 
@@ -16,11 +13,8 @@ use DigitalCz\DigiSign\Resource\Contact;
  */
 final class MyContactsEndpoint extends ResourceEndpoint
 {
-    /** @use ListEndpointTrait<Contact> */
-    use ListEndpointTrait;
-    use CreateEndpointTrait;
-    use DeleteEndpointTrait;
-    use UpdateEndpointTrait;
+    /** @use CRUDEndpointTrait<Contact> */
+    use CRUDEndpointTrait;
 
     public function __construct(MyEndpoint $parent)
     {
