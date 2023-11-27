@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add `MyAccount.createdAt`
 - Add `MyContactsEndpoint` CRUD endpoints
 - Add `IdentifyScenarioVersion.ownConditions`
 - Add `MyAccount.shortName`
