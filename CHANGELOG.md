@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add `SentEnvelopeReport.sender`
 - Add `IdentifyScenarioVersion.selfieEnabled`
 - Add `AccountBilling.identifyAi`
 - Add `MyAccount.createdAt`
