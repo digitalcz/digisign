@@ -53,10 +53,9 @@ final class CollectionTest extends TestCase
         $collection = new Collection($parsedResponse, DummyResource::class);
         $collectionResults = $collection->getResult();
 
-        for ($i = 0; $i < 3; $i++) {
-            /* @phpstan-ignore-next-line */
-            self::assertSame($collectionResults[$i]->toArray(), ${'dr' . $i}->toArray());
-        }
+        self::assertSame($collectionResults[0]->toArray(), $dr0->toArray());
+        self::assertSame($collectionResults[1]->toArray(), $dr1->toArray());
+        self::assertSame($collectionResults[2]->toArray(), $dr2->toArray());
     }
 
     public function testToArray(): void
