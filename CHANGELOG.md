@@ -5,6 +5,8 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+### Added
+- Add `IdentifyScenarioInfo.approvalMode`
 
 ## [2.2.0] - 2023-12-18
 ### Added
