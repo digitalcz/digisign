@@ -14,5 +14,6 @@ class MyAccount extends BaseResource
     public bool $active;
     public DateTime $createdAt;
     public ?string $idpDomain;
+    public ?string $idpAlias;
     public ?string $shortName;
 }

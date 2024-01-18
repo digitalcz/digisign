@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add `MyAccount.idpAlias`
 - Add `IdentifyScenarioInfo.approvalMode`
 
 ## [2.2.0] - 2023-12-18
