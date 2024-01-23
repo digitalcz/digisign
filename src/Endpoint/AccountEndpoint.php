@@ -126,4 +126,9 @@ final class AccountEndpoint extends ResourceEndpoint
     {
         return new AccountEmailSendersEndpoint($this);
     }
+
+    public function deactivate(): void
+    {
+        $this->postRequest('/deactivate');
+    }
 }
