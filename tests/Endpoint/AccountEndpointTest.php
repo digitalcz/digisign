@@ -25,7 +25,6 @@ class AccountEndpointTest extends EndpointTestCase
         self::assertDefaultEndpointPath(self::endpoint()->messaging(), '/api/account/messaging');
         self::assertDefaultEndpointPath(self::endpoint()->signatureScenarios(), '/api/account/signature-scenarios');
         self::assertDefaultEndpointPath(self::endpoint()->identifyScenarios(), '/api/account/identify-scenarios');
-        self::assertDefaultEndpointPath(self::endpoint()->identifyScenarios(), '/api/account/deactivate');
     }
 
     public function testGet(): void
