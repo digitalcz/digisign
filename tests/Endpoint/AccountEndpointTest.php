@@ -25,6 +25,7 @@ class AccountEndpointTest extends EndpointTestCase
         self::assertDefaultEndpointPath(self::endpoint()->messaging(), '/api/account/messaging');
         self::assertDefaultEndpointPath(self::endpoint()->signatureScenarios(), '/api/account/signature-scenarios');
         self::assertDefaultEndpointPath(self::endpoint()->identifyScenarios(), '/api/account/identify-scenarios');
+        self::assertDefaultEndpointPath(self::endpoint()->identifyScenarios(), '/api/account/deactivate');
     }
 
     public function testGet(): void
@@ -55,6 +56,12 @@ class AccountEndpointTest extends EndpointTestCase
     {
         self::endpoint()->manageBilling();
         self::assertLastRequest('POST', '/api/account/manage-billing');
+    }
+
+    public function testDeactivate(): void
+    {
+        self::endpoint()->deactivate();
+        self::assertLastRequest('POST', '/api/account/deactivate');
     }
 
     protected static function endpoint(): AccountEndpoint
