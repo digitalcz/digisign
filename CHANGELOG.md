@@ -6,6 +6,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add `EnvelopeRecipient.channelForNotifications`
+- Add `EnvelopeTemplateRecipient.channelForNotifications`
 - Add `DeactivateAccount` endpoint
 - Add `MyAccount.idpAlias`
 - Add `IdentifyScenarioInfo.approvalMode`
