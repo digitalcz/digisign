@@ -36,4 +36,22 @@ final class IdentificationsEndpoint extends ResourceEndpoint
     {
         return $this->makeResource($this->postRequest('/{id}/deny', ['id' => $id, 'json' => $body]));
     }
+
+    public function cancel(Identification|string $id): Identification
+    {
+        return $this->makeResource($this->postRequest('/{id}/cancel', ['id' => $id]));
+    }
+
+    /**
+     * @param mixed[] $body
+     */
+    public function discard(Identification|string $id, array $body = []): Identification
+    {
+        return $this->makeResource($this->postRequest('/{id}/discard', ['id' => $id, 'json' => $body]));
+    }
+
+    public function restore(Identification|string $id): Identification
+    {
+        return $this->makeResource($this->postRequest('/{id}/restore', ['id' => $id]));
+    }
 }
