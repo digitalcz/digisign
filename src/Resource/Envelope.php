@@ -15,6 +15,9 @@ class Envelope extends BaseResource
 
     public ?string $metadata = null;
 
+    public string $name;
+
+    /** @deprecated use $name instead */
     public string $emailSubject;
 
     public string $emailBody;

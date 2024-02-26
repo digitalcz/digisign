@@ -12,6 +12,10 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `DeactivateAccount` endpoint
 - Add `MyAccount.idpAlias`
 - Add `IdentifyScenarioInfo.approvalMode`
+- Add `Envelope.name`
+
+### Deprecated
+- Deprecate `Envelope.emailSubject`
 
 ## [2.2.0] - 2023-12-18
 ### Added
