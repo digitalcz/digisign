@@ -6,6 +6,12 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add `Identificaiton.cancelledAt`
+- Add `Identificaiton.discardedAt`
+- Add `Identification.result` and its sub-entities
+- Add `IdentificationsEndpoint.cancel`
+- Add `IdentificationsEndpoint.discard`
+- Add `IdentificationsEndpoint.restore`
 - Add `Identification.forReviewAt`
 - Add `EnvelopeRecipient.channelForNotifications`
 - Add `EnvelopeTemplateRecipient.channelForNotifications`
