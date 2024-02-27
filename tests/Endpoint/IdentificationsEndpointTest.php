@@ -9,9 +9,28 @@ namespace DigitalCz\DigiSign\Endpoint;
  */
 class IdentificationsEndpointTest extends EndpointTestCase
 {
-    public function testCRUD(): void
+    public function testChildren(): void
     {
-        self::assertCrudRequests(self::endpoint(), '/api/identifications');
+        self::assertDefaultEndpointPath(
+            self::endpoint()->primaryDocument('foo'),
+            '/api/identifications/foo/primary-document',
+        );
+        self::assertDefaultEndpointPath(
+            self::endpoint()->secondaryDocument('foo'),
+            '/api/identifications/foo/secondary-document',
+        );
+    }
+
+    public function testList(): void
+    {
+        self::endpoint()->list(['foo' => 'bar']);
+        self::assertLastRequest('GET', '/api/identifications?foo=bar');
+    }
+
+    public function testGet(): void
+    {
+        self::endpoint()->get('foo');
+        self::assertLastRequest('GET', '/api/identifications/foo');
     }
 
     public function testApprove(): void
@@ -54,6 +73,24 @@ class IdentificationsEndpointTest extends EndpointTestCase
     {
         self::endpoint()->restore('foo');
         self::assertLastRequest('POST', '/api/identifications/foo/restore');
+    }
+
+    public function testBankStatement(): void
+    {
+        self::endpoint()->bankStatement('foo', ['foo' => 'bar']);
+        self::assertLastRequest('GET', '/api/identifications/foo/bank-statement?foo=bar');
+    }
+
+    public function testProtocol(): void
+    {
+        self::endpoint()->protocol('foo', ['foo' => 'bar']);
+        self::assertLastRequest('GET', '/api/identifications/foo/protocol?foo=bar');
+    }
+
+    public function testSelfie(): void
+    {
+        self::endpoint()->selfie('foo', ['foo' => 'bar']);
+        self::assertLastRequest('GET', '/api/identifications/foo/selfie?foo=bar');
     }
 
     protected static function endpoint(): IdentificationsEndpoint

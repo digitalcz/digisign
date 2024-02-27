@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add multiple Identifications endpoints
 - Add `Identificaiton.cancelledAt`
 - Add `Identificaiton.discardedAt`
 - Add `Identification.result` and its sub-entities
