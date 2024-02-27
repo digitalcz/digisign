@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\DigiSign;
-use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
+use DigitalCz\DigiSign\Endpoint\Traits\GetEndpointTrait;
+use DigitalCz\DigiSign\Endpoint\Traits\ListEndpointTrait;
 use DigitalCz\DigiSign\Resource\Identification;
+use DigitalCz\DigiSign\Stream\FileResponse;
 
 /**
  * @extends ResourceEndpoint<Identification>
@@ -16,8 +18,9 @@ use DigitalCz\DigiSign\Resource\Identification;
  */
 final class IdentificationsEndpoint extends ResourceEndpoint
 {
-    /** @use CRUDEndpointTrait<Identification> */
-    use CRUDEndpointTrait;
+    /** @use ListEndpointTrait<Identification> */
+    use ListEndpointTrait;
+    use GetEndpointTrait;
 
     public function __construct(DigiSign $parent)
     {
@@ -30,11 +33,11 @@ final class IdentificationsEndpoint extends ResourceEndpoint
     }
 
     /**
-     * @param mixed[] $body
+     * @param array<string, mixed> $query
      */
-    public function deny(Identification|string $id, array $body = []): Identification
+    public function bankStatement(Identification|string $id, array $query = []): FileResponse
     {
-        return $this->makeResource($this->postRequest('/{id}/deny', ['id' => $id, 'json' => $body]));
+        return $this->stream(self::METHOD_GET, '/{id}/bank-statement', ['id' => $id, 'query' => $query]);
     }
 
     public function cancel(Identification|string $id): Identification
@@ -45,9 +48,43 @@ final class IdentificationsEndpoint extends ResourceEndpoint
     /**
      * @param mixed[] $body
      */
+    public function deny(Identification|string $id, array $body = []): Identification
+    {
+        return $this->makeResource($this->postRequest('/{id}/deny', ['id' => $id, 'json' => $body]));
+    }
+
+    /**
+     * @param mixed[] $body
+     */
     public function discard(Identification|string $id, array $body = []): Identification
     {
         return $this->makeResource($this->postRequest('/{id}/discard', ['id' => $id, 'json' => $body]));
+    }
+
+    public function primaryDocument(Identification|string $id): IdentificationDocumentEndpoint
+    {
+        return new IdentificationDocumentEndpoint($this, $id, '/primary-document');
+    }
+
+    /**
+     * @param array<string, mixed> $query
+     */
+    public function protocol(Identification|string $id, array $query = []): FileResponse
+    {
+        return $this->stream(self::METHOD_GET, '/{id}/protocol', ['id' => $id, 'query' => $query]);
+    }
+
+    public function secondaryDocument(Identification|string $id): IdentificationDocumentEndpoint
+    {
+        return new IdentificationDocumentEndpoint($this, $id, '/secondary-document');
+    }
+
+    /**
+     * @param array<string, mixed> $query
+     */
+    public function selfie(Identification|string $id, array $query = []): FileResponse
+    {
+        return $this->stream(self::METHOD_GET, '/{id}/selfie', ['id' => $id, 'query' => $query]);
     }
 
     public function restore(Identification|string $id): Identification
