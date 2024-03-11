@@ -30,4 +30,6 @@ class AccountSecurity extends BaseResource
     public bool $continuousSigning;
 
     public bool $auditLogDownloadDefaultUnchecked;
+
+    public int $discardedIdentificationRetention;
 }
