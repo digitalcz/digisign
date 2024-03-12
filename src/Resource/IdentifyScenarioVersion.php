@@ -27,4 +27,7 @@ class IdentifyScenarioVersion extends BaseResource
     /** @var string[] */
     public ?array $ownConditions;
     public bool $selfieEnabled;
+    public int $identificationExpireRetention;
+    public int $identificationArchiveRetention;
+
 }
