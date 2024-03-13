@@ -6,6 +6,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add `SentEnvelopeReport.bankIdSignCount`
+- Add `SentEnvelopeReport.identifyAmlCount`
 - Add `IdentificationEndpoint.delete`
 - Add `IdentifyScenarioVersion.expireAfterHours`
 - Add `IdentifyScenarioVersion.discardCompletedAfterDays`
