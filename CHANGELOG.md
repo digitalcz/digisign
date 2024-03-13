@@ -6,6 +6,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add `IdentifyScenarioVersion.expireAfterHours`
+- Add `IdentifyScenarioVersion.discardCompletedAfterDays`
 - Add AccountSecurity.discardedIdentificationRetention
 - Add multiple Identifications endpoints
 - Add `IdentificationInspection.claims`
