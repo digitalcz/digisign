@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\DigiSign;
+use DigitalCz\DigiSign\Endpoint\Traits\DeleteEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\GetEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\ListEndpointTrait;
 use DigitalCz\DigiSign\Resource\Identification;
@@ -21,6 +22,7 @@ final class IdentificationsEndpoint extends ResourceEndpoint
     /** @use ListEndpointTrait<Identification> */
     use ListEndpointTrait;
     use GetEndpointTrait;
+    use DeleteEndpointTrait;
 
     public function __construct(DigiSign $parent)
     {

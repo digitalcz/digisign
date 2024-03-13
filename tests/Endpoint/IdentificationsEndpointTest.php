@@ -57,6 +57,12 @@ class IdentificationsEndpointTest extends EndpointTestCase
         self::assertLastRequest('POST', '/api/identifications/foo/cancel');
     }
 
+    public function testDelete(): void
+    {
+        self::endpoint()->delete('foo');
+        self::assertLastRequest('DELETE', '/api/identifications/foo');
+    }
+
     public function testDiscard(): void
     {
         self::endpoint()->discard('foo');
