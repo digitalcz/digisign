@@ -9,10 +9,16 @@ namespace DigitalCz\DigiSign\Endpoint;
  */
 class ReportEndpointTest extends EndpointTestCase
 {
-    public function testSuggest(): void
+    public function testSentEnvelopes(): void
     {
         self::endpoint()->sentEnvelopes(['foo' => 'bar']);
         self::assertLastRequest('GET', '/api/report/sent-envelopes?foo=bar');
+    }
+
+    public function testCompletedIdentifications(): void
+    {
+        self::endpoint()->completedIdentifications(['foo' => 'bar']);
+        self::assertLastRequest('GET', '/api/report/completed-identifications?foo=bar');
     }
 
     protected static function endpoint(): ReportEndpoint

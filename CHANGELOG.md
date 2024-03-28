@@ -4,6 +4,10 @@ All notable changes will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [Unreleased]
+### Added
+- Add `ReportEndpoint.completedIdentifications` endpoint and `CompletedIdentificationReport` resource
+
 ## [2.3.0] - 2024-03-28
 ### Added
 - Add `SentEnvelopeReport.bankIdSignCount`

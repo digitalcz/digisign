@@ -6,6 +6,7 @@ namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\DigiSign;
 use DigitalCz\DigiSign\Resource\BaseResource;
+use DigitalCz\DigiSign\Resource\CompletedIdentificationReport;
 use DigitalCz\DigiSign\Resource\ListResource;
 use DigitalCz\DigiSign\Resource\SentEnvelopeReport;
 
@@ -28,6 +29,18 @@ final class ReportEndpoint extends ResourceEndpoint
         return $this->createListResource(
             $this->getRequest('/sent-envelopes', ['query' => $query]),
             SentEnvelopeReport::class,
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $query
+     * @return ListResource<CompletedIdentificationReport>
+     */
+    public function completedIdentifications(array $query): ListResource
+    {
+        return $this->createListResource(
+            $this->getRequest('/completed-identifications', ['query' => $query]),
+            CompletedIdentificationReport::class,
         );
     }
 }
