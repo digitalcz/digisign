@@ -9,6 +9,7 @@ use DateTime;
 class CompletedIdentificationReport extends BaseResource
 {
     public string $id;
+    public ?string $name;
     public ?string $envelopeId;
     public ?string $envelopeRecipientId;
     public string $status;
