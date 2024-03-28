@@ -78,6 +78,16 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
         );
     }
 
+    public function invalidate(EnvelopeDocument|string $document): void
+    {
+        $this->postRequest('/{document}/invalidate', ['document' => $document]);
+    }
+
+    public function restore(EnvelopeDocument|string $document): void
+    {
+        $this->postRequest('/{document}/restore', ['document' => $document]);
+    }
+
     public function signatureSheets(): EnvelopeDocumentSignatureSheets
     {
         return $this->createResource($this->getRequest('/signature-sheets'), EnvelopeDocumentSignatureSheets::class);

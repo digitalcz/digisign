@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Resource;
 
+use DateTime;
 use DigitalCz\DigiSign\Resource\Traits\EntityResourceTrait;
 
 class EnvelopeDocument extends BaseResource
@@ -32,4 +33,8 @@ class EnvelopeDocument extends BaseResource
     public int $labelPositionY;
 
     public string $signatureValidity;
+
+    public bool $invalidate;
+
+    public ?DateTime $invalidatedAt = null;
 }

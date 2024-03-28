@@ -49,6 +49,18 @@ class EnvelopeDocumentsEndpointTest extends EndpointTestCase
         self::assertLastRequest('POST', '/api/envelopes/bar/documents/foo/replace-file', ['foo' => 'bar']);
     }
 
+    public function testInvalidate(): void
+    {
+        self::endpoint()->invalidate('foo');
+        self::assertLastRequest('POST', '/api/envelopes/bar/documents/foo/invalidate');
+    }
+
+    public function testRestore(): void
+    {
+        self::endpoint()->restore('foo');
+        self::assertLastRequest('POST', '/api/envelopes/bar/documents/foo/restore');
+    }
+
     public function testSignatureSheets(): void
     {
         self::endpoint()->signatureSheets();
