@@ -6,6 +6,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add `AccountSecurity.signDocumentsAtOnce`
+- Add `EnvelopeRecipient.signDocumentsAtOnce`
+- Add `EnvelopeTemplateRecipient.signDocumentsAtOnce`
 - Add `EnvelopeDocumentsEndpoint.invalidate`
 - Add `EnvelopeDocumentsEndpoint.restore`
 - Add `CompletedIdentificationReport.name`
