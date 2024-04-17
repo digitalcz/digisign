@@ -12,6 +12,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `ReportEndpoint.completedIdentifications` endpoint and `CompletedIdentificationReport` resource
 - Add `IdentificationResult` claims
 - Add `IdentificationsEndpoint.updateResult`
+- Add `SignatureScenarioVariant.signDocumentsAtOnce`
 
 ## [2.3.0] - 2024-03-28
 ### Added
