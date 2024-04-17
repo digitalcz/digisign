@@ -9,6 +9,7 @@ use DigitalCz\DigiSign\Endpoint\Traits\DeleteEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\GetEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\ListEndpointTrait;
 use DigitalCz\DigiSign\Resource\Identification;
+use DigitalCz\DigiSign\Resource\IdentificationResult;
 use DigitalCz\DigiSign\Stream\FileResponse;
 
 /**
@@ -92,5 +93,16 @@ final class IdentificationsEndpoint extends ResourceEndpoint
     public function restore(Identification|string $id): Identification
     {
         return $this->makeResource($this->postRequest('/{id}/restore', ['id' => $id]));
+    }
+
+    /**
+     * @param mixed[] $body
+     */
+    public function updateResult(Identification|string $id, array $body = []): IdentificationResult
+    {
+        return $this->createResource(
+            $this->putRequest('/{id}/result', ['id' => $id, 'json' => $body]),
+            IdentificationResult::class,
+        );
     }
 }
