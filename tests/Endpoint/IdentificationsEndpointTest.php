@@ -99,6 +99,12 @@ class IdentificationsEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/identifications/foo/selfie?foo=bar');
     }
 
+    public function testUpdateResult(): void
+    {
+        self::endpoint()->updateResult('foo', ['foo' => 'bar']);
+        self::assertLastRequest('PUT', '/api/identifications/foo/result', ['foo' => 'bar']);
+    }
+
     protected static function endpoint(): IdentificationsEndpoint
     {
         return self::dgs()->identifications();
