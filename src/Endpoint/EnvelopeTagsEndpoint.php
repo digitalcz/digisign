@@ -23,4 +23,12 @@ final class EnvelopeTagsEndpoint extends ResourceEndpoint
     {
         parent::__construct($parent, '/{envelope}/tags', EnvelopeTag::class, ['envelope' => $envelope]);
     }
+
+    /**
+     * @param mixed[] $body
+     */
+    public function updateValues(array $body): void
+    {
+        $this->putRequest('/values', ['json' => $body]);
+    }
 }
