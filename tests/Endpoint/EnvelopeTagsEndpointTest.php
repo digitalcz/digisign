@@ -17,7 +17,7 @@ class EnvelopeTagsEndpointTest extends EndpointTestCase
     public function testUpdateValues(): void
     {
         self::endpoint()->updateValues(['foo' => 'bar']);
-        self::assertLastRequest('PUT', '/api/envelopes/bar/tags/values',  ['foo' => 'bar']);
+        self::assertLastRequest('PUT', '/api/envelopes/bar/tags/values', ['foo' => 'bar']);
     }
 
     protected static function endpoint(): EnvelopeTagsEndpoint
