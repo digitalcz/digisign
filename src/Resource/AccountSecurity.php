@@ -33,5 +33,5 @@ class AccountSecurity extends BaseResource
 
     public int $discardedIdentificationRetention;
 
-    public int $signDocumentsAtOnce;
+    public bool $signDocumentsAtOnce;
 }
