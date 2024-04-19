@@ -44,4 +44,6 @@ class EnvelopeTemplateRecipientDefaults extends BaseResource
     public string $approvalMode;
 
     public bool $approveDocumentsAtOnce;
+
+    public bool $signDocumentsAtOnce;
 }

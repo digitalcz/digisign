@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 ### Added
+- Add `EnvelopeTemplateRecipientDefaults.signDocumentsAtOnce`
 - Add `AccountSecurity.signDocumentsAtOnce`
 - Add `EnvelopeRecipient.signDocumentsAtOnce`
 - Add `EnvelopeTemplateRecipient.signDocumentsAtOnce`
