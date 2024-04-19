@@ -98,4 +98,6 @@ class EnvelopeRecipient extends BaseResource
     public bool $approveDocumentsAtOnce;
 
     public string $channelForNotifications;
+
+    public bool $signDocumentsAtOnce;
 }
