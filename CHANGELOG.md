@@ -13,6 +13,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `IdentificationResult` claims
 - Add `IdentificationsEndpoint.updateResult`
 - Add `SignatureScenarioVariant.signDocumentsAtOnce`
+- Add `EnvelopeTagsEndpoint.updateValues` endpoint
 
 ## [2.3.0] - 2024-03-28
 ### Added

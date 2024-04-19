@@ -14,6 +14,12 @@ class EnvelopeTagsEndpointTest extends EndpointTestCase
         self::assertCrudRequests(self::endpoint(), '/api/envelopes/bar/tags');
     }
 
+    public function testUpdateValues(): void
+    {
+        self::endpoint()->updateValues(['foo' => 'bar']);
+        self::assertLastRequest('PUT', '/api/envelopes/bar/tags/values', ['foo' => 'bar']);
+    }
+
     protected static function endpoint(): EnvelopeTagsEndpoint
     {
         return self::dgs()->envelopes()->tags('bar');
