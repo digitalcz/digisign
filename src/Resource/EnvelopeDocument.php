@@ -20,6 +20,9 @@ class EnvelopeDocument extends BaseResource
     /** @var Collection<EnvelopeTag> */
     public Collection $tags;
 
+    /** @var array<string, string> */
+    public array $assignments;
+
     public int $position;
 
     public bool $signable;
