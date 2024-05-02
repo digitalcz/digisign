@@ -100,4 +100,10 @@ class EnvelopeRecipient extends BaseResource
     public string $channelForNotifications;
 
     public bool $signDocumentsAtOnce;
+
+    public ?DateTime $signedDocumentsDeliveredAt = null;
+
+    public ?DateTime $signedDocumentsNonDeliveredAt = null;
+
+    public ?string $signedDocumentsNonDeliveredReason = null;
 }
