@@ -31,4 +31,9 @@ final class EnvelopeTagsEndpoint extends ResourceEndpoint
     {
         $this->putRequest('/values', ['json' => $body]);
     }
+
+    public function byPlaceholder(): EnvelopeTagsByPlaceholder
+    {
+        return new EnvelopeTagsByPlaceholder($this);
+    }
 }
