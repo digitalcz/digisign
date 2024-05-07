@@ -20,6 +20,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeTagsEndpoint.updateValues` endpoint
 - Add `EnvelopeDocument.assignments` to resource
 - Add `EnvelopeRecipient` signed document columns
+- Add `EnvelopeTagsByPlaceholder` endpoint
 
 ## [2.3.0] - 2024-03-28
 ### Added
