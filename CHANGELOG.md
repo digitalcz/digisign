@@ -5,6 +5,8 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+
+## [2.4.0] - 2024-05-14
 ### Added
 - Add `EnvelopeTemplateRecipientDefaults.signDocumentsAtOnce`
 - Add `AccountSecurity.signDocumentsAtOnce`
