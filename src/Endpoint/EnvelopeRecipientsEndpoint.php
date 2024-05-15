@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
+use DigitalCz\DigiSign\Resource\CertificateInfo;
 use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\Envelope;
 use DigitalCz\DigiSign\Resource\EnvelopeRecipient;
@@ -119,6 +120,14 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
         return $this->createResource(
             $this->getRequest('/{id}/scenario', ['id' => $recipient]),
             SignatureScenarioVersion::class,
+        );
+    }
+
+    public function certificateInfo(EnvelopeRecipient|string $recipient): CertificateInfo
+    {
+        return $this->createResource(
+            $this->getRequest('/{id}/certificate-info', ['id' => $recipient]),
+            CertificateInfo::class,
         );
     }
 }

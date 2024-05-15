@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 - Add `MyIdentifications.info` endpoint
+- Add `EnvelopeRecipient.certificateInfo` endpoint
 
 ## [2.4.0] - 2024-05-14
 ### Added
