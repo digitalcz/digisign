@@ -12,9 +12,9 @@ final class CertificateInfo extends BaseResource
 
     public string $issuerCommonName;
 
-    public DateTime $certificateIssuedAt;
+    public DateTime $issuedAt;
 
-    public DateTime $certificateExpiresAt;
+    public DateTime $expiresAt;
 
     public ?string $subjectCountry;
 
@@ -48,7 +48,7 @@ final class CertificateInfo extends BaseResource
 
     public ?string $issuerOrganizationName;
 
-    public ?string $certificateSerialNumber;
+    public ?string $serialNumber;
 
-    public ?string $certificateVersion;
+    public ?string $version;
 }
