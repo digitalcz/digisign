@@ -6,6 +6,7 @@ namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Endpoint\Traits\GetEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\ListEndpointTrait;
+use DigitalCz\DigiSign\Resource\Envelope;
 use DigitalCz\DigiSign\Resource\ListResource;
 use DigitalCz\DigiSign\Resource\MyEnvelope;
 use DigitalCz\DigiSign\Resource\MyEnvelopeInfo;
@@ -45,5 +46,10 @@ final class MyEnvelopesEndpoint extends ResourceEndpoint
     public function info(string $id): MyEnvelopeInfo
     {
         return $this->createResource($this->getRequest('/{id}/info', ['id' => $id]), MyEnvelopeInfo::class);
+    }
+
+    public function recipients(string|Envelope $envelope): MyEnvelopeRecipientsEndpoint
+    {
+        return new MyEnvelopeRecipientsEndpoint($this, $envelope);
     }
 }
