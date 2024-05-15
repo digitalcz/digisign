@@ -39,6 +39,11 @@ class MyEnvelopesEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/my/envelopes/foo/info');
     }
 
+    public function testRecipients(): void
+    {
+        self::assertDefaultEndpointPath(self::endpoint()->recipients('foo'), '/api/my/envelopes/foo/recipients');
+    }
+
     protected static function endpoint(): MyEnvelopesEndpoint
     {
         return self::dgs()->my()->envelopes();
