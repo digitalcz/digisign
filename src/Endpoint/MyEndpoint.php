@@ -42,4 +42,9 @@ final class MyEndpoint extends ResourceEndpoint
     {
         return $this->createResource($this->getRequest('/info'), MyInfo::class);
     }
+
+    public function identifications(): MyIdentificationsEndpoint
+    {
+        return new MyIdentificationsEndpoint($this);
+    }
 }
