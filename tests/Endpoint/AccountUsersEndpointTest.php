@@ -48,7 +48,7 @@ class AccountUsersEndpointTest extends EndpointTestCase
     public function testInvite(): void
     {
         self::endpoint()->invite(['foo' => 'bar']);
-        self::assertLastRequest('POST', '/api/account/users', ['foo' => 'bar']);
+        self::assertLastRequest('POST', '/api/account/users/invite', ['foo' => 'bar']);
     }
 
     public function testReinvite(): void
