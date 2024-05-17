@@ -46,7 +46,7 @@ final class AccountUsersEndpoint extends ResourceEndpoint
      */
     public function invite(array $body): User
     {
-        return $this->makeResource($this->postRequest('/invite', ['input' => $body]));
+        return $this->makeResource($this->postRequest('/invite', ['json' => $body]));
     }
 
     public function reinvite(string $id): User
