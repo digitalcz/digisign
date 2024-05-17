@@ -8,6 +8,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Fix `AccountUsersEndpoint.invite` endpoint
 - Add `MyIdentifications.info` endpoint
 - Add `EnvelopeRecipient.certificateInfo` endpoint
+- Add `EnvelopeProperties.channelForSender` in to resource
 - Edit `CertificateInfo` resource
 
 ## [2.4.0] - 2024-05-14
