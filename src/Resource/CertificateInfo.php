@@ -42,6 +42,8 @@ final class CertificateInfo extends BaseResource
 
     public ?string $subjectStreetAddress;
 
+    public ?string $subjectSerialNumber;
+
     public ?string $issuerCountry;
 
     public ?string $issuerOtherName;
@@ -51,4 +53,8 @@ final class CertificateInfo extends BaseResource
     public ?string $serialNumber;
 
     public ?string $version;
+
+    public bool $qscd;
+
+    public bool $qtsp;
 }
