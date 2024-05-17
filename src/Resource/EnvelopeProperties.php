@@ -35,4 +35,6 @@ class EnvelopeProperties extends BaseResource
     public array $timestampingAuthorities;
 
     public bool $sendCompleted;
+
+    public string $channelForSender;
 }
