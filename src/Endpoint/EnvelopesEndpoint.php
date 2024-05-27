@@ -52,9 +52,12 @@ final class EnvelopesEndpoint extends ResourceEndpoint
         return new EnvelopeLabelsEndpoint($this, $envelope);
     }
 
-    public function cancel(string $id): BaseResource
+    /**
+     * @param mixed[] $body
+     */
+    public function cancel(string $id, array $body = []): BaseResource
     {
-        return $this->createResource($this->postRequest('/{id}/cancel', ['id' => $id]));
+        return $this->createResource($this->postRequest('/{id}/cancel', ['id' => $id, 'json' => $body]));
     }
 
     public function count(): BaseResource
