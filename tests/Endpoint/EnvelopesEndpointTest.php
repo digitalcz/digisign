@@ -25,8 +25,8 @@ class EnvelopesEndpointTest extends EndpointTestCase
 
     public function testCancel(): void
     {
-        self::endpoint()->cancel('foo');
-        self::assertLastRequest('POST', '/api/envelopes/foo/cancel');
+        self::endpoint()->cancel('foo', ['foo' => 'bar']);
+        self::assertLastRequest('POST', '/api/envelopes/foo/cancel', ['foo' => 'bar']);
     }
 
     public function testCount(): void
