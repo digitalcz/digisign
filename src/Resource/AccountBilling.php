@@ -14,6 +14,8 @@ class AccountBilling extends BaseResource
 
     public string $planName;
 
+    public string $productType;
+
     public ?DateTime $billingPeriodStart;
 
     public ?DateTime $billingPeriodEnd;

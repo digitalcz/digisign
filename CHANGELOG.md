@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `AccountBilling.productType`
 - Add `EnvelopesEndpoint.cancel` body
 - Fix `AccountUsersEndpoint.invite` endpoint
 - Add `MyIdentifications.info` endpoint
