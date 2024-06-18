@@ -13,6 +13,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeProperties.channelForSender` in to resource
 - Edit `CertificateInfo` resource
 - Extend `Contact` resource
+- Extend `AccountBilling` resource with identify limits
 
 ## [2.4.0] - 2024-05-14
 ### Added
