@@ -12,6 +12,8 @@ class AccountBilling extends BaseResource
 
     public bool $hasSubscription;
 
+    public bool $hasBillingEnabled;
+
     public string $planName;
 
     public string $productType;
