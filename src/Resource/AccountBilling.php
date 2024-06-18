@@ -49,4 +49,12 @@ class AccountBilling extends BaseResource
     public bool $signatureScenarios;
 
     public bool $identifyAi;
+
+    public ?int $identifyAiLimit;
+
+    public ?int $identifyNoneOrManualLimit;
+
+    public int $identifyAiUsage;
+
+    public int $identifyNoneOrManualUsage;
 }
