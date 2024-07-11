@@ -24,6 +24,8 @@ class AccountBilling extends BaseResource
 
     public ?int $userLimit;
 
+    public ?int $userContactLimit;
+
     public int $envelopeUsage;
 
     public ?int $envelopeLimit;
