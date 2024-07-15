@@ -7,6 +7,7 @@ namespace DigitalCz\DigiSign;
 use DateTimeInterface;
 use DigitalCz\DigiSign\Exception\BadRequestException;
 use DigitalCz\DigiSign\Exception\ClientException;
+use DigitalCz\DigiSign\Exception\ForbiddenException;
 use DigitalCz\DigiSign\Exception\NotFoundException;
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use DigitalCz\DigiSign\Exception\ServerException;
@@ -34,6 +35,7 @@ final class DigiSignClient implements DigiSignClientInterface
     public const HTTP_NO_CONTENT = 204;
     public const HTTP_BAD_REQUEST = 400;
     public const HTTP_UNAUTHORIZED = 401;
+    public const HTTP_FORBIDDEN = 403;
     public const HTTP_NOT_FOUND = 404;
     public const HTTP_INTERNAL_SERVER_ERROR = 500;
 
@@ -288,6 +290,8 @@ final class DigiSignClient implements DigiSignClientInterface
                     throw new UnauthorizedException($response);
                 case self::HTTP_NOT_FOUND:
                     throw new NotFoundException($response);
+                case self::HTTP_FORBIDDEN:
+                    throw new ForbiddenException($response);
                 default:
                     throw new ClientException($response);
             }
