@@ -7,6 +7,7 @@ namespace DigitalCz\DigiSign;
 use DateTime;
 use DigitalCz\DigiSign\Exception\BadRequestException;
 use DigitalCz\DigiSign\Exception\ClientException;
+use DigitalCz\DigiSign\Exception\ForbiddenException;
 use DigitalCz\DigiSign\Exception\NotFoundException;
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use DigitalCz\DigiSign\Exception\ServerException;
@@ -335,6 +336,21 @@ class DigiSignClientTest extends TestCase
 
         $this->expectException(ClientException::class);
         $this->expectExceptionMessage('401 Unauthorized');
+
+        $client->request('GET', 'https://example.com/api');
+    }
+
+    public function testRequestForbiddenClientException(): void
+    {
+        $response = new Response(403);
+
+        $httpClient = new Client();
+        $httpClient->addResponse($response);
+
+        $client = new DigiSignClient($httpClient);
+
+        $this->expectException(ForbiddenException::class);
+        $this->expectExceptionMessage('403 Forbidden');
 
         $client->request('GET', 'https://example.com/api');
     }
