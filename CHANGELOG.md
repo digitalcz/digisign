@@ -15,6 +15,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Edit `CertificateInfo` resource
 - Extend `Contact` resource
 - Extend `AccountBilling` resource with identify limits
+- Add `AccountBilling.userContactLimit`
 
 ## [2.4.0] - 2024-05-14
 ### Added
