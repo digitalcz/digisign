@@ -7,6 +7,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 - Add `ForbiddenException`
 - Add `AccountBilling.productType`
+- Add `EnvelopeTemplate.title`
 - Add `EnvelopesEndpoint.cancel` body
 - Fix `AccountUsersEndpoint.invite` endpoint
 - Add `MyIdentifications.info` endpoint
