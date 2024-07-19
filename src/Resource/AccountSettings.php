@@ -45,4 +45,6 @@ class AccountSettings extends BaseResource
     public bool $identify;
 
     public bool $notificationForSenderEmail;
+
+    public bool $faultyWebhookChecking;
 }
