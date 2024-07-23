@@ -17,4 +17,11 @@ class Webhook extends BaseResource
     public string $status;
 
     public string $secret;
+
+    public ?string $oAuthTokenEndpoint;
+
+    public ?string $oAuthClientId;
+
+    /** @var string[] $oAuthScopes */
+    public array $oAuthScopes;
 }
