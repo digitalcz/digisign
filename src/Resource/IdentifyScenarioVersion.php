@@ -29,4 +29,7 @@ class IdentifyScenarioVersion extends BaseResource
     public bool $selfieEnabled;
     public int $expireAfterHours;
     public int $discardCompletedAfterDays;
+
+    /** @var string[]|null  */
+    public ?array $restrictedCountries;
 }
