@@ -50,6 +50,12 @@ class EnvelopeTemplatesEndpointTest extends EndpointTestCase
         self::assertLastRequest('POST', '/api/envelope-templates/foo/use');
     }
 
+    public function testBatchSending(): void
+    {
+        self::endpoint()->batchSending('foo');
+        self::assertLastRequest('POST', '/api/envelope-templates/foo/batch-sending');
+    }
+
     protected static function endpoint(): EnvelopeTemplatesEndpoint
     {
         return self::dgs()->envelopeTemplates();

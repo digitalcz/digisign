@@ -6,6 +6,7 @@ namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\DigiSign;
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
+use DigitalCz\DigiSign\Resource\BaseResource;
 use DigitalCz\DigiSign\Resource\Envelope;
 use DigitalCz\DigiSign\Resource\EnvelopeTemplate;
 
@@ -33,6 +34,14 @@ final class EnvelopeTemplatesEndpoint extends ResourceEndpoint
     public function use(EnvelopeTemplate|string $template): Envelope
     {
         return $this->createResource($this->postRequest('/{id}/use', ['id' => $template]), Envelope::class);
+    }
+
+    /**
+     * @param mixed[] $body
+     */
+    public function batchSending(EnvelopeTemplate|string $template, array $body = []): BaseResource
+    {
+        return $this->createResource($this->postRequest('/{id}/batch-sending', ['id' => $template, 'json' => $body]));
     }
 
     public function documents(EnvelopeTemplate|string $template): EnvelopeTemplateDocumentsEndpoint
