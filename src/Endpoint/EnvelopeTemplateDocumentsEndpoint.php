@@ -55,4 +55,9 @@ final class EnvelopeTemplateDocumentsEndpoint extends ResourceEndpoint
             $this->postRequest('/{document}/replace-file', ['document' => $document, 'json' => $body]),
         );
     }
+
+    public function assignments(): EnvelopeTemplateDocumentAssignmentEndpoint
+    {
+        return new EnvelopeTemplateDocumentAssignmentEndpoint($this);
+    }
 }

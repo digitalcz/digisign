@@ -9,6 +9,14 @@ namespace DigitalCz\DigiSign\Endpoint;
  */
 class EnvelopeTemplateDocumentsEndpointTest extends EndpointTestCase
 {
+    public function testChildren(): void
+    {
+        self::assertDefaultEndpointPath(
+            self::endpoint()->assignments(),
+            '/api/envelope-templates/bar/documents/assignments',
+        );
+    }
+
     public function testCRUD(): void
     {
         self::assertCrudRequests(self::endpoint(), '/api/envelope-templates/bar/documents');
