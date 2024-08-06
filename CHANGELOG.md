@@ -19,6 +19,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Extend `AccountBilling` resource with identify limits
 - Add `AccountBilling.userContactLimit`
 - Add `IdentifyScenarioVersion.restrictedCountries`
+- Add `EnvelopeTemplateDocumentAssignments` endpoint
 
 ## [2.4.0] - 2024-05-14
 ### Added
