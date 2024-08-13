@@ -88,5 +88,9 @@ class Envelope extends BaseResource
 
     public ?UserInfo $sender = null;
 
+    public Blame $createdBy;
+
+    public ?Blame $sentBy = null;
+
     public bool $sentWithSignatureScenarios;
 }
