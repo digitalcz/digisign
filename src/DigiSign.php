@@ -9,6 +9,7 @@ use DigitalCz\DigiSign\Auth\CachedCredentials;
 use DigitalCz\DigiSign\Auth\Credentials;
 use DigitalCz\DigiSign\Endpoint\AccountEndpoint;
 use DigitalCz\DigiSign\Endpoint\AuthEndpoint;
+use DigitalCz\DigiSign\Endpoint\BatchSendingsEndpoint;
 use DigitalCz\DigiSign\Endpoint\DeliveriesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EndpointInterface;
 use DigitalCz\DigiSign\Endpoint\EnumsEndpoint;
@@ -241,6 +242,11 @@ final class DigiSign implements EndpointInterface
     public function deliveries(): DeliveriesEndpoint
     {
         return new DeliveriesEndpoint($this);
+    }
+
+    public function batchSendings(): BatchSendingsEndpoint
+    {
+        return new BatchSendingsEndpoint($this);
     }
 
     public function identifications(): IdentificationsEndpoint
