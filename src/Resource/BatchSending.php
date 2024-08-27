@@ -6,7 +6,6 @@ namespace DigitalCz\DigiSign\Resource;
 
 use DigitalCz\DigiSign\Resource\Traits\EntityResourceTrait;
 
-
 class BatchSending extends BaseResource
 {
     use EntityResourceTrait;
