@@ -11,5 +11,5 @@ class BatchSendingSlug extends BaseResource
     /**
      * @var array<int, BatchSendingSlug>
      */
-    public array $columns;
+    public array $fields;
 }
