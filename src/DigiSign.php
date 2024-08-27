@@ -129,8 +129,8 @@ final class DigiSign implements EndpointInterface
             throw new InvalidSignatureException('Unable to parse signature header');
         }
 
-        $ts = (int)($matches['t'] ?? 0);
-        $signature = $matches['s'] ?? '';
+        $ts = (int)($matches['t']);
+        $signature = $matches['s'];
 
         if ($ts < time() - $this->signatureTolerance) {
             throw new InvalidSignatureException("Request is older than {$this->signatureTolerance} seconds");

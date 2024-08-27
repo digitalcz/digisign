@@ -161,7 +161,7 @@ class BaseResource implements ResourceInterface
                 // parse Resource class from type
                 preg_match('/Collection<(.+)>/', $type, $matches);
                 /** @var class-string<ResourceInterface> $resourceClass */
-                $resourceClass = $matches[1];
+                $resourceClass = $matches[1] ?? '';
 
                 if (!class_exists($resourceClass)) {
                     $reflection = new ReflectionClass($this::class);
