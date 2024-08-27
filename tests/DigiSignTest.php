@@ -134,6 +134,8 @@ class DigiSignTest extends TestCase
         self::assertSame('/api/auth-token', $mockClient->getLastRequest()->getUri()->getPath());
         $dgs->account()->request('GET');
         self::assertSame('/api/account', $mockClient->getLastRequest()->getUri()->getPath());
+        $dgs->batchSendings()->request('GET');
+        self::assertSame('/api/batch-sendings', $mockClient->getLastRequest()->getUri()->getPath());
         $dgs->envelopes()->request('GET');
         self::assertSame('/api/envelopes', $mockClient->getLastRequest()->getUri()->getPath());
         $dgs->envelopeTemplates()->request('GET');
