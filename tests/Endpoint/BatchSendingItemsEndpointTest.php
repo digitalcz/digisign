@@ -11,7 +11,7 @@ class BatchSendingItemsEndpointTest extends EndpointTestCase
 {
     public function testImport(): void
     {
-        self::endpoint()->import('bar');
+        self::endpoint()->import(['file' => 'bar']);
         self::assertLastRequest('POST', "/api/batch-sendings/foo/items/import", ['file' => 'bar']);
     }
 

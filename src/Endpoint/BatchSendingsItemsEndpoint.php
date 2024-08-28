@@ -16,17 +16,11 @@ final class BatchSendingsItemsEndpoint extends ResourceEndpoint
         parent::__construct($parent, '/{id}/items', BaseResource::class, ['id' => $batchSending]);
     }
 
-    public function import(string $fileId): BaseResource
+    /**
+     * @param mixed[] $body
+     */
+    public function import(array $body): BaseResource
     {
-        return $this->createResource(
-            $this->postRequest(
-                '/import',
-                [
-                    'json' => [
-                        'file' => $fileId,
-                    ],
-                ],
-            ),
-        );
+        return $this->createResource($this->postRequest('/import', ['json' => $body]));
     }
 }
