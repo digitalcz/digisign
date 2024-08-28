@@ -27,7 +27,7 @@ class BatchSending extends BaseResource
     public string $status;
 
     /**
-     * @var array<BatchSendingSlug>
+     * @var array<string>
      */
-    public array $slugs;
+    public array $importFields;
 }
