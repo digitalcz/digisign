@@ -12,6 +12,9 @@ use DigitalCz\DigiSign\Resource\BatchSending;
 
 /**
  * @extends ResourceEndpoint<BatchSending>
+ * @method BatchSending get(string $id)
+ * @method BatchSending update(string $id, array $body)
+ * @method BatchSending create(array $body)
  */
 final class BatchSendingsEndpoint extends ResourceEndpoint
 {
