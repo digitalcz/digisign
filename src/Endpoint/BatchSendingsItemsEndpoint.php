@@ -19,8 +19,8 @@ final class BatchSendingsItemsEndpoint extends ResourceEndpoint
     /**
      * @param mixed[] $body
      */
-    public function import(array $body): BaseResource
+    public function import(array $body): void
     {
-        return $this->createResource($this->postRequest('/import', ['json' => $body]));
+        $this->postRequest('/import', ['json' => $body]);
     }
 }
