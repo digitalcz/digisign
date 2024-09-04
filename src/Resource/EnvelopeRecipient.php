@@ -25,6 +25,12 @@ class EnvelopeRecipient extends BaseResource
 
     public string $authenticationOnDownload;
 
+    public ?string $autoplacementTagPlaceholder = null;
+
+    public ?string $autoplacementTagPositioning = null;
+
+    public ?int $autoplacementTagSize = null;
+
     public string $language;
 
     public string $channelForSigner;
