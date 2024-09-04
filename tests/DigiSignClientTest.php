@@ -200,7 +200,7 @@ class DigiSignClientTest extends TestCase
         $boundary = trim(substr($contentType, 30), '"');
         self::assertStringStartsWith("multipart/form-data; boundary=\"$boundary\"", $contentType);
         self::assertSame(
-            "--$boundary\r\nContent-Disposition: form-data; name=\"foo\"\r\nContent-Length: 3\r\n\r\nbar\r\n--$boundary--\r\n",
+            "--$boundary\r\nContent-Disposition: form-data; name=\"foo\"\r\n\r\nbar\r\n--$boundary--\r\n",
             (string)$lastRequest->getBody(),
         );
     }
@@ -221,7 +221,7 @@ class DigiSignClientTest extends TestCase
         $boundary = trim(substr($contentType, 30), '"');
         self::assertStringStartsWith("multipart/form-data; boundary=\"$boundary\"", $contentType);
         self::assertStringStartsWith(
-            "--$boundary\r\nContent-Disposition: form-data; name=\"file\"; filename=\"dummy.pdf\"\r\nContent-Length: 13264\r\nContent-Type: application/pdf",
+            "--$boundary\r\nContent-Disposition: form-data; name=\"file\"; filename=\"dummy.pdf\"\r\nContent-Type: application/pdf",
             (string)$lastRequest->getBody(),
         );
     }

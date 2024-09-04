@@ -35,13 +35,11 @@ class ImagesEndpointTest extends EndpointTestCase
         self::assertSame(
             "--$boundary\r\n" .
             "Content-Disposition: form-data; name=\"image\"; filename=\"dummy.png\"\r\n" .
-            "Content-Length: " . $image->getSize() . "\r\n" .
             "Content-Type: image/png\r\n" .
             "\r\n" .
             file_get_contents(TESTS_DIR . '/dummy.png') . "\r\n" .
             "--$boundary\r\n" .
             "Content-Disposition: form-data; name=\"public\"\r\n" .
-            "Content-Length: 4\r\n" .
             "\r\n" .
             "true\r\n" .
             "--$boundary--\r\n",

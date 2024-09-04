@@ -35,7 +35,6 @@ class FilesEndpointTest extends EndpointTestCase
         self::assertSame(
             "--$boundary\r\n" .
             "Content-Disposition: form-data; name=\"file\"; filename=\"dummy.pdf\"\r\n" .
-            "Content-Length: " . $file->getSize() . "\r\n" .
             "Content-Type: application/pdf\r\n" .
             "\r\n" .
             file_get_contents(TESTS_DIR . '/dummy.pdf') . "\r\n" .
