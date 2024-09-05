@@ -60,5 +60,5 @@ class AccountBilling extends BaseResource
 
     public int $identifyNoneOrManualUsage;
 
-    public bool $automaticFieldsPlacement;
+    public bool $automaticTagsPlacement;
 }
