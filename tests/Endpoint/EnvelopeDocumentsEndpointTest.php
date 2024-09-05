@@ -43,9 +43,9 @@ class EnvelopeDocumentsEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/envelopes/bar/documents/foo/tags?foo=bar');
     }
 
-    public function testAutoplacementTags(): void
+    public function testTagsByAutoplacement(): void
     {
-        self::endpoint()->createAutoplacementTags('foo');
+        self::endpoint()->createTagsByAutoplacement('foo');
         self::assertLastRequest('POST', '/api/envelopes/bar/documents/foo/tags/by-autoplacement');
     }
 

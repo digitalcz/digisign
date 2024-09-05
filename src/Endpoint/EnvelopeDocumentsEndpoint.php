@@ -71,7 +71,7 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
     /**
      * @return ListResource<EnvelopeTag>
      */
-    public function createAutoplacementTags(string $document): ListResource
+    public function createTagsByAutoplacement(string $document): ListResource
     {
         return $this->createListResource(
             $this->postRequest('/{document}/tags/by-autoplacement', ['document' => $document]),
