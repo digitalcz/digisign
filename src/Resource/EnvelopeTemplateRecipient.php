@@ -22,6 +22,12 @@ class EnvelopeTemplateRecipient extends BaseResource
 
     public string $authenticationOnDownload;
 
+    public ?string $autoplacementTagPlaceholder = null;
+
+    public ?string $autoplacementTagPositioning = null;
+
+    public ?int $autoplacementTagSize = null;
+
     public ?string $name = null;
 
     public ?string $email = null;
