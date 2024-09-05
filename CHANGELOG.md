@@ -6,7 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 - Extend `EnvelopeRecipient` and `EnvelopeTemplateRecipient` resource
-- Add `EnvelopeDocument.createAutoplacementTags` endpoint
+- Add `EnvelopeDocument.createTagsByAutoplacement` endpoint
 - Add `Webhook oAuth properties`
 - Add `ForbiddenException`
 - Add `AccountBilling.productType`
