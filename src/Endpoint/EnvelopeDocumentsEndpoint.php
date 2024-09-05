@@ -69,6 +69,17 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
     }
 
     /**
+     * @return ListResource<EnvelopeTag>
+     */
+    public function createAutoplacementTags(string $document): ListResource
+    {
+        return $this->createListResource(
+            $this->postRequest('/{document}/tags/by-autoplacement', ['document' => $document]),
+            EnvelopeTag::class,
+        );
+    }
+
+    /**
      * @param mixed[] $body
      */
     public function replaceFile(EnvelopeDocument|string $document, array $body): EnvelopeDocument
