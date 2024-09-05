@@ -32,15 +32,27 @@ class FilesEndpointTest extends EndpointTestCase
         $contentType = $lastRequest->getHeaderLine('Content-Type');
         $boundary = trim(substr($contentType, 30), '"');
         self::assertSame("multipart/form-data; boundary=\"$boundary\"", $contentType);
-        self::assertSame(
-            "--$boundary\r\n" .
-            "Content-Disposition: form-data; name=\"file\"; filename=\"dummy.pdf\"\r\n" .
-            "Content-Length: " . $file->getSize() . "\r\n" .
-            "Content-Type: application/pdf\r\n" .
-            "\r\n" .
-            file_get_contents(TESTS_DIR . '/dummy.pdf') . "\r\n" .
-            "--$boundary--\r\n",
+        self::assertThat(
             (string)$lastRequest->getBody(),
+            self::logicalOr(
+                self::equalTo(
+                    "--$boundary\r\n" .
+                    "Content-Disposition: form-data; name=\"file\"; filename=\"dummy.pdf\"\r\n" .
+                    "Content-Length: " . $file->getSize() . "\r\n" .
+                    "Content-Type: application/pdf\r\n" .
+                    "\r\n" .
+                    file_get_contents(TESTS_DIR . '/dummy.pdf') . "\r\n" .
+                    "--$boundary--\r\n",
+                ),
+                self::equalTo(
+                    "--$boundary\r\n" .
+                    "Content-Disposition: form-data; name=\"file\"; filename=\"dummy.pdf\"\r\n" .
+                    "Content-Type: application/pdf\r\n" .
+                    "\r\n" .
+                    file_get_contents(TESTS_DIR . '/dummy.pdf') . "\r\n" .
+                    "--$boundary--\r\n",
+                ),
+            ),
         );
     }
 

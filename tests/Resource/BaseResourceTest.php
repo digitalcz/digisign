@@ -9,6 +9,7 @@ use DigitalCz\DigiSign\Exception\RuntimeException;
 use Nyholm\NSA;
 use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
+use ReflectionObject;
 
 /**
  * @covers \DigitalCz\DigiSign\Resource\BaseResource
@@ -86,7 +87,7 @@ class BaseResourceTest extends TestCase
         self::assertSame('moo', $resource->collection[0]->string);
         self::assertInstanceOf(DummyResource::class, $resource->collection[1]);
         self::assertSame('baz', $resource->collection[1]->string);
-        self::assertObjectNotHasAttribute('unmapped', $resource);
+        self::assertTrue((new ReflectionObject($resource))->hasProperty('unmapped') === false);
         self::assertSame('goo', $resource->unmapped);
         self::assertSame('#foobar', $resource->self());
         self::assertSame(DummyResource::ID, $resource->id());

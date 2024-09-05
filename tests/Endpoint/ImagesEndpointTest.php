@@ -32,20 +32,36 @@ class ImagesEndpointTest extends EndpointTestCase
         $contentType = $lastRequest->getHeaderLine('Content-Type');
         $boundary = trim(substr($contentType, 30), '"');
         self::assertSame("multipart/form-data; boundary=\"$boundary\"", $contentType);
-        self::assertSame(
-            "--$boundary\r\n" .
-            "Content-Disposition: form-data; name=\"image\"; filename=\"dummy.png\"\r\n" .
-            "Content-Length: " . $image->getSize() . "\r\n" .
-            "Content-Type: image/png\r\n" .
-            "\r\n" .
-            file_get_contents(TESTS_DIR . '/dummy.png') . "\r\n" .
-            "--$boundary\r\n" .
-            "Content-Disposition: form-data; name=\"public\"\r\n" .
-            "Content-Length: 4\r\n" .
-            "\r\n" .
-            "true\r\n" .
-            "--$boundary--\r\n",
+        self::assertThat(
             (string)$lastRequest->getBody(),
+            self::logicalOr(
+                self::equalTo(
+                    "--$boundary\r\n" .
+                    "Content-Disposition: form-data; name=\"image\"; filename=\"dummy.png\"\r\n" .
+                    "Content-Length: " . $image->getSize() . "\r\n" .
+                    "Content-Type: image/png\r\n" .
+                    "\r\n" .
+                    file_get_contents(TESTS_DIR . '/dummy.png') . "\r\n" .
+                    "--$boundary\r\n" .
+                    "Content-Disposition: form-data; name=\"public\"\r\n" .
+                    "Content-Length: 4\r\n" .
+                    "\r\n" .
+                    "true\r\n" .
+                    "--$boundary--\r\n",
+                ),
+                self::equalTo(
+                    "--$boundary\r\n" .
+                    "Content-Disposition: form-data; name=\"image\"; filename=\"dummy.png\"\r\n" .
+                    "Content-Type: image/png\r\n" .
+                    "\r\n" .
+                    file_get_contents(TESTS_DIR . '/dummy.png') . "\r\n" .
+                    "--$boundary\r\n" .
+                    "Content-Disposition: form-data; name=\"public\"\r\n" .
+                    "\r\n" .
+                    "true\r\n" .
+                    "--$boundary--\r\n",
+                ),
+            ),
         );
     }
 

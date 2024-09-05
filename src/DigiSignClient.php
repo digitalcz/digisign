@@ -223,10 +223,13 @@ final class DigiSignClient implements DigiSignClientInterface
 
             $multipartBuilder = new MultipartStreamBuilder($this->streamFactory);
             foreach ($options['multipart'] as $name => $resource) {
-                $resourceOptions = [];
+                $resourceOptions = [
+                    'headers' => [],
+                    'filename' => '',
+                ];
 
                 if ($resource instanceof FileStream) {
-                    $resourceOptions['filename'] = $resource->getFilename();
+                    $resourceOptions['filename'] = $resource->getFilename() ?? '';
                     $resource = $resource->getHandle();
                 }
 
