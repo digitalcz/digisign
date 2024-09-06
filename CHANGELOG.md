@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `AccountBilling.automaticTagsPlacement`
 - Extend `EnvelopeRecipient` and `EnvelopeTemplateRecipient` resource
 - Add `EnvelopeDocument.createTagsByAutoplacement` endpoint
 - Add `Webhook oAuth properties`
