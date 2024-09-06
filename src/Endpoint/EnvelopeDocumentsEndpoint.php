@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
+use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\Envelope;
 use DigitalCz\DigiSign\Resource\EnvelopeDocument;
 use DigitalCz\DigiSign\Resource\EnvelopeDocumentSignatureSheets;
@@ -69,11 +70,11 @@ final class EnvelopeDocumentsEndpoint extends ResourceEndpoint
     }
 
     /**
-     * @return ListResource<EnvelopeTag>
+     * @return Collection<EnvelopeTag>
      */
-    public function createTagsByAutoplacement(string $document): ListResource
+    public function createTagsByAutoplacement(string $document): Collection
     {
-        return $this->createListResource(
+        return $this->createCollectionResource(
             $this->postRequest('/{document}/tags/by-autoplacement', ['document' => $document]),
             EnvelopeTag::class,
         );
