@@ -25,6 +25,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeTemplateDocumentAssignments` endpoint
 - Add `Envelope.createdBy` and `Envelope.sentBy`
 - Add `BatchSendings` and `BatchSendingsItems` endpoints
+- Add `AccountSecurity.localSignature` to resource
 
 ## [2.4.0] - 2024-05-14
 ### Added
