@@ -27,6 +27,8 @@ class AccountSecurity extends BaseResource
      */
     public array $envelopeAnonymizeGroups;
 
+    public bool $localSignature;
+
     public bool $continuousSigning;
 
     public bool $auditLogDownloadDefaultUnchecked;
