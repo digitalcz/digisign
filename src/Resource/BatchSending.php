@@ -14,7 +14,7 @@ class BatchSending extends BaseResource
 
     public ?string $name;
 
-    public ?EnvelopeTemplate $template;
+    public ?string $envelopeTemplateId;
 
     public ?File $file;
 
