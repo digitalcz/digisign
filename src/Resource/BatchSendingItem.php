@@ -13,9 +13,7 @@ class BatchSendingItem extends BaseResource
 
     public string $name;
 
-    public int $itemNumber;
-
-    public ?string $envelope;
+    public ?string $envelopeId;
 
     public string $status;
 
@@ -26,7 +24,7 @@ class BatchSendingItem extends BaseResource
     public ?string $failedMessage;
 
     /** @var array<BatchSendingItemRecipientRaw>  */
-    public array $recipientsRawData;
+    public array $recipients;
 
     /** @var array<Violation>|null */
     public ?array $violations;

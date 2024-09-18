@@ -24,7 +24,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `IdentifyScenarioVersion.restrictedCountries`
 - Add `EnvelopeTemplateDocumentAssignments` endpoint
 - Add `Envelope.createdBy` and `Envelope.sentBy`
-- Add `BatchSendings` and `BatchSendingsItems` endpoints
+- Add `BatchSendings` and `BatchSendingsItems` endpoints and resources
 - Add `AccountSecurity.localSignature` to resource
 
 ## [2.4.0] - 2024-05-14
