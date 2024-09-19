@@ -138,7 +138,7 @@ final class DigiSignClient implements DigiSignClientInterface
     {
         // replace uri parameters with its values
         preg_match_all('/{(\w+)}/', $uri, $matches);
-        $searches = $matches[1] ?? [];
+        $searches = $matches[1];
         $replaces = [];
 
         foreach ($searches as $search) {
