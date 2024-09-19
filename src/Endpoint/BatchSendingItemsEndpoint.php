@@ -21,7 +21,12 @@ final class BatchSendingItemsEndpoint extends ResourceEndpoint
 
     public function __construct(BatchSendingsEndpoint $parent, BatchSending|string $batchSending)
     {
-        parent::__construct($parent, '/{id}/items', BatchSendingItem::class, ['id' => $batchSending]);
+        parent::__construct(
+            $parent,
+            '/{batchSending}/items',
+            BatchSendingItem::class,
+            ['batchSending' => $batchSending],
+        );
     }
 
     /**
