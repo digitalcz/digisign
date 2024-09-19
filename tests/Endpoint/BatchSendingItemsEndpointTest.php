@@ -12,16 +12,16 @@ class BatchSendingItemsEndpointTest extends EndpointTestCase
     public function testImport(): void
     {
         self::endpoint()->import(['file' => 'bar']);
-        self::assertLastRequest('POST', "/api/batch-sendings/foo/items/import", ['file' => 'bar']);
+        self::assertLastRequest('POST', "/api/batch-sendings/bar/items/import", ['file' => 'bar']);
     }
 
     public function testCRUD(): void
     {
-        self::assertCrudRequests(self::endpoint(), '/api/batch-sendings/foo/items');
+        self::assertCrudRequests(self::endpoint(), '/api/batch-sendings/bar/items');
     }
 
     protected static function endpoint(): BatchSendingItemsEndpoint
     {
-        return self::dgs()->batchSendings()->items('foo');
+        return self::dgs()->batchSendings()->items('bar');
     }
 }
