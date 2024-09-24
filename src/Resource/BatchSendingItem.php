@@ -26,6 +26,6 @@ class BatchSendingItem extends BaseResource
     /** @var array<BatchSendingItemRecipientRaw>  */
     public array $recipients;
 
-    /** @var array<Violation>|null */
-    public ?array $violations;
+    /** @var array<Violation> */
+    public array $violations;
 }
