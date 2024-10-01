@@ -30,8 +30,8 @@ final class BatchSendingsEndpoint extends ResourceEndpoint
         parent::__construct($parent, '/api/batch-sendings');
     }
 
-    public function items(string $id): BatchSendingsItemsEndpoint
+    public function items(string $id): BatchSendingItemsEndpoint
     {
-        return new BatchSendingsItemsEndpoint($this, $id);
+        return new BatchSendingItemsEndpoint($this, $id);
     }
 }
