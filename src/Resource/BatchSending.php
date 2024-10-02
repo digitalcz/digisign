@@ -10,9 +10,13 @@ class BatchSending extends BaseResource
 {
     use EntityResourceTrait;
 
+    public Blame $createdBy;
+
     public ?string $name;
 
     public ?string $envelopeTemplateId;
+
+    public ?UserInfo $owner;
 
     public ?File $file;
 
