@@ -16,6 +16,8 @@ class AccountBilling extends BaseResource
 
     public string $productType;
 
+    public bool $batchSending;
+
     public ?DateTime $billingPeriodStart;
 
     public ?DateTime $billingPeriodEnd;
