@@ -4,6 +4,9 @@ All notable changes will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [Unreleased]
+- Add `BatchSendingsEndpoint.send` endpoint
+
 ## [2.5.0] - 2024-10-14
 - Add `AccountBilling.automaticTagsPlacement`
 - Add `AccountBilling.batchSending`
