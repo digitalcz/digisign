@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `MyEndpoint.updatePreferences` endpoint and `MyPreferences` resource
 - Add `SignatureScenarioVersionInfo.role`
 - Add `BatchSendingsEndpoint.send` endpoint
 - Add `BatchSendingsEndpoint.list` endpoint

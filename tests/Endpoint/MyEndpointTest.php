@@ -24,6 +24,12 @@ class MyEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/my/info');
     }
 
+    public function testUpdatePreferences(): void
+    {
+        self::endpoint()->updatePreferences(['foo' => 'bar']);
+        self::assertLastRequest('PUT', '/api/my/preferences', ['foo' => 'bar']);
+    }
+
     private static function endpoint(): MyEndpoint
     {
         return self::dgs()->my();

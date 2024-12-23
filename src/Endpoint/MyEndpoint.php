@@ -7,6 +7,7 @@ namespace DigitalCz\DigiSign\Endpoint;
 use DigitalCz\DigiSign\DigiSign;
 use DigitalCz\DigiSign\Resource\BaseResource;
 use DigitalCz\DigiSign\Resource\MyInfo;
+use DigitalCz\DigiSign\Resource\MyPreferences;
 
 /**
  * @extends ResourceEndpoint<BaseResource>
@@ -46,5 +47,16 @@ final class MyEndpoint extends ResourceEndpoint
     public function identifications(): MyIdentificationsEndpoint
     {
         return new MyIdentificationsEndpoint($this);
+    }
+
+    /**
+     * @param mixed[] $body
+     */
+    public function updatePreferences(array $body): MyPreferences
+    {
+        return $this->createResource(
+            $this->putRequest('/preferences', ['json' => $body]),
+            MyPreferences::class,
+        );
     }
 }

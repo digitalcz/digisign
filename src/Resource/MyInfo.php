@@ -13,4 +13,5 @@ class MyInfo extends BaseResource
     /** @var string[] */
     public array $permissions;
     public ?MyAccount $account;
+    public MyPreferences $preferences;
 }
