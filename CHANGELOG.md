@@ -17,6 +17,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Extend `BatchSending` and `BatchSendingItem` resource
 - Edit `BatchSending` resource with envelopeTemplate
 - Extend `BatchSendingStats` resource with deleted
+- Extend `BatchSendingStats` resource with totalRecipients
 - Add `AccountBilling.cancelAt`
 - Add `AccountEndpoint.createDefaultSubscription` endpoint
 - Add `SignatureScenario.latestVersionInfo`

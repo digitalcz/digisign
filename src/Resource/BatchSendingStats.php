@@ -32,6 +32,8 @@ class BatchSendingStats extends BaseResource
 
     public int $disapproved;
 
+    public int $totalRecipients;
+
     public int $deliveryFailed;
 
     public int $sendSignedDocumentsFailed;
