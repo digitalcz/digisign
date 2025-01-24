@@ -19,6 +19,7 @@ use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
 use DigitalCz\DigiSign\Endpoint\IdentificationsEndpoint;
 use DigitalCz\DigiSign\Endpoint\ImagesEndpoint;
 use DigitalCz\DigiSign\Endpoint\LabelsEndpoint;
+use DigitalCz\DigiSign\Endpoint\MultiSignEndpoint;
 use DigitalCz\DigiSign\Endpoint\MyEndpoint;
 use DigitalCz\DigiSign\Endpoint\ReportEndpoint;
 use DigitalCz\DigiSign\Endpoint\WebhooksEndpoint;
@@ -287,6 +288,11 @@ final class DigiSign implements EndpointInterface
     public function report(): ReportEndpoint
     {
         return new ReportEndpoint($this);
+    }
+
+    public function multiSign(): MultiSignEndpoint
+    {
+        return new MultiSignEndpoint($this);
     }
 
     private function createUserAgent(): string

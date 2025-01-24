@@ -22,6 +22,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountEndpoint.createDefaultSubscription` endpoint
 - Add `SignatureScenario.latestVersionInfo`
 - Add `EnvelopeTemplateTag`.`customIdentifier` in to resource
+- Add `MultiSign.get` endpoint
 
 ## [2.5.0] - 2024-10-14
 - Add `AccountBilling.automaticTagsPlacement`
