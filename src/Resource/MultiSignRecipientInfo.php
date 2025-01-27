@@ -6,11 +6,11 @@ namespace DigitalCz\DigiSign\Resource;
 
 class MultiSignRecipientInfo extends BaseResource
 {
-    public string $recipientName;
+    public string $name;
 
-    public string $recipientAlias;
+    public string $alias;
 
-    public string $recipientEmail;
+    public string $email;
 
     public int $count;
 
