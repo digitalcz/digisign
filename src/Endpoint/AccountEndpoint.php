@@ -7,6 +7,7 @@ namespace DigitalCz\DigiSign\Endpoint;
 use DigitalCz\DigiSign\DigiSign;
 use DigitalCz\DigiSign\Resource\Account;
 use DigitalCz\DigiSign\Resource\AccountBilling;
+use DigitalCz\DigiSign\Resource\AccountGuide;
 use DigitalCz\DigiSign\Resource\AccountManageBilling;
 use DigitalCz\DigiSign\Resource\AccountSmsLog;
 use DigitalCz\DigiSign\Resource\AccountStatistics;
@@ -135,5 +136,10 @@ final class AccountEndpoint extends ResourceEndpoint
     public function deactivate(): void
     {
         $this->postRequest('/deactivate');
+    }
+
+    public function guide(): AccountGuide
+    {
+        return $this->createResource($this->getRequest('/guide'), AccountGuide::class);
     }
 }
