@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `Account.guide` endpoint and `AccountGuide` resource
 - Add `AccountBilling.multiSign`
 - Edit `MultiSignRecipientInfo` resource
 - Add `BatchSendingsEndpoint.MutiSignRecipients` endpoint
