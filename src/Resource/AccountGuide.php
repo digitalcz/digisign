@@ -8,5 +8,5 @@ class AccountGuide extends BaseResource
 {
     public bool $firstEnvelopeSent;
     public bool $firstUserInvited;
-    public bool $settingFilled;
+    public bool $settingsFilled;
 }
