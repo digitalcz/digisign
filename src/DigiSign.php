@@ -10,6 +10,7 @@ use DigitalCz\DigiSign\Auth\Credentials;
 use DigitalCz\DigiSign\Endpoint\AccountEndpoint;
 use DigitalCz\DigiSign\Endpoint\AuthEndpoint;
 use DigitalCz\DigiSign\Endpoint\BatchSendingsEndpoint;
+use DigitalCz\DigiSign\Endpoint\BulkSignatureEndpoint;
 use DigitalCz\DigiSign\Endpoint\DeliveriesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EndpointInterface;
 use DigitalCz\DigiSign\Endpoint\EnumsEndpoint;
@@ -19,7 +20,6 @@ use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
 use DigitalCz\DigiSign\Endpoint\IdentificationsEndpoint;
 use DigitalCz\DigiSign\Endpoint\ImagesEndpoint;
 use DigitalCz\DigiSign\Endpoint\LabelsEndpoint;
-use DigitalCz\DigiSign\Endpoint\MultiSignEndpoint;
 use DigitalCz\DigiSign\Endpoint\MyEndpoint;
 use DigitalCz\DigiSign\Endpoint\ReportEndpoint;
 use DigitalCz\DigiSign\Endpoint\WebhooksEndpoint;
@@ -290,9 +290,9 @@ final class DigiSign implements EndpointInterface
         return new ReportEndpoint($this);
     }
 
-    public function multiSign(): MultiSignEndpoint
+    public function bulkSignature(): BulkSignatureEndpoint
     {
-        return new MultiSignEndpoint($this);
+        return new BulkSignatureEndpoint($this);
     }
 
     private function createUserAgent(): string

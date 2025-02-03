@@ -6,17 +6,17 @@ namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\DigiSign;
 use DigitalCz\DigiSign\Endpoint\Traits\GetEndpointTrait;
-use DigitalCz\DigiSign\Resource\MultiSign;
+use DigitalCz\DigiSign\Resource\BulkSignature;
 
 /**
- * @extends ResourceEndpoint<MultiSign>
+ * @extends ResourceEndpoint<BulkSignature>
  */
-final class MultiSignEndpoint extends ResourceEndpoint
+final class BulkSignatureEndpoint extends ResourceEndpoint
 {
     use GetEndpointTrait;
 
     public function __construct(DigiSign $parent)
     {
-        parent::__construct($parent, '/api/multi-signs', MultiSign::class);
+        parent::__construct($parent, '/api/bulk-signatures', BulkSignature::class);
     }
 }

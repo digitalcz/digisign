@@ -7,7 +7,7 @@ namespace DigitalCz\DigiSign\Resource;
 use DateTime;
 use DigitalCz\DigiSign\Resource\Traits\EntityResourceTrait;
 
-final class MultiSign extends BaseResource
+final class BulkSignature extends BaseResource
 {
     use EntityResourceTrait;
 
