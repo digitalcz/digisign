@@ -8,8 +8,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Edit `AccountGuide.settingsFilled`
 - Add `MyPreferences.guideHide`
 - Add `Account.guide` endpoint and `AccountGuide` resource
-- Add `AccountBilling.multiSign`
-- Edit `MultiSignRecipientInfo` resource
+- Add `AccountBilling.bulkSigning`
+- Edit `BulkSignatureRecipientInfo` resource
 - Add `BatchSendingsEndpoint.MutiSignRecipients` endpoint
 - Add `MyEndpoint.updatePreferences` endpoint and `MyPreferences` resource
 - Add `SignatureScenarioVersionInfo.role`
@@ -28,7 +28,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountEndpoint.createDefaultSubscription` endpoint
 - Add `SignatureScenario.latestVersionInfo`
 - Add `EnvelopeTemplateTag`.`customIdentifier` in to resource
-- Add `MultiSign.get` endpoint
+- Add `BulkSignature.get` endpoint
 
 ## [2.5.0] - 2024-10-14
 - Add `AccountBilling.automaticTagsPlacement`

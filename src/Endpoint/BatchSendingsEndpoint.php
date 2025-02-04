@@ -13,9 +13,9 @@ use DigitalCz\DigiSign\Endpoint\Traits\UpdateEndpointTrait;
 use DigitalCz\DigiSign\Resource\BaseResource;
 use DigitalCz\DigiSign\Resource\BatchSending;
 use DigitalCz\DigiSign\Resource\BatchSendingStats;
+use DigitalCz\DigiSign\Resource\BulkSignatureRecipientInfo;
 use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\ListResource;
-use DigitalCz\DigiSign\Resource\MultiSignRecipientInfo;
 
 /**
  * @extends ResourceEndpoint<BatchSending>
@@ -55,13 +55,13 @@ final class BatchSendingsEndpoint extends ResourceEndpoint
     }
 
     /**
-     * @return Collection<MultiSignRecipientInfo>
+     * @return Collection<BulkSignatureRecipientInfo>
      */
-    public function multiSignRecipients(BatchSending|string $id): Collection
+    public function bulkSignatureRecipients(BatchSending|string $id): Collection
     {
         return $this->createCollectionResource(
-            $this->getRequest('/{id}/multi-sign-recipients', ['id' => $id]),
-            MultiSignRecipientInfo::class,
+            $this->getRequest('/{id}/bulk-signature-recipients', ['id' => $id]),
+            BulkSignatureRecipientInfo::class,
         );
     }
 }

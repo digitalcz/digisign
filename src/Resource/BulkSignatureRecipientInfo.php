@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Resource;
 
-class MultiSignRecipientInfo extends BaseResource
+class BulkSignatureRecipientInfo extends BaseResource
 {
     public string $name;
 
@@ -14,5 +14,5 @@ class MultiSignRecipientInfo extends BaseResource
 
     public int $count;
 
-    public bool $isMultiSignable;
+    public bool $isBulkSignable;
 }
