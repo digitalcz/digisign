@@ -67,4 +67,6 @@ class AccountBilling extends BaseResource
     public bool $automaticTagsPlacement;
 
     public bool $bulkSigning;
+
+    public bool $hasBillingEnabled;
 }
