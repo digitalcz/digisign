@@ -29,6 +29,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `SignatureScenario.latestVersionInfo`
 - Add `EnvelopeTemplateTag`.`customIdentifier` in to resource
 - Add `BulkSignature.get` endpoint
+- Add `AccountBilling.hasBillingEnabled`
 
 ## [2.5.0] - 2024-10-14
 - Add `AccountBilling.automaticTagsPlacement`
