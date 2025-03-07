@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `BulkSignature.list` endpoint
 
 ## [2.6.0] - 2025-03-06
 - Edit `AccountGuide.settingsFilled`

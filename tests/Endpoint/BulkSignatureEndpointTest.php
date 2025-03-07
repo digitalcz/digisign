@@ -15,6 +15,12 @@ final class BulkSignatureEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/bulk-signatures/foo');
     }
 
+    public function testList(): void
+    {
+        self::endpoint()->list();
+        self::assertLastRequest('GET', '/api/bulk-signatures');
+    }
+
     protected static function endpoint(): BulkSignatureEndpoint
     {
         return self::dgs()->bulkSignature();
