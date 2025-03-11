@@ -33,7 +33,7 @@ final class BulkSignature extends BaseResource
 
     public string $status;
 
-    public ?SignatureScenarioVersion $scenarioVersion;
+    public ?string $scenarioVersion;
 
     /**
      * @var string[]
