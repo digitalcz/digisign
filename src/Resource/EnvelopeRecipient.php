@@ -107,6 +107,8 @@ class EnvelopeRecipient extends BaseResource
 
     public bool $signDocumentsAtOnce;
 
+    public ?EnvelopeRecipientApproval $approval = null;
+
     public ?DateTime $signedDocumentsDeliveredAt = null;
 
     public ?DateTime $signedDocumentsNonDeliveredAt = null;
