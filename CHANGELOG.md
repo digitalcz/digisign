@@ -7,6 +7,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 - Add `BulkSignature.list` endpoint
 - Fix `BulkSignature.scenarioVersion` type
+- Add `EnvelopeRecipientApproval` resource
 
 ## [2.6.0] - 2025-03-06
 - Edit `AccountGuide.settingsFilled`
