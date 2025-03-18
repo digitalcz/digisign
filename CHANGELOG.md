@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `MyPreferences.language` in to resource
 - Add `BulkSignature.list` endpoint
 - Fix `BulkSignature.scenarioVersion` type
 - Add `EnvelopeRecipientApproval` resource
