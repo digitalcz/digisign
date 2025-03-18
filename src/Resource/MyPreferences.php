@@ -11,4 +11,5 @@ class MyPreferences extends BaseResource
     public bool $welcomeVideoHide;
     public bool $welcomeVideoClose;
     public bool $guideHide;
+    public string $language;
 }
