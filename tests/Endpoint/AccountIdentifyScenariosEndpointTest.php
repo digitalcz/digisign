@@ -15,6 +15,7 @@ class AccountIdentifyScenariosEndpointTest extends EndpointTestCase
             self::endpoint()->versions('foo'),
             '/api/account/identify-scenarios/foo/versions',
         );
+        self::assertDefaultEndpointPath(self::endpoint()->inspectionChecks(), '/api/account/identify-scenarios/inspection-checks');
     }
 
     public function testCRU(): void
