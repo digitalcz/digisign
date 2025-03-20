@@ -38,6 +38,11 @@ class AccountIdentifyScenariosEndpoint extends ResourceEndpoint
         return new AccountIdentifyScenarioVersionsEndpoint($this, $scenario);
     }
 
+    public function inspectionChecks(): AccountIdentifyScenariosInspectionChecksEndpoint
+    {
+        return new AccountIdentifyScenariosInspectionChecksEndpoint($this);
+    }
+
     /**
      * @return Collection<IdentifyScenarioInfo>
      */
