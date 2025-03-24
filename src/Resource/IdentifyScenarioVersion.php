@@ -34,5 +34,5 @@ class IdentifyScenarioVersion extends BaseResource
     public ?array $restrictedCountries;
 
     /** @var array<string, string>  */
-    public ?array $rejectionChecksOverwrites;
+    public array $rejectionChecksOverwrites;
 }
