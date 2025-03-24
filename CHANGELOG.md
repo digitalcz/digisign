@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Fix `BulkSignature.scenarioVersion` type
 - Add `EnvelopeRecipientApproval` resource
 - Add `AccountIdentifyScenariosInspectionChecksEndpoint` endpoint
+- Add `IdentifyScenarioVersion.rejectionChecksOverwrites` in to resource
 
 ## [2.6.0] - 2025-03-06
 - Edit `AccountGuide.settingsFilled`
