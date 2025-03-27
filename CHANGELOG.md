@@ -11,6 +11,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeRecipientApproval` resource
 - Add `AccountIdentifyScenariosInspectionChecksEndpoint` endpoint
 - Add `IdentifyScenarioVersion.rejectionChecksOverwrites` in to resource
+- Fix `EnvelopeTagsByPlaceholder.create` endpoint
 
 ## [2.6.0] - 2025-03-06
 - Edit `AccountGuide.settingsFilled`
