@@ -5,6 +5,11 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+
+## [2.7.1] - 2025-03-31
+- Update CHANGELOG.md and version in DigiSign.php
+
+## [2.7.0] - 2025-03-30
 - Add `MyPreferences.language` in to resource
 - Add `BulkSignature.list` endpoint
 - Fix `BulkSignature.scenarioVersion` type
