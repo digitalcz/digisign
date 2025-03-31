@@ -17,5 +17,5 @@ final class EnvelopeRecipientApproval extends BaseResource
 
     public ?string $message;
 
-    public ?string $confirmation;
+    public ?string $confirmationId;
 }
