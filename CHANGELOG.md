@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Edit `EnvelopeRecipientApproval` resource
 
 ## [2.7.1] - 2025-03-31
 - Update CHANGELOG.md and version in DigiSign.php
