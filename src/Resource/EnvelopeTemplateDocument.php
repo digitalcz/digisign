@@ -21,4 +21,7 @@ class EnvelopeTemplateDocument extends BaseResource
     public ?int $labelPositionX = null;
 
     public ?int $labelPositionY = null;
+
+    /** @var array<string, string> */
+    public array $assignments;
 }

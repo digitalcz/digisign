@@ -20,6 +20,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeTemplateRecipient.contractingParty`
 - Add `EnvelopeTemplateRecipient.birthdate`
 - Add `EnvelopeTemplateRecipient.birthnumber`
+- Add `EnvelopeTemplateDocument.assignments` in to resource
 
 ## [2.7.1] - 2025-03-31
 - Update CHANGELOG.md and version in DigiSign.php
