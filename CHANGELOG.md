@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 - Edit `EnvelopeRecipientApproval` resource
+- Add `BulkSignature.completedAt` in to resource
 
 ## [2.7.1] - 2025-03-31
 - Update CHANGELOG.md and version in DigiSign.php

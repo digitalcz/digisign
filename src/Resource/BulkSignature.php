@@ -57,4 +57,6 @@ final class BulkSignature extends BaseResource
     public string $language;
 
     public ?Branding $branding;
+
+    public ?DateTime $completedAt;
 }
