@@ -41,4 +41,10 @@ class SentEnvelopeReport extends BaseResource
     public int $bankIdIdentifyAmlCount;
 
     public string $sender;
+
+    public int $timestampTsaPostSignumCount;
+
+    public int $timestampTsaIcaCount;
+
+    public int $timestampAtsaIcaCount;
 }
