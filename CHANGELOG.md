@@ -10,6 +10,16 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `SentEnvelopeReport.timestampAtsaIcaCount`
 - Edit `EnvelopeRecipientApproval` resource
 - Add `BulkSignature.completedAt` in to resource
+- Add `EnvelopeRecipient.company`
+- Add `EnvelopeRecipient.function`
+- Add `EnvelopeRecipient.contractingParty`
+- Add `EnvelopeRecipient.birthdate`
+- Add `EnvelopeRecipient.birthnumber`
+- Add `EnvelopeTemplateRecipient.company`
+- Add `EnvelopeTemplateRecipient.function`
+- Add `EnvelopeTemplateRecipient.contractingParty`
+- Add `EnvelopeTemplateRecipient.birthdate`
+- Add `EnvelopeTemplateRecipient.birthnumber`
 
 ## [2.7.1] - 2025-03-31
 - Update CHANGELOG.md and version in DigiSign.php

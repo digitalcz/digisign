@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Resource;
 
+use DateTime;
 use DigitalCz\DigiSign\Resource\Traits\EntityResourceTrait;
 
 class EnvelopeTemplateRecipient extends BaseResource
@@ -74,4 +75,14 @@ class EnvelopeTemplateRecipient extends BaseResource
     public string $channelForNotifications;
 
     public bool $signDocumentsAtOnce;
+
+    public ?string $company = null;
+
+    public ?string $function = null;
+
+    public ?string $contractingParty = null;
+
+    public ?DateTime $birtdate = null;
+
+    public ?DateTime $birthnumber = null;
 }

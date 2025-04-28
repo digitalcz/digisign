@@ -114,4 +114,14 @@ class EnvelopeRecipient extends BaseResource
     public ?DateTime $signedDocumentsNonDeliveredAt = null;
 
     public ?string $signedDocumentsNonDeliveredReason = null;
+
+    public ?string $company = null;
+
+    public ?string $function = null;
+
+    public ?string $contractingParty = null;
+
+    public ?DateTime $birtdate = null;
+
+    public ?DateTime $birthnumber = null;
 }
