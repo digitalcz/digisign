@@ -84,5 +84,5 @@ class EnvelopeTemplateRecipient extends BaseResource
 
     public ?DateTime $birtdate = null;
 
-    public ?DateTime $birthnumber = null;
+    public ?string $birthnumber = null;
 }
