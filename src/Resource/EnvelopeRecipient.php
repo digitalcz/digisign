@@ -121,7 +121,7 @@ class EnvelopeRecipient extends BaseResource
 
     public ?string $contractingParty = null;
 
-    public ?DateTime $birtdate = null;
+    public ?DateTime $birthdate = null;
 
     public ?string $birthnumber = null;
 }
