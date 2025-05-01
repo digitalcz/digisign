@@ -12,4 +12,5 @@ class MyPreferences extends BaseResource
     public bool $welcomeVideoClose;
     public bool $guideHide;
     public string $language;
+    public string $twoFactorAuthStatus;
 }
