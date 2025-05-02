@@ -17,8 +17,8 @@ final class AccountMeTwoFactorAuthEndpointTest extends EndpointTestCase
 
     public function testDisable(): void
     {
-        self::endpoint()->disable(['foo' => 'bar']);
-        self::assertLastRequest('DELETE', '/api/account/me/2fa', ['foo' => 'bar']);
+        self::endpoint()->disable();
+        self::assertLastRequest('DELETE', '/api/account/me/2fa');
     }
 
     protected static function endpoint(): AccountMeTwoFactorAuthEndpoint

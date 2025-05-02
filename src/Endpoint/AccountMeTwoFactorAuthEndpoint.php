@@ -24,11 +24,8 @@ final class AccountMeTwoFactorAuthEndpoint extends ResourceEndpoint
         $this->postRequest('', ['json' => $body]);
     }
 
-    /**
-     * @param mixed[] $body
-     */
-    public function disable(array $body): void
+    public function disable(): void
     {
-        $this->deleteRequest('', ['json' => $body]);
+        $this->deleteRequest();
     }
 }
