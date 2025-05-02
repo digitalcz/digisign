@@ -62,4 +62,9 @@ final class AccountMeEndpoint extends ResourceEndpoint
     {
         return $this->stream(self::METHOD_GET, '/signature-image/content');
     }
+
+    public function twoFactorAuth(): AccountMeTwoFactorAuthEndpoint
+    {
+        return new AccountMeTwoFactorAuthEndpoint($this);
+    }
 }

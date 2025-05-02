@@ -1,0 +1,28 @@
+<?php
+
+declare(strict_types=1);
+
+namespace DigitalCz\DigiSign\Endpoint;
+
+/**
+ * @covers \DigitalCz\DigiSign\Endpoint\AccountMeTwoFactorAuthEndpoint
+ */
+final class AccountMeTwoFactorAuthEndpointTest extends EndpointTestCase
+{
+    public function testConfigure(): void
+    {
+        self::endpoint()->configure(['foo' => 'bar']);
+        self::assertLastRequest('POST', '/api/account/me/2fa', ['foo' => 'bar']);
+    }
+
+    public function testDisable(): void
+    {
+        self::endpoint()->disable(['foo' => 'bar']);
+        self::assertLastRequest('DELETE', '/api/account/me/2fa', ['foo' => 'bar']);
+    }
+
+    protected static function endpoint(): AccountMeTwoFactorAuthEndpoint
+    {
+        return self::dgs()->account()->me()->twoFactorAuth();
+    }
+}

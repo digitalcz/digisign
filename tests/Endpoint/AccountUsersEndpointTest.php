@@ -9,6 +9,11 @@ namespace DigitalCz\DigiSign\Endpoint;
  */
 class AccountUsersEndpointTest extends EndpointTestCase
 {
+    public function testChildren(): void
+    {
+        self::assertDefaultEndpointPath(self::endpoint()->twoFactorAuth('foo'), '/api/account/users/foo/2fa');
+    }
+
     public function testList(): void
     {
         self::endpoint()->list(['foo' => 'bar']);

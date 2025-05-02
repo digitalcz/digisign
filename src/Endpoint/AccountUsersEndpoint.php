@@ -26,6 +26,11 @@ final class AccountUsersEndpoint extends ResourceEndpoint
         parent::__construct($parent, '/users', User::class);
     }
 
+    public function twoFactorAuth(User|string $id): TwoFactorAuthEndpoint
+    {
+        return new TwoFactorAuthEndpoint($this, $id);
+    }
+
     public function activate(string $id): void
     {
         $this->postRequest('/{id}/activate', ['id' => $id]);
