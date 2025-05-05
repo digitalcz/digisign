@@ -39,6 +39,11 @@ class AccountMeEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/account/me/signature-image/content');
     }
 
+    public function testChildren(): void
+    {
+        self::assertDefaultEndpointPath(self::endpoint()->twoFactorAuth(), '/api/account/me/2fa');
+    }
+
     protected static function endpoint(): AccountMeEndpoint
     {
         return self::dgs()->account()->me();
