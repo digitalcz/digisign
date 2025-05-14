@@ -23,6 +23,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeTemplateDocument.assignments` in to resource
 - Add `MyPreferences.twoFactorAuthStatus` in to resource
 - Add `TwoFactorAuthEndpoint` and `AccountMeTwoFactorAuthEndpoint` endpoint
+- Add `AccountMeTwoFactorAuthEndpoint.get` endpoint
 
 ## [2.7.1] - 2025-03-31
 - Update CHANGELOG.md and version in DigiSign.php

@@ -9,6 +9,12 @@ namespace DigitalCz\DigiSign\Endpoint;
  */
 final class AccountMeTwoFactorAuthEndpointTest extends EndpointTestCase
 {
+    public function testGet(): void
+    {
+        self::endpoint()->get();
+        self::assertLastRequest('GET', '/api/account/me/2fa');
+    }
+
     public function testConfigure(): void
     {
         self::endpoint()->configure(['foo' => 'bar']);
