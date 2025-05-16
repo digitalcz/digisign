@@ -8,6 +8,8 @@ use DateTime;
 
 class AccountBilling extends BaseResource
 {
+    public bool $api;
+
     public string $customerId;
 
     public bool $hasSubscription;
