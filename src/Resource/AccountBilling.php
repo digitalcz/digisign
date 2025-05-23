@@ -71,4 +71,6 @@ class AccountBilling extends BaseResource
     public bool $bulkSigning;
 
     public bool $hasBillingEnabled;
+
+    public ?string $subscriptionStatus = null;
 }

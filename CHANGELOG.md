@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `AccountBilling.subscriptionStatus`
 - Add `AccountBilling.api`
 - Add `SentEnvelopeReport.timestampTsaPostSignumCount`
 - Add `SentEnvelopeReport.timestampTsaIcaCount`
