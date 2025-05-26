@@ -34,4 +34,12 @@ final class TwoFactorAuthEndpoint extends ResourceEndpoint
     {
         $this->deleteRequest();
     }
+
+    /**
+     * @param mixed[] $body
+     */
+    public function reset(array $body): void
+    {
+        $this->postRequest('/reset', ['json' => $body]);
+    }
 }

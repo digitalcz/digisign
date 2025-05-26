@@ -21,6 +21,12 @@ final class TwoFactorAuthEndpointTest extends EndpointTestCase
         self::assertLastRequest('DELETE', '/api/account/users/foo/2fa');
     }
 
+    public function testResetTwoFactorAuth(): void
+    {
+        self::endpoint()->reset(['foo' => 'bar']);
+        self::assertLastRequest('POST', '/api/account/users/foo/2fa/reset', ['foo' => 'bar']);
+    }
+
     protected static function endpoint(): TwoFactorAuthEndpoint
     {
         return self::dgs()->account()->users()->twoFactorAuth('foo');
