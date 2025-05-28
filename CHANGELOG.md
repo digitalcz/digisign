@@ -27,6 +27,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `TwoFactorAuthEndpoint` and `AccountMeTwoFactorAuthEndpoint` endpoint
 - Add `AccountMeTwoFactorAuthEndpoint.get` endpoint
 - Add `TwoFactorAuthEndpoint.reset` endpoint
+- Extend `AccountSecurity` with `sessionIdle` and `twoFactorAuthRequired`
+- Extend `MyInfo` with `sessionIdle`
 
 ## [2.7.1] - 2025-03-31
 - Update CHANGELOG.md and version in DigiSign.php

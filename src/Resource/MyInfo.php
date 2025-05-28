@@ -14,4 +14,5 @@ class MyInfo extends BaseResource
     public array $permissions;
     public ?MyAccount $account;
     public MyPreferences $preferences;
+    public int $sessionIdle;
 }
