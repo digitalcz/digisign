@@ -42,4 +42,6 @@ class AccountSecurity extends BaseResource
     public bool $visibleNoneSignerChannelOption;
 
     public bool $hasCustomCertificate;
+    public bool $twoFactorAuthRequired;
+    public int $sessionIdle;
 }
