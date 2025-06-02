@@ -8,4 +8,5 @@ class EnvelopeRecipientIdentifications extends BaseResource
 {
     /** @var Collection<EnvelopeRecipientIdentification> */
     public Collection $identifications;
+    public string $recipientId;
 }
