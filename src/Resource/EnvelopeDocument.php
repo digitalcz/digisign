@@ -40,4 +40,6 @@ class EnvelopeDocument extends BaseResource
     public bool $invalidate;
 
     public ?DateTime $invalidatedAt = null;
+
+    public bool $hasSignatures;
 }
