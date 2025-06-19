@@ -8,6 +8,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeDocument.hasSignatures`
 - Add `AccountBilling.subscriptionStatus`
 - Add `AccountBilling.api`
+- Add `AccountBilling.fileUploadLimit`
 - Add `SentEnvelopeReport.timestampTsaPostSignumCount`
 - Add `SentEnvelopeReport.timestampTsaIcaCount`
 - Add `SentEnvelopeReport.timestampAtsaIcaCount`
