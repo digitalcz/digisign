@@ -5,6 +5,8 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+
+## [2.8.0] - 2025-06-20
 - Add `EnvelopeDocument.hasSignatures`
 - Add `AccountBilling.subscriptionStatus`
 - Add `AccountBilling.api`
