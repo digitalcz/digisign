@@ -6,6 +6,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 
+## [2.8.1] - 2025-06-23
+- Rename `AccountBilling.fileUploadLimit` to `AccountBilling.fileSizeLimit`
+
 ## [2.8.0] - 2025-06-20
 - Add `EnvelopeDocument.hasSignatures`
 - Add `AccountBilling.subscriptionStatus`
