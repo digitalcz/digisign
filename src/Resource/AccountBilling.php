@@ -52,7 +52,7 @@ class AccountBilling extends BaseResource
 
     public bool $fileCertificates;
 
-    public int $fileUploadLimit;
+    public int $fileSizeLimit;
 
     public bool $identify;
 
