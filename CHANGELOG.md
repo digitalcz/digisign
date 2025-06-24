@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `BulkSignature.resend` endpoint
 
 ## [2.8.1] - 2025-06-23
 - Rename `AccountBilling.fileUploadLimit` to `AccountBilling.fileSizeLimit`
