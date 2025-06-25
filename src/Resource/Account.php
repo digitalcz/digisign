@@ -14,5 +14,6 @@ class Account extends BaseResource
     public string $email;
     public int $number;
     public AccountSettings $settings;
+    public AccountSecurity $security;
     public ?IdentityProvider $identityProvider;
 }
