@@ -15,4 +15,5 @@ class MyInfo extends BaseResource
     public ?MyAccount $account;
     public MyPreferences $preferences;
     public int $sessionIdle;
+    public ?string $intercomToken;
 }
