@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `MyBulkSignaturesEndpoint` endpoint
 - Add `BulkSignature.resend` endpoint
 - Add `Account.security` in to resource
 - Add `MyInfo.intercomToken` in to resource
