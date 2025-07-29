@@ -10,13 +10,14 @@ class MyEnvelope extends BaseResource
 {
     public string $id;
     public string $status;
+    public string $name;
     public string $emailSubject;
     public string $emailBody;
     public ?string $senderName = null;
     public ?string $senderEmail = null;
     public string $subjectName;
     public ?DateTime $sentAt = null;
-    public ?DateTime $validTo = null;
+    public DateTime $validTo;
 
     /** @var Collection<MyEnvelopeDocument> */
     public Collection $documents;

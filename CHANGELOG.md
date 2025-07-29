@@ -8,6 +8,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `BulkSignature.resend` endpoint
 - Add `Account.security` in to resource
 - Add `MyInfo.intercomToken` in to resource
+- Update `MyEnvelope` resource
 
 ## [2.8.1] - 2025-06-23
 - Rename `AccountBilling.fileUploadLimit` to `AccountBilling.fileSizeLimit`
