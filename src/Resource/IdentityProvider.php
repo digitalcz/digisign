@@ -18,7 +18,7 @@ class IdentityProvider extends BaseResource
 
     public string $issuer;
 
-    public string $clientId;
+    public ?string $clientId;
 
     public ?string $scopes;
 
