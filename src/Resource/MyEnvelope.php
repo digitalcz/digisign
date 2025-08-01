@@ -24,4 +24,5 @@ class MyEnvelope extends BaseResource
 
     /** @var Collection<MyEnvelopeRecipient> */
     public Collection $recipients;
+    public ?string $myEnvelopeRecipientId;
 }
