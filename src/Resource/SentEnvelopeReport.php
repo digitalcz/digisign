@@ -21,6 +21,8 @@ class SentEnvelopeReport extends BaseResource
 
     public DateTime $sentAt;
 
+    public ?DateTime $validTo;
+
     public string $status;
 
     /** @var string[] */
