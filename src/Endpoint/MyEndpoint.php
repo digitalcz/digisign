@@ -44,6 +44,11 @@ final class MyEndpoint extends ResourceEndpoint
         return new MyBulkSignaturesEndpoint($this);
     }
 
+    public function bulkSign(): MyBulkSignEndpoint
+    {
+        return new MyBulkSignEndpoint($this);
+    }
+
     public function info(): MyInfo
     {
         return $this->createResource($this->getRequest('/info'), MyInfo::class);
