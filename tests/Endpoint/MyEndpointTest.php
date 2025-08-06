@@ -17,6 +17,7 @@ class MyEndpointTest extends EndpointTestCase
         self::assertDefaultEndpointPath(self::endpoint()->contacts(), '/api/my/contacts');
         self::assertDefaultEndpointPath(self::endpoint()->bulkSignatures(), '/api/my/bulk-signatures');
         self::assertDefaultEndpointPath(self::endpoint()->identifications(), '/api/my/identifications');
+        self::assertDefaultEndpointPath(self::endpoint()->bulkSign(), '/api/my/bulk-sign');
     }
 
     public function testInfo(): void
