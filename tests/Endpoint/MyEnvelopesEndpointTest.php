@@ -39,6 +39,12 @@ class MyEnvelopesEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/my/envelopes/foo/info');
     }
 
+    public function testBulkSign(): void
+    {
+        self::endpoint()->bulkSign(['envelopeRecipients' => ['foo', 'bar']]);
+        self::assertLastRequest('POST', '/api/my/envelopes/bulk-sign', ['envelopeRecipients' => ['foo', 'bar']]);
+    }
+
     protected static function endpoint(): MyEnvelopesEndpoint
     {
         return self::dgs()->my()->envelopes();

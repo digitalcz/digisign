@@ -46,4 +46,12 @@ final class MyEnvelopesEndpoint extends ResourceEndpoint
     {
         return $this->createResource($this->getRequest('/{id}/info', ['id' => $id]), MyEnvelopeInfo::class);
     }
+
+    /**
+     * @param mixed[] $body
+     */
+    public function bulkSign(array $body): void
+    {
+        $this->postRequest('/bulk-sign', ['json' => $body]);
+    }
 }
