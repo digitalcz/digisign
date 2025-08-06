@@ -30,7 +30,7 @@ final class MyBulkSignaturesEndpoint extends ResourceEndpoint
     public function sign(BulkSignature|string $bulkSignature): EmbedBulkSignature
     {
         return $this->createResource(
-            $this->getRequest('/{bulkSignature}/sign', ['bulkSignature' => $bulkSignature]),
+            $this->postRequest('/{bulkSignature}/sign', ['bulkSignature' => $bulkSignature]),
             EmbedBulkSignature::class,
         );
     }
