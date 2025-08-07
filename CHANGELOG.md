@@ -14,8 +14,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `MyEnvelope.myEnvelopeRecipientId` resource
 - Add `MyBulkSignaturesEndpoint` endpoint
 - Add `BulkSignature.resend` endpoint
-- Add `Account.security` in to resource
-- Add `MyInfo.intercomToken` in to resource
+- Add `Account.security` property
+- Add `MyInfo.intercomToken` property
+- Add `IdentifyScenarioVersion.identificationType` property
+- Add `IdentifyScenarioVersion.bankIdScopes` property
+
 - Update `MyEnvelope` resource
 - Update `IdentityProvider` resource
 - Add `SentEnvelopeReport.validTo` in to resource
