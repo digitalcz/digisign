@@ -10,6 +10,7 @@ class IdentifyScenarioVersion extends BaseResource
 {
     public string $id;
     public DateTime $createdAt;
+    public string $identificationType;
     public int $version;
     public bool $latest;
     public Blame $createdBlame;
@@ -35,4 +36,7 @@ class IdentifyScenarioVersion extends BaseResource
 
     /** @var array<string, string>  */
     public array $rejectionChecksOverwrites;
+
+    /** @var array<string> */
+    public array $bankIdScopes = [];
 }
