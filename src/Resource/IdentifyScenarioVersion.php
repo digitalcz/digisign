@@ -37,6 +37,6 @@ class IdentifyScenarioVersion extends BaseResource
     /** @var array<string, string>  */
     public array $rejectionChecksOverwrites;
 
-    /** @var array<string> */
-    public array $bankIdScopes = [];
+    /** @var array<string>|null */
+    public ?array $bankIdScopes = null;
 }
