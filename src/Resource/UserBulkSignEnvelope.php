@@ -10,5 +10,5 @@ final class UserBulkSignEnvelope extends BaseResource
     public string $name;
 
     /** @var string[] */
-    public ?array $notSortedReason;
+    public array $groupingViolations;
 }
