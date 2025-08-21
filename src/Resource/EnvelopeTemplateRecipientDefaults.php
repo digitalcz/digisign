@@ -46,4 +46,6 @@ class EnvelopeTemplateRecipientDefaults extends BaseResource
     public bool $approveDocumentsAtOnce;
 
     public bool $signDocumentsAtOnce;
+
+    public NotificationChannels $notificationChannels;
 }

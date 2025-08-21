@@ -5,6 +5,10 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `NotificationChannels` resource
+- Add `EnvelopeRecipient.notificationChannels` property
+- Add `EnvelopeTemplateRecipient.notificationChannels` property
+- Add `EnvelopeTemplateRecipientDefaults.notificationChannels` property
 - Add `MyBulkSign.bulkSignatures` endpoint
 - Add `MyBulkSign.envelopes` endpoint
 - Add `UserBulkSignEnvelope` resource
