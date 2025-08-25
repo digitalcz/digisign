@@ -12,7 +12,7 @@ class WebhookAttempt extends BaseResource
 
     public DateTime $createdAt;
 
-    public string $status;
+    public int $status;
 
     public string $request;
 
