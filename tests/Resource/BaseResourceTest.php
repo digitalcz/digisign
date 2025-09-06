@@ -13,6 +13,7 @@ use ReflectionObject;
 
 /**
  * @covers \DigitalCz\DigiSign\Resource\BaseResource
+ * @covers \DigitalCz\DigiSign\Resource\PreciseDateTime
  */
 class BaseResourceTest extends TestCase
 {
@@ -37,6 +38,7 @@ class BaseResourceTest extends TestCase
         ],
         'dateTime' => '2021-01-01T01:01:01+00:00',
         'dateTimeNullable' => '2021-01-01T01:01:01+00:00',
+        'preciseDateTime' => '2021-01-01T01:01:01.001+00:00',
         'collection' => [
             [
                 'id' => null,
@@ -82,6 +84,7 @@ class BaseResourceTest extends TestCase
         self::assertEquals('2021-01-01T01:01:01+00:00', $resource->dateTime->format(DateTimeInterface::ATOM));
         self::assertInstanceOf(DateTimeInterface::class, $resource->dateTimeNullable);
         self::assertEquals('2021-01-01T01:01:01+00:00', $resource->dateTimeNullable->format(DateTimeInterface::ATOM));
+        self::assertEquals('2021-01-01T01:01:01.001+00:00', $resource->preciseDateTime->format('Y-m-d\TH:i:s.vP'));
         self::assertCount(2, $resource->collection);
         self::assertInstanceOf(DummyResource::class, $resource->collection[0]);
         self::assertSame('moo', $resource->collection[0]->string);

@@ -58,7 +58,9 @@ class BaseResource implements ResourceInterface
                 continue;
             }
 
-            if ($value instanceof DateTimeInterface) {
+            if ($value instanceof PreciseDateTime) {
+                $value = $value->format('Y-m-d\TH:i:s.vP');
+            } elseif ($value instanceof DateTimeInterface) {
                 $value = $value->format(DateTimeInterface::ATOM);
             }
 
@@ -173,12 +175,12 @@ class BaseResource implements ResourceInterface
                 $value = new Collection($value, $resourceClass);
             }
 
-            if ($type === DateTime::class) {
+            if ($type === DateTime::class || $type === PreciseDateTime::class) {
                 if (!is_string($value)) {
                     throw new RuntimeException('Unexpected value for DateTime field');
                 }
 
-                $value = new DateTime($value);
+                $value = new $type($value);
             }
         }
 

@@ -23,10 +23,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `MyInfo.intercomToken` property
 - Add `IdentifyScenarioVersion.identificationType` property
 - Add `IdentifyScenarioVersion.bankIdScopes` property
-
 - Update `MyEnvelope` resource
 - Update `IdentityProvider` resource
 - Add `SentEnvelopeReport.validTo` in to resource
+- Add `PreciseDateTime` class to indicate DateTime with milliseconds'
+- Changed `AccountRequest.requestTime` and `AccountRequest.responseTime` type to `PreciseDateTime`
 
 ## [2.8.1] - 2025-06-23
 - Rename `AccountBilling.fileUploadLimit` to `AccountBilling.fileSizeLimit`

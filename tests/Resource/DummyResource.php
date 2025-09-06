@@ -24,6 +24,7 @@ class DummyResource extends BaseResource
         ],
         'dateTime' => '2021-01-01T01:01:01+00:00',
         'dateTimeNullable' => '2021-01-01T01:01:01+00:00',
+        'preciseDateTime' => '2021-01-01T01:01:01.001+00:00',
         'collection' => [
             ['string' => 'moo'],
             ['string' => 'baz'],
@@ -71,6 +72,8 @@ class DummyResource extends BaseResource
     public DateTime $dateTime;
 
     public ?DateTime $dateTimeNullable;
+
+    public PreciseDateTime $preciseDateTime;
 
     /** @var Collection<DummyResource> */
     public Collection $collection;
