@@ -23,7 +23,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `MyInfo.intercomToken` property
 - Add `IdentifyScenarioVersion.identificationType` property
 - Add `IdentifyScenarioVersion.bankIdScopes` property
-
+- Add `AccountRequest.requestTimePrecise` property
+- Add `AccountRequest.responseTimePrecise` property
 - Update `MyEnvelope` resource
 - Update `IdentityProvider` resource
 - Add `SentEnvelopeReport.validTo` in to resource

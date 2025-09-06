@@ -37,5 +37,11 @@ class AccountRequest extends BaseResource
 
     public DateTime $responseTime;
 
+    /** @var DateTime Request time with milliseconds */
+    public DateTime $requestTimePrecise;
+
+    /** @var DateTime Response time with milliseconds */
+    public DateTime $responseTimePrecise;
+
     public int $duration;
 }
