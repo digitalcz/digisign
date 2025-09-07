@@ -11,4 +11,5 @@ use DateTime;
  */
 class PreciseDateTime extends DateTime
 {
+    public const MILLIS = 'Y-m-d\TH:i:s.vP';
 }

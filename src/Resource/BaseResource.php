@@ -59,7 +59,7 @@ class BaseResource implements ResourceInterface
             }
 
             if ($value instanceof PreciseDateTime) {
-                $value = $value->format('Y-m-d\TH:i:s.vP');
+                $value = $value->format(PreciseDateTime::MILLIS);
             } elseif ($value instanceof DateTimeInterface) {
                 $value = $value->format(DateTimeInterface::ATOM);
             }
