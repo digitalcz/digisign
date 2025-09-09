@@ -33,9 +33,9 @@ class AccountRequest extends BaseResource
 
     public ?Blame $createdBy = null;
 
-    public DateTime $requestTime;
+    public PreciseDateTime $requestTime;
 
-    public DateTime $responseTime;
+    public PreciseDateTime $responseTime;
 
     public int $duration;
 }
