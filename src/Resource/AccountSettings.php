@@ -45,4 +45,7 @@ class AccountSettings extends BaseResource
     public bool $identify;
 
     public bool $notificationForSenderEmail;
+
+    /** @var string[] */
+    public array $disabledTags;
 }
