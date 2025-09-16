@@ -58,6 +58,10 @@ class AccountBilling extends BaseResource
 
     public bool $signatureScenarios;
 
+    public bool $smsId;
+
+    public bool $emailSender;
+
     public bool $identifyAi;
 
     public ?int $identifyAiLimit;
