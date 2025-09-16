@@ -28,6 +28,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `SentEnvelopeReport.validTo` in to resource
 - Add `PreciseDateTime` class to indicate DateTime with milliseconds'
 - Changed `AccountRequest.requestTime` and `AccountRequest.responseTime` type to `PreciseDateTime`
+- Update `Branding` and `AccountBilling` resource
 
 ## [2.8.1] - 2025-06-23
 - Rename `AccountBilling.fileUploadLimit` to `AccountBilling.fileSizeLimit`

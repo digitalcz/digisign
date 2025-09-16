@@ -35,4 +35,11 @@ class Branding extends BaseResource
     public ?AccountSmsSender $smsSender;
 
     public ?AccountEmailSender $emailSender;
+
+    public string $tagBrandingUsageType;
+
+    /** @var string[] */
+    public ?array $ownSmsText;
+
+    public bool $ownSmsIncludeDomain = true;
 }
