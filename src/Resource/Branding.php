@@ -26,10 +26,10 @@ class Branding extends BaseResource
 
     public ?string $secondaryColor = null;
 
-    /** @var string[] */
+    /** @var array<string, string> */
     public ?array $ownConditions;
 
-    /** @var string[] */
+    /** @var array<string, string> */
     public ?array $signerReturnUrl;
 
     public ?AccountSmsSender $smsSender;
@@ -38,7 +38,7 @@ class Branding extends BaseResource
 
     public string $tagBrandingUsageType;
 
-    /** @var string[] */
+    /** @var array<string, string> */
     public ?array $ownSmsText;
 
     public bool $ownSmsIncludeDomain = true;
