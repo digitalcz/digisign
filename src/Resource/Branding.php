@@ -36,7 +36,7 @@ class Branding extends BaseResource
 
     public ?AccountEmailSender $emailSender;
 
-    public string $tagBrandingUsageType;
+    public string $applyForSignatureTag;
 
     /** @var array<string, string> */
     public ?array $ownSmsText;
