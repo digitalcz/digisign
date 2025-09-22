@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `Branding.applyForSignatureTag` property
 - Add `AccountSettings.disabledTags` property
 - Fix `WebhookAttempt.status` type from string to int
 - Add `NotificationChannels` resource
