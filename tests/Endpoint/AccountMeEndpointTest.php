@@ -27,10 +27,10 @@ class AccountMeEndpointTest extends EndpointTestCase
         self::assertLastRequest('POST', '/api/account/me/change-password', ['foo' => 'bar']);
     }
 
-    public function testUpdatePassword(): void
+    public function testChangePasswordRequest(): void
     {
-        self::endpoint()->updatePassword();
-        self::assertLastRequest('POST', '/api/account/me/update-password');
+        self::endpoint()->changePasswordRequest();
+        self::assertLastRequest('POST', '/api/account/me/change-password/request');
     }
 
     public function testVerifyPassword(): void
