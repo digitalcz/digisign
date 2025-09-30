@@ -83,6 +83,11 @@ final class AccountEndpoint extends ResourceEndpoint
         return new AccountIdentifyScenariosEndpoint($this);
     }
 
+    public function groups(): GroupsEndpoint
+    {
+        return new GroupsEndpoint($this);
+    }
+
     public function get(): Account
     {
         return $this->makeResource($this->getRequest());
