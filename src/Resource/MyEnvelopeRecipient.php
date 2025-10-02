@@ -17,4 +17,5 @@ class MyEnvelopeRecipient extends BaseResource
     public string $signatureType;
     public ?string $intermediaryName;
     public ?string $intermediaryEmail;
+    public int $signingOrder;
 }
