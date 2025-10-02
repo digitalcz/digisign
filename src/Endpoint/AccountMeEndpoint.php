@@ -50,6 +50,11 @@ final class AccountMeEndpoint extends ResourceEndpoint
         $this->postRequest('/change-password', ['json' => $body]);
     }
 
+    public function changePasswordRequest(): void
+    {
+        $this->postRequest('/change-password/request');
+    }
+
     /**
      * @param mixed[] $body
      */
