@@ -13,7 +13,5 @@ class Group extends BaseResource
     public string $name;
 
     public string $description;
-
-    /** @var Collection<User> */
-    public Collection $users;
+    public int $usersCount;
 }
