@@ -7,7 +7,10 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 - Add `MyEnvelopeRecipient.signingOrder` property
 - Add `GroupsEndpoint` endpoint
+- Add `GroupUsersEndpoint` endpoint
+- Add `GroupsEndpoint.users` endpoint
 - Add `Group` resource
+- Add `GroupUser` resource
 - Add `Branding.applyForSignatureTag` property
 - Add `AccountSettings.disabledTags` property
 - Fix `WebhookAttempt.status` type from string to int

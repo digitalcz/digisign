@@ -23,4 +23,9 @@ final class GroupsEndpoint extends ResourceEndpoint
     {
         parent::__construct($parent, '/groups', Group::class);
     }
+
+    public function users(Group|string $group): GroupUsersEndpoint
+    {
+        return new GroupUsersEndpoint($this, $group);
+    }
 }

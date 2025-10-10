@@ -39,6 +39,11 @@ class GroupsEndpointTest extends EndpointTestCase
         self::assertLastRequest('DELETE', '/api/account/groups/foo');
     }
 
+    public function testUsers(): void
+    {
+        self::assertDefaultEndpointPath(self::endpoint()->users('foo'), '/api/account/groups/foo/users');
+    }
+
     protected static function endpoint(): GroupsEndpoint
     {
         return self::dgs()->account()->groups();
