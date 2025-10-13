@@ -10,7 +10,14 @@ class SentEnvelopeReport extends BaseResource
 {
     public string $id;
 
+    /**
+     * @deprecated use name instead
+     */
     public string $emailSubject;
+
+    public string $name;
+
+    public ?string $description;
 
     /** @var string[] */
     public array $labels;
@@ -20,6 +27,8 @@ class SentEnvelopeReport extends BaseResource
     public DateTime $createdAt;
 
     public DateTime $sentAt;
+
+    public ?DateTime $completedAt;
 
     public ?DateTime $validTo;
 
