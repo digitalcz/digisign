@@ -13,6 +13,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `GroupUser` resource
 - Add `Branding.applyForSignatureTag` property
 - Add `AccountSettings.disabledTags` property
+
+## [2.9.0] - 2025-10-03
+- [BREAKING-CHANGE] Fix `WebhookAttempt.status` type from string to int
 - Fix `WebhookAttempt.status` type from string to int
 - Add `NotificationChannels` resource
 - Add `EnvelopeRecipient.notificationChannels` property
@@ -24,7 +27,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Fix `MyBulkSignatures.sign` request method
 - Add `MyBulkSignatures.sign` resource
 - Add `MyEnvelope.bulkSign` resource
-- Add `MyEnvelope.myEnvelopeRecipientId` resource
+- Add `MyEnvelope.myEnvelopeRecipientId` property
 - Add `MyBulkSignaturesEndpoint` endpoint
 - Add `BulkSignature.resend` endpoint
 - Add `Account.security` property
