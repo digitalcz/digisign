@@ -13,6 +13,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `GroupUser` resource
 - Add `Branding.applyForSignatureTag` property
 - Add `AccountSettings.disabledTags` property
+- Edit `SentEnvelopeReport` resource
 
 ## [2.9.0] - 2025-10-03
 - [BREAKING-CHANGE] Fix `WebhookAttempt.status` type from string to int
