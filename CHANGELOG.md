@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 - Add `AccountEndpoint.contacts` CRUD endpoints
+- Add `Contact.type` property
 - Add `MyEnvelopeRecipient.signingOrder` property
 - Add `GroupsEndpoint` endpoint
 - Add `GroupUsersEndpoint` endpoint
