@@ -88,6 +88,11 @@ final class AccountEndpoint extends ResourceEndpoint
         return new GroupsEndpoint($this);
     }
 
+    public function contacts(): AccountContactsEndpoint
+    {
+        return new AccountContactsEndpoint($this);
+    }
+
     public function get(): Account
     {
         return $this->makeResource($this->getRequest());
