@@ -32,4 +32,6 @@ class Contact extends BaseResource
     public ?string $function = null;
 
     public ?string $contractingParty = null;
+
+    public string $type;
 }
