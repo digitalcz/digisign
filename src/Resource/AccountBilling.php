@@ -79,4 +79,8 @@ class AccountBilling extends BaseResource
     public bool $hasBillingEnabled;
 
     public ?string $subscriptionStatus = null;
+
+    public int $accountContactLimit;
+
+    public int $accountContactUsage;
 }
