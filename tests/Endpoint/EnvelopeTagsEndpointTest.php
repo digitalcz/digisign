@@ -9,6 +9,11 @@ namespace DigitalCz\DigiSign\Endpoint;
  */
 class EnvelopeTagsEndpointTest extends EndpointTestCase
 {
+    public function testChildren(): void
+    {
+        self::assertDefaultEndpointPath(self::endpoint()->byPlaceholder(), '/api/envelopes/bar/tags/by-placeholder');
+    }
+
     public function testCRUD(): void
     {
         self::assertCrudRequests(self::endpoint(), '/api/envelopes/bar/tags');
