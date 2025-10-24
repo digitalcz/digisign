@@ -26,7 +26,7 @@ final class ContactImportsEndpoint extends ResourceEndpoint
 
     public function __construct(AccountContactsEndpoint $parent)
     {
-        parent::__construct($parent, '/import', ContactImport::class);
+        parent::__construct($parent, '/imports', ContactImport::class);
     }
 
     public function items(ContactImport|string $id): ContactImportItemsEndpoint

@@ -11,7 +11,7 @@ class AccountContactsEndpointTest extends EndpointTestCase
 {
     public function testChildren(): void
     {
-        self::assertDefaultEndpointPath(self::endpoint()->import(), '/api/account/contacts/import');
+        self::assertDefaultEndpointPath(self::endpoint()->imports(), '/api/account/contacts/imports');
     }
 
     public function testList(): void
