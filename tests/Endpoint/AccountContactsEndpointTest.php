@@ -9,6 +9,11 @@ namespace DigitalCz\DigiSign\Endpoint;
  */
 class AccountContactsEndpointTest extends EndpointTestCase
 {
+    public function testChildren(): void
+    {
+        self::assertDefaultEndpointPath(self::endpoint()->imports(), '/api/account/contacts/imports');
+    }
+
     public function testList(): void
     {
         self::endpoint()->list(['search' => 'John']);
