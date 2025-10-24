@@ -24,4 +24,9 @@ final class AccountContactsEndpoint extends ResourceEndpoint
     {
         parent::__construct($parent, '/contacts', Contact::class);
     }
+
+    public function import(): ContactImportsEndpoint
+    {
+        return new ContactImportsEndpoint($this);
+    }
 }
