@@ -14,6 +14,12 @@ class AccountBrandingsEndpointTest extends EndpointTestCase
         self::assertCrudRequests(self::endpoint(), '/api/account/brandings');
     }
 
+    public function testInfo(): void
+    {
+        self::endpoint()->info();
+        self::assertLastRequest('GET', "/api/account/brandings/info");
+    }
+
     protected static function endpoint(): AccountBrandingsEndpoint
     {
         return self::dgs()->account()->brandings();

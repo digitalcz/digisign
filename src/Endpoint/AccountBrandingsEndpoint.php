@@ -6,6 +6,8 @@ namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Endpoint\Traits\CRUDEndpointTrait;
 use DigitalCz\DigiSign\Resource\Branding;
+use DigitalCz\DigiSign\Resource\BrandingInfo;
+use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
@@ -23,5 +25,13 @@ class AccountBrandingsEndpoint extends ResourceEndpoint
     public function __construct(AccountEndpoint $parent)
     {
         parent::__construct($parent, '/brandings', Branding::class);
+    }
+
+    /**
+     * @return Collection<BrandingInfo>
+     */
+    public function info(): Collection
+    {
+        return $this->createCollectionResource($this->getRequest('/info'), BrandingInfo::class);
     }
 }
