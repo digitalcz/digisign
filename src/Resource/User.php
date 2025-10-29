@@ -35,6 +35,8 @@ class User extends BaseResource
 
     public ?DateTime $lastLoginAt = null;
 
+    public DateTime $invitedAt;
+
     public bool $prefillAsRecipient;
 
     public bool $autoscrollTags;

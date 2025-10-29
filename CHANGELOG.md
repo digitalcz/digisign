@@ -21,6 +21,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `ContactImportsEndpoint` and `ContactImportItemsEndpoint`
 - Add `BrandingInfo` resource
 - Add `AccountBrandingsEndpoint.info` endpoint
+- Add `User.invitedAt` property
 
 ## [2.9.0] - 2025-10-03
 - [BREAKING-CHANGE] Fix `WebhookAttempt.status` type from string to int
