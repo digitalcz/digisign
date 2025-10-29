@@ -20,7 +20,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountBilling.accountContactUsage` property
 - Add `ContactImportsEndpoint` and `ContactImportItemsEndpoint`
 - Add `BrandingInfo` resource
-- Add `AccountBrandingsEndpoint.info()` method
+- Add `AccountBrandingsEndpoint.info` endpoint
 
 ## [2.9.0] - 2025-10-03
 - [BREAKING-CHANGE] Fix `WebhookAttempt.status` type from string to int
