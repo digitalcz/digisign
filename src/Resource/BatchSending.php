@@ -32,7 +32,7 @@ class BatchSending extends BaseResource
     public string $status;
 
     /**
-     * @var array<string>
+     * @var array<string, string>
      */
     public array $importFields;
 
