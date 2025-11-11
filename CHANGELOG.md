@@ -5,6 +5,9 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+
+## [2.10.0] - 2025-11-11
+- Change testing base url to https://api.testing.digisign.org
 - Add `AccountEndpoint.contacts` CRUD endpoints
 - Add `Contact.type` property
 - Add `MyEnvelopeRecipient.signingOrder` property
@@ -23,7 +26,6 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountBrandingsEndpoint.info` endpoint
 - Add `User.invitedAt` property
 - Specify `BatchSending.importFields` property type
-- Change testing base url
 
 ## [2.9.0] - 2025-10-03
 - [BREAKING-CHANGE] Fix `WebhookAttempt.status` type from string to int
