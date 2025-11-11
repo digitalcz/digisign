@@ -117,7 +117,7 @@ class DigiSignTest extends TestCase
 
         $dgs->request('GET', '/foo');
 
-        self::assertSame('https://api.digisign.digital.cz/foo', (string)$mockClient->getLastRequest()->getUri());
+        self::assertSame('https://api.testing.digisign.org/foo', (string)$mockClient->getLastRequest()->getUri());
     }
 
     public function testChildren(): void
