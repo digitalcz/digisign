@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `Webhook` properties
 
 ## [2.10.0] - 2025-11-11
 - Change testing base url to https://api.testing.digisign.org
