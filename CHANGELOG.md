@@ -23,6 +23,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountBrandingsEndpoint.info` endpoint
 - Add `User.invitedAt` property
 - Specify `BatchSending.importFields` property type
+- Change testing base url
 
 ## [2.9.0] - 2025-10-03
 - [BREAKING-CHANGE] Fix `WebhookAttempt.status` type from string to int

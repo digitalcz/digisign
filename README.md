@@ -67,7 +67,7 @@ $dgs->setClient(new DigiSignClient(new Psr18Client()));
 $dgs->setCredentials(new TokenCredentials(new Token('...', 123)));
 // Cache will be used to store auth-token, so it can be reused in later requests
 $dgs->setCache(new Psr16Cache(new FilesystemAdapter()));
-// Use testing API (https://api.digisign.digital.cz)
+// Use testing API (https://api.testing.digisign.org)
 $dgs->useTesting(true);
 // Overwrite API base
 $dgs->setApiBase('https://example.com/api');
