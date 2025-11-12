@@ -39,6 +39,18 @@ final class ContactImportsEndpointTest extends EndpointTestCase
         self::assertLastRequest('POST', "/api/account/contacts/imports", ['foo' => 'bar']);
     }
 
+    public function testProgress(): void
+    {
+        self::endpoint()->progress('foo');
+        self::assertLastRequest('GET', "/api/account/contacts/imports/foo/progress");
+    }
+
+    public function testStart(): void
+    {
+        self::endpoint()->start('foo');
+        self::assertLastRequest('POST', "/api/account/contacts/imports/foo/start");
+    }
+
     protected static function endpoint(): ContactImportsEndpoint
     {
         return self::dgs()->account()->contacts()->imports();

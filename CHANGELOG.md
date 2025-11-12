@@ -6,6 +6,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 - Add `Webhook` properties
+- Add `ContactImportsEndpoint.progress` endpoint
+- Add `ContactImportsEndpoint.start` endpoint
+- Add `ContactImportProgress` resource
 
 ## [2.10.0] - 2025-11-11
 - Change testing base url to https://api.testing.digisign.org
