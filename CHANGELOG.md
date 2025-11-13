@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Drop official PHP 8.0 support (no longer tested in CI, but still allowed in composer.json)
 - Add `Webhook` properties
 - Add `ContactImportsEndpoint.progress` endpoint
 - Add `ContactImportsEndpoint.start` endpoint
