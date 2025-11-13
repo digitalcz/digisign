@@ -5,9 +5,12 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
-- Add `ContactImport.importedfields` property
-- Fix `ContactImport.file` property type
+- [DEPRECATION] `testing` parameter and `useTesting()` method are deprecated, use `sandbox` parameter and `useSandbox()` method instead
+- [DEPRECATION] `API_BASE_TESTING` constant is deprecated, use `API_BASE_SANDBOX` instead
 - Drop official PHP 8.0 support (no longer tested in CI, but still allowed in composer.json)
+- Add `sandbox` parameter to constructor options for switching to sandbox environment
+- Add `API_BASE_SANDBOX` constant for sandbox API base URL
+- Add `ContactImport.importedfields` property
 - Add `Webhook` properties
 - Add `ContactImportsEndpoint.progress` endpoint
 - Add `ContactImportsEndpoint.start` endpoint
