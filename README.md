@@ -45,7 +45,7 @@ $dgs->setCredentials(new ApiKeyCredentials('...', '...'));
 *  `client`              - DigitalCz\DigiSign\DigiSignClient instance with your custom PSR17/18 objects
 *  `http_client`         - Psr\Http\Client\ClientInterface instance of your custom PSR18 client
 *  `cache`               - Psr\SimpleCache\CacheInterface for caching Credentials Tokens
-*  `testing`             - bool; whether to use testing or production API
+*  `sandbox`             - bool; whether to use sandbox or production API
 *  `api_base`            - string; override the base API url
 *  `signature_tolerance` - int; The tolerance for webhook signature age validation (in seconds)
 
@@ -67,8 +67,8 @@ $dgs->setClient(new DigiSignClient(new Psr18Client()));
 $dgs->setCredentials(new TokenCredentials(new Token('...', 123)));
 // Cache will be used to store auth-token, so it can be reused in later requests
 $dgs->setCache(new Psr16Cache(new FilesystemAdapter()));
-// Use testing API (https://api.testing.digisign.org)
-$dgs->useTesting(true);
+// Use sandbox API (https://api.staging.digisign.org)
+$dgs->useSandbox(true);
 // Overwrite API base
 $dgs->setApiBase('https://example.com/api');
 // Set maximum age of webhook request to one minute
@@ -84,11 +84,11 @@ services:
       # minimal config
       access_key: '%digisign.accessKey%'
       secret_key: '%digisign.secretKey%'
-      
+
       # other options
       cache: '@psr16.cache'
       http_client: '@psr18.http_client'
-      testing: true # use testing API
+      sandbox: true # use sandbox API
 ```
 
 ## Usage

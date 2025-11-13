@@ -117,7 +117,73 @@ class DigiSignTest extends TestCase
 
         $dgs->request('GET', '/foo');
 
-        self::assertSame('https://api.testing.digisign.org/foo', (string)$mockClient->getLastRequest()->getUri());
+        self::assertSame('https://api.staging.digisign.org/foo', (string)$mockClient->getLastRequest()->getUri());
+    }
+
+    public function testCreateAsSandbox(): void
+    {
+        $mockClient = new Client();
+        $dgs = new DigiSign(
+            [
+                'credentials' => new TokenCredentials(new Token('foo', time())),
+                'http_client' => $mockClient,
+                'sandbox' => true,
+            ],
+        );
+
+        $dgs->request('GET', '/foo');
+
+        self::assertSame('https://api.staging.digisign.org/foo', (string)$mockClient->getLastRequest()->getUri());
+    }
+
+    public function testSandboxTakesPrecedenceOverTesting(): void
+    {
+        $mockClient = new Client();
+        $dgs = new DigiSign(
+            [
+                'credentials' => new TokenCredentials(new Token('foo', time())),
+                'http_client' => $mockClient,
+                'testing' => false,
+                'sandbox' => true,
+            ],
+        );
+
+        $dgs->request('GET', '/foo');
+
+        self::assertSame('https://api.staging.digisign.org/foo', (string)$mockClient->getLastRequest()->getUri());
+    }
+
+    public function testUseSandboxMethod(): void
+    {
+        $mockClient = new Client();
+        $dgs = new DigiSign(
+            [
+                'credentials' => new TokenCredentials(new Token('foo', time())),
+                'http_client' => $mockClient,
+            ],
+        );
+
+        $dgs->useSandbox(true);
+        $dgs->request('GET', '/foo');
+
+        self::assertSame('https://api.staging.digisign.org/foo', (string)$mockClient->getLastRequest()->getUri());
+    }
+
+    public function testUseSandboxMethodDisable(): void
+    {
+        $mockClient = new Client();
+        $dgs = new DigiSign(
+            [
+                'credentials' => new TokenCredentials(new Token('foo', time())),
+                'http_client' => $mockClient,
+                'sandbox' => true,
+            ],
+        );
+
+        $dgs->useSandbox(false);
+        $dgs->request('GET', '/foo');
+
+        self::assertSame('https://api.digisign.org/foo', (string)$mockClient->getLastRequest()->getUri());
     }
 
     public function testChildren(): void

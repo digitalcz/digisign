@@ -34,7 +34,10 @@ final class DigiSign implements EndpointInterface
 {
     public const VERSION = '2.10.0';
     public const API_BASE = 'https://api.digisign.org';
-    public const API_BASE_TESTING = 'https://api.testing.digisign.org';
+    public const API_BASE_SANDBOX = 'https://api.staging.digisign.org';
+
+    /** @deprecated Use API_BASE_SANDBOX instead */
+    public const API_BASE_TESTING = 'https://api.staging.digisign.org';
 
     /** The base URL for requests */
     private string $apiBase = self::API_BASE;
@@ -59,7 +62,8 @@ final class DigiSign implements EndpointInterface
      *  client              - DigitalCz\DigiSign\DigiSignClient instance with your custom PSR17/18 objects
      *  http_client         - Psr\Http\Client\ClientInterface instance of your custom PSR18 client
      *  cache               - Psr\SimpleCache\CacheInterface for caching Credentials auth Tokens
-     *  testing             - bool; whether to use testing or production API
+     *  sandbox             - bool; whether to use sandbox or production API
+     *  testing             - bool; (deprecated) use sandbox instead - whether to use testing or production API
      *  api_base            - string; override the base API url
      *  signature_tolerance - int; The tolerance for webhook signature age validation (in seconds)
      *
@@ -70,6 +74,7 @@ final class DigiSign implements EndpointInterface
      *      client?: DigiSignClient,
      *      http_client?: ClientInterface,
      *      cache?: CacheInterface,
+     *      sandbox?: bool,
      *      testing?: bool,
      *      api_base?: string,
      *      signature_tolerance?: int
@@ -79,7 +84,14 @@ final class DigiSign implements EndpointInterface
     {
         $httpClient = $options['http_client'] ?? null;
         $this->setClient($options['client'] ?? new DigiSignClient($httpClient));
-        $this->useTesting($options['testing'] ?? false);
+
+        // sandbox takes precedence over testing for backward compatibility
+        if (isset($options['sandbox'])) {
+            $this->useSandbox($options['sandbox']);
+        } else {
+            $this->useTesting($options['testing'] ?? false);
+        }
+
         $this->addVersion('digitalcz/digisign', self::VERSION);
         $this->addVersion('PHP', PHP_VERSION);
 
@@ -178,10 +190,22 @@ final class DigiSign implements EndpointInterface
         $this->client = $client;
     }
 
+    /**
+     * @deprecated Use useSandbox() instead. Function will be removed in next major release.
+     */
     public function useTesting(bool $bool = true): void
     {
         if ($bool) {
-            $this->setApiBase(self::API_BASE_TESTING);
+            $this->setApiBase(self::API_BASE_SANDBOX);
+        } else {
+            $this->setApiBase(self::API_BASE);
+        }
+    }
+
+    public function useSandbox(bool $bool = true): void
+    {
+        if ($bool) {
+            $this->setApiBase(self::API_BASE_SANDBOX);
         } else {
             $this->setApiBase(self::API_BASE);
         }
