@@ -12,9 +12,12 @@ final class ContactImport extends BaseResource
 
     public ?string $owner;
 
-    public ?string $file;
+    public ?File $file;
 
     public string $duplicateStrategy;
 
     public string $status;
+
+    /** @var string[] */
+    public array $importedFields;
 }
