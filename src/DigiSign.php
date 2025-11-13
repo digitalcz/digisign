@@ -36,7 +36,7 @@ final class DigiSign implements EndpointInterface
     public const API_BASE = 'https://api.digisign.org';
     public const API_BASE_SANDBOX = 'https://api.staging.digisign.org';
 
-    /** @deprecated Use API_BASE_SANDBOX instead */
+    /** @deprecated Use API_BASE_SANDBOX instead. It will be removed in next major release. */
     public const API_BASE_TESTING = 'https://api.staging.digisign.org';
 
     /** The base URL for requests */
