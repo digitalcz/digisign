@@ -63,7 +63,7 @@ final class DigiSign implements EndpointInterface
      *  http_client         - Psr\Http\Client\ClientInterface instance of your custom PSR18 client
      *  cache               - Psr\SimpleCache\CacheInterface for caching Credentials auth Tokens
      *  sandbox             - bool; whether to use sandbox or production API
-     *  testing             - bool; (deprecated) use sandbox instead - whether to use testing or production API
+     *  testing             - bool; (deprecated) use sandbox instead - whether to use testing or production API. Parametr will be removed in next major release
      *  api_base            - string; override the base API url
      *  signature_tolerance - int; The tolerance for webhook signature age validation (in seconds)
      *
