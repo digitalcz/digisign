@@ -32,7 +32,7 @@ use Psr\SimpleCache\CacheInterface;
 
 final class DigiSign implements EndpointInterface
 {
-    public const VERSION = '2.10.0';
+    public const VERSION = '2.11.0';
     public const API_BASE = 'https://api.digisign.org';
     public const API_BASE_SANDBOX = 'https://api.staging.digisign.org';
 
