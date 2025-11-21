@@ -25,4 +25,8 @@ class NotificationChannels extends BaseResource
     public string $deleted;
 
     public string $cancelled;
+
+    public string $toSignAfterSent;
+
+    public string $toSignBeforeExpires;
 }
