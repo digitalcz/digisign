@@ -5,13 +5,12 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
-
-### Added
 - Add `NotificationChannels.toSignAfterSent` property
 - Add `NotificationChannels.toSignBeforeExpires` property
+- Add `AccountBilling.bankIdSign` property
+- Add `AccountBilling.bankIdQSign` property
 
 ## [2.11.0] - 2025-11-12
-
 ### Deprecated
 - `testing` parameter and `useTesting()` method are deprecated, use `sandbox` parameter and `useSandbox()` method instead
 - `API_BASE_TESTING` constant is deprecated, use `API_BASE_SANDBOX` instead
