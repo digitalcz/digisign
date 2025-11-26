@@ -26,7 +26,7 @@ class NotificationChannels extends BaseResource
 
     public string $cancelled;
 
-    public string $toSignAfterSent;
+    public string $afterSent;
 
-    public string $toSignBeforeExpires;
+    public string $envelopeNotification;
 }
