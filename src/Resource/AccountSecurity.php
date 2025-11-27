@@ -44,4 +44,5 @@ class AccountSecurity extends BaseResource
     public bool $hasCustomCertificate;
     public bool $twoFactorAuthRequired;
     public int $sessionIdle;
+    public bool $delegation;
 }
