@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountBilling.bankIdSign` property
 - Add `AccountBilling.bankIdQSign` property
 - Add `AccountSettings.delegation` property
+- Add `EnvelopeTemplateRecipient.notificationCopies` and `EnvelopeRecipient.notificationCopies` property
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated
