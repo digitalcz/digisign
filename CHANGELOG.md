@@ -9,6 +9,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `NotificationChannels.envelopeNotification` property
 - Add `AccountBilling.bankIdSign` property
 - Add `AccountBilling.bankIdQSign` property
+- Add `EnvelopeTemplateRecipient.notificationCopies` and `EnvelopeRecipient.notificationCopies` property
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated
