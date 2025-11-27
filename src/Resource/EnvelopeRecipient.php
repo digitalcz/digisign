@@ -126,4 +126,7 @@ class EnvelopeRecipient extends BaseResource
     public ?string $birthnumber = null;
 
     public NotificationChannels $notificationChannels;
+
+    /** @var array<string> */
+    public array $notificationCopies;
 }
