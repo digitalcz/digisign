@@ -77,6 +77,12 @@ class EnvelopeRecipientsEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/envelopes/bar/recipients/foo/scenario');
     }
 
+    public function testSignInfo(): void
+    {
+        self::endpoint()->signInfo('foo');
+        self::assertLastRequest('GET', '/api/envelopes/bar/recipients/foo/sign-info');
+    }
+
     public function testCertificateInfo(): void
     {
         self::endpoint()->certificateInfo('foo');

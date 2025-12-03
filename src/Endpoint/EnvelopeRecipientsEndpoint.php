@@ -15,6 +15,7 @@ use DigitalCz\DigiSign\Resource\EnvelopeTag;
 use DigitalCz\DigiSign\Resource\ListResource;
 use DigitalCz\DigiSign\Resource\ResourceInterface;
 use DigitalCz\DigiSign\Resource\SignatureScenarioVersion;
+use DigitalCz\DigiSign\Resource\SignInfo;
 use DigitalCz\DigiSign\Resource\VerifiedClaims;
 
 /**
@@ -120,6 +121,14 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
         return $this->createResource(
             $this->getRequest('/{id}/scenario', ['id' => $recipient]),
             SignatureScenarioVersion::class,
+        );
+    }
+
+    public function signInfo(EnvelopeRecipient|string $recipient): SignInfo
+    {
+        return $this->createResource(
+            $this->getRequest('/{id}/sign-info', ['id' => $recipient]),
+            SignInfo::class,
         );
     }
 
