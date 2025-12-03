@@ -6,7 +6,7 @@ namespace DigitalCz\DigiSign\Resource;
 
 use DateTime;
 
-final class BankIdRequest extends BaseResource
+final class BankIdRequestInfo extends BaseResource
 {
     public DateTime $createdAt;
     public ?DateTime $authorizedAt;

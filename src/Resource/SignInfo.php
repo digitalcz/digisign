@@ -11,6 +11,6 @@ final class SignInfo extends BaseResource
     public string $signatureType;
     public ?DateTime $signedAt;
 
-    /** @var array<BankIdRequest>  */
+    /** @var array<BankIdRequestInfo>  */
     public array $bankIdRequests;
 }
