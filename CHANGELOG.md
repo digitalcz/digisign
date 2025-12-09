@@ -12,6 +12,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountSettings.delegation` property
 - Add `EnvelopeTemplateRecipient.notificationCopies` and `EnvelopeRecipient.notificationCopies` property
 - Add `EnvelopeRecipient.SignInfo` endpoint with resources
+- Add `WebhookAttempt.webhookEvent` property
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated

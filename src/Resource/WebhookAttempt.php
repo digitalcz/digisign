@@ -9,14 +9,10 @@ use DateTime;
 class WebhookAttempt extends BaseResource
 {
     public string $id;
-
     public DateTime $createdAt;
-
     public int $status;
-
     public string $request;
-
     public string $response;
-
     public EntityEvent $event;
+    public string $webhookEvent;
 }
