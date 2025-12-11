@@ -48,4 +48,7 @@ class AccountSettings extends BaseResource
 
     /** @var string[] */
     public array $disabledTags;
+
+    /** @var string[] */
+    public array $nonRenderableTags;
 }
