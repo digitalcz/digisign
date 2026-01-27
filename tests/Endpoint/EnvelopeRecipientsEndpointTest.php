@@ -23,6 +23,12 @@ class EnvelopeRecipientsEndpointTest extends EndpointTestCase
         );
     }
 
+    public function testUpdate(): void
+    {
+        self::endpoint()->update('foo', ['foo' => 'bar'], ['foo' => 'bar']);
+        self::assertLastRequest('PUT', '/api/envelopes/bar/recipients/foo?foo=bar', ['foo' => 'bar']);
+    }
+
     public function testCreateMany(): void
     {
         self::endpoint()->createMany(['foo' => 'bar']);

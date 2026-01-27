@@ -14,6 +14,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeRecipient.SignInfo` endpoint with resources
 - Add `WebhookAttempt.webhookEvent` property
 - Add `AccountSettings.nonRenderableTags` property
+- Add `query` parameter to `EnvelopeRecipientsEndpoint.update` method
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated
