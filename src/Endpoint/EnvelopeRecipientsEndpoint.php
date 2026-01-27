@@ -22,7 +22,6 @@ use DigitalCz\DigiSign\Resource\VerifiedClaims;
  * @extends ResourceEndpoint<EnvelopeRecipient>
  * @method EnvelopeRecipient get(string $id)
  * @method EnvelopeRecipient create(array $body)
- * @method EnvelopeRecipient update(string $id, array $body)
  */
 final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
 {
@@ -32,6 +31,15 @@ final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
     public function __construct(EnvelopesEndpoint $parent, Envelope|string $envelope)
     {
         parent::__construct($parent, '/{envelope}/recipients', EnvelopeRecipient::class, ['envelope' => $envelope]);
+    }
+
+    /**
+     * @param mixed[] $body
+     * @param mixed[] $query
+     */
+    public function update(EnvelopeRecipient|string $id, array $body, array $query = []): EnvelopeRecipient
+    {
+        return $this->makeResource($this->putRequest('/{id}', ['id' => $id, 'json' => $body, 'query' => $query]));
     }
 
     public function block(EnvelopeRecipient|string $recipient): RecipientBlockEndpoint
