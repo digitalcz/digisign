@@ -93,6 +93,11 @@ final class AccountEndpoint extends ResourceEndpoint
         return new AccountContactsEndpoint($this);
     }
 
+    public function billingProfile(): BillingProfileEndpoint
+    {
+        return new BillingProfileEndpoint($this);
+    }
+
     public function get(): Account
     {
         return $this->makeResource($this->getRequest());
