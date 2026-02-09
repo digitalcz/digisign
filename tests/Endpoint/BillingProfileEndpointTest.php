@@ -11,14 +11,14 @@ class BillingProfileEndpointTest extends EndpointTestCase
 {
     public function testGet(): void
     {
-        self::endpoint()->get('foo');
-        self::assertLastRequest('GET', '/api/account/billing-profile/foo');
+        self::endpoint()->get();
+        self::assertLastRequest('GET', '/api/account/billing-profile');
     }
 
     public function testUpdate(): void
     {
-        self::endpoint()->update('foo', ['foo' => 'bar']);
-        self::assertLastRequest('PUT', '/api/account/billing-profile/foo', ['foo' => 'bar']);
+        self::endpoint()->update(['foo' => 'bar']);
+        self::assertLastRequest('PUT', '/api/account/billing-profile', ['foo' => 'bar']);
     }
 
     protected static function endpoint(): BillingProfileEndpoint
