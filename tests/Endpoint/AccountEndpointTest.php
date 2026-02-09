@@ -27,6 +27,7 @@ class AccountEndpointTest extends EndpointTestCase
         self::assertDefaultEndpointPath(self::endpoint()->identifyScenarios(), '/api/account/identify-scenarios');
         self::assertDefaultEndpointPath(self::endpoint()->groups(), '/api/account/groups');
         self::assertDefaultEndpointPath(self::endpoint()->contacts(), '/api/account/contacts');
+        self::assertDefaultEndpointPath(self::endpoint()->billingProfile(), '/api/account/billing-profile');
     }
 
     public function testGet(): void
