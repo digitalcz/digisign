@@ -18,6 +18,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountSettings.nonRenderableTags` property
 - Add `query` parameter to `EnvelopeRecipientsEndpoint.update` method
 - Add `BillingProfile` endpoint and resource
+- Add `MyAccount.role` property
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated
