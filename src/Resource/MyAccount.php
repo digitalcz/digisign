@@ -10,6 +10,7 @@ class MyAccount extends BaseResource
 {
     public string $id;
     public string $name;
+    public string $role;
     public string $status;
     public bool $active;
     public DateTime $createdAt;
