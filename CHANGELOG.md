@@ -11,6 +11,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `NotificationChannels.envelopeNotification` property
 - Add `AccountBilling.bankIdSign` property
 - Add `AccountBilling.bankIdQSign` property
+- Add `AccountBilling.activeAccountUsage` property
+- Add `AccountBilling.accountLimit` property
 - Add `AccountSettings.delegation` property
 - Add `EnvelopeTemplateRecipient.notificationCopies` and `EnvelopeRecipient.notificationCopies` property
 - Add `EnvelopeRecipient.SignInfo` endpoint with resources

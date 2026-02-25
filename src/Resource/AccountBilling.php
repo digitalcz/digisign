@@ -87,4 +87,8 @@ class AccountBilling extends BaseResource
     public bool $bankIdSign;
 
     public bool $bankIdQSign;
+
+    public int $activeAccountUsage;
+
+    public int $accountLimit;
 }
