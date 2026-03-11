@@ -6,7 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 - Add `SubjectProfile` resource
-- Add `AccountSettings.auditLogSubjectProfile` property
+- Add `AccountSettings.subjectProfile` property
 - Add `NotificationChannels.afterSent` property
 - Add `NotificationChannels.envelopeNotification` property
 - Add `AccountBilling.bankIdSign` property

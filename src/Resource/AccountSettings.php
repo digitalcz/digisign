@@ -28,7 +28,7 @@ class AccountSettings extends BaseResource
 
     public ?Address $address = null;
 
-    public ?SubjectProfile $auditLogSubjectProfile = null;
+    public ?SubjectProfile $subjectProfile = null;
 
     public string $bankIdProduct;
 
