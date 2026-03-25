@@ -9,6 +9,12 @@ namespace DigitalCz\DigiSign\Endpoint;
  */
 final class BulkSignatureEndpointTest extends EndpointTestCase
 {
+    public function testCreate(): void
+    {
+        self::endpoint()->create(['name' => 'John']);
+        self::assertLastRequest('POST', '/api/bulk-signatures');
+    }
+
     public function testGet(): void
     {
         self::endpoint()->get('foo');
@@ -19,6 +25,18 @@ final class BulkSignatureEndpointTest extends EndpointTestCase
     {
         self::endpoint()->list();
         self::assertLastRequest('GET', '/api/bulk-signatures');
+    }
+
+    public function testUpdate(): void
+    {
+        self::endpoint()->update('foo', ['name' => 'Jane']);
+        self::assertLastRequest('PUT', '/api/bulk-signatures/foo');
+    }
+
+    public function testSend(): void
+    {
+        self::endpoint()->send('foo');
+        self::assertLastRequest('POST', '/api/bulk-signatures/foo/send');
     }
 
     public function testResend(): void
