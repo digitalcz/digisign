@@ -5,6 +5,9 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `BulkSignatureEndpoint.create` method
+- Add `BulkSignatureEndpoint.update` method
+- Add `BulkSignatureEndpoint.send` method
 - Add `SubjectProfile` resource
 - Add `AccountSettings.subjectProfile` property
 - Add `NotificationChannels.afterSent` property
