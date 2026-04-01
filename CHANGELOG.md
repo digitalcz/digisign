@@ -15,25 +15,6 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Deprecate `Envelope.expiration` in favor of `EnvelopeProperties.expirationPeriod`
 - Deprecate `EnvelopeTemplate.expiration` in favor of `EnvelopeProperties.expirationPeriod`
 - Deprecate `BulkSignature.expiration` in favor of `BulkSignature.expirationPeriod`
-- Add `BulkSignatureEndpoint.create` method
-- Add `BulkSignatureEndpoint.update` method
-- Add `BulkSignatureEndpoint.send` method
-- Add `SubjectProfile` resource
-- Add `AccountSettings.subjectProfile` property
-- Add `NotificationChannels.afterSent` property
-- Add `NotificationChannels.envelopeNotification` property
-- Add `AccountBilling.bankIdSign` property
-- Add `AccountBilling.bankIdQSign` property
-- Add `AccountBilling.activeAccountUsage` property
-- Add `AccountBilling.accountLimit` property
-- Add `AccountSettings.delegation` property
-- Add `EnvelopeTemplateRecipient.notificationCopies` and `EnvelopeRecipient.notificationCopies` property
-- Add `EnvelopeRecipient.SignInfo` endpoint with resources
-- Add `WebhookAttempt.webhookEvent` property
-- Add `AccountSettings.nonRenderableTags` property
-- Add `query` parameter to `EnvelopeRecipientsEndpoint.update` method
-- Add `BillingProfile` endpoint and resource
-- Add `MyAccount.role` property
 - Add `EnvelopeCategory` list endpoint and resource
 - Add `EnvelopeRecipient.type` and `EnvelopeTemplateRecipient.type` property
 - Add `EnvelopeProperties.consumerWithdrawalPeriod` property
@@ -53,6 +34,27 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Deprecate `EnvelopeProperties.timestampDocuments` in favor of `EnvelopeProperties.defaultTimestampDocuments`
 - Deprecate `EnvelopeTemplate.timestampDocuments` in favor of `EnvelopeProperties.defaultTimestampDocuments`
 - Add `Envelope.withdrawalDeadline` property
+
+## [2.12.0] - 2026-04-01
+- Add `BulkSignatureEndpoint.create` method
+- Add `BulkSignatureEndpoint.update` method
+- Add `BulkSignatureEndpoint.send` method
+- Add `SubjectProfile` resource
+- Add `AccountSettings.subjectProfile` property
+- Add `NotificationChannels.afterSent` property
+- Add `NotificationChannels.envelopeNotification` property
+- Add `AccountBilling.bankIdSign` property
+- Add `AccountBilling.bankIdQSign` property
+- Add `AccountBilling.activeAccountUsage` property
+- Add `AccountBilling.accountLimit` property
+- Add `AccountSettings.delegation` property
+- Add `EnvelopeTemplateRecipient.notificationCopies` and `EnvelopeRecipient.notificationCopies` property
+- Add `EnvelopeRecipient.SignInfo` endpoint with resources
+- Add `WebhookAttempt.webhookEvent` property
+- Add `AccountSettings.nonRenderableTags` property
+- Add `query` parameter to `EnvelopeRecipientsEndpoint.update` method
+- Add `BillingProfile` endpoint and resource
+- Add `MyAccount.role` property
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated
