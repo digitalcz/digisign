@@ -28,7 +28,10 @@ class Envelope extends BaseResource
 
     public ?string $senderEmail = null;
 
+    /** @deprecated Use $expirationPeriod instead */
     public int $expiration;
+
+    public TimePeriod $expirationPeriod;
 
     public string $signatureType;
 
