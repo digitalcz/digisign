@@ -48,7 +48,10 @@ final class BulkSignature extends BaseResource
 
     public ?DateTime $expiredAt;
 
+    /** @deprecated Use $expirationPeriod instead */
     public int $expiration;
+
+    public TimePeriod $expirationPeriod;
 
     public ?User $sender;
 

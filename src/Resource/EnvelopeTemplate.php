@@ -30,7 +30,10 @@ class EnvelopeTemplate extends BaseResource
 
     public ?string $emailBodyCompleted = null;
 
+    /** @deprecated Use $expirationPeriod instead */
     public int $expiration;
+
+    public TimePeriod $expirationPeriod;
 
     public string $signatureType;
 
