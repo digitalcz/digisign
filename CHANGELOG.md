@@ -7,7 +7,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 ## [Unreleased]
 - Added `Envelope.expirationTimeOfDay`
 - Added `EnvelopeTemplate.expirationTimeOfDay`
-- Add `TimePeriod` resource
+- Add `Period` resource
 - Add `Envelope.expirationPeriod` property
 - Add `EnvelopeTemplate.expirationPeriod` property
 - Add `BulkSignature.expirationPeriod` property
