@@ -39,4 +39,6 @@ class EnvelopeProperties extends BaseResource
     public string $channelForSender;
 
     public ?Period $discardCompletedAfterPeriod;
+
+    public Period $expirationPeriod;
 }

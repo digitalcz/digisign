@@ -8,11 +8,11 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Added `Envelope.expirationTimeOfDay`
 - Added `EnvelopeTemplate.expirationTimeOfDay`
 - Add `Period` resource
-- Add `Envelope.expirationPeriod` property
+- Add `EnvelopeProperties.expirationPeriod` property
 - Add `EnvelopeTemplate.expirationPeriod` property
 - Add `BulkSignature.expirationPeriod` property
 - Add `EnvelopeProperties.discardCompletedAfterPeriod` property
-- Deprecate `Envelope.expiration` in favor of `Envelope.expirationPeriod`
+- Deprecate `Envelope.expiration` in favor of `EnvelopeProperties.expirationPeriod`
 - Deprecate `EnvelopeTemplate.expiration` in favor of `EnvelopeTemplate.expirationPeriod`
 - Deprecate `BulkSignature.expiration` in favor of `BulkSignature.expirationPeriod`
 - Add `BulkSignatureEndpoint.create` method
