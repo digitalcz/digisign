@@ -5,8 +5,8 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
-- Added `EnvelopeProperties.expirationTimeOfDay`
-- Added `EnvelopeTemplate.expirationTimeOfDay`
+- Add `EnvelopeProperties.expirationTimeOfDay`
+- Add `EnvelopeTemplate.expirationTimeOfDay`
 - Add `Period` resource
 - Add `EnvelopeProperties.expirationPeriod` property
 - Add `EnvelopeTemplate.expirationPeriod` property
