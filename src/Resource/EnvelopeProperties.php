@@ -41,4 +41,6 @@ class EnvelopeProperties extends BaseResource
     public ?Period $discardCompletedAfterPeriod;
 
     public Period $expirationPeriod;
+
+    public string $expirationTimeOfDay;
 }
