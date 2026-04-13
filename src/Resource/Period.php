@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Resource;
 
-class TimePeriod extends BaseResource
+class Period extends BaseResource
 {
     public ?int $value;
 

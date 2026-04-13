@@ -33,7 +33,9 @@ class EnvelopeTemplate extends BaseResource
     /** @deprecated Use $expirationPeriod instead */
     public int $expiration;
 
-    public TimePeriod $expirationPeriod;
+    public Period $expirationPeriod;
+
+    public string $expirationTimeOfDay;
 
     public string $signatureType;
 

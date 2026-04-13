@@ -31,8 +31,6 @@ class Envelope extends BaseResource
     /** @deprecated Use $expirationPeriod instead */
     public int $expiration;
 
-    public TimePeriod $expirationPeriod;
-
     public string $signatureType;
 
     public string $authenticationOnOpen;
