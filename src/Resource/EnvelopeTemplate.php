@@ -30,12 +30,8 @@ class EnvelopeTemplate extends BaseResource
 
     public ?string $emailBodyCompleted = null;
 
-    /** @deprecated Use $expirationPeriod instead */
+    /** @deprecated Use $properties->expirationPeriod instead */
     public int $expiration;
-
-    public Period $expirationPeriod;
-
-    public string $expirationTimeOfDay;
 
     public string $signatureType;
 
@@ -68,6 +64,8 @@ class EnvelopeTemplate extends BaseResource
     public array $validatedFields;
 
     public bool $useDefaultTemplateSettings;
+
+    public EnvelopeProperties $properties;
 
     /** @var Collection<Label> */
     public Collection $labels;
