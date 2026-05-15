@@ -14,6 +14,7 @@ use DigitalCz\DigiSign\Endpoint\BulkSignatureEndpoint;
 use DigitalCz\DigiSign\Endpoint\DeliveriesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EndpointInterface;
 use DigitalCz\DigiSign\Endpoint\EnumsEndpoint;
+use DigitalCz\DigiSign\Endpoint\EnvelopeCategoriesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EnvelopesEndpoint;
 use DigitalCz\DigiSign\Endpoint\EnvelopeTemplatesEndpoint;
 use DigitalCz\DigiSign\Endpoint\FilesEndpoint;
@@ -317,6 +318,11 @@ final class DigiSign implements EndpointInterface
     public function bulkSignature(): BulkSignatureEndpoint
     {
         return new BulkSignatureEndpoint($this);
+    }
+
+    public function envelopeCategories(): EnvelopeCategoriesEndpoint
+    {
+        return new EnvelopeCategoriesEndpoint($this);
     }
 
     private function createUserAgent(): string
