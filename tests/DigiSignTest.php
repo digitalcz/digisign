@@ -224,6 +224,8 @@ class DigiSignTest extends TestCase
         self::assertSame('/api/report', $mockClient->getLastRequest()->getUri()->getPath());
         $dgs->bulkSignature()->request('GET');
         self::assertSame('/api/bulk-signatures', $mockClient->getLastRequest()->getUri()->getPath());
+        $dgs->envelopeCategories()->request('GET');
+        self::assertSame('/api/envelope-categories', $mockClient->getLastRequest()->getUri()->getPath());
     }
 
     public function testUserAgent(): void
