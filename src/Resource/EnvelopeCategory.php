@@ -8,5 +8,4 @@ final class EnvelopeCategory extends BaseResource
 {
     public string $id;
     public string $name;
-    public ?string $slug;
 }
