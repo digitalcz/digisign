@@ -13,6 +13,8 @@ class EnvelopeTemplateRecipient extends BaseResource
 
     public string $alias;
 
+    public string $type;
+
     public string $role;
 
     public string $signatureType;

@@ -15,6 +15,8 @@ class EnvelopeRecipient extends BaseResource
 
     public ?string $metadata = null;
 
+    public string $type;
+
     public string $role;
 
     public string $signatureType;
