@@ -46,6 +46,6 @@ class EnvelopeProperties extends BaseResource
 
     public ?int $consumerWithdrawalPeriod = null;
 
-    /** @var array<string, string> */
-    public array $consumerGuide;
+    /** @var array<string, string>|null */
+    public ?array $consumerGuide;
 }
