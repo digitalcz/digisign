@@ -33,6 +33,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `BillingProfile` endpoint and resource
 - Add `MyAccount.role` property
 - Add `EnvelopeCategory` endpoint and resource
+- Add `EnvelopeRecipient.type` and `EnvelopeTemplateRecipient.type` property
+- Add `EnvelopeProperties.consumerWithdrawalPeriod` property
+- Add `EnvelopeProperties.consumerGuide` property
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated
