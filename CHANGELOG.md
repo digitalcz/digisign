@@ -32,7 +32,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `query` parameter to `EnvelopeRecipientsEndpoint.update` method
 - Add `BillingProfile` endpoint and resource
 - Add `MyAccount.role` property
-- Add `EnvelopeCategory` endpoint and resource
+- Add `EnvelopeCategory` list endpoint and resource
 - Add `EnvelopeRecipient.type` and `EnvelopeTemplateRecipient.type` property
 - Add `EnvelopeProperties.consumerWithdrawalPeriod` property
 - Add `EnvelopeProperties.consumerGuide` property

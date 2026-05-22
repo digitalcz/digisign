@@ -94,4 +94,6 @@ class Envelope extends BaseResource
     public ?Blame $sentBy = null;
 
     public bool $sentWithSignatureScenarios;
+
+    public EnvelopeCategory $category;
 }

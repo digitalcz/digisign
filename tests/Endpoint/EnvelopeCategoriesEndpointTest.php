@@ -15,12 +15,6 @@ final class EnvelopeCategoriesEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', "/api/envelope-categories?foo=bar");
     }
 
-    public function testGet(): void
-    {
-        self::endpoint()->get('foo');
-        self::assertLastRequest('GET', "/api/envelope-categories/foo");
-    }
-
     protected static function endpoint(): EnvelopeCategoriesEndpoint
     {
         return self::dgs()->envelopeCategories();
