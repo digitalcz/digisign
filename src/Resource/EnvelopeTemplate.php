@@ -87,4 +87,6 @@ class EnvelopeTemplate extends BaseResource
     public ?EnvelopeTemplateRecipientDefaults $approverDefaults = null;
 
     public ?EnvelopeTemplateRecipientDefaults $ccDefaults = null;
+
+    public EnvelopeCategory $category;
 }
