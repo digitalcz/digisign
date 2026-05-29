@@ -36,6 +36,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeRecipient.type` and `EnvelopeTemplateRecipient.type` property
 - Add `EnvelopeProperties.consumerWithdrawalPeriod` property
 - Add `EnvelopeProperties.consumerGuide` property
+- Add `Envelope.withdrawnAt` property
+- Add `Envelope.withdrawal` property and `EnvelopeWithdrawal` resource
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated

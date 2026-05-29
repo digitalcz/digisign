@@ -59,6 +59,10 @@ class Envelope extends BaseResource
 
     public ?DateTime $declinedAt = null;
 
+    public ?DateTime $withdrawnAt = null;
+
+    public ?EnvelopeWithdrawal $withdrawal = null;
+
     public ?DateTime $discardedAt = null;
 
     public ?DateTime $anonymizeAt = null;
