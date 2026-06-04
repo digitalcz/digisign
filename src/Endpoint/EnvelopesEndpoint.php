@@ -13,7 +13,6 @@ use DigitalCz\DigiSign\Stream\FileResponse;
 
 /**
  * @extends ResourceEndpoint<Envelope>
- * @method Envelope get(string $id)
  * @method Envelope create(array $body)
  * @method Envelope update(string $id, array $body)
  */
@@ -25,6 +24,14 @@ final class EnvelopesEndpoint extends ResourceEndpoint
     public function __construct(DigiSign $parent)
     {
         parent::__construct($parent, '/api/envelopes', Envelope::class);
+    }
+
+    /**
+     * @param mixed[] $query
+     */
+    public function get(string $id, array $query = []): Envelope
+    {
+        return $this->makeResource($this->getRequest('/{id}', ['id' => $id, 'query' => $query]));
     }
 
     public function documents(Envelope|string $envelope): EnvelopeDocumentsEndpoint
