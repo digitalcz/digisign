@@ -131,4 +131,6 @@ class EnvelopeRecipient extends BaseResource
 
     /** @var array<string> */
     public array $notificationCopies;
+
+    public ?Withdrawal $withdrawal = null;
 }
