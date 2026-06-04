@@ -37,6 +37,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeProperties.consumerWithdrawalPeriod` property
 - Add `EnvelopeProperties.consumerGuide` property
 - Add `EnvelopeWithdrawal` resource
+- Add `query` parameter to `EnvelopesEndpoint.get` method
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated
