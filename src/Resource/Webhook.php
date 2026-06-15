@@ -11,7 +11,11 @@ class Webhook extends BaseResource
 {
     use EntityResourceTrait;
 
+    /** @deprecated Use $events instead */
     public string $event;
+
+    /** @var string[] $events */
+    public array $events;
 
     public string $url;
 

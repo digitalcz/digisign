@@ -38,6 +38,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeProperties.consumerGuide` property
 - Add `EnvelopeWithdrawal` resource
 - Add `query` parameter to `EnvelopesEndpoint.get` method
+- Deprecate `Webhook.event` in favor of `Webhook.events`
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated
