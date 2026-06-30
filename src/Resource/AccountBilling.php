@@ -52,7 +52,7 @@ class AccountBilling extends BaseResource
 
     public bool $timestampsAtsa;
 
-    public bool $timestampsPostsignum;
+    public bool $timestampsPostSignum;
 
     public bool $fileCertificates;
 
