@@ -48,4 +48,6 @@ class EnvelopeProperties extends BaseResource
 
     /** @var array<string, string>|null */
     public ?array $consumerGuide;
+
+    public bool $timestampsEnabled;
 }
