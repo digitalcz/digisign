@@ -9,6 +9,8 @@ class Features extends BaseResource
     public bool $branding;
     public bool $brandingPlus;
     public bool $timestamps;
+    public bool $timestampsAtsa;
+    public bool $timestampsPostsignum;
     public bool $fileCertificates;
     public bool $identify;
     public bool $identifyBankId;

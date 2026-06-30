@@ -39,6 +39,9 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeWithdrawal` resource
 - Add `query` parameter to `EnvelopesEndpoint.get` method
 - Deprecate `Webhook.event` in favor of `Webhook.events`
+- Add `AccountBilling.timestampsAtsa` and `AccountBilling.timestampsPostignum` property
+- Add `Features.timestampsAtsa` and `Features.timestampsPostignum` property
+- Add `EnvelopeProperties.timestampsEnabled` property
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated
