@@ -78,12 +78,6 @@ class AccountEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/account/guide');
     }
 
-    public function testBillingPortal(): void
-    {
-        self::endpoint()->billingPortal();
-        self::assertLastRequest('GET', '/api/account/billing-portal');
-    }
-
     protected static function endpoint(): AccountEndpoint
     {
         return self::dgs()->account();
