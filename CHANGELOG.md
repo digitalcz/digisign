@@ -42,6 +42,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountBilling.timestampsAtsa` and `AccountBilling.timestampsPostSignum` property
 - Add `Features.timestampsAtsa` and `Features.timestampsPostSignum` property
 - Add `EnvelopeProperties.timestampsEnabled` property
+- Add `EnvelopeProperties.timestampsRenewalPeriod` property
+- Add `Features.timestampsRenewal` property
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated

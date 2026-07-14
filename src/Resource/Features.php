@@ -11,6 +11,7 @@ class Features extends BaseResource
     public bool $timestamps;
     public bool $timestampsAtsa;
     public bool $timestampsPostSignum;
+    public bool $timestampsRenewal;
     public bool $fileCertificates;
     public bool $identify;
     public bool $identifyBankId;

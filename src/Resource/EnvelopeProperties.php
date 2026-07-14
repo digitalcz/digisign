@@ -50,4 +50,6 @@ class EnvelopeProperties extends BaseResource
     public ?array $consumerGuide;
 
     public bool $timestampsEnabled;
+
+    public ?int $timestampsRenewalPeriod;
 }
