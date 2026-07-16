@@ -54,6 +54,8 @@ class AccountBilling extends BaseResource
 
     public bool $timestampsPostSignum;
 
+    public bool $timestampsRenewal;
+
     public bool $fileCertificates;
 
     public int $fileSizeLimit;

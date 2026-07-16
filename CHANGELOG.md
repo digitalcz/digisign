@@ -44,6 +44,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeProperties.timestampsEnabled` property
 - Add `EnvelopeProperties.timestampsRenewalPeriod` property
 - Add `Features.timestampsRenewal` property
+- Add `AccountBilling.timestampsRenewal` property
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated
