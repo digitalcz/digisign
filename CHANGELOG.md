@@ -5,6 +5,11 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `Limits.envelopes`, `Limits.noneOrManualIdentifications` and `Limits.aiIdentifications` properties
+- Add `Limits.frequency` property
+- Deprecate `Limits.envelopesMonthly` in favor of `Limits.envelopes`
+- Deprecate `Limits.noneOrManualMonthlyIdentifications` in favor of `Limits.noneOrManualIdentifications`
+- Deprecate `Limits.aiMonthlyIdentifications` in favor of `Limits.aiIdentifications`
 - Add `EnvelopeProperties.expirationTimeOfDay`
 - Add `Period` resource
 - Add `EnvelopeProperties.expirationPeriod` property
