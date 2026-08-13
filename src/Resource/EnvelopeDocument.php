@@ -42,4 +42,8 @@ class EnvelopeDocument extends BaseResource
     public ?DateTime $invalidatedAt = null;
 
     public bool $hasSignatures;
+
+    public bool $timestampEnabled;
+
+    public ?int $timestampsRenewalPeriod = null;
 }

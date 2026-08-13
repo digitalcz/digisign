@@ -47,6 +47,9 @@ class EnvelopeTemplate extends BaseResource
 
     public string $channelForDownload;
 
+    public bool $defaultTimestampDocuments;
+
+    /** @deprecated Use $defaultTimestampDocuments instead */
     public bool $timestampDocuments;
 
     public bool $sendCompleted;

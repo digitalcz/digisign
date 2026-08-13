@@ -42,9 +42,15 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountBilling.timestampsAtsa` and `AccountBilling.timestampsPostSignum` property
 - Add `Features.timestampsAtsa` and `Features.timestampsPostSignum` property
 - Add `EnvelopeProperties.timestampsEnabled` property
-- Add `EnvelopeProperties.timestampsRenewalPeriod` property
+- Add `EnvelopeProperties.defaultTimestampsRenewalPeriod` property
 - Add `Features.timestampsRenewal` property
 - Add `AccountBilling.timestampsRenewal` property
+- Add `EnvelopeDocument.timestampEnabled` and `EnvelopeDocument.timestampsRenewalPeriod` properties
+- Add `EnvelopeTemplateDocument.timestampEnabled` and `EnvelopeTemplateDocument.timestampsRenewalPeriod` properties
+- Add `EnvelopeProperties.defaultTimestampDocuments` and `EnvelopeProperties.timestampAuditLogRenewalPeriod` properties
+- Add `EnvelopeTemplate.defaultTimestampDocuments` property
+- Deprecate `EnvelopeProperties.timestampDocuments` in favor of `EnvelopeProperties.defaultTimestampDocuments`
+- Deprecate `EnvelopeTemplate.timestampDocuments` in favor of `EnvelopeTemplate.defaultTimestampDocuments`
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated
