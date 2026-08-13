@@ -45,6 +45,5 @@ class EnvelopeDocument extends BaseResource
 
     public bool $timestampEnabled;
 
-    /** Timestamps renewal period in years (-1 = unlimited), null = disabled. */
     public ?int $timestampsRenewalPeriod = null;
 }
