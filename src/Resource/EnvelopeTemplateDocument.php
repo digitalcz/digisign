@@ -24,4 +24,8 @@ class EnvelopeTemplateDocument extends BaseResource
 
     /** @var array<string, string> */
     public array $assignments;
+
+    public bool $timestampEnabled;
+
+    public ?int $timestampsRenewalPeriod = null;
 }

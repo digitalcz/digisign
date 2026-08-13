@@ -27,6 +27,9 @@ class EnvelopeProperties extends BaseResource
 
     public bool $auditLogAvailableToAccountUsers;
 
+    public bool $defaultTimestampDocuments;
+
+    /** @deprecated Use $defaultTimestampDocuments instead */
     public bool $timestampDocuments;
 
     public bool $timestampAuditLog;
@@ -51,5 +54,7 @@ class EnvelopeProperties extends BaseResource
 
     public bool $timestampsEnabled;
 
-    public ?int $timestampsRenewalPeriod;
+    public ?int $defaultTimestampsRenewalPeriod = null;
+
+    public ?int $timestampAuditLogRenewalPeriod = null;
 }
