@@ -96,4 +96,6 @@ class Envelope extends BaseResource
     public bool $sentWithSignatureScenarios;
 
     public EnvelopeCategory $category;
+
+    public ?DateTime $withdrawalDeadline;
 }

@@ -51,6 +51,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeTemplate.defaultTimestampDocuments` property
 - Deprecate `EnvelopeProperties.timestampDocuments` in favor of `EnvelopeProperties.defaultTimestampDocuments`
 - Deprecate `EnvelopeTemplate.timestampDocuments` in favor of `EnvelopeTemplate.defaultTimestampDocuments`
+- Add `Envelope.withdrawalDeadline` property
 
 ## [2.11.0] - 2025-11-12
 ### Deprecated
