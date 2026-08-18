@@ -48,9 +48,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeDocument.timestampEnabled` and `EnvelopeDocument.timestampsRenewalPeriod` properties
 - Add `EnvelopeTemplateDocument.timestampEnabled` and `EnvelopeTemplateDocument.timestampsRenewalPeriod` properties
 - Add `EnvelopeProperties.defaultTimestampDocuments` and `EnvelopeProperties.timestampAuditLogRenewalPeriod` properties
-- Add `EnvelopeTemplate.defaultTimestampDocuments` property
 - Deprecate `EnvelopeProperties.timestampDocuments` in favor of `EnvelopeProperties.defaultTimestampDocuments`
-- Deprecate `EnvelopeTemplate.timestampDocuments` in favor of `EnvelopeTemplate.defaultTimestampDocuments`
+- Deprecate `EnvelopeTemplate.timestampDocuments` in favor of `EnvelopeProperties.defaultTimestampDocuments`
 - Add `Envelope.withdrawalDeadline` property
 
 ## [2.11.0] - 2025-11-12
