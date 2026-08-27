@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Fix `EnvelopeRecipient.bankIdScopes`, `EnvelopeTemplate.bankIdScopes` and `EnvelopeTemplateRecipient.bankIdScopes` type annotation to a list of strings (`array<string>`)
 - Add `EnvelopeProperties.expirationTimeOfDay`
 - Add `Period` resource
 - Add `EnvelopeProperties.expirationPeriod` property

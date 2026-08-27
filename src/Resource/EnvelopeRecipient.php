@@ -82,7 +82,7 @@ class EnvelopeRecipient extends BaseResource
 
     public ?string $intermediaryEmail = null;
 
-    /** @var array<string, string> */
+    /** @var array<string> */
     public array $bankIdScopes;
 
     public ?string $authFailedReason = null;
