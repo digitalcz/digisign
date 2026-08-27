@@ -25,7 +25,7 @@ class IdentifyScenarioVersion extends BaseResource
     public bool $bankStatementEnabled;
     public string $approvalMode;
 
-    /** @var array<string, string> */
+    /** @var array<string, string>|null */
     public ?array $ownConditions;
     public bool $selfieEnabled;
     public int $expireAfterHours;

@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 - Fix `EnvelopeRecipient.bankIdScopes`, `EnvelopeTemplate.bankIdScopes` and `EnvelopeTemplateRecipient.bankIdScopes` type annotation to a list of strings (`array<string>`)
+- Fix `Branding.ownConditions`, `Branding.signerReturnUrl`, `Branding.ownSmsText` and `IdentifyScenarioVersion.ownConditions` type annotation to include `null`
 - Add `EnvelopeProperties.expirationTimeOfDay`
 - Add `Period` resource
 - Add `EnvelopeProperties.expirationPeriod` property
