@@ -20,7 +20,7 @@ class SignatureScenarioVersion extends BaseResource
     public string $authenticationOnDownload;
     public Blame $createdBlame;
 
-    /** @var array<string, string> */
+    /** @var array<string> */
     public array $bankIdScopes;
 
     /** @var array<string, string> */
