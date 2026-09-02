@@ -24,7 +24,7 @@ class EnvelopeTemplateRecipientDefaults extends BaseResource
 
     public string $channelForDownload;
 
-    /** @var array<string, string> */
+    /** @var array<string> */
     public array $bankIdScopes;
 
     /** @var array<string, string> */
