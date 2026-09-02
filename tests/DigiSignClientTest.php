@@ -138,6 +138,26 @@ class DigiSignClientTest extends TestCase
         self::assertSame('foobar', self::lastRequest($httpClient)->getHeaderLine('User-Agent'));
     }
 
+    public function testRequestWithInvalidUserAgent(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid value for "user-agent" option');
+        $client->request('GET', 'https://example.com/api', ['user-agent' => 123]);
+    }
+
+    public function testRequestWithInvalidHeaderValue(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid value for "headers" option');
+        $client->request('GET', 'https://example.com/api', ['headers' => ['X-Foo' => new stdClass()]]);
+    }
+
     public function testRequestWithBearerAuth(): void
     {
         $httpClient = new Client();
@@ -178,6 +198,16 @@ class DigiSignClientTest extends TestCase
         $client->request('GET', 'https://example.com/api', ['auth_basic' => new stdClass()]);
     }
 
+    public function testRequestWithInvalidBasicAuthValue(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid value for "auth_basic" option');
+        $client->request('GET', 'https://example.com/api', ['auth_basic' => ['user', 123]]);
+    }
+
     public function testRequestWithInvalidMultipart(): void
     {
         $httpClient = new Client();
@@ -186,6 +216,16 @@ class DigiSignClientTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid value for "multipart" option');
         $client->request('GET', 'https://example.com/api', ['multipart' => 'foo']);
+    }
+
+    public function testRequestWithInvalidMultipartValue(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid value for "multipart" option');
+        $client->request('GET', 'https://example.com/api', ['multipart' => ['foo' => 123]]);
     }
 
     public function testRequestWithMultipart(): void

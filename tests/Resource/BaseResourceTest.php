@@ -126,6 +126,13 @@ class BaseResourceTest extends TestCase
         $resource->getResponse();
     }
 
+    public function testHydrationWithInvalidResourceValue(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Unexpected value for Resource field');
+        new DummyResource(['resource' => 'not-an-array']);
+    }
+
     public function testGetSelfWithoutMappedLinks(): void
     {
         $resource = new BaseResource(['id' => 'foo']);
