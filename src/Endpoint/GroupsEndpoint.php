@@ -9,10 +9,10 @@ use DigitalCz\DigiSign\Resource\Group;
 
 /**
  * @extends ResourceEndpoint<Group>
- * @method Group create(array $body)
+ * @method Group create(mixed[] $body)
  * @method Group get(string $id)
- * @method Group update(string $id, array $body)
- * @method Group[] list(array $query = [])
+ * @method Group update(string $id, mixed[] $body)
+ * @method Group[] list(mixed[] $query = [])
  */
 final class GroupsEndpoint extends ResourceEndpoint
 {

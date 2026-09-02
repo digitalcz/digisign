@@ -11,8 +11,8 @@ use DigitalCz\DigiSign\Resource\EnvelopeTemplateTag;
 /**
  * @extends ResourceEndpoint<EnvelopeTemplateTag>
  * @method EnvelopeTemplateTag get(string $id)
- * @method EnvelopeTemplateTag create(array $body)
- * @method EnvelopeTemplateTag update(string $id, array $body)
+ * @method EnvelopeTemplateTag create(mixed[] $body)
+ * @method EnvelopeTemplateTag update(string $id, mixed[] $body)
  */
 final class EnvelopeTemplateTagsEndpoint extends ResourceEndpoint
 {

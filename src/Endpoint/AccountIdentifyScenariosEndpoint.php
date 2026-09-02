@@ -15,17 +15,17 @@ use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
  * @extends ResourceEndpoint<IdentifyScenario>
- * @method ListResource<IdentifyScenario> list(array $query = [])
+ * @method ListResource<IdentifyScenario> list(mixed[] $query = [])
  * @method IdentifyScenario get(string $id)
- * @method IdentifyScenario create(array $body)
- * @method IdentifyScenario update(string $id, array $body)
+ * @method IdentifyScenario create(mixed[] $body)
+ * @method IdentifyScenario update(string $id, mixed[] $body)
  */
 class AccountIdentifyScenariosEndpoint extends ResourceEndpoint
 {
-    /** @use ListEndpointTrait<IdentifyScenario> */
-    use ListEndpointTrait;
     use CreateEndpointTrait;
     use GetEndpointTrait;
+    /** @use ListEndpointTrait<IdentifyScenario> */
+    use ListEndpointTrait;
     use UpdateEndpointTrait;
 
     public function __construct(AccountEndpoint $parent)

@@ -13,17 +13,17 @@ use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
  * @extends ResourceEndpoint<ApiKey>
- * @method ListResource<ApiKey> list(array $query = [])
+ * @method ListResource<ApiKey> list(mixed[] $query = [])
  * @method ApiKey get(string $id)
- * @method ApiKey create(array $body)
- * @method ApiKey update(string $id, array $body)
+ * @method ApiKey create(mixed[] $body)
+ * @method ApiKey update(string $id, mixed[] $body)
  */
 final class AccountApiKeysEndpoint extends ResourceEndpoint
 {
+    use CreateEndpointTrait;
+    use GetEndpointTrait;
     /** @use ListEndpointTrait<ApiKey> */
     use ListEndpointTrait;
-    use GetEndpointTrait;
-    use CreateEndpointTrait;
     use UpdateEndpointTrait;
 
     public function __construct(AccountEndpoint $parent)

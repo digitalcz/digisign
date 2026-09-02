@@ -11,7 +11,7 @@ use DigitalCz\DigiSign\Resource\EnvelopeCategory;
 
 /**
  * @extends ResourceEndpoint<EnvelopeCategory>
- * @method Envelope list(array $query)
+ * @method Envelope list(mixed[] $query)
  */
 class EnvelopeCategoriesEndpoint extends ResourceEndpoint
 {
