@@ -15,9 +15,9 @@ use DigitalCz\DigiSign\Resource\MyEnvelopeInfo;
  */
 final class MyEnvelopesEndpoint extends ResourceEndpoint
 {
+    use GetEndpointTrait;
     /** @use ListEndpointTrait<MyEnvelope> */
     use ListEndpointTrait;
-    use GetEndpointTrait;
 
     public function __construct(MyEndpoint $parent)
     {

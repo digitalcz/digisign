@@ -11,7 +11,7 @@ use DigitalCz\DigiSign\Resource\MyAccount;
 
 /**
  * @extends ResourceEndpoint<MyAccount>
- * @method MyAccount create(array $body)
+ * @method MyAccount create(mixed[] $body)
  * @method MyAccount get(string $id)
  */
 final class MyAccountsEndpoint extends ResourceEndpoint

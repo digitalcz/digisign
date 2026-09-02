@@ -21,7 +21,7 @@ use DigitalCz\DigiSign\Resource\VerifiedClaims;
 /**
  * @extends ResourceEndpoint<EnvelopeRecipient>
  * @method EnvelopeRecipient get(string $id)
- * @method EnvelopeRecipient create(array $body)
+ * @method EnvelopeRecipient create(mixed[] $body)
  */
 final class EnvelopeRecipientsEndpoint extends ResourceEndpoint
 {

@@ -14,19 +14,19 @@ use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
  * @extends ResourceEndpoint<Certificate>
- * @method ListResource<Certificate> list(array $query = [], bool $actions = true, bool $links = true)
+ * @method ListResource<Certificate> list(mixed[] $query = [], bool $actions = true, bool $links = true)
  * @method Certificate get(string $id)
- * @method Certificate create(array $body)
- * @method Certificate update(string $id, array $body)
+ * @method Certificate create(mixed[] $body)
+ * @method Certificate update(string $id, mixed[] $body)
  */
 class AccountCertificatesEndpoint extends ResourceEndpoint
 {
-    /** @use ListEndpointTrait<Certificate> */
-    use ListEndpointTrait;
-    use GetEndpointTrait;
     use CreateEndpointTrait;
     use UpdateEndpointTrait;
     use DeleteEndpointTrait;
+    use GetEndpointTrait;
+    /** @use ListEndpointTrait<Certificate> */
+    use ListEndpointTrait;
 
     public function __construct(AccountEndpoint $parent)
     {
