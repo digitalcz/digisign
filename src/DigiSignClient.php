@@ -193,12 +193,19 @@ final class DigiSignClient implements DigiSignClientInterface
         $headers['Accept'] ??= 'application/json';
 
         if (isset($options['user-agent'])) {
-            $headers['User-Agent'] = (string)$options['user-agent'];
+            if (!is_string($options['user-agent'])) {
+                throw new InvalidArgumentException('Invalid value for "user-agent" option');
+            }
+
+            $headers['User-Agent'] = $options['user-agent'];
         }
 
         if (isset($options['auth_basic'])) {
             if (is_array($options['auth_basic'])) {
-                $options['auth_basic'] = implode(':', $options['auth_basic']);
+                $options['auth_basic'] = implode(
+                    ':',
+                    array_map(self::stringOption('auth_basic'), $options['auth_basic']),
+                );
             }
 
             if (!is_string($options['auth_basic'])) {
@@ -231,6 +238,10 @@ final class DigiSignClient implements DigiSignClientInterface
                 if ($resource instanceof FileStream) {
                     $resourceOptions['filename'] = $resource->getFilename() ?? '';
                     $resource = $resource->getHandle();
+                }
+
+                if (!is_string($resource) && !is_resource($resource) && !$resource instanceof StreamInterface) {
+                    throw new InvalidArgumentException('Invalid value for "multipart" option');
                 }
 
                 $multipartBuilder->addResource($name, $resource, $resourceOptions);
@@ -270,11 +281,28 @@ final class DigiSignClient implements DigiSignClientInterface
             $request = $request->withBody($body);
         }
 
+        $toString = self::stringOption('headers');
+
         foreach ($headers as $name => $value) {
-            $request = $request->withHeader($name, $value);
+            $value = is_array($value) ? array_map($toString, $value) : $toString($value);
+            $request = $request->withHeader((string)$name, $value);
         }
 
         return $request;
+    }
+
+    /**
+     * @return callable(mixed): string
+     */
+    private static function stringOption(string $option): callable
+    {
+        return static function (mixed $value) use ($option): string {
+            if (!is_string($value)) {
+                throw new InvalidArgumentException(sprintf('Invalid value for "%s" option', $option));
+            }
+
+            return $value;
+        };
     }
 
     private function checkResponse(ResponseInterface $response): void
