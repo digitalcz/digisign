@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Endpoint;
 
 use DigitalCz\DigiSign\Stream\FileStream;
+use PHPUnit\Framework\Attributes\CoversClass;
 
-/**
- * @covers \DigitalCz\DigiSign\Endpoint\ImagesEndpoint
- */
+#[CoversClass(ImagesEndpoint::class)]
 class ImagesEndpointTest extends EndpointTestCase
 {
     public function testList(): void
