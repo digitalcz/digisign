@@ -8,13 +8,12 @@ use DateTimeInterface;
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use Nyholm\NSA;
 use Nyholm\Psr7\Response;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use ReflectionObject;
 
-/**
- * @covers \DigitalCz\DigiSign\Resource\BaseResource
- * @covers \DigitalCz\DigiSign\Resource\PreciseDateTime
- */
+#[CoversClass(BaseResource::class)]
+#[CoversClass(PreciseDateTime::class)]
 class BaseResourceTest extends TestCase
 {
     public const DUMMY_RESOURCE_ARRAYED = [

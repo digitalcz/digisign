@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
-/**
- * @covers \DigitalCz\DigiSign\Endpoint\ContactImportItemsEndpoint
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+#[CoversClass(ContactImportItemsEndpoint::class)]
 final class ContactImportItemsEndpointTest extends EndpointTestCase
 {
     public function testUpload(): void

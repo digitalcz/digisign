@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
-/**
- * @covers \DigitalCz\DigiSign\Endpoint\BulkSignatureEndpoint
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+#[CoversClass(BulkSignatureEndpoint::class)]
 final class BulkSignatureEndpointTest extends EndpointTestCase
 {
     public function testCreate(): void

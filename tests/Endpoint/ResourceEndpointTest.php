@@ -10,11 +10,10 @@ use DigitalCz\DigiSign\Exception\ResponseException;
 use DigitalCz\DigiSign\Resource\Collection;
 use DigitalCz\DigiSign\Resource\DummyResource;
 use Nyholm\Psr7\Response;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \DigitalCz\DigiSign\Endpoint\ResourceEndpoint
- */
+#[CoversClass(ResourceEndpoint::class)]
 class ResourceEndpointTest extends TestCase
 {
     public function testRequest(): void
