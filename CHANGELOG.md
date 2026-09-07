@@ -34,6 +34,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Deprecate `EnvelopeProperties.timestampDocuments` in favor of `EnvelopeProperties.defaultTimestampDocuments`
 - Deprecate `EnvelopeTemplate.timestampDocuments` in favor of `EnvelopeProperties.defaultTimestampDocuments`
 - Add `Envelope.withdrawalDeadline` property
+- Add `AccountBilling.certificateAkv` and `AccountBilling.certificateRemoteSign` property
+- Add `Features.certificateAkv` and `Features.certificateRemoteSign` property
 
 ## [2.12.0] - 2026-04-01
 - Add `BulkSignatureEndpoint.create` method
