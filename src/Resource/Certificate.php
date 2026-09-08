@@ -13,19 +13,23 @@ class Certificate extends BaseResource
 
     public string $storage;
 
-    public string $subject;
+    public ?string $subject = null;
 
-    public string $issuer;
+    public ?string $issuer = null;
 
-    public DateTime $expiresAt;
+    public ?DateTime $expiresAt = null;
 
     public User $owner;
 
     public string $status;
+
+    public ?string $error = null;
 
     public ?string $certificateIdentifier = null;
 
     public ?string $vaultName = null;
 
     public ?string $certificateName = null;
+
+    public ?string $remoteSignUserId = null;
 }

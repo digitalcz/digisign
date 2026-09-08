@@ -8,6 +8,7 @@ use DigitalCz\DigiSign\Endpoint\Traits\CreateEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\DeleteEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\GetEndpointTrait;
 use DigitalCz\DigiSign\Endpoint\Traits\ListEndpointTrait;
+use DigitalCz\DigiSign\Endpoint\Traits\UpdateEndpointTrait;
 use DigitalCz\DigiSign\Resource\Certificate;
 use DigitalCz\DigiSign\Resource\ListResource;
 
@@ -16,6 +17,7 @@ use DigitalCz\DigiSign\Resource\ListResource;
  * @method ListResource<Certificate> list(array $query = [])
  * @method Certificate get(string $id)
  * @method Certificate create(array $body)
+ * @method Certificate update(string $id, array $body)
  */
 class AccountCertificatesEndpoint extends ResourceEndpoint
 {
@@ -23,6 +25,7 @@ class AccountCertificatesEndpoint extends ResourceEndpoint
     use ListEndpointTrait;
     use GetEndpointTrait;
     use CreateEndpointTrait;
+    use UpdateEndpointTrait;
     use DeleteEndpointTrait;
 
     public function __construct(AccountEndpoint $parent)

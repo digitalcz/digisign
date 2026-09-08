@@ -5,6 +5,10 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `AccountCertificatesEndpoint.update` method
+- Add `Certificate.remoteSignUserId` property (I.CA RemoteSign certificate storage `remote_sign`)
+- Add `Certificate.error` property
+- Change `Certificate.subject`, `Certificate.issuer` and `Certificate.expiresAt` to nullable (empty for I.CA RemoteSign certificates)
 - Fix `EnvelopeRecipient.bankIdScopes`, `EnvelopeTemplate.bankIdScopes`, `EnvelopeTemplateRecipient.bankIdScopes`, `EnvelopeTemplateRecipientDefaults.bankIdScopes` and `SignatureScenarioVersion.bankIdScopes` type annotation to a list of strings (`array<string>`)
 - Fix `Branding.ownConditions`, `Branding.signerReturnUrl`, `Branding.ownSmsText` and `IdentifyScenarioVersion.ownConditions` type annotation to include `null`
 - Add `EnvelopeProperties.expirationTimeOfDay`
