@@ -27,6 +27,16 @@ class AccountCertificatesEndpointTest extends EndpointTestCase
         self::assertLastRequest('POST', '/api/account/certificates', ['storage' => 'azure_key_vault']);
     }
 
+    public function testUpdate(): void
+    {
+        self::endpoint()->update('foo', ['storage' => 'remote_sign', 'remoteSignUserId' => 'bar']);
+        self::assertLastRequest(
+            'PUT',
+            '/api/account/certificates/foo',
+            ['storage' => 'remote_sign', 'remoteSignUserId' => 'bar'],
+        );
+    }
+
     public function testReload(): void
     {
         self::endpoint()->reload('foo');
