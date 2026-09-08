@@ -14,16 +14,16 @@ use DigitalCz\DigiSign\Resource\ContactImportProgress;
 /**
  * @extends ResourceEndpoint<ContactImport>
  * @method ContactImport get(string $id)
- * @method ContactImport create(array $body)
- * @method ContactImport update(string $id, array $body)
+ * @method ContactImport create(mixed[] $body)
+ * @method ContactImport update(string $id, mixed[] $body)
  * @method void delete(string $id)
  */
 final class ContactImportsEndpoint extends ResourceEndpoint
 {
-    use GetEndpointTrait;
     use CreateEndpointTrait;
-    use UpdateEndpointTrait;
     use DeleteEndpointTrait;
+    use GetEndpointTrait;
+    use UpdateEndpointTrait;
 
     public function __construct(AccountContactsEndpoint $parent)
     {

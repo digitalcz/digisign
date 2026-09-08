@@ -42,7 +42,7 @@ jobs:
         run: vendor/bin/phpcs --report=checkstyle | cs2pr
 
       - name: PHPStan
-        run: vendor/bin/phpstan analyse --error-format=checkstyle | cs2pr
+        run: vendor/bin/phpstan analyse --memory-limit=1G --error-format=checkstyle | cs2pr
 
       - name: PHPUnit
         run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml

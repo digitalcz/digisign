@@ -9,10 +9,10 @@ namespace DigitalCz\DigiSign\Endpoint\Traits;
  */
 trait CRUDEndpointTrait
 {
+    use CreateEndpointTrait;
+    use DeleteEndpointTrait;
+    use GetEndpointTrait;
     /** @use ListEndpointTrait<T> */
     use ListEndpointTrait;
-    use CreateEndpointTrait;
-    use GetEndpointTrait;
     use UpdateEndpointTrait;
-    use DeleteEndpointTrait;
 }

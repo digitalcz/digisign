@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Auth;
 
 use DigitalCz\DigiSign\DigiSign;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \DigitalCz\DigiSign\Auth\TokenCredentials
- */
+#[CoversClass(TokenCredentials::class)]
 class TokenCredentialsTest extends TestCase
 {
     public function test(): void

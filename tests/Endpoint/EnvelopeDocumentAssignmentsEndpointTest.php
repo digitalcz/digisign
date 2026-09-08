@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
-/**
- * @covers \DigitalCz\DigiSign\Endpoint\EnvelopeDocumentAssignmentsEndpoint
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+#[CoversClass(EnvelopeDocumentAssignmentsEndpoint::class)]
 final class EnvelopeDocumentAssignmentsEndpointTest extends EndpointTestCase
 {
     public function testGet(): void

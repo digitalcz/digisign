@@ -12,8 +12,8 @@ use DigitalCz\DigiSign\Resource\Webhook;
 /**
  * @extends ResourceEndpoint<Webhook>
  * @method Webhook get(string $id)
- * @method Webhook create(array $body)
- * @method Webhook update(string $id, array $body)
+ * @method Webhook create(mixed[] $body)
+ * @method Webhook update(string $id, mixed[] $body)
  */
 final class WebhooksEndpoint extends ResourceEndpoint
 {

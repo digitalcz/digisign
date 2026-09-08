@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
-/**
- * @covers \DigitalCz\DigiSign\Endpoint\WebhookAttemptsEndpoint
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+#[CoversClass(WebhookAttemptsEndpoint::class)]
 class WebhookAttemptsEndpointTest extends EndpointTestCase
 {
     public function testList(): void

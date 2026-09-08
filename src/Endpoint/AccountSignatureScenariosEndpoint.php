@@ -15,17 +15,17 @@ use DigitalCz\DigiSign\Resource\SignatureScenarioInfo;
 
 /**
  * @extends ResourceEndpoint<SignatureScenario>
- * @method ListResource<SignatureScenario> list(array $query = [])
+ * @method ListResource<SignatureScenario> list(mixed[] $query = [])
  * @method SignatureScenario get(string $id)
- * @method SignatureScenario create(array $body)
- * @method SignatureScenario update(string $id, array $body)
+ * @method SignatureScenario create(mixed[] $body)
+ * @method SignatureScenario update(string $id, mixed[] $body)
  */
 class AccountSignatureScenariosEndpoint extends ResourceEndpoint
 {
-    /** @use ListEndpointTrait<SignatureScenario> */
-    use ListEndpointTrait;
     use CreateEndpointTrait;
     use GetEndpointTrait;
+    /** @use ListEndpointTrait<SignatureScenario> */
+    use ListEndpointTrait;
     use UpdateEndpointTrait;
 
     public function __construct(AccountEndpoint $parent)

@@ -6,13 +6,13 @@ namespace DigitalCz\DigiSign\Exception;
 
 use DigitalCz\DigiSign\DigiSignClient;
 use DigitalCz\DigiSign\Resource\Violation;
+use DigitalCz\DigiSign\Resource\Violations;
 use Nyholm\Psr7\Response;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \DigitalCz\DigiSign\Exception\BadRequestException
- * @covers \DigitalCz\DigiSign\Resource\Violations
- */
+#[CoversClass(BadRequestException::class)]
+#[CoversClass(Violations::class)]
 class BadRequestExceptionTest extends TestCase
 {
     public function testGetViolations(): void // phpcs:ignore

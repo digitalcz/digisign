@@ -13,16 +13,16 @@ use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
  * @extends ResourceEndpoint<IdentifyScenarioVersion>
- * @method ListResource<IdentifyScenarioVersion> list(array $query = [])
+ * @method ListResource<IdentifyScenarioVersion> list(mixed[] $query = [])
  * @method IdentifyScenarioVersion get(string $id)
- * @method IdentifyScenarioVersion create(array $body)
+ * @method IdentifyScenarioVersion create(mixed[] $body)
  */
 class AccountIdentifyScenarioVersionsEndpoint extends ResourceEndpoint
 {
-    /** @use ListEndpointTrait<IdentifyScenarioVersion> */
-    use ListEndpointTrait;
     use CreateEndpointTrait;
     use GetEndpointTrait;
+    /** @use ListEndpointTrait<IdentifyScenarioVersion> */
+    use ListEndpointTrait;
 
     public function __construct(AccountIdentifyScenariosEndpoint $parent, IdentifyScenario|string $scenario)
     {

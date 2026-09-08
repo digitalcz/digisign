@@ -20,19 +20,19 @@ use DigitalCz\DigiSign\Resource\ListResource;
 /**
  * @extends ResourceEndpoint<BatchSending>
  * @method BatchSending get(string $id)
- * @method BatchSending update(string $id, array $body)
- * @method BatchSending create(array $body)
+ * @method BatchSending update(string $id, mixed[] $body)
+ * @method BatchSending create(mixed[] $body)
  * @method BatchSending delete(string $id)
- * @method ListResource<BatchSending> list(array $query)
+ * @method ListResource<BatchSending> list(mixed[] $query)
  */
 final class BatchSendingsEndpoint extends ResourceEndpoint
 {
-    /** @use ListEndpointTrait<BatchSending> */
-    use ListEndpointTrait;
-    use GetEndpointTrait;
-    use UpdateEndpointTrait;
     use CreateEndpointTrait;
     use DeleteEndpointTrait;
+    use GetEndpointTrait;
+    /** @use ListEndpointTrait<BatchSending> */
+    use ListEndpointTrait;
+    use UpdateEndpointTrait;
 
     public function __construct(DigiSign $parent)
     {

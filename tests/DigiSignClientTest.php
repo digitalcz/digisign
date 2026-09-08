@@ -17,12 +17,12 @@ use DigitalCz\DigiSign\Stream\FileStream;
 use Http\Mock\Client;
 use InvalidArgumentException;
 use Nyholm\Psr7\Response;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\RequestInterface;
 use stdClass;
 
-/**
- * @covers \DigitalCz\DigiSign\DigiSignClient
- */
+#[CoversClass(DigiSignClient::class)]
 class DigiSignClientTest extends TestCase
 {
     public function testParseResponse(): void
@@ -66,7 +66,7 @@ class DigiSignClientTest extends TestCase
 
         $client->request('POST', 'https://example.com/api/test');
 
-        $lastRequest = $httpClient->getLastRequest();
+        $lastRequest = self::lastRequest($httpClient);
         self::assertSame('POST', $lastRequest->getMethod());
         self::assertSame('https://example.com/api/test', (string)$lastRequest->getUri());
     }
@@ -87,7 +87,7 @@ class DigiSignClientTest extends TestCase
 
         self::assertSame(
             'https://example.com/api/baz/' . DummyResource::ID,
-            (string)$httpClient->getLastRequest()->getUri(),
+            (string)self::lastRequest($httpClient)->getUri(),
         );
     }
 
@@ -114,7 +114,7 @@ class DigiSignClientTest extends TestCase
 
         self::assertSame(
             'https://example.com/api?foo=bar&moo%5Blt%5D=10&moo%5Beq%5D=55',
-            (string)$httpClient->getLastRequest()->getUri(),
+            (string)self::lastRequest($httpClient)->getUri(),
         );
     }
 
@@ -135,7 +135,27 @@ class DigiSignClientTest extends TestCase
 
         $client->request('GET', 'https://example.com/api', ['user-agent' => 'foobar']);
 
-        self::assertSame('foobar', $httpClient->getLastRequest()->getHeaderLine('User-Agent'));
+        self::assertSame('foobar', self::lastRequest($httpClient)->getHeaderLine('User-Agent'));
+    }
+
+    public function testRequestWithInvalidUserAgent(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid value for "user-agent" option');
+        $client->request('GET', 'https://example.com/api', ['user-agent' => 123]);
+    }
+
+    public function testRequestWithInvalidHeaderValue(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid value for "headers" option');
+        $client->request('GET', 'https://example.com/api', ['headers' => ['X-Foo' => new stdClass()]]);
     }
 
     public function testRequestWithBearerAuth(): void
@@ -145,7 +165,7 @@ class DigiSignClientTest extends TestCase
 
         $client->request('GET', 'https://example.com/api', ['auth_bearer' => 'foobar']);
 
-        self::assertSame('Bearer foobar', $httpClient->getLastRequest()->getHeaderLine('Authorization'));
+        self::assertSame('Bearer foobar', self::lastRequest($httpClient)->getHeaderLine('Authorization'));
     }
 
     public function testRequestWithInvalidBearerAuth(): void
@@ -165,7 +185,7 @@ class DigiSignClientTest extends TestCase
 
         $client->request('GET', 'https://example.com/api', ['auth_basic' => ['user', 'pass']]);
 
-        self::assertSame('Basic dXNlcjpwYXNz', $httpClient->getLastRequest()->getHeaderLine('Authorization'));
+        self::assertSame('Basic dXNlcjpwYXNz', self::lastRequest($httpClient)->getHeaderLine('Authorization'));
     }
 
     public function testRequestWithInvalidBasicAuth(): void
@@ -178,6 +198,16 @@ class DigiSignClientTest extends TestCase
         $client->request('GET', 'https://example.com/api', ['auth_basic' => new stdClass()]);
     }
 
+    public function testRequestWithInvalidBasicAuthValue(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid value for "auth_basic" option');
+        $client->request('GET', 'https://example.com/api', ['auth_basic' => ['user', 123]]);
+    }
+
     public function testRequestWithInvalidMultipart(): void
     {
         $httpClient = new Client();
@@ -188,6 +218,16 @@ class DigiSignClientTest extends TestCase
         $client->request('GET', 'https://example.com/api', ['multipart' => 'foo']);
     }
 
+    public function testRequestWithInvalidMultipartValue(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid value for "multipart" option');
+        $client->request('GET', 'https://example.com/api', ['multipart' => ['foo' => 123]]);
+    }
+
     public function testRequestWithMultipart(): void
     {
         $httpClient = new Client();
@@ -195,7 +235,7 @@ class DigiSignClientTest extends TestCase
 
         $client->request('GET', 'https://example.com/api', ['multipart' => ['foo' => 'bar']]);
 
-        $lastRequest = $httpClient->getLastRequest();
+        $lastRequest = self::lastRequest($httpClient);
         $contentType = $lastRequest->getHeaderLine('Content-Type');
         $boundary = trim(substr($contentType, 30), '"');
         self::assertStringStartsWith("multipart/form-data; boundary=\"$boundary\"", $contentType);
@@ -223,7 +263,7 @@ class DigiSignClientTest extends TestCase
             ['multipart' => ['file' => FileStream::open(__DIR__ . '/dummy.pdf')]],
         );
 
-        $lastRequest = $httpClient->getLastRequest();
+        $lastRequest = self::lastRequest($httpClient);
         $contentType = $lastRequest->getHeaderLine('Content-Type');
         $boundary = trim(substr($contentType, 30), '"');
         self::assertStringStartsWith("multipart/form-data; boundary=\"$boundary\"", $contentType);
@@ -247,7 +287,7 @@ class DigiSignClientTest extends TestCase
 
         $client->request('GET', 'https://example.com/api', ['json' => ['foo' => 'bar']]);
 
-        $lastRequest = $httpClient->getLastRequest();
+        $lastRequest = self::lastRequest($httpClient);
         self::assertSame('application/json', $lastRequest->getHeaderLine('Content-Type'));
         self::assertSame('{"foo":"bar"}', (string)$lastRequest->getBody());
     }
@@ -280,7 +320,7 @@ class DigiSignClientTest extends TestCase
         $body = fopen('data://text/plain,foobar', 'rb');
         $client->request('GET', 'https://example.com/api', ['body' => $body]);
 
-        $lastRequest = $httpClient->getLastRequest();
+        $lastRequest = self::lastRequest($httpClient);
         self::assertSame('foobar', (string)$lastRequest->getBody());
     }
 
@@ -385,7 +425,7 @@ class DigiSignClientTest extends TestCase
             ],
         ]);
 
-        $lastRequest = $httpClient->getLastRequest();
+        $lastRequest = self::lastRequest($httpClient);
         self::assertSame('application/json', $lastRequest->getHeaderLine('Content-Type'));
         $expectedJson = '{"datetime":"2020-01-01T13:30:00+02:00","resource":"foo-bar","nested":{"foo":"bar","resource":"moo-baz"}}';
         self::assertSame($expectedJson, (string)$lastRequest->getBody());
@@ -398,5 +438,13 @@ class DigiSignClientTest extends TestCase
         $value = DigiSignClient::jsonDecode($json);
 
         self::assertSame($expected, $value);
+    }
+
+    private static function lastRequest(Client $client): RequestInterface
+    {
+        $request = $client->getLastRequest();
+        self::assertInstanceOf(RequestInterface::class, $request);
+
+        return $request;
     }
 }

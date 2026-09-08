@@ -12,13 +12,13 @@ use DigitalCz\DigiSign\Resource\User;
 /**
  * @extends ResourceEndpoint<User>
  * @method User get(string $id)
- * @method User update(string $id, array $body)
+ * @method User update(string $id, mixed[] $body)
  */
 final class AccountUsersEndpoint extends ResourceEndpoint
 {
+    use GetEndpointTrait;
     /** @use ListEndpointTrait<User> */
     use ListEndpointTrait;
-    use GetEndpointTrait;
     use UpdateEndpointTrait;
 
     public function __construct(AccountEndpoint $parent)

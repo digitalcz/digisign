@@ -6,13 +6,12 @@ namespace DigitalCz\DigiSign\Stream;
 
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 use const TESTS_DIR;
 
-/**
- * @covers \DigitalCz\DigiSign\Stream\FileStream
- */
+#[CoversClass(FileStream::class)]
 class FileTest extends TestCase
 {
     public function testFromFile(): void

@@ -12,10 +12,10 @@ use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
  * @extends ResourceEndpoint<Branding>
- * @method ListResource<Branding> list(array $query = [])
+ * @method ListResource<Branding> list(mixed[] $query = [])
  * @method Branding get(string $id)
- * @method Branding create(array $body)
- * @method Branding update(string $id, array $body)
+ * @method Branding create(mixed[] $body)
+ * @method Branding update(string $id, mixed[] $body)
  */
 class AccountBrandingsEndpoint extends ResourceEndpoint
 {

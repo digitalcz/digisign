@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
-/**
- * @covers \DigitalCz\DigiSign\Endpoint\TwoFactorAuthEndpoint
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+#[CoversClass(TwoFactorAuthEndpoint::class)]
 final class TwoFactorAuthEndpointTest extends EndpointTestCase
 {
     public function testConfigureTwoFactorAuth(): void

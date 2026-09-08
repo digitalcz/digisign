@@ -11,7 +11,7 @@ use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
  * @extends ResourceEndpoint<ContactImportItem>
- * @method ListResource<ContactImportItem> list(array $query = [])
+ * @method ListResource<ContactImportItem> list(mixed[] $query = [])
  */
 final class ContactImportItemsEndpoint extends ResourceEndpoint
 {

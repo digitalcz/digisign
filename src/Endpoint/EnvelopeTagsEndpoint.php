@@ -11,8 +11,8 @@ use DigitalCz\DigiSign\Resource\EnvelopeTag;
 /**
  * @extends ResourceEndpoint<EnvelopeTag>
  * @method EnvelopeTag get(string $id)
- * @method EnvelopeTag create(array $body)
- * @method EnvelopeTag update(string $id, array $body)
+ * @method EnvelopeTag create(mixed[] $body)
+ * @method EnvelopeTag update(string $id, mixed[] $body)
  */
 final class EnvelopeTagsEndpoint extends ResourceEndpoint
 {

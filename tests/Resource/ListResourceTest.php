@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Resource;
 
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \DigitalCz\DigiSign\Resource\ListResource
- */
+#[CoversClass(ListResource::class)]
 class ListResourceTest extends TestCase
 {
     public function testHydration(): void

@@ -14,16 +14,16 @@ use DigitalCz\DigiSign\Resource\BatchSendingItem;
 /**
  * @extends ResourceEndpoint<BatchSendingItem>
  * @method BatchSendingItem get(string $id)
- * @method BatchSendingItem update(string $id, array $body)
+ * @method BatchSendingItem update(string $id, mixed[] $body)
  * @method BatchSendingItem delete(string $id)
  */
 final class BatchSendingItemsEndpoint extends ResourceEndpoint
 {
+    use DeleteEndpointTrait;
+    use GetEndpointTrait;
     /** @use ListEndpointTrait<BatchSendingItem> */
     use ListEndpointTrait;
-    use GetEndpointTrait;
     use UpdateEndpointTrait;
-    use DeleteEndpointTrait;
 
     public function __construct(BatchSendingsEndpoint $parent, BatchSending|string $batchSending)
     {
