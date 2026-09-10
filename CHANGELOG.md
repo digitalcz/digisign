@@ -6,7 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 - Add `AccountCertificatesEndpoint.update` method
-- Add `Certificate.remoteSignUserId` property (I.CA RemoteSign certificate storage `remote_sign`)
+- Add `Certificate.remoteSignPersonId` property (I.CA RemoteSign certificate storage `remote_sign`)
 - Add `Certificate.error` property
 - Change `Certificate.subject`, `Certificate.issuer` and `Certificate.expiresAt` to nullable (empty for I.CA RemoteSign certificates)
 - Fix `EnvelopeRecipient.bankIdScopes`, `EnvelopeTemplate.bankIdScopes`, `EnvelopeTemplateRecipient.bankIdScopes`, `EnvelopeTemplateRecipientDefaults.bankIdScopes` and `SignatureScenarioVersion.bankIdScopes` type annotation to a list of strings (`array<string>`)
