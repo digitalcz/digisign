@@ -31,5 +31,5 @@ class Certificate extends BaseResource
 
     public ?string $certificateName = null;
 
-    public ?string $remoteSignUserId = null;
+    public ?string $remoteSignPersonId = null;
 }

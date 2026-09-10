@@ -29,11 +29,11 @@ class AccountCertificatesEndpointTest extends EndpointTestCase
 
     public function testUpdate(): void
     {
-        self::endpoint()->update('foo', ['storage' => 'remote_sign', 'remoteSignUserId' => 'bar']);
+        self::endpoint()->update('foo', ['remoteSignPersonId' => '1363773']);
         self::assertLastRequest(
             'PUT',
             '/api/account/certificates/foo',
-            ['storage' => 'remote_sign', 'remoteSignUserId' => 'bar'],
+            ['remoteSignPersonId' => '1363773'],
         );
     }
 
