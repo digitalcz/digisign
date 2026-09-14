@@ -6,21 +6,43 @@ namespace DigitalCz\DigiSign\Resource;
 
 class Limits extends BaseResource
 {
-    public ?int $envelopesMonthly;
+    public ?int $users = null;
 
-    public ?int $users;
+    public ?int $userContacts = null;
 
-    public ?int $userContacts;
+    public ?int $accountContacts = null;
 
-    public ?int $accountContacts;
+    public ?int $accounts = null;
 
-    public ?int $documents;
+    public ?int $envelopes = null;
 
-    public ?int $noneOrManualMonthlyIdentifications;
+    public ?int $documents = null;
 
-    public ?int $aiMonthlyIdentifications;
+    public ?int $recipients = null;
 
-    public ?int $tags;
+    public ?int $templates = null;
 
-    public ?int $fileSize;
+    public ?int $noneOrManualIdentifications = null;
+
+    public ?int $aiIdentifications = null;
+
+    public ?int $tags = null;
+
+    public ?int $fileSize = null;
+
+    public ?int $archiveRetentionDays = null;
+
+    public ?int $requestLogRetentionDays = null;
+
+    /** One of `monthly`|`yearly` */
+    public string $frequency;
+
+    /** @deprecated Use $envelopes instead */
+    public ?int $envelopeMonthly = null;
+
+    /** @deprecated Use $noneOrManualIdentifications instead */
+    public ?int $noneOrManualMonthlyIdentifications = null;
+
+    /** @deprecated Use $aiIdentifications instead */
+    public ?int $aiMonthlyIdentifications = null;
 }

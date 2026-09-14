@@ -28,4 +28,19 @@ class Features extends BaseResource
     public bool $bankIdQSign;
     public bool $certificateAkv;
     public bool $certificateRemoteSign;
+    public bool $inPersonSigning;
+    public bool $advancedSettings;
+    public bool $optionalSignature;
+    public bool $textTag;
+    public bool $checkboxTag;
+    public bool $attachmentTag;
+    public bool $dateOfSignatureTag;
+    public bool $signingOrder;
+    public bool $recipientRoleCc;
+    public bool $recipientRoleApprover;
+    public bool $smsNotifications;
+    public bool $roleSettings;
+    public bool $accountGroup;
+    public bool $templateSharing;
+    public bool $autosign;
 }
