@@ -21,6 +21,8 @@ class EnvelopeProperties extends BaseResource
 
     public bool $sendDocumentsAsEmailAttachment;
 
+    public bool $sendSignableDocumentsAsEmailAttachment;
+
     public bool $generateSignatureSheet;
 
     public bool $auditLogAvailableToAllRecipients;
