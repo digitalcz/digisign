@@ -5,6 +5,13 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add new multiple `Features` properties
+- Add new multiple `Limits` properties
+- Fix nullable `Limits` properties to default to `null` instead of staying uninitialized when the API omits them
+- Remove `Limits.envelopesMonthly`, which the API never returned under that name - the property was uninitialized since it was introduced in 2.12.0, so no value could ever be read from it; use `Limits.envelopes`
+- Deprecate `Limits.envelopeMonthly` in favor of `Limits.envelopes`
+- Deprecate `Limits.noneOrManualMonthlyIdentifications` in favor of `Limits.noneOrManualIdentifications`
+- Deprecate `Limits.aiMonthlyIdentifications` in favor of `Limits.aiIdentifications`
 - Add `AccountCertificatesEndpoint.update` method
 - Add `Certificate.remoteSignPersonId` property (I.CA RemoteSign certificate storage `remote_sign`)
 - Add `Certificate.error` property
