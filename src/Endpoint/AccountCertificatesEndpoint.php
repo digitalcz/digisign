@@ -14,7 +14,7 @@ use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
  * @extends ResourceEndpoint<Certificate>
- * @method ListResource<Certificate> list(array $query = [])
+ * @method ListResource<Certificate> list(array $query = [], bool $actions = true, bool $links = true)
  * @method Certificate get(string $id)
  * @method Certificate create(array $body)
  * @method Certificate update(string $id, array $body)

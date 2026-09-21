@@ -10,7 +10,7 @@ use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
  * @extends ResourceEndpoint<Contact>
- * @method ListResource<Contact> list(array $query = [])
+ * @method ListResource<Contact> list(array $query = [], bool $actions = true, bool $links = true)
  * @method Contact get(string $id)
  * @method Contact create(array $body)
  * @method Contact update(string $id, array $body)

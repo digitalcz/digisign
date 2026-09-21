@@ -23,6 +23,31 @@ class EnvelopesEndpointTest extends EndpointTestCase
         self::assertCrudRequests(self::endpoint(), '/api/envelopes');
     }
 
+    public function testListWithoutHal(): void
+    {
+        self::endpoint()->list(['foo' => 'bar'], false, false);
+        self::assertLastRequest('GET', '/api/envelopes?foo=bar&_actions=false&_links=false');
+
+        self::endpoint()->list([], false);
+        self::assertLastRequest('GET', '/api/envelopes?_actions=false');
+
+        self::endpoint()->list(['foo' => 'bar']);
+        self::assertLastRequest('GET', '/api/envelopes?foo=bar');
+    }
+
+    public function testListHalFlagsPassedBothInQueryAndArgumentsAreSentOnce(): void
+    {
+        self::endpoint()->list(['_actions' => 'false', '_links' => 'false', 'foo' => 'bar'], false, false);
+        self::assertLastRequest('GET', '/api/envelopes?_actions=false&_links=false&foo=bar');
+
+        // an explicit query value is kept as-is, the argument does not duplicate or override it
+        self::endpoint()->list(['_actions' => 'false']);
+        self::assertLastRequest('GET', '/api/envelopes?_actions=false');
+
+        self::endpoint()->list(['_actions' => 'true'], false);
+        self::assertLastRequest('GET', '/api/envelopes?_actions=true');
+    }
+
     public function testCancel(): void
     {
         self::endpoint()->cancel('foo', ['foo' => 'bar']);

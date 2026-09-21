@@ -15,7 +15,7 @@ use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
  * @extends ResourceEndpoint<IdentifyScenario>
- * @method ListResource<IdentifyScenario> list(array $query = [])
+ * @method ListResource<IdentifyScenario> list(array $query = [], bool $actions = true, bool $links = true)
  * @method IdentifyScenario get(string $id)
  * @method IdentifyScenario create(array $body)
  * @method IdentifyScenario update(string $id, array $body)
