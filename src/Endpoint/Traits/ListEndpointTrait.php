@@ -12,8 +12,6 @@ use DigitalCz\DigiSign\Resource\ListResource;
 trait ListEndpointTrait
 {
     /**
-     * `_actions` / `_links` already present in $query take precedence over the arguments and are sent once.
-     *
      * @param mixed[] $query
      * @param bool $actions Include `_actions` on each item (set false to speed up large lists)
      * @param bool $links Include `_links` on each item
