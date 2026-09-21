@@ -35,7 +35,7 @@ class EnvelopesEndpointTest extends EndpointTestCase
         self::assertLastRequest('GET', '/api/envelopes?foo=bar');
     }
 
-    public function testListHalFlagsPassedBothInQueryAndArgumentsAreSentOnce(): void
+    public function testFlagsPassedBothInQueryAndArguments(): void
     {
         self::endpoint()->list(['_actions' => 'false', '_links' => 'false', 'foo' => 'bar'], false, false);
         self::assertLastRequest('GET', '/api/envelopes?_actions=false&_links=false&foo=bar');
