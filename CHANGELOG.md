@@ -48,6 +48,8 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountBilling.certificateAkv` and `AccountBilling.certificateRemoteSign` property
 - Add `Features.certificateAkv` and `Features.certificateRemoteSign` property
 - Add `EnvelopeProperties.attachDocumentsToSentEmail` property
+- Add `EnvelopeProperties.attachDocumentsToSignedEmail` property
+- Deprecate `EnvelopeProperties.sendDocumentsAsEmailAttachment` in favor of `EnvelopeProperties.attachDocumentsToSignedEmail`
 
 ## [2.12.0] - 2026-04-01
 - Add `BulkSignatureEndpoint.create` method

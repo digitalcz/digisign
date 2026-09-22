@@ -19,6 +19,9 @@ class EnvelopeProperties extends BaseResource
 
     public string $labelPositioning;
 
+    public bool $attachDocumentsToSignedEmail;
+
+    /** @deprecated Use $attachDocumentsToSignedEmail instead */
     public bool $sendDocumentsAsEmailAttachment;
 
     public bool $attachDocumentsToSentEmail;
