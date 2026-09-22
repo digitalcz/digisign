@@ -47,6 +47,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `Envelope.withdrawalDeadline` property
 - Add `AccountBilling.certificateAkv` and `AccountBilling.certificateRemoteSign` property
 - Add `Features.certificateAkv` and `Features.certificateRemoteSign` property
+- Add `EnvelopeProperties.sendSignableDocumentsAsEmailAttachment` property
 
 ## [2.12.0] - 2026-04-01
 - Add `BulkSignatureEndpoint.create` method
