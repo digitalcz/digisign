@@ -11,7 +11,7 @@ use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
  * @extends ResourceEndpoint<AccountSmsSender>
- * @method ListResource<AccountSmsSender> list(array $query = [])
+ * @method ListResource<AccountSmsSender> list(array $query = [], bool $actions = true, bool $links = true)
  * @method AccountSmsSender get(string $id)
  */
 class AccountSmsSendersEndpoint extends ResourceEndpoint

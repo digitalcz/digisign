@@ -12,7 +12,7 @@ use DigitalCz\DigiSign\Resource\Group;
  * @method Group create(array $body)
  * @method Group get(string $id)
  * @method Group update(string $id, array $body)
- * @method Group[] list(array $query = [])
+ * @method Group[] list(array $query = [], bool $actions = true, bool $links = true)
  */
 final class GroupsEndpoint extends ResourceEndpoint
 {

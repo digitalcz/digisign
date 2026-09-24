@@ -13,10 +13,12 @@ trait ListEndpointTrait
 {
     /**
      * @param mixed[] $query
+     * @param bool $actions Include `_actions` on each item (set false to speed up large lists)
+     * @param bool $links Include `_links` on each item
      * @return ListResource<T>
      */
-    public function list(array $query = []): ListResource
+    public function list(array $query = [], bool $actions = true, bool $links = true): ListResource
     {
-        return $this->makeListRequest($query);
+        return $this->makeListRequest($query + self::halQuery($actions, $links));
     }
 }

@@ -14,6 +14,12 @@ class AccountBrandingsEndpointTest extends EndpointTestCase
         self::assertCrudRequests(self::endpoint(), '/api/account/brandings');
     }
 
+    public function testListWithoutHal(): void
+    {
+        self::endpoint()->list([], false, false);
+        self::assertLastRequest('GET', '/api/account/brandings?_actions=false&_links=false');
+    }
+
     public function testInfo(): void
     {
         self::endpoint()->info();

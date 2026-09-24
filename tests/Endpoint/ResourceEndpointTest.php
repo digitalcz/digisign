@@ -180,6 +180,29 @@ class ResourceEndpointTest extends TestCase
         self::assertSame(DummyResource::LIST_EXAMPLE, $resource->getResult());
     }
 
+    public function testListRequestWithoutHal(): void
+    {
+        $expectedResponse = new Response(200, [], DigiSignClient::jsonEncode(DummyResource::LIST_EXAMPLE));
+
+        $parent = $this->createMock(EndpointInterface::class);
+        $parent->expects(self::exactly(3))
+            ->method('request')
+            ->with(
+                self::equalTo('GET'),
+                self::equalTo('/dummy'),
+                self::logicalOr(
+                    self::equalTo(['query' => ['foo' => 'bar', '_actions' => 'false', '_links' => 'false']]),
+                    self::equalTo(['query' => ['_actions' => 'false']]),
+                    self::equalTo(['query' => ['_links' => 'false']]),
+                ),
+            )->willReturn($expectedResponse);
+
+        $endpoint = new DummyEndpoint($parent);
+        $endpoint->list(['foo' => 'bar'], false, false);
+        $endpoint->list([], false);
+        $endpoint->list([], true, false);
+    }
+
     public function testCreateCollectionResource(): void
     {
         $expectedResponse = new Response(200, [], DigiSignClient::jsonEncode(DummyResource::COLLECTION_EXAMPLE));

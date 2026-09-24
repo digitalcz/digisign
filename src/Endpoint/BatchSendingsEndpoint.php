@@ -23,7 +23,7 @@ use DigitalCz\DigiSign\Resource\ListResource;
  * @method BatchSending update(string $id, array $body)
  * @method BatchSending create(array $body)
  * @method BatchSending delete(string $id)
- * @method ListResource<BatchSending> list(array $query)
+ * @method ListResource<BatchSending> list(array $query = [], bool $actions = true, bool $links = true)
  */
 final class BatchSendingsEndpoint extends ResourceEndpoint
 {

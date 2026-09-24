@@ -13,7 +13,7 @@ use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
  * @extends ResourceEndpoint<ApiKey>
- * @method ListResource<ApiKey> list(array $query = [])
+ * @method ListResource<ApiKey> list(array $query = [], bool $actions = true, bool $links = true)
  * @method ApiKey get(string $id)
  * @method ApiKey create(array $body)
  * @method ApiKey update(string $id, array $body)

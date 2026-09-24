@@ -100,6 +100,28 @@ abstract class ResourceEndpoint implements EndpointInterface
     }
 
     /**
+     * Query parameters that turn off HAL parts of the response (`_actions`, `_links`).
+     * `_actions` is VERY expensive part of API serialization — clients that do not
+     * read them (exports, syncs, counts) SHOULD DISABLE them.
+     *
+     * @return array<string, string>
+     */
+    protected static function halQuery(bool $actions, bool $links): array
+    {
+        $query = [];
+
+        if (!$actions) {
+            $query['_actions'] = 'false';
+        }
+
+        if (!$links) {
+            $query['_links'] = 'false';
+        }
+
+        return $query;
+    }
+
+    /**
      * @param mixed[] $query
      * @return ListResource<T>
      */

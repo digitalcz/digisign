@@ -15,7 +15,7 @@ use DigitalCz\DigiSign\Resource\SignatureScenarioInfo;
 
 /**
  * @extends ResourceEndpoint<SignatureScenario>
- * @method ListResource<SignatureScenario> list(array $query = [])
+ * @method ListResource<SignatureScenario> list(array $query = [], bool $actions = true, bool $links = true)
  * @method SignatureScenario get(string $id)
  * @method SignatureScenario create(array $body)
  * @method SignatureScenario update(string $id, array $body)

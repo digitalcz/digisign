@@ -13,7 +13,7 @@ use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
  * @extends ResourceEndpoint<IdentifyScenarioVersion>
- * @method ListResource<IdentifyScenarioVersion> list(array $query = [])
+ * @method ListResource<IdentifyScenarioVersion> list(array $query = [], bool $actions = true, bool $links = true)
  * @method IdentifyScenarioVersion get(string $id)
  * @method IdentifyScenarioVersion create(array $body)
  */

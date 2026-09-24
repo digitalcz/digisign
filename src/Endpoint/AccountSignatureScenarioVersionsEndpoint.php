@@ -13,7 +13,7 @@ use DigitalCz\DigiSign\Resource\SignatureScenarioVersion;
 
 /**
  * @extends ResourceEndpoint<SignatureScenarioVersion>
- * @method ListResource<SignatureScenarioVersion> list(array $query = [])
+ * @method ListResource<SignatureScenarioVersion> list(array $query = [], bool $actions = true, bool $links = true)
  * @method SignatureScenarioVersion get(string $id)
  * @method SignatureScenarioVersion create(array $body)
  */

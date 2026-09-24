@@ -136,6 +136,20 @@ $envelopes->send($envelope->id());
 
 See [examples](examples) for more
 
+#### List endpoint without `_actions` / `_links`
+
+Every resource returned by the API carries HAL metadata: `_actions` (operations the caller may perform on it)
+and `_links`. Generating `_actions` is the expensive part of the API response — it evaluates business rules
+and permissions for every returned item. When your integration does not read them (exports, synchronisation,
+counting), turn them off with the `$actions` / `$links` arguments of `list()`:
+
+```php
+// list without _actions and _links — fastest variant for large pages
+$list = $dgs->envelopes()->list(['itemsPerPage' => 100, 'status' => 'completed'], actions: false, links: false);
+```
+
+Both arguments default to `true`, so existing calls keep the full response. Older API versions ignore the parameters.
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.

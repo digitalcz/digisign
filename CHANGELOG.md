@@ -5,6 +5,8 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `$actions` and `$links` arguments to `list()` endpoint methods 
+  - pass `false` to speed up retrivieng list entities without `_actions` / `_links` parameters
 - Add new multiple `Features` properties
 - Add new multiple `Limits` properties
 - Fix nullable `Limits` properties to default to `null` instead of staying uninitialized when the API omits them
