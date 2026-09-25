@@ -8,6 +8,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `$actions` and `$links` arguments to `list()` endpoint methods 
   - pass `false` to speed up retrivieng list entities without `_actions` / `_links` parameters
 - Add new multiple `Features` properties
+- Remove the unreleased `Features.roleSettings`, `Features.templateSharing` and `Features.accountGroup` properties - the API dropped these plan features
 - Add new multiple `Limits` properties
 - Fix nullable `Limits` properties to default to `null` instead of staying uninitialized when the API omits them
 - Remove `Limits.envelopesMonthly`, which the API never returned under that name - the property was uninitialized since it was introduced in 2.12.0, so no value could ever be read from it; use `Limits.envelopes`
