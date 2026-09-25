@@ -39,8 +39,5 @@ class Features extends BaseResource
     public bool $recipientRoleCc;
     public bool $recipientRoleApprover;
     public bool $smsNotifications;
-    public bool $roleSettings;
-    public bool $accountGroup;
-    public bool $templateSharing;
     public bool $autosign;
 }
