@@ -5,54 +5,36 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
-- Add `$actions` and `$links` arguments to `list()` endpoint methods 
-  - pass `false` to speed up retrivieng list entities without `_actions` / `_links` parameters
-- Add new multiple `Features` properties
-- Remove the unreleased `Features.roleSettings`, `Features.templateSharing`, `Features.accountGroup`, `Features.signingOrder`, `Limits.archiveRetentionDays` and `Limits.requestLogRetentionDays` properties - the API dropped these plan features and limits
-- Add new multiple `Limits` properties
-- Fix nullable `Limits` properties to default to `null` instead of staying uninitialized when the API omits them
-- Remove `Limits.envelopesMonthly`, which the API never returned under that name - the property was uninitialized since it was introduced in 2.12.0, so no value could ever be read from it; use `Limits.envelopes`
-- Deprecate `Limits.envelopeMonthly` in favor of `Limits.envelopes`
+- Add `$actions` and `$links` arguments to `list()` endpoint methods
+  - pass `false` to speed up retrieving list entities without `_actions` / `_links` parameters
+- Add `query` parameter to `EnvelopesEndpoint.get` method
+- Add `AccountCertificatesEndpoint.update` method
+- Add `EnvelopeCategory` list endpoint and resource
+- Add `Period` and `EnvelopeWithdrawal` resources
+- Add multiple new `Features` properties, including `Features.timestampsAtsa`, `Features.timestampsPostSignum`, `Features.timestampsRenewal`, `Features.certificateAkv` and `Features.certificateRemoteSign`
+- Add multiple new `Limits` properties
+- Add `AccountBilling.timestampsAtsa`, `AccountBilling.timestampsPostSignum`, `AccountBilling.timestampsRenewal`, `AccountBilling.certificateAkv` and `AccountBilling.certificateRemoteSign` properties
+- Add `Certificate.remoteSignPersonId` (I.CA RemoteSign certificate storage `remote_sign`) and `Certificate.error` properties
+- Add `Envelope.withdrawalDeadline` property
+- Add `EnvelopeProperties.expirationPeriod`, `EnvelopeProperties.expirationTimeOfDay` and `EnvelopeProperties.discardCompletedAfterPeriod` properties
+- Add `EnvelopeProperties.consumerWithdrawalPeriod` and `EnvelopeProperties.consumerGuide` properties
+- Add `EnvelopeProperties.timestampsEnabled`, `EnvelopeProperties.defaultTimestampDocuments`, `EnvelopeProperties.defaultTimestampsRenewalPeriod` and `EnvelopeProperties.timestampAuditLogRenewalPeriod` properties
+- Add `EnvelopeProperties.attachDocumentsToSentEmail` and `EnvelopeProperties.attachDocumentsToSignedEmail` properties
+- Add `EnvelopeDocument.timestampEnabled`, `EnvelopeDocument.timestampsRenewalPeriod`, `EnvelopeTemplateDocument.timestampEnabled` and `EnvelopeTemplateDocument.timestampsRenewalPeriod` properties
+- Add `EnvelopeRecipient.type` and `EnvelopeTemplateRecipient.type` properties
+- Add `BulkSignature.expirationPeriod` property
+- Change `Certificate.subject`, `Certificate.issuer` and `Certificate.expiresAt` to nullable (empty for I.CA RemoteSign certificates)
+- Deprecate `Envelope.expiration` and `EnvelopeTemplate.expiration` in favor of `EnvelopeProperties.expirationPeriod`
+- Deprecate `BulkSignature.expiration` in favor of `BulkSignature.expirationPeriod`
+- Deprecate `EnvelopeProperties.timestampDocuments` and `EnvelopeTemplate.timestampDocuments` in favor of `EnvelopeProperties.defaultTimestampDocuments`
+- Deprecate `EnvelopeProperties.sendDocumentsAsEmailAttachment` in favor of `EnvelopeProperties.attachDocumentsToSignedEmail`
+- Deprecate `Webhook.event` in favor of `Webhook.events`
 - Deprecate `Limits.noneOrManualMonthlyIdentifications` in favor of `Limits.noneOrManualIdentifications`
 - Deprecate `Limits.aiMonthlyIdentifications` in favor of `Limits.aiIdentifications`
-- Add `AccountCertificatesEndpoint.update` method
-- Add `Certificate.remoteSignPersonId` property (I.CA RemoteSign certificate storage `remote_sign`)
-- Add `Certificate.error` property
-- Change `Certificate.subject`, `Certificate.issuer` and `Certificate.expiresAt` to nullable (empty for I.CA RemoteSign certificates)
+- Remove `Limits.envelopesMonthly`, which the API never returned under that name - the property was uninitialized since it was introduced in 2.12.0, so no value could ever be read from it; use `Limits.envelopes`
+- Fix nullable `Limits` properties to default to `null` instead of staying uninitialized when the API omits them
 - Fix `EnvelopeRecipient.bankIdScopes`, `EnvelopeTemplate.bankIdScopes`, `EnvelopeTemplateRecipient.bankIdScopes`, `EnvelopeTemplateRecipientDefaults.bankIdScopes` and `SignatureScenarioVersion.bankIdScopes` type annotation to a list of strings (`array<string>`)
 - Fix `Branding.ownConditions`, `Branding.signerReturnUrl`, `Branding.ownSmsText` and `IdentifyScenarioVersion.ownConditions` type annotation to include `null`
-- Add `EnvelopeProperties.expirationTimeOfDay`
-- Add `Period` resource
-- Add `EnvelopeProperties.expirationPeriod` property
-- Add `BulkSignature.expirationPeriod` property
-- Add `EnvelopeProperties.discardCompletedAfterPeriod` property
-- Deprecate `Envelope.expiration` in favor of `EnvelopeProperties.expirationPeriod`
-- Deprecate `EnvelopeTemplate.expiration` in favor of `EnvelopeProperties.expirationPeriod`
-- Deprecate `BulkSignature.expiration` in favor of `BulkSignature.expirationPeriod`
-- Add `EnvelopeCategory` list endpoint and resource
-- Add `EnvelopeRecipient.type` and `EnvelopeTemplateRecipient.type` property
-- Add `EnvelopeProperties.consumerWithdrawalPeriod` property
-- Add `EnvelopeProperties.consumerGuide` property
-- Add `EnvelopeWithdrawal` resource
-- Add `query` parameter to `EnvelopesEndpoint.get` method
-- Deprecate `Webhook.event` in favor of `Webhook.events`
-- Add `AccountBilling.timestampsAtsa` and `AccountBilling.timestampsPostSignum` property
-- Add `Features.timestampsAtsa` and `Features.timestampsPostSignum` property
-- Add `EnvelopeProperties.timestampsEnabled` property
-- Add `EnvelopeProperties.defaultTimestampsRenewalPeriod` property
-- Add `Features.timestampsRenewal` property
-- Add `AccountBilling.timestampsRenewal` property
-- Add `EnvelopeDocument.timestampEnabled` and `EnvelopeDocument.timestampsRenewalPeriod` properties
-- Add `EnvelopeTemplateDocument.timestampEnabled` and `EnvelopeTemplateDocument.timestampsRenewalPeriod` properties
-- Add `EnvelopeProperties.defaultTimestampDocuments` and `EnvelopeProperties.timestampAuditLogRenewalPeriod` properties
-- Deprecate `EnvelopeProperties.timestampDocuments` in favor of `EnvelopeProperties.defaultTimestampDocuments`
-- Deprecate `EnvelopeTemplate.timestampDocuments` in favor of `EnvelopeProperties.defaultTimestampDocuments`
-- Add `Envelope.withdrawalDeadline` property
-- Add `AccountBilling.certificateAkv` and `AccountBilling.certificateRemoteSign` property
-- Add `Features.certificateAkv` and `Features.certificateRemoteSign` property
-- Add `EnvelopeProperties.attachDocumentsToSentEmail` property
-- Add `EnvelopeProperties.attachDocumentsToSignedEmail` property
-- Deprecate `EnvelopeProperties.sendDocumentsAsEmailAttachment` in favor of `EnvelopeProperties.attachDocumentsToSignedEmail`
 
 ## [2.12.0] - 2026-04-01
 - Add `BulkSignatureEndpoint.create` method
