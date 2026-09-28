@@ -35,7 +35,6 @@ class Features extends BaseResource
     public bool $checkboxTag;
     public bool $attachmentTag;
     public bool $dateOfSignatureTag;
-    public bool $signingOrder;
     public bool $recipientRoleCc;
     public bool $recipientRoleApprover;
     public bool $smsNotifications;
