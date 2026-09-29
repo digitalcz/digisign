@@ -31,7 +31,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Deprecate `Webhook.event` in favor of `Webhook.events`
 - Deprecate `Limits.noneOrManualMonthlyIdentifications` in favor of `Limits.noneOrManualIdentifications`
 - Deprecate `Limits.aiMonthlyIdentifications` in favor of `Limits.aiIdentifications`
-- Remove `Limits.envelopesMonthly`, which the API never returned under that name - the property was uninitialized since it was introduced in 2.12.0, so no value could ever be read from it; use `Limits.envelopes`
+- Remove `Limits.envelopesMonthly` (never populated by the API, always uninitialized); use `Limits.envelopes`
 - Fix nullable `Limits` properties to default to `null` instead of staying uninitialized when the API omits them
 - Fix `EnvelopeRecipient.bankIdScopes`, `EnvelopeTemplate.bankIdScopes`, `EnvelopeTemplateRecipient.bankIdScopes`, `EnvelopeTemplateRecipientDefaults.bankIdScopes` and `SignatureScenarioVersion.bankIdScopes` type annotation to a list of strings (`array<string>`)
 - Fix `Branding.ownConditions`, `Branding.signerReturnUrl`, `Branding.ownSmsText` and `IdentifyScenarioVersion.ownConditions` type annotation to include `null`
