@@ -30,10 +30,6 @@ class Limits extends BaseResource
 
     public ?int $fileSize = null;
 
-    public ?int $archiveRetentionDays = null;
-
-    public ?int $requestLogRetentionDays = null;
-
     /** One of `monthly`|`yearly` */
     public string $frequency;
 
