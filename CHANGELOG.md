@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `AccountBilling.templateLimit` and `AccountBilling.templateUsage` properties
 - Add `$actions` and `$links` arguments to `list()` endpoint methods
   - pass `false` to speed up retrieving list entities without `_actions` / `_links` parameters
 - Add `query` parameter to `EnvelopesEndpoint.get` method

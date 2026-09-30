@@ -101,4 +101,8 @@ class AccountBilling extends BaseResource
     public int $activeAccountUsage;
 
     public int $accountLimit;
+
+    public ?int $templateLimit = null;
+
+    public int $templateUsage;
 }
