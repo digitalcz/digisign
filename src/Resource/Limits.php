@@ -22,6 +22,8 @@ class Limits extends BaseResource
 
     public ?int $templates = null;
 
+    public ?int $accountGroups = null;
+
     public ?int $noneOrManualIdentifications = null;
 
     public ?int $aiIdentifications = null;
