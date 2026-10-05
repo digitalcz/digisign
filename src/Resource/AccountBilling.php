@@ -88,6 +88,8 @@ class AccountBilling extends BaseResource
 
     public bool $dateOfSignatureTag;
 
+    public bool $optionalSignature;
+
     public bool $bulkSigning;
 
     public bool $hasBillingEnabled;
