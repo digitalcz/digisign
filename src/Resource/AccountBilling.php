@@ -80,6 +80,14 @@ class AccountBilling extends BaseResource
 
     public bool $automaticTagsPlacement;
 
+    public bool $textTag;
+
+    public bool $checkboxTag;
+
+    public bool $attachmentTag;
+
+    public bool $dateOfSignatureTag;
+
     public bool $bulkSigning;
 
     public bool $hasBillingEnabled;
