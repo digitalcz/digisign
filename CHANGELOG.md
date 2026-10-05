@@ -14,7 +14,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `EnvelopeCategory` list endpoint and resource
 - Add `Period` and `EnvelopeWithdrawal` resources
 - Add multiple new `Features` properties, including `Features.timestampsAtsa`, `Features.timestampsPostSignum`, `Features.timestampsRenewal`, `Features.certificateAkv` and `Features.certificateRemoteSign`
-- Add multiple new `Limits` properties
+- Add multiple new `Limits` properties, including `Limits.accountGroups`
 - Add `AccountBilling.timestampsAtsa`, `AccountBilling.timestampsPostSignum`, `AccountBilling.timestampsRenewal`, `AccountBilling.certificateAkv` and `AccountBilling.certificateRemoteSign` properties
 - Add `Certificate.remoteSignPersonId` (I.CA RemoteSign certificate storage `remote_sign`) and `Certificate.error` properties
 - Add `Envelope.withdrawalDeadline` property
