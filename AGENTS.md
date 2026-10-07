@@ -19,8 +19,8 @@ composer install          # deps (vendor/ is gitignored)
 composer checks           # cs + phpstan + tests – run before finishing ANY change
 composer cs               # phpcs (digitalcz/coding-standard, PSR-12 based)
 composer csfix            # phpcbf auto-fix
-composer phpstan          # phpstan level max, strict rules, paths: src, tests, examples
-composer tests            # phpunit 9.5
+composer phpstan          # phpstan 2, level max, strict rules, paths: src, tests, examples
+composer tests            # phpunit 10.5 / 11
 vendor/bin/phpunit --filter EnvelopeLabelsEndpointTest   # single test class
 ```
 
@@ -62,7 +62,8 @@ examples/                   runnable usage examples; also linted by phpcs + phps
 
 ### Tests
 - Endpoint tests extend `EndpointTestCase`, use the mock HTTP client, and assert the request: `self::assertLastRequest('PUT', '/api/envelopes/bar/labels', $body)`.
-- Every test class needs `@covers` (phpunit runs with `forceCoversAnnotation`).
+- Every test class needs a `#[CoversClass(Xxx::class)]` attribute (phpunit runs with `requireCoverageMetadata`).
+- Use PHPUnit attributes (`#[DataProvider]`, `#[CoversClass]`, ...), not docblock annotations (`@covers`, `@dataProvider`) – PHPUnit 11 deprecates them.
 - New endpoint / new method => new test method. No PR is accepted without tests (see CONTRIBUTING.md).
 
 ### Style
@@ -87,7 +88,7 @@ examples/                   runnable usage examples; also linted by phpcs + phps
   - Blank line, then optional body explaining *why* (wrap at 72). Reference issues/PRs as `#123`; use `Fixes #123` / `Closes #123` to auto-close.
   - Release commits are `[REL] x.y.z - YYYY-MM-DD` and are done by maintainers only.
 - One PR per feature; squash noisy intermediate commits.
-- Do not commit `vendor/`, `composer.lock`, `.phpcs.cache`, `.phpunit.result.cache`, `.idea/` (all gitignored).
+- Do not commit `vendor/`, `composer.lock`, `.phpcs.cache`, `.phpunit.cache`, `.idea/` (all gitignored).
 - Never push, tag or release unless explicitly asked.
 
 ## Don'ts
