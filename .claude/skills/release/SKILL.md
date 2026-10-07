@@ -110,7 +110,10 @@ gh api repos/digitalcz/digisign/releases/generate-notes \
   -q .body > <scratchpad>/release-notes.md
 ```
 
-- Keep the generated list as is – PR titles, order, Dependabot bumps and the previous `[REL]` PR stay (past releases kept them too). Do not rewrite lines into CHANGELOG wording.
+- Keep the generated list otherwise as is (PR titles, order, previous `[REL]` PR). Do not rewrite lines into CHANGELOG wording. Only these clean-ups:
+  - strip Jira ticket prefixes from PR titles: `sed -E 's/(\[DGS-[0-9]+\])+ //g'` – they must never appear in a release,
+  - drop Dependabot `Bump …` lines and repo-tooling PRs that don't affect SDK users (AGENTS.md, Claude/agent files, CI config).
+- If the release has a change users should actively adopt (e.g. a performance option like `$actions` / `$links` in v2.13.0), give it its own section at the very top with a short explanation, a code example and the PR link. Propose it to the user.
 - If the release contains breaking / BC-sensitive changes, move those PR lines into a section above `## What's Changed` (as in v2.9.0):
   ```
   ## BREAKING CHANGE

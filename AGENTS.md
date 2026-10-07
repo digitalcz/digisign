@@ -81,7 +81,8 @@ examples/                   runnable usage examples; also linted by phpcs + phps
 ## Git
 
 - Branch from `2.x`. Branch names: `feature/short-description`, `fix/short-description`.
-- Commit messages follow GitHub conventions, no ticket prefixes:
+- No Jira ticket keys (`[DGS-1234]`, `DGS-1234:` ...) in commit subjects or PR titles – not even when the branch name contains one. PRs are squash-merged, so the PR title becomes the commit on `2.x` and the line in GitHub release notes.
+- Commit messages and PR titles follow GitHub conventions:
   - Subject in imperative mood, capitalized, max 72 chars, no trailing period: `Add EnvelopeCategory endpoint and resource`.
   - Blank line, then optional body explaining *why* (wrap at 72). Reference issues/PRs as `#123`; use `Fixes #123` / `Closes #123` to auto-close.
   - Release commits are `[REL] x.y.z - YYYY-MM-DD` and are done by maintainers only.

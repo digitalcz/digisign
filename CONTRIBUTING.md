@@ -19,6 +19,8 @@ We accept contributions via Pull Requests on [Github](https://github.com/digital
 
 - **One pull request per feature** - If you want to do more than one thing, send multiple pull requests.
 
+- **No ticket prefixes** - Don't put internal ticket keys (e.g. `[DGS-1234]`) into commit messages or PR titles. The PR title becomes the commit message on squash merge and a line in the release notes.
+
 - **Send coherent history** - Make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please [squash them](http://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Changing-Multiple-Commit-Messages) before submitting.
 
 
