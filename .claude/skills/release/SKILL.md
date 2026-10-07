@@ -91,14 +91,47 @@ MERGE=$(gh pr view <PR#> --json mergeCommit -q .mergeCommit.oid)
 git show $MERGE:src/DigiSign.php | grep "VERSION = 'X.Y.Z'"   # sanity check
 ```
 
+### Release description
+
+Same shape as all previous releases (v2.6.0 – v2.12.0): GitHub auto-generated notes, title = tag.
+
+```
+## What's Changed
+* <PR title> by @<author> in https://github.com/digitalcz/digisign/pull/<n>
+...
+
+**Full Changelog**: https://github.com/digitalcz/digisign/compare/v<prev>...vX.Y.Z
+```
+
+Generate the body first (read-only, nothing is published):
+```bash
+gh api repos/digitalcz/digisign/releases/generate-notes \
+  -f tag_name=vX.Y.Z -f target_commitish=$MERGE -f previous_tag_name=v<prev> \
+  -q .body > <scratchpad>/release-notes.md
+```
+
+- Keep the generated list as is – PR titles, order, Dependabot bumps and the previous `[REL]` PR stay (past releases kept them too). Do not rewrite lines into CHANGELOG wording.
+- If the release contains breaking / BC-sensitive changes, move those PR lines into a section above `## What's Changed` (as in v2.9.0):
+  ```
+  ## BREAKING CHANGE
+
+  * <PR title> by @<author> in <url>
+
+  ## What's Changed
+  ...
+  ```
+- Only for releases with a notable non-obvious change (e.g. v2.11.0 sandbox URL), prepend `## Summary of changes:` + `## Reason for the change:` paragraphs. Ask the user whether they want it; never by default.
+
+Show the final body to the user before publishing.
+
+### Publish
+
 After user confirms:
 ```bash
 git tag vX.Y.Z $MERGE            # lightweight tag, like all previous ones
 git push origin vX.Y.Z
-gh release create vX.Y.Z --target 2.x --title vX.Y.Z --generate-notes --latest
+gh release create vX.Y.Z --verify-tag --title vX.Y.Z --notes-file <scratchpad>/release-notes.md --latest
 ```
-
-Optionally prepend a short highlights paragraph to the generated notes (as in v2.11.0) via `--notes-start-tag` / editing afterwards with `gh release edit vX.Y.Z --notes-file …`.
 
 Tag must sit on the release merge commit – never tag before the [REL] PR is merged (v2.12.0 was tagged before its release PR; avoid repeating that).
 
