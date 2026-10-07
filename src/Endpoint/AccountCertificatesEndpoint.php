@@ -22,11 +22,11 @@ use DigitalCz\DigiSign\Resource\ListResource;
 class AccountCertificatesEndpoint extends ResourceEndpoint
 {
     use CreateEndpointTrait;
-    use UpdateEndpointTrait;
     use DeleteEndpointTrait;
     use GetEndpointTrait;
     /** @use ListEndpointTrait<Certificate> */
     use ListEndpointTrait;
+    use UpdateEndpointTrait;
 
     public function __construct(AccountEndpoint $parent)
     {
