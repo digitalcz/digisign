@@ -5,6 +5,7 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Add `AccountBilling.recipientRoleCc`, `AccountBilling.recipientRoleApprover` and `AccountBilling.smsNotifications` properties
 - Add `AccountBilling.textTag`, `AccountBilling.checkboxTag`, `AccountBilling.attachmentTag`, `AccountBilling.dateOfSignatureTag` and `AccountBilling.optionalSignature` properties
 - Add `AccountBilling.templateLimit` and `AccountBilling.templateUsage` properties
 - Add `$actions` and `$links` arguments to `list()` endpoint methods
