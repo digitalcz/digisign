@@ -90,6 +90,12 @@ class AccountBilling extends BaseResource
 
     public bool $optionalSignature;
 
+    public bool $recipientRoleCc;
+
+    public bool $recipientRoleApprover;
+
+    public bool $smsNotifications;
+
     public bool $bulkSigning;
 
     public bool $hasBillingEnabled;
