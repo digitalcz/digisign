@@ -5,24 +5,18 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
-- Add `AccountBilling.recipientRoleCc`, `AccountBilling.recipientRoleApprover` and `AccountBilling.smsNotifications` properties
-- Add `AccountBilling.textTag`, `AccountBilling.checkboxTag`, `AccountBilling.attachmentTag`, `AccountBilling.dateOfSignatureTag` and `AccountBilling.optionalSignature` properties
-- Add `AccountBilling.templateLimit` and `AccountBilling.templateUsage` properties
+- Add new `AccountBilling` properties: `recipientRoleCc`, `recipientRoleApprover`, `smsNotifications`, `textTag`, `checkboxTag`, `attachmentTag`, `dateOfSignatureTag`, `optionalSignature`, `templateLimit`, `templateUsage`, `timestampsAtsa`, `timestampsPostSignum`, `timestampsRenewal`, `certificateAkv`, `certificateRemoteSign`
+- Add new `Features` properties: `timestampsAtsa`, `timestampsPostSignum`, `timestampsRenewal`, `certificateAkv`, `certificateRemoteSign`, `inPersonSigning`, `advancedSettings`, `optionalSignature`, `textTag`, `checkboxTag`, `attachmentTag`, `dateOfSignatureTag`, `recipientRoleCc`, `recipientRoleApprover`, `smsNotifications`, `autosign`
+- Add new `Limits` properties: `accounts`, `accountGroups`, `envelopes`, `envelopeMonthly`, `recipients`, `templates`, `noneOrManualIdentifications`, `aiIdentifications`, `frequency`
+- Add new `EnvelopeProperties` properties: `expirationPeriod`, `expirationTimeOfDay`, `discardCompletedAfterPeriod`, `consumerWithdrawalPeriod`, `consumerGuide`, `timestampsEnabled`, `defaultTimestampDocuments`, `defaultTimestampsRenewalPeriod`, `timestampAuditLogRenewalPeriod`, `attachDocumentsToSentEmail`, `attachDocumentsToSignedEmail`
 - Add `$actions` and `$links` arguments to `list()` endpoint methods
   - pass `false` to speed up retrieving list entities without `_actions` / `_links` parameters
 - Add `query` parameter to `EnvelopesEndpoint.get` method
 - Add `AccountCertificatesEndpoint.update` method
 - Add `EnvelopeCategory` list endpoint and resource
 - Add `Period` and `EnvelopeWithdrawal` resources
-- Add multiple new `Features` properties, including `Features.timestampsAtsa`, `Features.timestampsPostSignum`, `Features.timestampsRenewal`, `Features.certificateAkv` and `Features.certificateRemoteSign`
-- Add multiple new `Limits` properties, including `Limits.accountGroups`
-- Add `AccountBilling.timestampsAtsa`, `AccountBilling.timestampsPostSignum`, `AccountBilling.timestampsRenewal`, `AccountBilling.certificateAkv` and `AccountBilling.certificateRemoteSign` properties
 - Add `Certificate.remoteSignPersonId` (I.CA RemoteSign certificate storage `remote_sign`) and `Certificate.error` properties
 - Add `Envelope.withdrawalDeadline` property
-- Add `EnvelopeProperties.expirationPeriod`, `EnvelopeProperties.expirationTimeOfDay` and `EnvelopeProperties.discardCompletedAfterPeriod` properties
-- Add `EnvelopeProperties.consumerWithdrawalPeriod` and `EnvelopeProperties.consumerGuide` properties
-- Add `EnvelopeProperties.timestampsEnabled`, `EnvelopeProperties.defaultTimestampDocuments`, `EnvelopeProperties.defaultTimestampsRenewalPeriod` and `EnvelopeProperties.timestampAuditLogRenewalPeriod` properties
-- Add `EnvelopeProperties.attachDocumentsToSentEmail` and `EnvelopeProperties.attachDocumentsToSignedEmail` properties
 - Add `EnvelopeDocument.timestampEnabled`, `EnvelopeDocument.timestampsRenewalPeriod`, `EnvelopeTemplateDocument.timestampEnabled` and `EnvelopeTemplateDocument.timestampsRenewalPeriod` properties
 - Add `EnvelopeRecipient.type` and `EnvelopeTemplateRecipient.type` properties
 - Add `BulkSignature.expirationPeriod` property
