@@ -193,11 +193,7 @@ final class DigiSignClient implements DigiSignClientInterface
         $headers['Accept'] ??= 'application/json';
 
         if (isset($options['user-agent'])) {
-            if (!is_string($options['user-agent'])) {
-                throw new InvalidArgumentException('Invalid value for "user-agent" option');
-            }
-
-            $headers['User-Agent'] = $options['user-agent'];
+            $headers['User-Agent'] = self::stringOption('user-agent')($options['user-agent']);
         }
 
         if (isset($options['auth_basic'])) {
@@ -297,11 +293,11 @@ final class DigiSignClient implements DigiSignClientInterface
     private static function stringOption(string $option): callable
     {
         return static function (mixed $value) use ($option): string {
-            if (!is_string($value)) {
+            if (!is_scalar($value) && !$value instanceof Stringable) {
                 throw new InvalidArgumentException(sprintf('Invalid value for "%s" option', $option));
             }
 
-            return $value;
+            return (string)$value;
         };
     }
 

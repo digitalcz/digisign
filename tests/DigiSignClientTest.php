@@ -138,6 +138,16 @@ class DigiSignClientTest extends TestCase
         self::assertSame('foobar', self::lastRequest($httpClient)->getHeaderLine('User-Agent'));
     }
 
+    public function testRequestWithNumericUserAgent(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $client->request('GET', 'https://example.com/api', ['user-agent' => 123]);
+
+        self::assertSame('123', self::lastRequest($httpClient)->getHeaderLine('User-Agent'));
+    }
+
     public function testRequestWithInvalidUserAgent(): void
     {
         $httpClient = new Client();
@@ -145,7 +155,22 @@ class DigiSignClientTest extends TestCase
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid value for "user-agent" option');
-        $client->request('GET', 'https://example.com/api', ['user-agent' => 123]);
+        $client->request('GET', 'https://example.com/api', ['user-agent' => new stdClass()]);
+    }
+
+    public function testRequestWithScalarHeaderValues(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $client->request('GET', 'https://example.com/api', [
+            'headers' => ['X-Retry-Count' => 3, 'X-Ratio' => 1.5, 'X-Multi' => [1, 'two']],
+        ]);
+
+        $request = self::lastRequest($httpClient);
+        self::assertSame('3', $request->getHeaderLine('X-Retry-Count'));
+        self::assertSame('1.5', $request->getHeaderLine('X-Ratio'));
+        self::assertSame(['1', 'two'], $request->getHeader('X-Multi'));
     }
 
     public function testRequestWithInvalidHeaderValue(): void
@@ -198,6 +223,16 @@ class DigiSignClientTest extends TestCase
         $client->request('GET', 'https://example.com/api', ['auth_basic' => new stdClass()]);
     }
 
+    public function testRequestWithNumericBasicAuthValue(): void
+    {
+        $httpClient = new Client();
+        $client = new DigiSignClient($httpClient);
+
+        $client->request('GET', 'https://example.com/api', ['auth_basic' => ['user', 123]]);
+
+        self::assertSame('Basic dXNlcjoxMjM=', self::lastRequest($httpClient)->getHeaderLine('Authorization'));
+    }
+
     public function testRequestWithInvalidBasicAuthValue(): void
     {
         $httpClient = new Client();
@@ -205,7 +240,7 @@ class DigiSignClientTest extends TestCase
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid value for "auth_basic" option');
-        $client->request('GET', 'https://example.com/api', ['auth_basic' => ['user', 123]]);
+        $client->request('GET', 'https://example.com/api', ['auth_basic' => ['user', new stdClass()]]);
     }
 
     public function testRequestWithInvalidMultipart(): void
