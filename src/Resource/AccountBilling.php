@@ -114,6 +114,8 @@ class AccountBilling extends BaseResource
 
     public bool $certificateRemoteSign;
 
+    public bool $inPersonSigning;
+
     public int $activeAccountUsage;
 
     public int $accountLimit;
