@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
-/**
- * @covers \DigitalCz\DigiSign\Endpoint\BatchSendingItemsEndpoint
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+#[CoversClass(BatchSendingItemsEndpoint::class)]
 class BatchSendingItemsEndpointTest extends EndpointTestCase
 {
     public function testImport(): void

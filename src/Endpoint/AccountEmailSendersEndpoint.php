@@ -11,14 +11,14 @@ use DigitalCz\DigiSign\Resource\ListResource;
 
 /**
  * @extends ResourceEndpoint<AccountEmailSender>
- * @method ListResource<AccountEmailSender> list(array $query = [], bool $actions = true, bool $links = true)
+ * @method ListResource<AccountEmailSender> list(mixed[] $query = [], bool $actions = true, bool $links = true)
  * @method AccountEmailSender get(string $id)
  */
 class AccountEmailSendersEndpoint extends ResourceEndpoint
 {
+    use GetEndpointTrait;
     /** @use ListEndpointTrait<AccountEmailSender> */
     use ListEndpointTrait;
-    use GetEndpointTrait;
 
     public function __construct(AccountEndpoint $parent)
     {

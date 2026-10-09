@@ -11,8 +11,8 @@ use DigitalCz\DigiSign\Resource\Label;
 /**
  * @extends ResourceEndpoint<Label>
  * @method Label get(string $id)
- * @method Label create(array $body)
- * @method Label update(string $id, array $body)
+ * @method Label create(mixed[] $body)
+ * @method Label update(string $id, mixed[] $body)
  */
 final class LabelsEndpoint extends ResourceEndpoint
 {

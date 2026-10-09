@@ -5,6 +5,8 @@ All notable changes will be documented in this file.
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [Unreleased]
+- Upgrade dev tooling: PHPUnit 10/11 (`#[CoversClass]` attributes), PHPStan 2, `digitalcz/coding-standard` 0.6
+- Stricter validation of `headers`, `user-agent`, `auth_basic` and `multipart` request options (`InvalidArgumentException` on non-stringable values)
 - Add `AccountBilling.inPersonSigning` property.
 
 ## [2.13.0] - 2026-10-07

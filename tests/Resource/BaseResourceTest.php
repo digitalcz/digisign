@@ -8,13 +8,12 @@ use DateTimeInterface;
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use Nyholm\NSA;
 use Nyholm\Psr7\Response;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use ReflectionObject;
 
-/**
- * @covers \DigitalCz\DigiSign\Resource\BaseResource
- * @covers \DigitalCz\DigiSign\Resource\PreciseDateTime
- */
+#[CoversClass(BaseResource::class)]
+#[CoversClass(PreciseDateTime::class)]
 class BaseResourceTest extends TestCase
 {
     public const DUMMY_RESOURCE_ARRAYED = [
@@ -125,6 +124,13 @@ class BaseResourceTest extends TestCase
         $this->expectExceptionMessage('Only resource returned from client has API response set');
         $resource = new DummyResource(DummyResource::EXAMPLE);
         $resource->getResponse();
+    }
+
+    public function testHydrationWithInvalidResourceValue(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Unexpected value for Resource field');
+        new DummyResource(['resource' => 'not-an-array']);
     }
 
     public function testGetSelfWithoutMappedLinks(): void

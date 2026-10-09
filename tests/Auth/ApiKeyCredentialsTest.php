@@ -8,11 +8,11 @@ use DigitalCz\DigiSign\DigiSign;
 use DigitalCz\DigiSign\DigiSignClient;
 use Http\Mock\Client;
 use Nyholm\Psr7\Response;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\RequestInterface;
 
-/**
- * @covers \DigitalCz\DigiSign\Auth\ApiKeyCredentials
- */
+#[CoversClass(ApiKeyCredentials::class)]
 class ApiKeyCredentialsTest extends TestCase
 {
     public function testHash(): void
@@ -31,7 +31,9 @@ class ApiKeyCredentialsTest extends TestCase
         $credentials = new ApiKeyCredentials('foo', 'bar');
         $token = $credentials->provide($dgs);
 
-        self::assertEquals('{"accessKey":"foo","secretKey":"bar"}', (string)$mockClient->getLastRequest()->getBody());
+        $request = $mockClient->getLastRequest();
+        self::assertInstanceOf(RequestInterface::class, $request);
+        self::assertSame('{"accessKey":"foo","secretKey":"bar"}', (string)$request->getBody());
         self::assertSame('moo', $token->getToken());
         self::assertSame(123, $token->getExp());
     }

@@ -12,8 +12,8 @@ use DigitalCz\DigiSign\Resource\Delivery;
 /**
  * @extends ResourceEndpoint<Delivery>
  * @method Delivery get(string $id)
- * @method Delivery create(array $body)
- * @method Delivery update(string $id, array $body)
+ * @method Delivery create(mixed[] $body)
+ * @method Delivery update(string $id, mixed[] $body)
  */
 final class DeliveriesEndpoint extends ResourceEndpoint
 {

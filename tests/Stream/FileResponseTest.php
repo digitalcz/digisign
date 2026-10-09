@@ -6,11 +6,10 @@ namespace DigitalCz\DigiSign\Stream;
 
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use Nyholm\Psr7\Response;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \DigitalCz\DigiSign\Stream\FileResponse
- */
+#[CoversClass(FileResponse::class)]
 class FileResponseTest extends TestCase
 {
     public function testGetFile(): void

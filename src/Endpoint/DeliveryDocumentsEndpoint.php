@@ -12,8 +12,8 @@ use DigitalCz\DigiSign\Stream\FileResponse;
 /**
  * @extends ResourceEndpoint<DeliveryDocument>
  * @method DeliveryDocument get(string $id)
- * @method DeliveryDocument create(array $body)
- * @method DeliveryDocument update(string $id, array $body)
+ * @method DeliveryDocument create(mixed[] $body)
+ * @method DeliveryDocument update(string $id, mixed[] $body)
  */
 final class DeliveryDocumentsEndpoint extends ResourceEndpoint
 {

@@ -15,9 +15,9 @@ use DigitalCz\DigiSign\Resource\WebhookAttempt;
  */
 final class WebhookAttemptsEndpoint extends ResourceEndpoint
 {
+    use GetEndpointTrait;
     /** @use ListEndpointTrait<WebhookAttempt> */
     use ListEndpointTrait;
-    use GetEndpointTrait;
 
     public function __construct(WebhooksEndpoint $parent, Webhook|string $webhook)
     {

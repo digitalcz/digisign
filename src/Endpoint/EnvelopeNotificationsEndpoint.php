@@ -11,8 +11,8 @@ use DigitalCz\DigiSign\Resource\EnvelopeNotification;
 /**
  * @extends ResourceEndpoint<EnvelopeNotification>
  * @method EnvelopeNotification get(string $id)
- * @method EnvelopeNotification create(array $body)
- * @method EnvelopeNotification update(string $id, array $body)
+ * @method EnvelopeNotification create(mixed[] $body)
+ * @method EnvelopeNotification update(string $id, mixed[] $body)
  */
 final class EnvelopeNotificationsEndpoint extends ResourceEndpoint
 {
