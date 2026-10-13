@@ -125,4 +125,6 @@ class AccountBilling extends BaseResource
     public int $templateUsage;
 
     public ?int $accountGroupLimit = null;
+
+    public int $accountGroupUsage;
 }
