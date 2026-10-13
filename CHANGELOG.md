@@ -6,6 +6,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 
 ## [Unreleased]
 - Add `AccountBilling.inPersonSigning` property.
+- Add `AccountBilling.accountGroupLimit` property.
 
 ## [2.13.0] - 2026-10-07
 - Add new `AccountBilling` properties: `recipientRoleCc`, `recipientRoleApprover`, `smsNotifications`, `textTag`, `checkboxTag`, `attachmentTag`, `dateOfSignatureTag`, `optionalSignature`, `templateLimit`, `templateUsage`, `timestampsAtsa`, `timestampsPostSignum`, `timestampsRenewal`, `certificateAkv`, `certificateRemoteSign`
