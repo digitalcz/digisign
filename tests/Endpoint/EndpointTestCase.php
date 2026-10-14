@@ -100,11 +100,17 @@ abstract class EndpointTestCase extends TestCase
         self::assertLastRequestMethod('POST');
     }
 
+    /**
+     * @param non-empty-string $expected
+     */
     protected static function assertLastRequestAuthorizationHeader(string $expected): void
     {
         self::assertLastRequestHeader($expected, 'Authorization');
     }
 
+    /**
+     * @param non-empty-string $expected
+     */
     protected static function assertLastRequestHeader(string $expected, string $header): void
     {
         self::assertStringStartsWith($expected, self::getLastRequest()->getHeaderLine($header));
@@ -150,7 +156,7 @@ abstract class EndpointTestCase extends TestCase
     {
         $lastRequest = self::$httpClient->getLastRequest();
 
-        if ($lastRequest === false) {
+        if (!$lastRequest instanceof RequestInterface) {
             throw new RuntimeException('No last request');
         }
 

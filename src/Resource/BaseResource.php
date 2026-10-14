@@ -113,7 +113,15 @@ class BaseResource implements ResourceInterface
             throw new RuntimeException('Invalid links');
         }
 
-        return $this->_result['_links'];
+        $links = [];
+
+        foreach ($this->_result['_links'] as $rel => $href) {
+            if (is_string($href)) {
+                $links[(string)$rel] = $href;
+            }
+        }
+
+        return $links;
     }
 
     /**
@@ -155,6 +163,10 @@ class BaseResource implements ResourceInterface
 
             // is Resource class
             if (is_a($type, self::class, true)) {
+                if (!is_array($value)) {
+                    throw new RuntimeException('Unexpected value for Resource field');
+                }
+
                 $value = new $type($value);
             }
 

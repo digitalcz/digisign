@@ -15,15 +15,15 @@ use DigitalCz\DigiSign\Stream\FileResponse;
 /**
  * @extends ResourceEndpoint<Identification>
  * @method Identification get(string $id)
- * @method Identification create(array $body)
- * @method Identification update(string $id, array $body)
+ * @method Identification create(mixed[] $body)
+ * @method Identification update(string $id, mixed[] $body)
  */
 final class IdentificationsEndpoint extends ResourceEndpoint
 {
+    use DeleteEndpointTrait;
+    use GetEndpointTrait;
     /** @use ListEndpointTrait<Identification> */
     use ListEndpointTrait;
-    use GetEndpointTrait;
-    use DeleteEndpointTrait;
 
     public function __construct(DigiSign $parent)
     {

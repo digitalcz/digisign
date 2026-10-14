@@ -12,14 +12,14 @@ use DigitalCz\DigiSign\Exception\InvalidSignatureException;
 use Http\Mock\Client;
 use InvalidArgumentException;
 use LogicException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\RequestInterface;
 use stdClass;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\Cache\Psr16Cache;
 
-/**
- * @covers \DigitalCz\DigiSign\DigiSign
- */
+#[CoversClass(DigiSign::class)]
 class DigiSignTest extends TestCase
 {
     public function testCreateWithCredentials(): void
@@ -117,7 +117,7 @@ class DigiSignTest extends TestCase
 
         $dgs->request('GET', '/foo');
 
-        self::assertSame('https://api.staging.digisign.org/foo', (string)$mockClient->getLastRequest()->getUri());
+        self::assertSame('https://api.staging.digisign.org/foo', (string)self::lastRequest($mockClient)->getUri());
     }
 
     public function testCreateAsSandbox(): void
@@ -133,7 +133,7 @@ class DigiSignTest extends TestCase
 
         $dgs->request('GET', '/foo');
 
-        self::assertSame('https://api.staging.digisign.org/foo', (string)$mockClient->getLastRequest()->getUri());
+        self::assertSame('https://api.staging.digisign.org/foo', (string)self::lastRequest($mockClient)->getUri());
     }
 
     public function testSandboxTakesPrecedenceOverTesting(): void
@@ -150,7 +150,7 @@ class DigiSignTest extends TestCase
 
         $dgs->request('GET', '/foo');
 
-        self::assertSame('https://api.staging.digisign.org/foo', (string)$mockClient->getLastRequest()->getUri());
+        self::assertSame('https://api.staging.digisign.org/foo', (string)self::lastRequest($mockClient)->getUri());
     }
 
     public function testUseSandboxMethod(): void
@@ -166,7 +166,7 @@ class DigiSignTest extends TestCase
         $dgs->useSandbox(true);
         $dgs->request('GET', '/foo');
 
-        self::assertSame('https://api.staging.digisign.org/foo', (string)$mockClient->getLastRequest()->getUri());
+        self::assertSame('https://api.staging.digisign.org/foo', (string)self::lastRequest($mockClient)->getUri());
     }
 
     public function testUseSandboxMethodDisable(): void
@@ -183,7 +183,7 @@ class DigiSignTest extends TestCase
         $dgs->useSandbox(false);
         $dgs->request('GET', '/foo');
 
-        self::assertSame('https://api.digisign.org/foo', (string)$mockClient->getLastRequest()->getUri());
+        self::assertSame('https://api.digisign.org/foo', (string)self::lastRequest($mockClient)->getUri());
     }
 
     public function testChildren(): void
@@ -197,35 +197,35 @@ class DigiSignTest extends TestCase
         );
 
         $dgs->auth()->request('GET');
-        self::assertSame('/api/auth-token', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/auth-token', self::lastRequest($mockClient)->getUri()->getPath());
         $dgs->account()->request('GET');
-        self::assertSame('/api/account', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/account', self::lastRequest($mockClient)->getUri()->getPath());
         $dgs->batchSendings()->request('GET');
-        self::assertSame('/api/batch-sendings', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/batch-sendings', self::lastRequest($mockClient)->getUri()->getPath());
         $dgs->envelopes()->request('GET');
-        self::assertSame('/api/envelopes', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/envelopes', self::lastRequest($mockClient)->getUri()->getPath());
         $dgs->envelopeTemplates()->request('GET');
-        self::assertSame('/api/envelope-templates', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/envelope-templates', self::lastRequest($mockClient)->getUri()->getPath());
         $dgs->identifications()->request('GET');
-        self::assertSame('/api/identifications', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/identifications', self::lastRequest($mockClient)->getUri()->getPath());
         $dgs->deliveries()->request('GET');
-        self::assertSame('/api/deliveries', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/deliveries', self::lastRequest($mockClient)->getUri()->getPath());
         $dgs->files()->request('GET');
-        self::assertSame('/api/files', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/files', self::lastRequest($mockClient)->getUri()->getPath());
         $dgs->images()->request('GET');
-        self::assertSame('/api/images', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/images', self::lastRequest($mockClient)->getUri()->getPath());
         $dgs->webhooks()->request('GET');
-        self::assertSame('/api/webhooks', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/webhooks', self::lastRequest($mockClient)->getUri()->getPath());
         $dgs->enums()->request('GET');
-        self::assertSame('/api/enums', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/enums', self::lastRequest($mockClient)->getUri()->getPath());
         $dgs->my()->request('GET');
-        self::assertSame('/api/my', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/my', self::lastRequest($mockClient)->getUri()->getPath());
         $dgs->report()->request('GET');
-        self::assertSame('/api/report', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/report', self::lastRequest($mockClient)->getUri()->getPath());
         $dgs->bulkSignature()->request('GET');
-        self::assertSame('/api/bulk-signatures', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/bulk-signatures', self::lastRequest($mockClient)->getUri()->getPath());
         $dgs->envelopeCategories()->request('GET');
-        self::assertSame('/api/envelope-categories', $mockClient->getLastRequest()->getUri()->getPath());
+        self::assertSame('/api/envelope-categories', self::lastRequest($mockClient)->getUri()->getPath());
     }
 
     public function testUserAgent(): void
@@ -241,14 +241,14 @@ class DigiSignTest extends TestCase
         $dgs->request('GET');
         self::assertSame(
             'digitalcz/digisign:' . DigiSign::VERSION . ' PHP:' . PHP_VERSION,
-            $mockClient->getLastRequest()->getHeaderLine('User-Agent'),
+            self::lastRequest($mockClient)->getHeaderLine('User-Agent'),
         );
 
         $dgs->removeVersion('PHP');
         $dgs->request('GET');
         self::assertSame(
             'digitalcz/digisign:' . DigiSign::VERSION,
-            $mockClient->getLastRequest()->getHeaderLine('User-Agent'),
+            self::lastRequest($mockClient)->getHeaderLine('User-Agent'),
         );
     }
 
@@ -264,7 +264,7 @@ class DigiSignTest extends TestCase
         );
         $dgs->request('GET', '/foo');
 
-        self::assertSame('https://example.org/api/foo', (string)$mockClient->getLastRequest()->getUri());
+        self::assertSame('https://example.org/api/foo', (string)self::lastRequest($mockClient)->getUri());
     }
 
     public function testCreateWithInvalidApiBase(): void
@@ -343,5 +343,13 @@ class DigiSignTest extends TestCase
         $this->expectExceptionMessage('Signature is invalid');
 
         $dgs->validateSignature($payload, $header, $secret);
+    }
+
+    private static function lastRequest(Client $client): RequestInterface
+    {
+        $request = $client->getLastRequest();
+        self::assertInstanceOf(RequestInterface::class, $request);
+
+        return $request;
     }
 }
