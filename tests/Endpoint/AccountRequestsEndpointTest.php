@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
-/**
- * @covers \DigitalCz\DigiSign\Endpoint\AccountRequestsEndpoint
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+#[CoversClass(AccountRequestsEndpoint::class)]
 class AccountRequestsEndpointTest extends EndpointTestCase
 {
     public function testList(): void

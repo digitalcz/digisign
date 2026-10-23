@@ -7,11 +7,10 @@ namespace DigitalCz\DigiSign\Resource;
 use DigitalCz\DigiSign\DigiSignClient;
 use DigitalCz\DigiSign\Exception\RuntimeException;
 use Nyholm\Psr7\Response;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \DigitalCz\DigiSign\Resource\Collection
- */
+#[CoversClass(Collection::class)]
 final class CollectionTest extends TestCase
 {
     public function testGetResponseNotFromApi(): void

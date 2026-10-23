@@ -6,13 +6,12 @@ namespace DigitalCz\DigiSign\Auth;
 
 use DigitalCz\DigiSign\DigiSign;
 use LogicException;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Component\Cache\Psr16Cache;
 
-/**
- * @covers \DigitalCz\DigiSign\Auth\CachedCredentials
- */
+#[CoversClass(CachedCredentials::class)]
 class CachedCredentialsTest extends TestCase
 {
     public function testHash(): void

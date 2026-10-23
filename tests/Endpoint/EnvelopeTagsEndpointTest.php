@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Endpoint;
 
-/**
- * @covers \DigitalCz\DigiSign\Endpoint\EnvelopeTagsEndpoint
- */
+use PHPUnit\Framework\Attributes\CoversClass;
+
+#[CoversClass(EnvelopeTagsEndpoint::class)]
 class EnvelopeTagsEndpointTest extends EndpointTestCase
 {
     public function testCRUD(): void

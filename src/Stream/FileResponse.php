@@ -59,10 +59,10 @@ final class FileResponse
             $contentDisposition,
             $matches,
         );
-        end($matches[3]);
-
         // if there are multiple matches, return the last
-        return $matches[3][key($matches[3])] ?? 'file';
+        $filename = end($matches[3]);
+
+        return $filename === false ? 'file' : $filename;
     }
 
     private function getContentLength(): int

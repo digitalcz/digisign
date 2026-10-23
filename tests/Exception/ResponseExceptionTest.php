@@ -5,11 +5,10 @@ declare(strict_types=1);
 namespace DigitalCz\DigiSign\Exception;
 
 use Nyholm\Psr7\Response;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers \DigitalCz\DigiSign\Exception\ResponseException
- */
+#[CoversClass(ResponseException::class)]
 class ResponseExceptionTest extends TestCase
 {
     public function testMessageWithoutResult(): void

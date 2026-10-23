@@ -25,11 +25,11 @@ class ResponseException extends RuntimeException
         try {
             $result = $this->parseResult();
 
-            if (isset($result['title'])) {
+            if (isset($result['title']) && is_string($result['title'])) {
                 $message .= ': ' . $result['title'];
             }
 
-            if (isset($result['detail'])) {
+            if (isset($result['detail']) && is_string($result['detail'])) {
                 $message .= ': ' . $result['detail'];
             }
         } catch (RuntimeException $e) {

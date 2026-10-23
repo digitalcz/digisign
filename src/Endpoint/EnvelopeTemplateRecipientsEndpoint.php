@@ -11,8 +11,8 @@ use DigitalCz\DigiSign\Resource\EnvelopeTemplateRecipient;
 /**
  * @extends ResourceEndpoint<EnvelopeTemplateRecipient>
  * @method EnvelopeTemplateRecipient get(string $id)
- * @method EnvelopeTemplateRecipient create(array $body)
- * @method EnvelopeTemplateRecipient update(string $id, array $body)
+ * @method EnvelopeTemplateRecipient create(mixed[] $body)
+ * @method EnvelopeTemplateRecipient update(string $id, mixed[] $body)
  */
 final class EnvelopeTemplateRecipientsEndpoint extends ResourceEndpoint
 {

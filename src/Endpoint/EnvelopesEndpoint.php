@@ -13,8 +13,8 @@ use DigitalCz\DigiSign\Stream\FileResponse;
 
 /**
  * @extends ResourceEndpoint<Envelope>
- * @method Envelope create(array $body)
- * @method Envelope update(string $id, array $body)
+ * @method Envelope create(mixed[] $body)
+ * @method Envelope update(string $id, mixed[] $body)
  */
 final class EnvelopesEndpoint extends ResourceEndpoint
 {

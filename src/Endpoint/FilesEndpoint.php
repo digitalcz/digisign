@@ -17,9 +17,9 @@ use DigitalCz\DigiSign\Stream\FileStream;
  */
 final class FilesEndpoint extends ResourceEndpoint
 {
+    use GetEndpointTrait;
     /** @use ListEndpointTrait<File> */
     use ListEndpointTrait;
-    use GetEndpointTrait;
 
     public function __construct(DigiSign $parent)
     {

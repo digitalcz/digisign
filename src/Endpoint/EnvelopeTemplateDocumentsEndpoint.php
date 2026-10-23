@@ -12,8 +12,8 @@ use DigitalCz\DigiSign\Stream\FileResponse;
 /**
  * @extends ResourceEndpoint<EnvelopeTemplateDocument>
  * @method EnvelopeTemplateDocument get(string $id)
- * @method EnvelopeTemplateDocument create(array $body)
- * @method EnvelopeTemplateDocument update(string $id, array $body)
+ * @method EnvelopeTemplateDocument create(mixed[] $body)
+ * @method EnvelopeTemplateDocument update(string $id, mixed[] $body)
  */
 final class EnvelopeTemplateDocumentsEndpoint extends ResourceEndpoint
 {
