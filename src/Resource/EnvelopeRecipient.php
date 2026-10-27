@@ -78,6 +78,8 @@ class EnvelopeRecipient extends BaseResource
 
     public bool $fromTemplate;
 
+    public bool $contactPrefilled = false;
+
     public ?string $intermediaryName = null;
 
     public ?string $intermediaryEmail = null;
