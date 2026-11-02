@@ -10,6 +10,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountBilling.accountGroupLimit` property.
 - Add `AccountBilling.accountGroupUsage` property.
 - Add `AccountBilling.limitsPeriodStart` and `AccountBilling.limitsPeriodEnd` properties.
+- Add `AccountBilling.recipientLimit` property.
 
 ## [2.13.0] - 2026-10-07
 - Add new `AccountBilling` properties: `recipientRoleCc`, `recipientRoleApprover`, `smsNotifications`, `textTag`, `checkboxTag`, `attachmentTag`, `dateOfSignatureTag`, `optionalSignature`, `templateLimit`, `templateUsage`, `timestampsAtsa`, `timestampsPostSignum`, `timestampsRenewal`, `certificateAkv`, `certificateRemoteSign`
