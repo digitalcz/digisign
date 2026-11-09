@@ -40,6 +40,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Fix nullable `Limits` properties to default to `null` instead of staying uninitialized when the API omits them
 - Fix `EnvelopeRecipient.bankIdScopes`, `EnvelopeTemplate.bankIdScopes`, `EnvelopeTemplateRecipient.bankIdScopes`, `EnvelopeTemplateRecipientDefaults.bankIdScopes` and `SignatureScenarioVersion.bankIdScopes` type annotation to a list of strings (`array<string>`)
 - Fix `Branding.ownConditions`, `Branding.signerReturnUrl`, `Branding.ownSmsText` and `IdentifyScenarioVersion.ownConditions` type annotation to include `null`
+- Add `VerifiedClaims.birthcountry` property
 
 ## [2.12.0] - 2026-04-01
 - Add `BulkSignatureEndpoint.create` method

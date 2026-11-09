@@ -30,6 +30,8 @@ class VerifiedClaims extends BaseResource
 
     public ?string $birthplace = null;
 
+    public ?string $birthcountry = null;
+
     public ?string $primaryNationality = null;
 
     /** @var array<string> */
