@@ -26,6 +26,7 @@ class Features extends BaseResource
     public string $bankIdProduct;
     public bool $bankIdSign;
     public bool $bankIdQSign;
+    public bool $bankIdAuthentication;
     public bool $certificateAkv;
     public bool $certificateRemoteSign;
     public bool $inPersonSigning;

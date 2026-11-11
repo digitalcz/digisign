@@ -114,6 +114,8 @@ class AccountBilling extends BaseResource
 
     public bool $bankIdQSign;
 
+    public bool $bankIdAuthentication;
+
     public bool $certificateAkv;
 
     public bool $certificateRemoteSign;
