@@ -29,8 +29,14 @@ class Branding extends BaseResource
     /** @var array<string, string>|null */
     public ?array $ownConditions;
 
-    /** @var array<string, string>|null */
-    public ?array $signerReturnUrl;
+    /**
+     * @var array<string, string>|null
+     *
+     * @deprecated Use $signedPage->redirectUrl instead
+     */
+    public ?array $signerReturnUrl = null;
+
+    public ?BrandingPage $signedPage = null;
 
     public ?AccountSmsSender $smsSender;
 
