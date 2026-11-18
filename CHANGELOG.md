@@ -11,6 +11,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountBilling.accountGroupUsage` property.
 - Add `AccountBilling.limitsPeriodStart` and `AccountBilling.limitsPeriodEnd` properties.
 - Add `AccountBilling.recipientLimit` property.
+- Add `AccountBilling.bankIdAuthentication` and `Features.bankIdAuthentication` properties.
 - Add `BrandingPage` resource and `Branding.signedPage` property.
 - Deprecate `Branding.signerReturnUrl` in favor of `Branding.signedPage.redirectUrl`.
 
