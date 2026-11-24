@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace DigitalCz\DigiSign\Resource;
 
+use DateTime;
+
 class EnvelopeProperties extends BaseResource
 {
     public bool $mergeDocuments;
@@ -62,4 +64,6 @@ class EnvelopeProperties extends BaseResource
     public ?int $defaultTimestampsRenewalPeriod = null;
 
     public ?int $timestampAuditLogRenewalPeriod = null;
+
+    public ?DateTime $nextAuditLogTimestampAt = null;
 }

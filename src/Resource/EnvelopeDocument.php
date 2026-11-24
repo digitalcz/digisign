@@ -46,4 +46,6 @@ class EnvelopeDocument extends BaseResource
     public bool $timestampEnabled;
 
     public ?int $timestampsRenewalPeriod = null;
+
+    public ?DateTime $nextTimestampAt = null;
 }
