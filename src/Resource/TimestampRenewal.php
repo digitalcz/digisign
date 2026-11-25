@@ -12,15 +12,11 @@ class TimestampRenewal extends BaseResource
 
     public string $type;
 
-    public string $authority;
+    public DateTime $timestampAt;
 
-    public DateTime $timestampedAt;
-
-    public ?DateTime $nextTimestampAt = null;
+    public ?Timestamp $timestamp = null;
 
     public ?EnvelopeDocument $document = null;
-
-    public ?string $auditLogLanguage = null;
 
     public DateTime $createdAt;
 }
