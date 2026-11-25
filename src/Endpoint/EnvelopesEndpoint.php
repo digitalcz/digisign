@@ -59,6 +59,11 @@ final class EnvelopesEndpoint extends ResourceEndpoint
         return new EnvelopeLabelsEndpoint($this, $envelope);
     }
 
+    public function timestampRenewals(Envelope|string $envelope): EnvelopeTimestampRenewalsEndpoint
+    {
+        return new EnvelopeTimestampRenewalsEndpoint($this, $envelope);
+    }
+
     /**
      * @param mixed[] $body
      */

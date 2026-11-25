@@ -12,7 +12,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountBilling.limitsPeriodStart` and `AccountBilling.limitsPeriodEnd` properties.
 - Add `AccountBilling.recipientLimit` property.
 - Add `AccountBilling.bankIdAuthentication` and `Features.bankIdAuthentication` properties.
-- Add `EnvelopeDocument.nextTimestampAt` and `EnvelopeProperties.nextAuditLogTimestampAt` properties.
+- Add `EnvelopesEndpoint.timestampRenewals` list endpoint and `TimestampRenewal` resource.
 - Add `BrandingPage` resource and `Branding.signedPage` property.
 - Deprecate `Branding.signerReturnUrl` in favor of `Branding.signedPage.redirectUrl`.
 
