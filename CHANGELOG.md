@@ -14,6 +14,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Add `AccountBilling.bankIdAuthentication` and `Features.bankIdAuthentication` properties.
 - Add `BrandingPage` resource and `Branding.signedPage` property.
 - Deprecate `Branding.signerReturnUrl` in favor of `Branding.signedPage.redirectUrl`.
+- Add `AccountBilling.billingProfileId` and `AccountBilling.billingProfileStatus` properties.
 
 ## [2.13.0] - 2026-10-07
 - Add new `AccountBilling` properties: `recipientRoleCc`, `recipientRoleApprover`, `smsNotifications`, `textTag`, `checkboxTag`, `attachmentTag`, `dateOfSignatureTag`, `optionalSignature`, `templateLimit`, `templateUsage`, `timestampsAtsa`, `timestampsPostSignum`, `timestampsRenewal`, `certificateAkv`, `certificateRemoteSign`
